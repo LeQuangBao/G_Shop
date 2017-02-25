@@ -25,26 +25,28 @@
 <body>
     <div id="wrapper">
         <!-- Navigation -->
-        @RenderPage("_Navigation.cshtml")
+        @{Html.RenderAction("Navigation", "AdminHome");}
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
+                   
                         @RenderBody()
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Scripts/bootstrap.min.js"></script>
     <!-- Morris Charts JavaScript -->
-    <script src="~/Scripts/plugins/morris/raphael.min.js"></script>
+    @*<script src="~/Scripts/plugins/morris/raphael.min.js"></script>
     <script src="~/Scripts/plugins/morris/morris.min.js"></script>
-    <script src="~/Scripts/plugins/morris/morris-data.js"></script>
+    <script src="~/Scripts/plugins/morris/morris-data.js"></script>*@
+    <script src="~/Scripts/dropzone/dropzone.js"></script>
+    <script src="~/Scripts/jsAdmin.js"></script>
 </body>
 </html>

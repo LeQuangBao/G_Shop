@@ -10,7 +10,7 @@ namespace G_Shop.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult About()
@@ -23,6 +23,11 @@ namespace G_Shop.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Loai(int MaLoai)
+        {
 
             return View();
         }

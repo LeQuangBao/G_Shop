@@ -29,7 +29,7 @@
                             <h2 class="panel-title"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Đăng nhập Admin</h2>
                         </div>
                         <div class="panel-body">
-                        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                        @using (Html.BeginForm("Login", "AdminHome", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-horizontal">
