@@ -156,11 +156,8 @@ namespace G_Shop.Areas.Admin.Controllers
 
         [HttpPost]
         public ActionResult Them(CaThe model)
-        {
-            
-            
-            
-            if (ModelState.IsValid && Session["fileUpload"] != null)
+        {         
+            if (Session["fileUpload"] != null)
             {
                 string _fileName;
                 string listImages = "";
@@ -178,11 +175,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 dao.ThemCaThe(model);
                 Session["fileUpload"] = null;
             }
-            else
-            {
-                ViewBag.Message = "Đăng sản phẩm thất bại. Vui lòng nhập lại.";
-            }
-            return View("CaThe",new { MaLoai = model.MaLoai});
+            return RedirectToAction("CaThe",new { MaLoai = model.MaLoai});
         }
 
         [HttpGet]

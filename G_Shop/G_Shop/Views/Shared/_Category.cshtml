@@ -1,5 +1,8 @@
-﻿<div class="list-group">
-	<a href="#" class="list-group-item">Category 1</a>
-	<a href="#" class="list-group-item">Category 2</a>
-	<a href="#" class="list-group-item">Category 3</a>
+﻿@model List<G_Shop.Models.Loai>
+
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+	    <a href="@Url.Action("ThuCung","Home", new { MaLoai = item.MaLoai})" class="list-group-item">@item.TenLoai</a>
+    }
 </div>

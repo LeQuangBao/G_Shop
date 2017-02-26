@@ -1,0 +1,50 @@
+﻿@model G_Shop.Models.CaThe
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
+}
+
+<h2>Chi tiết</h2>
+<div class="col-md-4">
+    <div>
+        <img id="img_01" src="~/assets/client/images/@(Model.HinhAnh.Substring(0,Model.HinhAnh.IndexOf("|")))" class="img_detail" />
+    </div>
+</div>
+<div class="col-md-6">
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenCaThe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenCaThe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tuoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tuoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd style="color:red;font-weight:bold">
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+    </dl>
+</div>

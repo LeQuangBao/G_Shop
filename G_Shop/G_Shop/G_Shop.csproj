@@ -361,6 +361,9 @@
     <Content Include="Views\Shared\_Category.cshtml" />
     <Content Include="Views\Shared\_Slide.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\ThemCaThe.cshtml" />
+    <Content Include="Views\Home\ThuCung.cshtml" />
+    <Content Include="Views\Shared\_LayoutNotSlide.cshtml" />
+    <Content Include="Views\Home\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

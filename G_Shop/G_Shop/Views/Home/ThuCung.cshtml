@@ -1,0 +1,39 @@
+﻿@model List<G_Shop.Models.CaThe>
+
+@{
+    ViewBag.Title = "ThuCung";
+    Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Danh sách @ViewBag.TenLoai</h3>
+    </div>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="~/assets/client/images/@(item.HinhAnh.Substring(0, item.HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">@item.Gia</h4>
+                    <h4>@item.TenCaThe</h4>
+                    <a href="/Home/ThuCung?MaLoai=@item.MaLoai" class="pull-right">Xem chi tiết</a>
+                </div>
+                @*<div class="ratings">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+                    </div>*@
+            </div>
+        </div>
+    }
+</div>
+
