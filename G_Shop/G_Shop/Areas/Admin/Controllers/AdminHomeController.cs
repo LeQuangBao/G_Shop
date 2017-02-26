@@ -71,20 +71,22 @@ namespace G_Shop.Areas.Admin.Controllers
 
         public ActionResult TopMenu()
         {
+                var model = Session["Admin"] as NguoiDung;
+                return PartialView(model);
+            
+        }
+
+        [HttpGet]
+        public ActionResult CaThe(int MaLoai)
+        {
             if (Session["Admin"] == null)
                 return View("Login");
             else
-            {
-                var model = Session["Admin"] as NguoiDung;
-                return PartialView(model);
+            { 
+                var model = new AdminDAO().GetCaThe_MaLoai(MaLoai);
+                ViewBag.TenLoai = new AdminDAO().GetTenLoai_MaLoai(MaLoai);
+                return View(model);
             }
-            
-        }
-        public ActionResult CaThe(int MaLoai)
-        {
-            var model = new AdminDAO().GetCaThe_MaLoai(MaLoai);
-            ViewBag.TenLoai = new AdminDAO().GetTenLoai_MaLoai(MaLoai);
-            return View(model);
         }
 
         public ActionResult SaveUploadedFile()
@@ -173,9 +175,8 @@ namespace G_Shop.Areas.Admin.Controllers
                 }
                 model.HinhAnh = listImages;
                 var dao = new AdminDAO();
-                dao.Them(model);
+                dao.ThemCaThe(model);
                 Session["fileUpload"] = null;
-                return RedirectToAction("Index");
             }
             else
             {
@@ -184,5 +185,19 @@ namespace G_Shop.Areas.Admin.Controllers
             return View("CaThe",new { MaLoai = model.MaLoai});
         }
 
+        [HttpGet]
+        public ActionResult SuaCaThe(int MaLoai, int MaCaThe)
+        {
+            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SuaCaThe(CaThe cathe)
+        {
+            new AdminDAO().SuaCaThe(cathe);
+            return RedirectToAction("CaThe",new { MaLoai=cathe.MaLoai});
+        }
+        
     }
 }

@@ -305,6 +305,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="Areas\Admin\Views\AdminHome\CaThe.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\TopMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SuaCaThe.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />

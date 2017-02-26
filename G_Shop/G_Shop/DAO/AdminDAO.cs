@@ -28,10 +28,28 @@ namespace G_Shop.DAO
             return model.TenLoai;
         }
 
-        public void Them(CaThe model)
+        public void ThemCaThe(CaThe model)
         {
             db.CaThes.Add(model);
             db.SaveChanges();
         }
+
+        public CaThe GetCaThe_MaLoai_MaCaThe(int MaLoai, int MaCaThe)
+        {
+            return db.CaThes.Where(x => x.MaLoai == MaLoai && x.MaCaThe == MaCaThe).FirstOrDefault();
+        }
+
+        public void SuaCaThe(CaThe cathe)
+        {
+            var model = db.CaThes.Find(cathe.MaCaThe);
+            model.TenCaThe = cathe.TenCaThe;
+            model.MoTa = cathe.MoTa;
+            model.Tuoi = cathe.Tuoi;
+            model.Gia = cathe.Gia;
+            model.TinhTrang = cathe.TinhTrang;
+            //model.HinhAnh = cathe.HinhAnh;
+            db.SaveChanges();
+        }
+
     }
 }
