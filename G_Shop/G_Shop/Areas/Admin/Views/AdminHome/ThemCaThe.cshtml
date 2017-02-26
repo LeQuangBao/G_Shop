@@ -1,0 +1,64 @@
+﻿@model G_Shop.Models.CaThe
+<div id="ThemCaThe" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thêm mới</h4>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm("Them", "AdminHome", FormMethod.Post, new { @id = "form", @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="ten">Tên:</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.TenCaThe, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="mota">Mô tả:</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.MoTa, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="tuoi">Tuổi:</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Tuoi, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="gia">Giá:</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.Gia, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="tinhtrang">Tình trạng:</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.TinhTrang, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.MaLoai)
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <label class="control-label col-sm-2" for="hinh" >Hình:</label>
+                    <div class="col-sm-10">
+                        <div id="dZUpload" class="dropzone dz-clickable">
+                            <div class="dz-default dz-message">
+                                <span>Kéo thả file hình ảnh .jpg, .png, .jpge hoặc click để upload.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>              
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="btnThem"><i class="glyphicon glyphicon-floppy-disk"></i> Thêm</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>           
+        </div>
+    </div>
+</div>
