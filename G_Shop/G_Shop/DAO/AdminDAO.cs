@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using G_Shop.Areas.Admin.Models;
 namespace G_Shop.DAO
 {
     public class AdminDAO
@@ -51,5 +52,31 @@ namespace G_Shop.DAO
             db.SaveChanges();
         }
 
+        public List<HoaDon> GetAllHoaDon()
+        {
+            return db.HoaDons.ToList();
+        }
+
+        public List<CTHD> GetCTHD_MaHD(int MaHD)
+        {
+            var model = (from cthd in db.ChiTietHoaDons
+                         join ct in db.CaThes
+                         on cthd.MaCaThe equals ct.MaCaThe
+                         where cthd.MaHoaDon == MaHD
+                         select new
+                         {
+                             macthd = cthd.MaChiTietHoaDon,
+                             mahd = cthd.MaHoaDon,
+                             tenct = ct.TenCaThe,
+                             gia = ct.Gia
+                         }).AsEnumerable().Select(x => new CTHD()
+                         {
+                             MaCTHD = x.macthd,
+                             MaHD = x.mahd,
+                             TenCaThe = x.tenct,
+                             Gia = x.gia
+                         }).ToList();
+            return model;
+        }
     }
 }

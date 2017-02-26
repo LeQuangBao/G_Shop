@@ -49,3 +49,4 @@ C:\Users\DLT\Source\Repos\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll
 C:\Users\DLT\Source\Repos\G_Shop\G_Shop\G_Shop\bin\G_Shop.pdb
 C:\Users\DLT\Source\Repos\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 C:\Users\DLT\Source\Repos\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
+C:\Users\DLT\Source\Repos\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache

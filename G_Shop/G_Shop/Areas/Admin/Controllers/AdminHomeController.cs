@@ -191,6 +191,18 @@ namespace G_Shop.Areas.Admin.Controllers
             new AdminDAO().SuaCaThe(cathe);
             return RedirectToAction("CaThe",new { MaLoai=cathe.MaLoai});
         }
-        
+     
+        public ActionResult HoaDon()
+        {
+            var model = new AdminDAO().GetAllHoaDon();
+            return View(model);
+        }   
+
+        public ActionResult CTHD(int MaHD)
+        {
+            var model = new AdminDAO().GetCTHD_MaHD(MaHD);
+            ViewBag.MaHD = MaHD;
+            return View(model);
+        }
     }
 }
