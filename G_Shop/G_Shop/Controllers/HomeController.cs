@@ -46,6 +46,11 @@ namespace G_Shop.Controllers
             return View(model);
         }
         
-        
+        public ActionResult Tim(string ten)
+        {
+            var model = new UserDAO().TimCaThe(ten);
+            return View(model);
+        }
+
     }
 }

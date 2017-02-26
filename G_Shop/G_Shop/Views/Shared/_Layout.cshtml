@@ -39,8 +39,22 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    
                 </ul>
+                
+                    @using (Html.BeginForm("Tim", "Home", FormMethod.Get))
+                    {
+                        <div class="col-md-4">
+                            @Html.TextBox("ten", "", new { placeholder = "Gõ từ khóa", @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <input type="submit" value="Tìm" class="btn btn-success" />
+                        </div>
+                    }
+                        
             </div>
+            
+
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->

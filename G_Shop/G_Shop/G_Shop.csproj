@@ -201,6 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\client\images\search.png" />
     <Content Include="assets\client\images\xamkhoi.jpg" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
@@ -364,6 +365,7 @@
     <Content Include="Views\Home\ThuCung.cshtml" />
     <Content Include="Views\Shared\_LayoutNotSlide.cshtml" />
     <Content Include="Views\Home\ChiTiet.cshtml" />
+    <Content Include="Views\Home\Tim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

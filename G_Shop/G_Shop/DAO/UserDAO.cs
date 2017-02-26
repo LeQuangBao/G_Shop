@@ -51,5 +51,10 @@ namespace G_Shop.DAO
         {
             return db.CaThes.Where(x => x.MaLoai == MaLoai && x.MaCaThe == MaCaThe).FirstOrDefault();
         }
+
+        public List<CaThe> TimCaThe(string ten)
+        {
+            return db.CaThes.Where(x => x.TenCaThe.Contains(ten)).ToList();
+        }
     }
 }
