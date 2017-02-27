@@ -39,7 +39,6 @@
         <MappingFragment StoreEntitySet="Loai">
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

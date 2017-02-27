@@ -36,7 +36,6 @@
     </Key>
     <Property Name="MaLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenLoai" Type="nvarchar" MaxLength="500" />
-    <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>

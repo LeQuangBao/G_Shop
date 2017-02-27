@@ -310,6 +310,7 @@
     <Content Include="Areas\Admin\Views\AdminHome\SuaCaThe.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HoaDon.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\CTHD.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\HoaDon_Ngay.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
