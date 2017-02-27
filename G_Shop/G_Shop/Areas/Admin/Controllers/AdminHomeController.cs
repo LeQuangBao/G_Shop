@@ -203,6 +203,18 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             var model = new AdminDAO().GetCTHD_MaHD(MaHD);
             ViewBag.MaHD = MaHD;
+            var hoadon = new AdminDAO().GetHoaDon_MaHD(MaHD);
+            ViewBag.NgayLap = hoadon.NgayMua;
+            ViewBag.TongTien = hoadon.TongTien;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult HoaDon_Ngay()
+        {
+            string ngay_bd = Request.Form["ngay_bd"];
+            string ngay_kt = Request.Form["ngay_kt"];
+            var model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt));
             return View(model);
         }
       

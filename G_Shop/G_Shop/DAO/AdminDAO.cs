@@ -78,5 +78,15 @@ namespace G_Shop.DAO
                          }).ToList();
             return model;
         }
+
+        public List<HoaDon> HoaDon_Ngay(DateTime ngay_bd, DateTime ngay_kt)
+        {
+            return db.HoaDons.Where(x=>x.NgayMua>=ngay_bd && x.NgayMua<=ngay_kt).ToList();
+        }
+
+        public HoaDon GetHoaDon_MaHD(int MaHoaDon)
+        {
+            return db.HoaDons.Where(x => x.MaHoaDon == MaHoaDon).First();
+        }
     }
 }

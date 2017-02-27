@@ -42,7 +42,6 @@
     </Key>
     <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoai" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CaThes" Relationship="Self.FK_CaThe_Loai" FromRole="Loai" ToRole="CaThe" />
   </EntityType>
   <EntityType Name="NguoiDung">
