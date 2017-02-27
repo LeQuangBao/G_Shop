@@ -1,0 +1,203 @@
+﻿@model G_Shop.Models.NguoiDung
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Areas/Admin/Script/pagesearch.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#submit').on('click', function () {     
+            var tendangnhap = document.getElementById("tendangnhap").value;
+            console.log(tendangnhap);
+            var matkhau = document.getElementById("matkhau").value;
+            console.log(matkhau);
+            var email = document.getElementById("email").value;
+            console.log(email);
+            var sodienthoai = document.getElementById("sodienthoai").value;
+            console.log(sodienthoai);
+            var vaitro = document.getElementById("vaitro").value;
+            console.log(vaitro);
+            $.ajax({
+                type: "POST",
+                url: '/User/themnguoidung',
+                data: {
+                    tendangnhap: tendangnhap,
+                    matkhau: matkhau,
+                    email: email,
+                    sodienthoai: sodienthoai,
+                    vaitro:vaitro
+                },
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    if (result == "ok") {
+                        alert("Thêm thành công");
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    }
+
+
+                },
+                error: function (err) {
+                    console.log(err.status + " - " + err.statusText);
+                }
+            });
+        });
+        
+    });
+</script>
+<script>
+    $(document).ready(function () {
+    $PageNo = 0;
+    $PageCount = 20;
+    $PageSize = 10;
+
+    function fnLoadPageCount(keyword) {
+        $.ajax({
+            url: "/Admin/" + "User" + "/PageCount1",
+            data: {
+                PageSize: $PageSize,
+                keyword: keyword
+            },
+            success: function (response) {
+                $PageCount = parseInt(response);
+                fnLoadPage(keyword);
+            }
+        });
+    }
+    function fnLoadPage(keyword) {
+     
+        $.ajax({
+            url: "/Admin/" + "User" + "/LoadPage1",
+            data: { PageNo: $PageNo, PageSize: $PageSize, keyword: keyword },
+            success: function (response) {
+                $("#page").html(response);
+                $("#status").html(($PageNo + 1) + " of " + $PageCount);
+            }
+        });
+    }
+   
+        $('#search').on('click', function () {
+            var keyword = document.getElementById("keyword").value;
+            console.log(keyword);
+            fnLoadPageCount(keyword);
+            $("ul.pager a:eq(0)").click(function () {
+                $PageNo = 0;
+                fnLoadPage(keyword);
+                return false;
+            });
+            $("ul.pager a:eq(1)").click(function () {
+                if ($PageNo > 0) {
+                    $PageNo--;
+                    fnLoadPage(keyword);
+                }
+                return false;
+            });
+            $("ul.pager a:eq(3)").click(function () {
+                if ($PageNo < $PageCount - 1) {
+                    $PageNo++;
+                    fnLoadPage(keyword);
+                }
+                return false;
+            });
+            $("ul.pager a:eq(4)").click(function () {
+                $PageNo = $PageCount - 1;
+                fnLoadPage(keyword);
+                return false;
+            });
+        });
+    });
+</script>
+<link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
+<link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
+<div class="col-lg-12">
+    <h2>Quản lí người dùng
+    <span style="float:right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_them"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+</span>
+    </h2>
+    <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
+        <form action="/Admin/timkiemnguoidung" method="post">
+            <div style="width:500px" class="input-group">
+                <input type="text" name="txttimkiem" id="keyword" class="form-control" placeholder="Tìm kiếm..." required>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="search">Thực hiện!</button>
+                </span>
+            </div>
+        </form>
+       
+    </div>
+    <div role="tabpanel" class="tab-pane" id="list">
+        <script>$Controller = "User"</script>
+        @Html.Partial("_Paginate")
+    </div>
+</div>
+<section>
+    <!-- Modal Thêm người dùng -->
+    <div class="modal fade" id="myModal_them" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thêm người dùng</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="add" name="add" class="form-horizontal" role="form" method="post">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Tên đăng nhập <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="tendangnhap" name="tendangnhap" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Mật khẩu <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="password" id="matkhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Email
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="email" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Số điện thoại <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="sodienthoai" name="sodienthoai" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Vai trò <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @*<input id="sdt" name="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">*@
+                                <select class="date-picker form-control col-md-7 col-xs-12" id="vaitro">
+                                    <option value="0">Người dùng</option>
+                                    <option value="1">Người quản trị</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" id="submit">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

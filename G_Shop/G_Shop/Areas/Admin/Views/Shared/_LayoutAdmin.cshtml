@@ -7,6 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>G_Force Admin</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
     <!-- Bootstrap Core CSS -->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -30,9 +37,7 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
-                   
                         @RenderBody()
-                    
                 </div>
             </div>
         </div>

@@ -8,10 +8,10 @@ namespace G_Shop.DAO
 {
     public class AdminDAO
     {
-        GShopEntities db = null;
+        GShopEntities1 db = null;
         public AdminDAO()
         {
-            db = new GShopEntities();
+            db = new GShopEntities1();
         }
         public List<Loai> GetAllTenLoai()
         {
