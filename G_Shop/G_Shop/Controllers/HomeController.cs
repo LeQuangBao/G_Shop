@@ -57,25 +57,7 @@ namespace G_Shop.Controllers
             return View(model);
         }
         [HttpGet]
-        //public ActionResult ThuCung(int MaLoai,int? page)
-        //{
-        //    List<CaThe> listcathe = db.CaThes.Where(n => n.MaLoai.Equals(MaLoai)).ToList();
-        //    // phân trang
-        //    int pagenumber = (page ?? 1);
-        //    int pagesize = 10;
-        //    //if (listcathe.Count == 0)
-        //    //{
-        //    //    ViewBag.ThongBao = "Không tìm thấy bản ghi phù hợp";
-        //    //    return View(_db.UnitPrices.OrderBy(n => n.Name).ToPagedList(pagenumber, pagesize));
-        //    //}
-        //    ViewBag.ThongBao = "Đã tìm thấy" + listcathe.Count + "kết quả";
-        //    ViewBag.MaLoai = MaLoai;
-        //    //var model = new UserDAO().GetNewCaThe();
-
-        //    //var model = new UserDAO().GetAllCaThe_MaLoai(MaLoai);
-        //    ViewBag.TenLoai = new UserDAO().GetTenLoai_MaLoai(MaLoai);
-        //    return View(listcathe.OrderBy(n => n.MaCaThe).ToPagedList(pagenumber, pagesize));
-        //}
+      
         public ActionResult ChiTiet(int MaLoai, int MaCaThe)
         {
             var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai,MaCaThe);
