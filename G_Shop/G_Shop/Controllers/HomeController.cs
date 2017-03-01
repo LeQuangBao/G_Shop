@@ -20,9 +20,18 @@ namespace G_Shop.Controllers
         }
         public ActionResult Index(int page = 1, int pagesize = 3)
         {
-            var model = ListAllPageging1(page, pagesize);
-            //var model = new UserDAO().GetNewCaThe();
-            return View(model);
+            if(Session["user"]==null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else {
+                var user = Session["user"] as NguoiDung;
+                ViewBag.tennguoidung = user.TenDangNhap;
+                var model = ListAllPageging1(page, pagesize);
+                //var model = new UserDAO().GetNewCaThe();
+                return View(model);
+            }
+          
         }
         public IEnumerable<CaThe> ListAllPageging(int MaLoai,int page, int pagesize)
         {

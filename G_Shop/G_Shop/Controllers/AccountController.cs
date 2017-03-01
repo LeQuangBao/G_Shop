@@ -25,13 +25,7 @@ namespace G_Shop.Controllers
         public ActionResult Login(ModelLogin nd)
         {
 
-            var user = (from n in db.NguoiDungs
-                        where n.TenDangNhap == nd.UserName
-                        select new NguoiDung
-                        {
-                            TenDangNhap=nd.UserName,
-                            MatKhau=nd.Password
-                        }).FirstOrDefault();
+            var user = db.NguoiDungs.Where(n => n.TenDangNhap.Equals(nd.UserName)).FirstOrDefault();
 
             if (user == null)
             {
@@ -55,7 +49,7 @@ namespace G_Shop.Controllers
         public ActionResult Logoff()
         {
             Session.Remove("user");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Register()
