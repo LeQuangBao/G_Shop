@@ -64,6 +64,7 @@ namespace G_Shop.Controllers
             //f.SaveAs(Server.MapPath("~/images/customers/" + f.FileName));
             try
             {
+                model.VaiTro = 0;
                 db.NguoiDungs.Add(model);
                 db.SaveChanges();
                 //ModelState.AddModelError("", "Đăng ký thành công. Vui lòng nhận email và kích hoạt tài khoản !");

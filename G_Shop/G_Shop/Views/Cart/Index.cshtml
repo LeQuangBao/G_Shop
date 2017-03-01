@@ -3,9 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
 }
-
 <h2>Shopping Cart</h2>
-<form action="/Cart/Update" method="post">
+<form>
     <table class="table">
         <tr>
             <th>Name</th>
@@ -27,6 +26,30 @@
             </tr>
         }
     </table>
+    <script>
+        $(function(){
+            $(".remove-from-cart").click(function () {
+              
+                    var id = $(this).attr("data-id");
+                    $.ajax({
+                        url: "/Cart/Remove",
+                        data: { id: id },
+                        success: function (response) {
+                            //$(".nn-cart #cnt").html(response.Count);
+                            //$(".nn-cart #amt").html(response.Amount);
+                        }
+                    });
+                    // Xóa <tr> chứa sản phẩm bị xóa
+                    $(this).parents("tr").hide(200);
+                    return false;
+                    //});
+                });
+            });
+      
+
+      
+    </script>
+
     <div>
         <a class="btn btn-default" href="/Home/Index">Tiếp tục mua hàng</a>
         <a class="btn btn-default" href="/Cart/Clear">Clear Cart</a>

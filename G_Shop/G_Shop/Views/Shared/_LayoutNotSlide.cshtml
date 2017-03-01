@@ -8,9 +8,18 @@
     <meta name="author" content="">
     <title>G_SHOP</title>
     <!-- Bootstrap Core CSS -->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="~/Content/shop-homepage.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -49,6 +58,25 @@
                             <input type="submit" value="Tìm" class="btn btn-success" />
                         </div>
                 }
+                <div class="col-lg-offset-10 col-md-4">
+                    @if (@Session["user"] == null)
+                    {
+                        <p style="color:white">
+                            <a href="/Account/Login">Đăng nhập</a> &nbsp;&nbsp;
+                            <a href="/Account/Register">Đăng kí</a>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            Chào bạn, @ViewBag.tennguoidung &nbsp; &nbsp;
+                            <span><a href="/Account/Logoff">Đăng xuất</a></span>&nbsp; &nbsp;
+                            <span><a href="/Cart/Index">Giỏ hàng</a></span>
+                        </p>
+                    }
+
+
+                </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -83,8 +111,6 @@
     <!-- /.container -->
     <!-- jQuery -->
 
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
+   
 </body>
 </html>

@@ -47,68 +47,7 @@
         
     });
 </script>
-<script>
-    $(document).ready(function () {
-    $PageNo = 0;
-    $PageCount = 20;
-    $PageSize = 10;
 
-    function fnLoadPageCount(keyword) {
-        $.ajax({
-            url: "/Admin/" + "User" + "/PageCount1",
-            data: {
-                PageSize: $PageSize,
-                keyword: keyword
-            },
-            success: function (response) {
-                $PageCount = parseInt(response);
-                fnLoadPage(keyword);
-            }
-        });
-    }
-    function fnLoadPage(keyword) {
-     
-        $.ajax({
-            url: "/Admin/" + "User" + "/LoadPage1",
-            data: { PageNo: $PageNo, PageSize: $PageSize, keyword: keyword },
-            success: function (response) {
-                $("#page").html(response);
-                $("#status").html(($PageNo + 1) + " of " + $PageCount);
-            }
-        });
-    }
-   
-        $('#search').on('click', function () {
-            var keyword = document.getElementById("keyword").value;
-            console.log(keyword);
-            fnLoadPageCount(keyword);
-            $("ul.pager a:eq(0)").click(function () {
-                $PageNo = 0;
-                fnLoadPage(keyword);
-                return false;
-            });
-            $("ul.pager a:eq(1)").click(function () {
-                if ($PageNo > 0) {
-                    $PageNo--;
-                    fnLoadPage(keyword);
-                }
-                return false;
-            });
-            $("ul.pager a:eq(3)").click(function () {
-                if ($PageNo < $PageCount - 1) {
-                    $PageNo++;
-                    fnLoadPage(keyword);
-                }
-                return false;
-            });
-            $("ul.pager a:eq(4)").click(function () {
-                $PageNo = $PageCount - 1;
-                fnLoadPage(keyword);
-                return false;
-            });
-        });
-    });
-</script>
 <link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
 <link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
 <div class="col-lg-12">
@@ -118,7 +57,7 @@
 </span>
     </h2>
     <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
-        <form action="/Admin/timkiemnguoidung" method="post">
+        <form >
             <div style="width:500px" class="input-group">
                 <input type="text" name="txttimkiem" id="keyword" class="form-control" placeholder="Tìm kiếm..." required>
                 <span class="input-group-btn">

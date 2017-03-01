@@ -14,18 +14,25 @@ namespace G_Shop.Controllers
 
         public ActionResult Checkout()
         {
-            int tongtien = 0;
-            var user = Session["user"] as NguoiDung;
-            foreach(var p in ShoppingCart.Cart.Items)
+            if(Session["user"]==null)
             {
-                tongtien = tongtien + p.Gia;
+                return RedirectToAction("Login", "Account");
             }
-            var model = new HoaDon();
-            model.TongTien = tongtien;
-            model.NgayMua = DateTime.Now;
-            model.MaNguoiDung = user.MaNguoiDung;
-
-            return View(model);
+          else  {
+                int tongtien = 0;
+                var user = Session["user"] as NguoiDung;
+                foreach (var p in ShoppingCart.Cart.Items)
+                {
+                    tongtien = tongtien + p.Gia;
+                }
+                var model = new HoaDon();
+                model.TongTien = tongtien;
+                model.NgayMua = DateTime.Now;
+                model.MaNguoiDung = user.MaNguoiDung;
+                ViewBag.tennguoidung = user.TenDangNhap;
+                return View(model);
+            }
+        
         }
 
         [HttpPost]
@@ -58,17 +65,43 @@ namespace G_Shop.Controllers
 
         public ActionResult List()
         {
-            var user = Session["user"] as NguoiDung;
-            var model = db.HoaDons
-                .Where(o => o.MaNguoiDung == user.MaNguoiDung)
-                .OrderByDescending(o => o).ToList();
-            return View(model);
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else {
+                var user = Session["user"] as NguoiDung;
+                var model = (from n in db.HoaDons
+                             where n.MaNguoiDung.Equals(user.MaNguoiDung)
+                             select new HoaDonDTO
+                             {
+                                 MaHoaDon=n.MaHoaDon,
+                                 MaNguoiDung=n.MaNguoiDung,
+                                 NgayMua=n.NgayMua,
+                                 TongTien=n.TongTien,
+                                 NguoiDung=n.NguoiDung
+                                 
+                             }).ToList();
+
+                ViewBag.tennguoidung = user.TenDangNhap;
+                return View(model);
+            }
+         
         }
 
         public ActionResult Detail(int Id)
         {
-            var model = db.HoaDons.Find(Id);
-            return View(model);
+            if(Session["user"]==null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else {
+                var user = Session["user"] as NguoiDung;
+                ViewBag.tennguoidung = user.TenDangNhap;
+                var model = db.HoaDons.Find(Id);
+                return View(model);
+            }
+         
         }
 
         //public ActionResult Items()

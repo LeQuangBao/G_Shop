@@ -4,6 +4,7 @@
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/Shoppingcart.js"></script>
 <hr />
 <div class="row">
     <div class="col-lg-12">
@@ -20,7 +21,13 @@
                             <h4 class="pull-right">@Model[i].Gia</h4>
                             <h4>@Model[i].TenCaThe</h4>
                             <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
-                        </div>
+                           @if (Session["user"] != null)
+                           {
+                            <img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" />
+                           }
+                            
+                         </div>
+                        
                         @*<div class="ratings">
                                 <p class="pull-right">15 reviews</p>
                                 <p>

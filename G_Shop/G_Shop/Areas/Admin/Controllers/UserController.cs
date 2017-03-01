@@ -93,7 +93,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 return Json("error");
             }
         }
-        public ActionResult LoadPage1(string keyword,int PageNo = 0, int PageSize = 10)
+        public ActionResult LoadPage1(string keyword,int PageNo = 1, int PageSize = 10)
         {
             var model = db.NguoiDungs
                 .Where(n=>n.TenDangNhap.Contains(keyword)||n.Email.Contains(keyword)||n.SoDienThoai.Contains(keyword))
@@ -106,7 +106,7 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             var model = (from d in db.NguoiDungs
                          .Where(n => n.TenDangNhap.Contains(keyword) || n.Email.Contains(keyword) || n.SoDienThoai.Contains(keyword))
-                         select new NguoiDung
+                         select new NguoiDungDTO
                          {
                              TenDangNhap=d.TenDangNhap,
                              MatKhau = d.MatKhau,

@@ -1,0 +1,48 @@
+﻿@model G_Shop.Models.HoaDon
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label>Khách hàng</label>
+            @Html.TextBoxFor(m => m.MaNguoiDung, new { @class = "form-control", @readonly = true })
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label>Tổng tiền</label>
+            @Html.TextBoxFor(m => m.TongTien, new { @class = "form-control", @readonly = true })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label>Ngày mua</label>
+            @Html.TextBoxFor(m => m.NgayMua, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
+        </div>
+
+     
+    </div>
+}
+
+<fieldset>
+    <legend>CHI TIẾT ĐƠN HÀNG</legend>
+    <table class="table">
+        <tr>
+            <th>Tên cá thể</th>
+            <th>Giá bán</th>
+            <th>Số lượng</th>
+        </tr>
+        @foreach (var d in Model.ChiTietHoaDons)
+        {
+            <tr>
+                <td>@d.CaThe.TenCaThe</td>
+                <td>@Html.FormatValue(d.CaThe.Gia, "{0:c}")</td>         
+                <td>1</td>
+             
+            </tr>
+        }
+    </table>
+</fieldset>

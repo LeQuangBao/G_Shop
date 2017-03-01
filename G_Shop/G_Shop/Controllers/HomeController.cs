@@ -20,17 +20,12 @@ namespace G_Shop.Controllers
         }
         public ActionResult Index(int page = 1, int pagesize = 3)
         {
-            if(Session["user"]==null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else {
                 var user = Session["user"] as NguoiDung;
-                ViewBag.tennguoidung = user.TenDangNhap;
+                //ViewBag.tennguoidung = user.TenDangNhap;
                 var model = ListAllPageging1(page, pagesize);
                 //var model = new UserDAO().GetNewCaThe();
                 return View(model);
-            }
+            
           
         }
         public IEnumerable<CaThe> ListAllPageging(int MaLoai,int page, int pagesize)
@@ -59,18 +54,38 @@ namespace G_Shop.Controllers
         }
         public ActionResult ThuCung(int MaLoai, int page=1,int pagesize=6)
         {
-            var model = ListAllPageging(MaLoai,page, pagesize);
-            ViewBag.TenLoai = new UserDAO().GetTenLoai_MaLoai(MaLoai);
-            ViewBag.MaLoai = MaLoai;
-            //var model = new UserDAO().GetNewCaThe();
-            return View(model);
+            if(Session["user"]==null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                var user = Session["user"] as NguoiDung;
+                ViewBag.tennguoidung = user.TenDangNhap;
+                var model = ListAllPageging(MaLoai, page, pagesize);
+                ViewBag.TenLoai = new UserDAO().GetTenLoai_MaLoai(MaLoai);
+                ViewBag.MaLoai = MaLoai;
+                //var model = new UserDAO().GetNewCaThe();
+                return View(model);
+            }
+          
         }
         [HttpGet]
       
         public ActionResult ChiTiet(int MaLoai, int MaCaThe)
         {
-            var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai,MaCaThe);
-            return View(model);
+            if(Session["user"]==null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                var user = Session["user"] as NguoiDung;
+                ViewBag.tennguoidung = user.TenDangNhap;
+                var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+                return View(model);
+            }
+          
         }
         
         public ActionResult Tim(string ten)

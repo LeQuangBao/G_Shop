@@ -4,7 +4,7 @@
     ViewBag.Title = "ChiTiet";
     Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
 }
-
+<script src="~/Scripts/Shoppingcart.js"></script>
 <h2>Chi tiết</h2>
 <div class="col-md-4">
     <div>
@@ -46,5 +46,13 @@
         <dd style="color:red;font-weight:bold">
             @Html.DisplayFor(model => model.Gia)
         </dd>
+          <dt>
+
+              @if (Session["user"] != null)
+              {
+                  <img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" />
+              }
+             
+          </dt>
     </dl>
 </div>

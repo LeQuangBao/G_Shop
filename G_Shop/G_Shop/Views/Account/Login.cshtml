@@ -27,12 +27,13 @@
                     <div class="col-sm-8 col-md-offset-3 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h2 class="panel-title"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Đăng nhập Admin</h2>
+                                <h2 class="panel-title"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Đăng nhập</h2>
                             </div>
                             <div class="panel-body">
                                 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary()
                                     <div class="form-horizontal">
                                         <div class="form-group has-feedback">
                                             <label class="control-label col-sm-4" for="username">Tên đăng nhập:</label>
@@ -48,6 +49,12 @@
                                                 @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                                 @Html.ValidationMessageFor(model => model.Password)
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <div class="col-lg-offset-4 col-sm-8">
+                                              <p>Bạn chưa có tài khoản?
+                                                <a href="/Account/Register">Đăng kí</a></p>
                                             </div>
                                         </div>
                                         <div class="form-group">
