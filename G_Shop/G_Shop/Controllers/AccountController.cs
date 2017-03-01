@@ -22,21 +22,29 @@ namespace G_Shop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(String Id, String Password)
+        public ActionResult Login(ModelLogin nd)
         {
-            var user = db.NguoiDungs.Find(Id);
+
+            var user = (from n in db.NguoiDungs
+                        where n.TenDangNhap == nd.UserName
+                        select new NguoiDung
+                        {
+                            TenDangNhap=nd.UserName,
+                            MatKhau=nd.Password
+                        }).FirstOrDefault();
+
             if (user == null)
             {
                 ModelState.AddModelError("", "Sai tên đăng nhập !");
             }
-            else if (user.MatKhau != Password)
+            else if (user.MatKhau != nd.Password)
             {
                 ModelState.AddModelError("", "Sai mật khẩu !");
             }
             else
             {
                 Session["user"] = user;
-                ModelState.AddModelError("", "Đăng nhập thành công !");
+                //ModelState.AddModelError("", "Đăng nhập thành công !");
                 return RedirectToAction("Index", "Home");
 
             }
@@ -58,19 +66,17 @@ namespace G_Shop.Controllers
         [HttpPost]
         public ActionResult Register(NguoiDung model)
         {
-            var f = Request.Files["upPhoto"];
-            f.SaveAs(Server.MapPath("~/images/customers/" + f.FileName));
+            //var f = Request.Files["upPhoto"];
+            //f.SaveAs(Server.MapPath("~/images/customers/" + f.FileName));
             try
             {
-                model.Photo = f.FileName;
-                model.Activated = false;
-                db.Customers.Add(model);
+                db.NguoiDungs.Add(model);
                 db.SaveChanges();
-                ModelState.AddModelError("", "Đăng ký thành công. Vui lòng nhận email và kích hoạt tài khoản !");
+                //ModelState.AddModelError("", "Đăng ký thành công. Vui lòng nhận email và kích hoạt tài khoản !");
 
-                var url = Request.Url.AbsoluteUri.Replace("Register", "") + "Activate/" + model.Id.ToBase64();
-                var body = @"Click vào liên kết sau để kích hoạt tài khoản: <a href='" + url + "'>Activate</a>";
-                XMail.Send(model.Email, "Welcome mail", body);
+                //var url = Request.Url.AbsoluteUri.Replace("Register", "") + "Activate/" + model.Id.ToBase64();
+                //var body = @"Click vào liên kết sau để kích hoạt tài khoản: <a href='" + url + "'>Activate</a>";
+                //XMail.Send(model.Email, "Welcome mail", body);
             }
             catch (Exception ex)
             {
