@@ -106,7 +106,7 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             var model = (from d in db.NguoiDungs
                          .Where(n => n.TenDangNhap.Contains(keyword) || n.Email.Contains(keyword) || n.SoDienThoai.Contains(keyword))
-                         select new NguoiDungDTO
+                         select new NguoiDung
                          {
                              TenDangNhap=d.TenDangNhap,
                              MatKhau = d.MatKhau,

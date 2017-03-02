@@ -16,7 +16,7 @@ namespace G_Shop.Models
     public partial class GShopEntities1 : DbContext
     {
         public GShopEntities1()
-            : base("name=GShopEntities1")
+            : base("name=GShopEntities")
         {
         }
     
@@ -31,5 +31,6 @@ namespace G_Shop.Models
         public virtual DbSet<Loai> Loais { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        
     }
 }
