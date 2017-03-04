@@ -1,15 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
 }
-<h2>Shopping Cart</h2>
+<h2>Giỏ hàng</h2>
 <form>
     <table class="table">
         <tr>
-            <th>Name</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
             <th></th>
         </tr>
         @foreach (var p in ShoppingCart.Cart.Items)
@@ -52,7 +52,7 @@
 
     <div>
         <a class="btn btn-default" href="/Home/Index">Tiếp tục mua hàng</a>
-        <a class="btn btn-default" href="/Cart/Clear">Clear Cart</a>
-        <a class="btn btn-default" href="/Order/Checkout">Checkout</a>
+        <a class="btn btn-default" href="/Cart/Clear">Xóa hết</a>
+        <a class="btn btn-default" href="/Order/Checkout">Xác nhận</a>
     </div>
 </form>

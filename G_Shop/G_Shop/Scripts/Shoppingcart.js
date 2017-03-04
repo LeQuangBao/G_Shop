@@ -1,14 +1,19 @@
 ﻿$(function () {
     $(".add-to-cart").click(function () {
         var id = $(this).attr("data-id");
+     
         $.ajax({
             url: "/Cart/Add",
             data: { id: id },
             success: function (response) {
+            alert("Thêm sản phẩm thành công.");
+              
                 //$(".nn-cart #cnt").html(response.Count);
                 //$(".nn-cart #amt").html(response.Amount);
             }
+             
         });
+    });
 
         //    // Hiệu ứng giỏ hàng
         //    var src = $("#" + id).attr("src");
@@ -34,5 +39,4 @@
             return false;
             //});
         });
-    });
 });

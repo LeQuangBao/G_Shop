@@ -73,7 +73,7 @@ namespace G_Shop.Controllers
                 var user = Session["user"] as NguoiDung;
                 var model = (from n in db.HoaDons
                              where n.MaNguoiDung.Equals(user.MaNguoiDung)
-                             select new HoaDonDTO
+                             select new HoaDon
                              {
                                  MaHoaDon=n.MaHoaDon,
                                  MaNguoiDung=n.MaNguoiDung,

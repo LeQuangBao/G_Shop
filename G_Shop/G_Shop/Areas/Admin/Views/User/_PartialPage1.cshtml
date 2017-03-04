@@ -2,6 +2,7 @@
 <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
+            <td>Tên đăng nhập</td>
             <th>Email</th>
             <th>Số điện thoại</th>
             <th>Vai trò</th>
@@ -12,6 +13,7 @@
         @foreach(G_Shop.Models.NguoiDung item in Model)
         {
             <tr>
+                <td>@item.TenDangNhap</td>
                 <td>@item.Email</td>
                 <td>@item.SoDienThoai</td>
                 <td>@item.VaiTro</td>
