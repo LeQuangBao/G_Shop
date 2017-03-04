@@ -21,7 +21,7 @@ namespace G_Shop.Controllers
         public ActionResult Index(int page = 1, int pagesize = 3)
         {
                 var user = Session["user"] as NguoiDung;
-                //ViewBag.tennguoidung = user.TenDangNhap;
+                ViewBag.tennguoidung = user.TenDangNhap;
                 var model = ListAllPageging1(page, pagesize);
                 //var model = new UserDAO().GetNewCaThe();
                 return View(model);
@@ -54,12 +54,12 @@ namespace G_Shop.Controllers
         }
         public ActionResult ThuCung(int MaLoai, int page=1,int pagesize=6)
         {
-            if(Session["user"]==null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
+        //    if(Session["user"]==null)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        //    else
+        //    {
                 var user = Session["user"] as NguoiDung;
                 ViewBag.tennguoidung = user.TenDangNhap;
                 var model = ListAllPageging(MaLoai, page, pagesize);
@@ -67,24 +67,24 @@ namespace G_Shop.Controllers
                 ViewBag.MaLoai = MaLoai;
                 //var model = new UserDAO().GetNewCaThe();
                 return View(model);
-            }
+           // }
           
         }
         [HttpGet]
       
         public ActionResult ChiTiet(int MaLoai, int MaCaThe)
         {
-            if(Session["user"]==null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
+        //    if(Session["user"]==null)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        //    else
+        //    {
                 var user = Session["user"] as NguoiDung;
                 ViewBag.tennguoidung = user.TenDangNhap;
                 var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
                 return View(model);
-            }
+            
           
         }
         

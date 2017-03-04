@@ -8,7 +8,7 @@ namespace G_Shop.Controllers
         public int MaHoaDon { get; set; }
         public int MaNguoiDung { get; set; }
         public DateTime? NgayMua { get; set; }
-        public NguoiDung NguoiDung { get; internal set; }
+        public NguoiDung NguoiDung { get; set; }
         public int? TongTien { get; set; }
     }
 }
