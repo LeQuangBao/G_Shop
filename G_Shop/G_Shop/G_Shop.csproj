@@ -173,6 +173,7 @@
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HoaDonDTO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="DAO\AdminDAO.cs" />
@@ -339,6 +340,7 @@
     <Content Include="Areas\Admin\Views\User\_PartialPage1.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Paginate.cshtml" />
     <Content Include="Areas\Admin\Views\User\suanguoidung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\HoaDon_Ngay.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -376,6 +378,7 @@
     <Content Include="Scripts\plugins\morris\raphael.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Shoppingcart.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

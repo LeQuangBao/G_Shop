@@ -42,13 +42,13 @@
                 
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#">Thông tin</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Dịch vụ</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">Liên hệ</a>
                     </li>
                     
                 </ul>
@@ -56,31 +56,31 @@
 
                     @using (Html.BeginForm("Tim", "Home", FormMethod.Get))
                     {
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             @Html.TextBox("ten", "", new { placeholder = "Gõ từ khóa", @class = "form-control" })
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-1">
                             <input type="submit" value="Tìm" class="btn btn-success" />
 
                         </div>
 
                     }
-                    <div class="col-lg-offset-10 col-md-4">
-                        @if (Session["user"] == null)
-                        {
-                            <p style="color:white">   
-                            <a href="/Account/Login">Đăng nhập</a>  &nbsp; &nbsp;  
-                            <a href="/Account/Register">Đăng kí</a>
-                            </p>
-                        }
-                        else {
-                            <p>
-                                Chào bạn, @ViewBag.tennguoidung & nbsp; &nbsp;
-                                <span><a href="/Account/Logoff">Đăng xuất</a></span>&nbsp; &nbsp;
-                                <span><a href="/Cart/Index">Giỏ hàng</a></span>
-                            </p>
-                        }
-                             
+                    <div class="col-md-4">
+                        <div class="pull-right">
+                            @if(Session["user"] == null) {
+                                <p style="color:white;padding-top:15px">
+                                    <a href="/Account/Login" style="color:white;">Đăng nhập</a>  &nbsp; &nbsp;
+                                    <a href="/Account/Register" style="color:white;">Đăng kí</a>
+                                </p>
+                            } else {
+                                <p  style="color:#808080;padding-top:15px">
+                                    Chào bạn, @ViewBag.tennguoidung &nbsp;
+                                    <span><a href="/Account/Logoff" style="color:white;">Đăng xuất</a></span>&nbsp; &nbsp;
+                                    <span><a href="/Cart/Index" style="color:white;">Giỏ hàng</a></span>
+                                </p>
+                            }
+
+                        </div>
 
                     </div>
                 </div>

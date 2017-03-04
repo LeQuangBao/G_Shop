@@ -21,10 +21,10 @@ namespace G_Shop.Controllers
             ViewBag.tennguoidung = user.TenDangNhap;
             return View();
         }
-        public ActionResult Add(int Id)
+        public JsonResult Add(int Id)
         {
             ShoppingCart.Cart.Add(Id, 1);
-            return Json("", JsonRequestBehavior.AllowGet);
+            return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Remove(int Id)
