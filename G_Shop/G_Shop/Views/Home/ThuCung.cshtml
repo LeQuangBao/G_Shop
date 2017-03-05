@@ -20,10 +20,15 @@
                 <div class="caption">
                     <h4 class="pull-right">@Model[i].Gia</h4>
                     <h4>@Model[i].TenCaThe</h4>
-                    <a href="/Home/ThuCung?MaLoai=@Model[i].MaLoai" class="pull-right">Xem chi tiết</a>
-                    @if (Session["user"] != null)
-                    {
-                        <img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" />
+                    <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
+
+                    @if(Session["user"] != null) {
+                        <button class="add-to-cart" data-id="@Model[i].MaCaThe">
+                            <span class="glyphicon glyphicon-shopping-cart text-success">
+
+                            </span>
+                        </button>
+                        @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
                     }
 
 

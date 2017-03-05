@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using G_Shop.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace G_Shop.Areas.Admin.Controllers
 {
@@ -16,30 +18,42 @@ namespace G_Shop.Areas.Admin.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+        public IPagedList<NguoiDung> ListAllPageging1(int page, int pagesize) {
+            //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
+            //return model;
+            return db.NguoiDungs.OrderByDescending(x=>x.MaNguoiDung).ToPagedList(page, pagesize);
+        }
+      
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pagesize = 5)
         {
+            var user = Session["user"] as NguoiDung;
+            if(user != null)
+                ViewBag.tennguoidung = user.TenDangNhap;
+            var model = ListAllPageging1(page, pagesize);
+            //var model = new UserDAO().GetNewCaThe();
+            return View(model);
             //if (Session["Admin"] == null)
             //    return RedirectToAction("Login", "/AdminHome");
             //else
             //{
-                var model = new NguoiDung();
-                return View("Index", model);
+            //var model = new NguoiDung();
+            //return View("Index", model);
             //}
         }
-        public ActionResult LoadPage(int PageNo = 0, int PageSize = 10)
-        {
-            var model = db.NguoiDungs
-                .OrderBy(c => c.MaNguoiDung)
-                .Skip(PageNo * PageSize)
-                .Take(PageSize).ToList();
-            return PartialView("_PartialPage1", model);
-        }
-        public ActionResult PageCount(int PageSize = 10)
-        {
-            int pageCount = (int)Math.Ceiling(1.0 * db.NguoiDungs.Count() / PageSize);
-            return Content(pageCount.ToString());
-        }
+        //public ActionResult LoadPage(int PageNo = 0, int PageSize = 10)
+        //{
+        //    var model = db.NguoiDungs
+        //        .OrderBy(c => c.MaNguoiDung)
+        //        .Skip(PageNo * PageSize)
+        //        .Take(PageSize).ToList();
+        //    return PartialView("_PartialPage1", model);
+        //}
+        //public ActionResult PageCount(int PageSize = 10)
+        //{
+        //    int pageCount = (int)Math.Ceiling(1.0 * db.NguoiDungs.Count() / PageSize);
+        //    return Content(pageCount.ToString());
+        //}
         public ActionResult suanguoidung(int id)
         {
             if (Session["Admin"] == null)

@@ -50,7 +50,7 @@ namespace G_Shop.Areas.Admin.Controllers
                     if (admin.VaiTro == 1)
                     {
                         Session["Admin"] = admin;
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index","User");
                     }
                     else
                     {

@@ -10,20 +10,21 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(G_Shop.Models.NguoiDung item in Model)
-        {
+        @foreach(G_Shop.Models.NguoiDung item in Model) {
             <tr>
                 <td>@item.TenDangNhap</td>
                 <td>@item.Email</td>
                 <td>@item.SoDienThoai</td>
                 <td>@item.VaiTro</td>
                 <td>
-                    <i class="btn btn-primary">
-                        <i class="glyphicon glyphicon-pencil">
-                            <a href="/Admin/User/suanguoidung?id=@item.MaNguoiDung" style="color:white">Sửa</a>
+                    <a href="/Admin/User/suanguoidung?id=@item.MaNguoiDung" style="color:white">
+                        <i class="btn btn-primary">
+                            <i class="glyphicon glyphicon-pencil">
+                                Sửa
+                            </i>
+
                         </i>
-                       
-                    </i>
+                    </a>
                 </td>
             </tr>
         }

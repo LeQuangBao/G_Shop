@@ -1,4 +1,5 @@
-﻿@model G_Shop.Models.NguoiDung
+﻿@model PagedList.IPagedList<G_Shop.Models.NguoiDung>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -58,18 +59,54 @@
     </h2>
     <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
         <form >
-            <div style="width:500px" class="input-group">
+            <div @*style="width:500px"*@ class="input-group col-lg-offset-2">
                 <input type="text" name="txttimkiem" id="keyword" class="form-control" placeholder="Tìm kiếm..." required>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" id="search">Thực hiện!</button>
+                    <button class="btn btn-primary" type="button" id="search">Tìm kiếm</button>
                 </span>
             </div>
         </form>
        
     </div>
     <div role="tabpanel" class="tab-pane" id="list">
-        <script>$Controller = "User"</script>
-        @Html.Partial("_Paginate")
+
+        <table id="datatable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td>Tên đăng nhập</td>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Vai trò</th>
+                    <th>Điều khiển</th>
+                </tr>
+            </thead>
+            <tbody>
+             @for(var i = 0; i < Model.Count; i++) {
+                    <tr>
+                        <td>@Model[i].TenDangNhap</td>
+                        <td>@Model[i].Email</td>
+                        <td>@Model[i].SoDienThoai</td>
+                        <td>@Model[i].VaiTro</td>
+                        <td>
+                            <a href="/Admin/User/suanguoidung?id=@Model[i].MaNguoiDung" style="color:white">
+                                <i class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-pencil">
+                                        Sửa
+                                    </i>
+
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-4">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+        </div>
+
     </div>
 </div>
 <section>

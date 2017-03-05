@@ -47,12 +47,14 @@
             @Html.DisplayFor(model => model.Gia)
         </dd>
           <dt>
+              @if(Session["user"] != null) {
+                  <button class="add-to-cart" data-id="@Model.MaCaThe">
+                      <span class="glyphicon glyphicon-shopping-cart text-success">
 
-              @if (Session["user"] != null)
-              {
-                  <img style="width:50px;height:30px" class="add-to-cart" data-id="@Model.MaCaThe" src="~/assets/client/images/Add to basket.png" />
+                      </span>
+                  </button>
+                      @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
               }
-             
           </dt>
     </dl>
 </div>
