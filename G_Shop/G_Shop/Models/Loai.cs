@@ -22,6 +22,7 @@ namespace G_Shop.Models
     
         public int MaLoai { get; set; }
         public string TenLoai { get; set; }
+        public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CaThe> CaThes { get; set; }

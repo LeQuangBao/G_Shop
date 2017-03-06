@@ -11,20 +11,28 @@ namespace G_Shop.Controllers
 {
     public class HomeController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
-        public IEnumerable<CaThe> ListAllPageging1(int page, int pagesize)
+        GShopEntities4 db = new GShopEntities4();
+        public IEnumerable<CaThe> ListAllPageging4(int page, int pagesize)
         {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
             //return model;
             return db.CaThes.OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
         }
-        public ActionResult Index(int page = 1, int pagesize = 3)
+        public ActionResult Index(int page = 4, int pagesize = 3)
         {
+            if(Session["user"]==null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
                 var user = Session["user"] as NguoiDung;
                 ViewBag.tennguoidung = user.TenDangNhap;
-                var model = ListAllPageging1(page, pagesize);
+                var model = ListAllPageging4(page, pagesize);
                 //var model = new UserDAO().GetNewCaThe();
                 return View(model);
+            }
+               
             
           
         }
@@ -52,7 +60,7 @@ namespace G_Shop.Controllers
             var model = new UserDAO().GetAllTenLoai();
             return PartialView(model);
         }
-        public ActionResult ThuCung(int MaLoai, int page=1,int pagesize=6)
+        public ActionResult ThuCung(int MaLoai, int page=4,int pagesize=6)
         {
         //    if(Session["user"]==null)
         //    {
@@ -93,6 +101,7 @@ namespace G_Shop.Controllers
             var model = new UserDAO().TimCaThe(ten);
             return View(model);
         }
+
 
     }
 }

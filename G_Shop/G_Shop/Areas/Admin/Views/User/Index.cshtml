@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-<script src="~/Areas/Admin/Script/pagesearch.js"></script>
 <script>
     $(document).ready(function () {
         $('#submit').on('click', function () {     
@@ -58,11 +57,11 @@
 </span>
     </h2>
     <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
-        <form >
+        <form action="/Admin/User/timkiemnguoidung" method="post" >
             <div @*style="width:500px"*@ class="input-group col-lg-offset-2">
                 <input type="text" name="txttimkiem" id="keyword" class="form-control" placeholder="Tìm kiếm..." required>
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button" id="search">Tìm kiếm</button>
+                    <button class="btn btn-primary" type="submit" id="search">Tìm kiếm</button>
                 </span>
             </div>
         </form>

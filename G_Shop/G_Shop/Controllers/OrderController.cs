@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class OrderController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities4 db = new GShopEntities4();
         // GET: Order
 
         public ActionResult Checkout()
@@ -19,7 +19,7 @@ namespace G_Shop.Controllers
                 return RedirectToAction("Login", "Account");
             }
           else  {
-                int tongtien = 0;
+                int? tongtien = 0;
                 var user = Session["user"] as NguoiDung;
                 foreach (var p in ShoppingCart.Cart.Items)
                 {

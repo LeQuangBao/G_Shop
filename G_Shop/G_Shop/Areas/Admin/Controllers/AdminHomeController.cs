@@ -12,7 +12,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class AdminHomeController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities4 db = new GShopEntities4();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
         // GET: Admin/Home
         public ActionResult Index()
@@ -98,7 +98,7 @@ namespace G_Shop.Areas.Admin.Controllers
             {
                 HttpPostedFileBase file = Request.Files[fileName];
                 fName = file.FileName;
-                var fileName1 = Path.GetFileName(file.FileName);
+                var fileName4 = Path.GetFileName(file.FileName);
                 if (file != null && file.ContentLength > 0)
                 {
                     if (Session["fileUpload"] == null)

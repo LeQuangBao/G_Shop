@@ -11,49 +11,78 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities4 db = new GShopEntities4();
         // GET: Admin/User
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
-        public IPagedList<NguoiDung> ListAllPageging1(int page, int pagesize) {
+        public IPagedList<NguoiDung> ListAllPageging4(int page, int pagesize) {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
             //return model;
             return db.NguoiDungs.OrderByDescending(x=>x.MaNguoiDung).ToPagedList(page, pagesize);
         }
-      
+        [HttpPost]
+        public ActionResult timkiemnguoidung(FormCollection f, int? page)
+        {
+            //if (SessionHandler.User != null)
+            //{
+            //    var user = SessionHandler.User;
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
+            string tukhoa = f["txttimkiem"].ToString();
+            ViewBag.tukhoa = tukhoa;
+            List<NguoiDung> listnguoidung = db.NguoiDungs.Where(n => n.TenDangNhap.Contains(tukhoa)).ToList();
+            // phân trang
+            int pagenumber = (page ?? 1);
+            int pagesize = 10;
+            //if (listnguoidung.Count == 0)
+            //{
+            //    ViewBag.ThongBao = "Không tìm thấy bản ghi phù hợp";
+                return View(listnguoidung.OrderBy(n => n.MaNguoiDung).ToPagedList(pagenumber, pagesize));
+            //}
+            //ViewBag.ThongBao = "Đã tìm thấy" + "    " + listnguoidung.Count + "kết quả";
+            //return View(listnguoidung.OrderBy(n => n.MaNguoiDung).ToPagedList(pagenumber, pagesize));
+        }
+        [HttpGet]
+        public ActionResult timkiemnguoidung(string tukhoa, int? page)
+        {
+            //if (SessionHandler.User != null)
+            //{
+            //    var user = SessionHandler.User;
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
+            string tukhoa1 = tukhoa;
+            ViewBag.tukhoa = tukhoa1;
+            List<NguoiDung> listnguoidung = db.NguoiDungs.Where(n => n.TenDangNhap.Contains(tukhoa)).ToList();
+            // phân trang
+            int pagenumber = (page ?? 1);
+            int pagesize = 10;
+            //ViewBag.ThongBao = "Đã tìm thấy" + listnguoidung.Count + "kết quả";
+            return View(listnguoidung.OrderBy(n => n.MaNguoiDung).ToPagedList(pagenumber, pagesize));
+        }
 
         public ActionResult Index(int page = 1, int pagesize = 5)
         {
-            var user = Session["user"] as NguoiDung;
-            if(user != null)
-                ViewBag.tennguoidung = user.TenDangNhap;
-            var model = ListAllPageging1(page, pagesize);
-            //var model = new UserDAO().GetNewCaThe();
-            return View(model);
-            //if (Session["Admin"] == null)
-            //    return RedirectToAction("Login", "/AdminHome");
+            //var user = Session["Admin"] as NguoiDung;
+            //if(user==null)
+            //{
+            //    return RedirectToAction("Login", "AdminHome");
+            //}
             //else
             //{
-            //var model = new NguoiDung();
-            //return View("Index", model);
-            //}
+                //ViewBag.tennguoidung = user.TenDangNhap;
+                var model = ListAllPageging4(page, pagesize);
+                return View(model);
+           // }
         }
-        //public ActionResult LoadPage(int PageNo = 0, int PageSize = 10)
-        //{
-        //    var model = db.NguoiDungs
-        //        .OrderBy(c => c.MaNguoiDung)
-        //        .Skip(PageNo * PageSize)
-        //        .Take(PageSize).ToList();
-        //    return PartialView("_PartialPage1", model);
-        //}
-        //public ActionResult PageCount(int PageSize = 10)
-        //{
-        //    int pageCount = (int)Math.Ceiling(1.0 * db.NguoiDungs.Count() / PageSize);
-        //    return Content(pageCount.ToString());
-        //}
         public ActionResult suanguoidung(int id)
         {
             if (Session["Admin"] == null)
@@ -107,29 +136,6 @@ namespace G_Shop.Areas.Admin.Controllers
                 return Json("error");
             }
         }
-        public ActionResult LoadPage1(string keyword,int PageNo = 1, int PageSize = 10)
-        {
-            var model = db.NguoiDungs
-                .Where(n=>n.TenDangNhap.Contains(keyword)||n.Email.Contains(keyword)||n.SoDienThoai.Contains(keyword))
-                .OrderBy(c => c.MaNguoiDung)
-                .Skip(PageNo * PageSize)
-                .Take(PageSize).ToList();
-            return PartialView("_PartialPage1", model);
-        }
-        public ActionResult PageCount1(string keyword, int PageSize = 10)
-        {
-            var model = (from d in db.NguoiDungs
-                         .Where(n => n.TenDangNhap.Contains(keyword) || n.Email.Contains(keyword) || n.SoDienThoai.Contains(keyword))
-                         select new NguoiDung
-                         {
-                             TenDangNhap=d.TenDangNhap,
-                             MatKhau = d.MatKhau,
-                             Email = d.Email,
-                             SoDienThoai=d.SoDienThoai,
-                             VaiTro=d.VaiTro
-                         }).ToList();
-            int pageCount = (int)Math.Ceiling(1.0 * model.Count() / PageSize);
-            return Content(pageCount.ToString());
-        }
+     
     }
 }

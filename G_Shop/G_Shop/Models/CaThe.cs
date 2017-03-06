@@ -25,7 +25,7 @@ namespace G_Shop.Models
         public string TenCaThe { get; set; }
         public string MoTa { get; set; }
         public Nullable<int> Tuoi { get; set; }
-        public int Gia { get; set; }
+        public Nullable<int> Gia { get; set; }
         public string TinhTrang { get; set; }
         public string HinhAnh { get; set; }
     

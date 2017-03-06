@@ -13,10 +13,10 @@ namespace G_Shop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GShopEntities1 : DbContext
+    public partial class GShopEntities4 : DbContext
     {
-        public GShopEntities1()
-            : base("name=GShopEntities")
+        public GShopEntities4()
+            : base("name=GShopEntities4")
         {
         }
     
@@ -30,7 +30,5 @@ namespace G_Shop.Models
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<Loai> Loais { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        
     }
 }
