@@ -16,18 +16,16 @@ namespace G_Shop.Controllers {
             return db.CaThes.OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
         }
         public ActionResult Index(int page = 4, int pagesize = 3) {
-            //if(Session["user"]==null)
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-            //else
-            //{
-            var user = Session["user"] as NguoiDung;
-            ViewBag.tennguoidung = user.TenDangNhap;
-            var model = ListAllPageging4(page, pagesize);
-            //var model = new UserDAO().GetNewCaThe();
-            return View(model);
-            //}
+            if (Session["user"] == null) {
+                return View();
+                //return RedirectToAction("Login", "Account");
+            } else {
+                var user = Session["user"] as NguoiDung;
+                ViewBag.tennguoidung = user.TenDangNhap;
+                var model = ListAllPageging4(page, pagesize);
+                //var model = new UserDAO().GetNewCaThe();
+                return View(model);
+            }
         }
         public IEnumerable<CaThe> ListAllPageging(int MaLoai, int page, int pagesize) {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);

@@ -117,7 +117,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Sửa thất bại");
                 return View("suanguoidung",model);
             }
-            return View("Admin/User", model);
+            return View("Index", model);
         }
         [HttpPost]
         public JsonResult themnguoidung(string tendangnhap, string matkhau, string email, string sodienthoai, string vaitro)
