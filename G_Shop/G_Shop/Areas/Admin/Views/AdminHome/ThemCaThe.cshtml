@@ -34,22 +34,23 @@
                         <label class="control-label col-sm-2" for="gia">Giá:</label>
                         <div class="col-sm-10">
                             @Html.TextBoxFor(model => model.Gia, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="tinhtrang">Tình trạng:</label>
-                        <div class="col-sm-10">
-                            @Html.TextBoxFor(model => model.TinhTrang, new { @class = "form-control" })
                             @Html.HiddenFor(model => model.MaLoai)
                         </div>
                     </div>
+                    @*<div class="form-group">
+                        <label class="control-label col-sm-2" for="tinhtrang">Tình trạng:</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.TinhTrang, new { @class = "form-control" })
+                            
+                        </div>
+                    </div>*@
                 }
                 <div class="row">
                     <label class="control-label col-sm-2" for="hinh" >Hình:</label>
                     <div class="col-sm-10">
                         <div id="dZUpload" class="dropzone dz-clickable">
                             <div class="dz-default dz-message">
-                                <span>Kéo thả file hình ảnh .jpg, .png, .jpge hoặc click để upload.</span>
+                                <span>Kéo thả 4 file hình ảnh .jpg, .png, .jpge hoặc click để upload.</span>
                             </div>
                         </div>
                     </div>

@@ -172,6 +172,7 @@ namespace G_Shop.Areas.Admin.Controllers
                     listImages += _fileName + "|";
                 }
                 model.HinhAnh = listImages;
+                model.TinhTrang = "Sẵn bán";
                 var dao = new AdminDAO();
                 dao.ThemCaThe(model);
                 Session["fileUpload"] = null;

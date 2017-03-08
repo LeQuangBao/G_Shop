@@ -227,6 +227,10 @@
     </Content>
     <Content Include="Areas\Admin\Script\page.js" />
     <Content Include="Areas\Admin\Script\pagesearch.js" />
+    <Content Include="assets\client\images\anhcqmouse5.jpg" />
+    <Content Include="assets\client\images\hamster002uk4.jpg" />
+    <Content Include="assets\client\images\hamter002.jpg" />
+    <Content Include="assets\client\images\images %281%29.jpg" />
     <Content Include="assets\client\images\search.png" />
     <Content Include="assets\client\images\xamkhoi.jpg" />
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -362,6 +366,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery.elevatezoom.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

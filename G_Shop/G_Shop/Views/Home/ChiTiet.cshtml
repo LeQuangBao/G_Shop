@@ -6,14 +6,27 @@
 }
 <script src="~/Scripts/Shoppingcart.js"></script>
 <h2>Chi tiết</h2>
-<div class="col-md-4">
+<div class="col-md-6">
     <div>
         <img id="img_01" src="~/assets/client/images/@(Model.HinhAnh.Substring(0,Model.HinhAnh.IndexOf("|")))" class="img_detail" />
     </div>
+    <div id="gallery_09">
+        @{ string temp = Model.HinhAnh;
+            for (int i = 0; i < 4; i++)
+            {
+                if (temp.IndexOf("|") < 0) { break; }
+                <a href="#" data-image="/assets/client/images/@(temp.Substring(0, temp.IndexOf("|")))">
+                    <img class="gal_detail" id="img_01" src="~/assets/client/images/@(temp.Substring(0, temp.IndexOf("|")))" />
+                </a>
+                temp = temp.Substring(temp.IndexOf("|") + 1);
+            }
+        }
+    </div>
+
 </div>
 <div class="col-md-6">
     <dl class="dl-horizontal">
-        
+
 
         <dt>
             @Html.DisplayNameFor(model => model.TenCaThe)
@@ -46,15 +59,24 @@
         <dd style="color:red;font-weight:bold">
             @Html.DisplayFor(model => model.Gia)
         </dd>
-          <dt>
-              @if(Session["user"] != null) {
-                  <button class="add-to-cart" data-id="@Model.MaCaThe">
-                      <span class="glyphicon glyphicon-shopping-cart text-success">
+        <dt>
+            @if (Session["user"] != null)
+            {
+                <button class="add-to-cart" data-id="@Model.MaCaThe">
+                    <span class="glyphicon glyphicon-shopping-cart text-success">
 
-                      </span>
-                  </button>
-                      @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
-              }
-          </dt>
+                    </span>
+                </button>
+                @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
+            }
+        </dt>
     </dl>
 </div>
+<script>
+    $("#img_01").elevateZoom({ gallery: 'gallery_09', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true});
+    $("#img_01").bind("click", function (e) {
+        var ez = $('#img_01').data('elevateZoom');
+        $.fancybox(ez.getGalleryList());
+        return false;
+    });
+</script>
