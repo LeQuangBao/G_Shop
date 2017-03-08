@@ -100,11 +100,14 @@ namespace G_Shop.Areas.Admin.Controllers
             try
             {
                 string vaitro = Request.Form["vaitro"];
+                string gioiTinh = Request.Form["gioitinh"];
                 NguoiDung nd = new NguoiDung();
                 nd.TenDangNhap = model.TenDangNhap;
                 nd.MatKhau = model.MatKhau;
                 nd.Email = model.Email;
                 nd.SoDienThoai = model.SoDienThoai;
+                nd.GioiTinh = gioiTinh;
+                nd.NgaySinh = model.NgaySinh;
                 nd.VaiTro = vaitro;
                 db.SaveChanges();
                 ModelState.AddModelError("", "Sửa thành công");
@@ -112,9 +115,9 @@ namespace G_Shop.Areas.Admin.Controllers
             catch
             {
                 ModelState.AddModelError("", "Sửa thất bại");
-            }
                 return View("suanguoidung",model);
-            
+            }
+            return View("Admin/User", model);
         }
         [HttpPost]
         public JsonResult themnguoidung(string tendangnhap, string matkhau, string email, string sodienthoai, string vaitro)
