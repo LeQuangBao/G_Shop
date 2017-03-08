@@ -11,6 +11,11 @@
             console.log(tendangnhap);
             var matkhau = document.getElementById("matkhau").value;
             console.log(matkhau);
+            var matkhau1 = document.getElementById("matkhau1").value;
+            if (matkhau != matkhau1)
+            {
+                $("#thongbao").text = "Mật khẩu chưa khớp";
+            }
             var email = document.getElementById("email").value;
             console.log(email);
             var sodienthoai = document.getElementById("sodienthoai").value;
@@ -136,6 +141,14 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Nhập lại mật khẩu <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="matkhau1" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Email
                             </label>
@@ -158,8 +171,8 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @*<input id="sdt" name="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">*@
                                 <select class="date-picker form-control col-md-7 col-xs-12" id="vaitro">
-                                    <option value="0">Người dùng</option>
-                                    <option value="1">Người quản trị</option>
+                                    <option value="Khách hàng">Người dùng</option>
+                                    <option value="Quản trị viên">Người quản trị</option>
                                 </select>
                             </div>
                         </div>

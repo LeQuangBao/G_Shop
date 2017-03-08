@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class OrderController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities db = new GShopEntities();
         // GET: Order
 
         public ActionResult Checkout()
@@ -23,7 +23,7 @@ namespace G_Shop.Controllers
                 var user = Session["user"] as NguoiDung;
                 foreach (var p in ShoppingCart.Cart.Items)
                 {
-                    tongtien = tongtien + p.Gia;
+                    tongtien = tongtien + p.GiaBan;
                 }
                 var model = new HoaDon();
                 model.TongTien = tongtien;

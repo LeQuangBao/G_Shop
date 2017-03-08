@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="GShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="GShopModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="CaThe">
     <Key>
       <PropertyRef Name="MaCaThe" />
@@ -8,9 +8,11 @@
     <Property Name="MaLoai" Type="int" Nullable="false" />
     <Property Name="TenCaThe" Type="nvarchar" MaxLength="100" />
     <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
-    <Property Name="Tuoi" Type="int" />
-    <Property Name="Gia" Type="int" />
-    <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="GiaMua" Type="int" />
+    <Property Name="GiaBan" Type="int" />
+    <Property Name="KhuyenMai" Type="int" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
     <Property Name="HinhAnh" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="ChiTietHoaDon">
@@ -29,6 +31,9 @@
     <Property Name="MaNguoiDung" Type="int" Nullable="false" />
     <Property Name="NgayMua" Type="date" />
     <Property Name="TongTien" Type="int" />
+    <Property Name="NgayGiaoHang" Type="date" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Loai">
     <Key>
@@ -46,8 +51,10 @@
     <Property Name="TenDangNhap" Type="nvarchar" MaxLength="500" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
-    <Property Name="VaiTro" Type="int" />
+    <Property Name="VaiTro" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK_CaThe_Loai">
     <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
@@ -97,7 +104,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopModelStoreContainer">
+  <EntityContainer Name="GShopModel1StoreContainer">
     <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
