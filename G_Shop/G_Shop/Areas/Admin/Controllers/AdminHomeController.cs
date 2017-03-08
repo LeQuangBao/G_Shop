@@ -12,7 +12,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class AdminHomeController : Controller
     {
-        GShopEntities4 db = new GShopEntities4();
+        GShopEntities2 db = new GShopEntities2();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
         // GET: Admin/Home
         public ActionResult Index()
@@ -27,7 +27,7 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             var admin = Session["Admin"] as NguoiDung;
             if (admin != null)
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index", "User");
             return View();
         }
 
