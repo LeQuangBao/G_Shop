@@ -77,7 +77,7 @@ namespace G_Shop.Controllers
             {
                 ModelState.AddModelError("", "Đăng ký thất bại !" + ex);
             }
-            return View();
+            return RedirectToAction("Login", "Account");
         }
 
 

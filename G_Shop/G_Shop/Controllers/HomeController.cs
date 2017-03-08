@@ -55,7 +55,8 @@ namespace G_Shop.Controllers {
             //    else
             //    {
             var user = Session["user"] as NguoiDung;
-            ViewBag.tennguoidung = user.TenDangNhap;
+            if(user!=null)
+                ViewBag.tennguoidung = user.TenDangNhap;
             var model = ListAllPageging(MaLoai, page, pagesize);
             ViewBag.TenLoai = new UserDAO().GetTenLoai_MaLoai(MaLoai);
             ViewBag.MaLoai = MaLoai;
@@ -74,7 +75,8 @@ namespace G_Shop.Controllers {
             //    else
             //    {
             var user = Session["user"] as NguoiDung;
-            ViewBag.tennguoidung = user.TenDangNhap;
+            if(user!=null)
+                ViewBag.tennguoidung = user.TenDangNhap;
             var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
             return View(model);
 

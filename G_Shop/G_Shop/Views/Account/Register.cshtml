@@ -44,11 +44,45 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
+                                        <label class="control-label col-sm-4" for="pwd">Mật khẩu:</label>
+                                        <div class="col-sm-8">
+                                            @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @id = "pass" })
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                            @Html.ValidationMessageFor(model => model.MatKhau)
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label col-sm-4" >Xác nhận mật khẩu:</label>
+                                        <div class="col-sm-8">
+                                            <input type="password" class="form-control" id="pass2" onkeyup="ValidatePass()" />
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                            <span id="verify" class="text-danger"></span>
+                                            <span id="verify1" class="text-success"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
                                         <label class="control-label col-sm-4" for="username">Email:</label>
                                         <div class="col-sm-8">
                                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                             @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label col-sm-4" for="username">Ngày sinh:</label>
+                                        <div class="col-sm-8">
+                                            <input type="date" id="ngaysinh" name="ngaysinh" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.NgaySinh)
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label col-sm-4" for="gioitinh">Giới tính:</label>
+                                        <div class="col-sm-8">
+                                            @Html.DropDownList("GioiTinh", new List<SelectListItem>{
+                                            new SelectListItem{ Text="Nam", Value="Nam"},
+                                            new SelectListItem{ Text="Nữ", Value="Nữ"}
+                                            }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.GioiTinh)
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
@@ -59,14 +93,7 @@
                                             @Html.ValidationMessageFor(model => model.SoDienThoai)
                                         </div>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <label class="control-label col-sm-4" for="pwd">Mật khẩu:</label>
-                                        <div class="col-sm-8">
-                                            @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control" })
-                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                            @Html.ValidationMessageFor(model => model.MatKhau)
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group has-feedback">
                                         <div class="col-lg-offset-4 col-sm-8">
                                             <p>
@@ -101,6 +128,20 @@
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function ValidatePass() {
+        var pass1 = document.getElementById("pass").value;
+        var pass2 = document.getElementById("pass2").value;
+        if (pass1 != pass2) {
+            document.getElementById("verify").innerHTML = "*";
+            document.getElementById("verify1").innerHTML = "";
+        }
+        else {
+            document.getElementById("verify1").innerHTML = "Mật khẩu trùng khớp";
+            document.getElementById("verify").innerHTML = "";
+        }
+    }
+    </script>
 
 </body>
 </html>
