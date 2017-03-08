@@ -13,9 +13,11 @@
           <Property Name="MaLoai" Type="int" Nullable="false" />
           <Property Name="TenCaThe" Type="nvarchar" MaxLength="100" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
-          <Property Name="Tuoi" Type="int" />
-          <Property Name="Gia" Type="int" />
-          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GiaMua" Type="int" />
+          <Property Name="GiaBan" Type="int" />
+          <Property Name="KhuyenMai" Type="int" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
           <Property Name="HinhAnh" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
@@ -34,6 +36,7 @@
           <Property Name="MaNguoiDung" Type="int" Nullable="false" />
           <Property Name="NgayMua" Type="date" />
           <Property Name="TongTien" Type="int" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Loai">
           <Key>
@@ -51,8 +54,10 @@
           <Property Name="TenDangNhap" Type="nvarchar" MaxLength="500" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
-          <Property Name="VaiTro" Type="int" />
+          <Property Name="VaiTro" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_CaThe_Loai">
           <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
@@ -138,9 +143,11 @@
           <Property Name="MaLoai" Type="Int32" Nullable="false" />
           <Property Name="TenCaThe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Tuoi" Type="Int32" />
-          <Property Name="Gia" Type="Int32" />
-          <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GiaMua" Type="Int32" />
+          <Property Name="GiaBan" Type="Int32" />
+          <Property Name="KhuyenMai" Type="Int32" />
+          <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="HinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Loai" Relationship="Self.FK_CaThe_Loai" FromRole="CaThe" ToRole="Loai" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="CaThe" ToRole="ChiTietHoaDon" />
@@ -163,6 +170,7 @@
           <Property Name="MaNguoiDung" Type="Int32" Nullable="false" />
           <Property Name="NgayMua" Type="DateTime" Precision="0" />
           <Property Name="TongTien" Type="Int32" />
+          <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
           <NavigationProperty Name="NguoiDung" Relationship="Self.FK_HoaDon_NguoiDung" FromRole="HoaDon" ToRole="NguoiDung" />
         </EntityType>
@@ -183,8 +191,10 @@
           <Property Name="TenDangNhap" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="VaiTro" Type="Int32" />
+          <Property Name="VaiTro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_NguoiDung" FromRole="NguoiDung" ToRole="HoaDon" />
         </EntityType>
         <Association Name="FK_CaThe_Loai">
@@ -235,7 +245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GShopEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GShopEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CaThes" EntityType="Self.CaThe" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -263,7 +273,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities2">
+        <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities3">
           <EntitySetMapping Name="CaThes">
             <EntityTypeMapping TypeName="GShopModel.CaThe">
               <MappingFragment StoreEntitySet="CaThe">
@@ -271,8 +281,10 @@
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="TenCaThe" ColumnName="TenCaThe" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
-                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GiaMua" ColumnName="GiaMua" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+                <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
               </MappingFragment>
@@ -294,6 +306,7 @@
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -313,6 +326,8 @@
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
               </MappingFragment>

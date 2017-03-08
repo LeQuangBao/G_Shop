@@ -8,10 +8,10 @@ namespace G_Shop.DAO
 {
     public class AdminDAO
     {
-        GShopEntities2 db = null;
+        GShopEntities3 db = null;
         public AdminDAO()
         {
-            db = new GShopEntities2();
+            db = new GShopEntities3();
         }
         public List<Loai> GetAllTenLoai()
         {
@@ -45,8 +45,8 @@ namespace G_Shop.DAO
             var model = db.CaThes.Find(cathe.MaCaThe);
             model.TenCaThe = cathe.TenCaThe;
             model.MoTa = cathe.MoTa;
-            model.Tuoi = cathe.Tuoi;
-            model.Gia = cathe.Gia;
+            model.NgaySinh = cathe.NgaySinh;
+            model.GiaBan = cathe.GiaBan;
             model.TinhTrang = cathe.TinhTrang;
             //model.HinhAnh = cathe.HinhAnh;
             db.SaveChanges();
@@ -68,7 +68,7 @@ namespace G_Shop.DAO
                              macthd = cthd.MaChiTietHoaDon,
                              mahd = cthd.MaHoaDon,
                              tenct = ct.TenCaThe,
-                             gia = ct.Gia
+                             gia = ct.GiaBan
                          }).AsEnumerable().Select(x => new CTHD()
                          {
                              MaCTHD = x.macthd,

@@ -11,7 +11,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities3 db = new GShopEntities3();
         // GET: Admin/User
         protected override void Dispose(bool disposing)
         {
@@ -99,7 +99,7 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             try
             {
-                int vaitro = Convert.ToInt32(Request.Form["vaitro"]);
+                string vaitro = Request.Form["vaitro"];
                 NguoiDung nd = new NguoiDung();
                 nd.TenDangNhap = model.TenDangNhap;
                 nd.MatKhau = model.MatKhau;
@@ -126,7 +126,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 nd.MatKhau = matkhau;
                 nd.TenDangNhap = tendangnhap;
                 nd.SoDienThoai = sodienthoai;
-                nd.VaiTro = Convert.ToInt32(vaitro);
+                nd.VaiTro = vaitro;
                 db.NguoiDungs.Add(nd);
                 db.SaveChanges();
                 return Json("ok");

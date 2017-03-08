@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class CartController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities3 db = new GShopEntities3();
         // GET: Cart
         public ActionResult Index()
         {
