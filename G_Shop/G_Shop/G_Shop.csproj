@@ -184,35 +184,35 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\CaThe.cs">
-      <DependentUpon>GShop.tt</DependentUpon>
+      <DependentUpon>G_Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
-      <DependentUpon>GShop.tt</DependentUpon>
+      <DependentUpon>G_Shop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GShop.Context.cs">
+    <Compile Include="Models\G_Shop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GShop.Context.tt</DependentUpon>
+      <DependentUpon>G_Shop.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GShop.cs">
+    <Compile Include="Models\G_Shop.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GShop.tt</DependentUpon>
+      <DependentUpon>G_Shop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GShop.Designer.cs">
+    <Compile Include="Models\G_Shop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GShop.edmx</DependentUpon>
+      <DependentUpon>G_Shop.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>GShop.tt</DependentUpon>
+      <DependentUpon>G_Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Loai.cs">
-      <DependentUpon>GShop.tt</DependentUpon>
+      <DependentUpon>G_Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>GShop.tt</DependentUpon>
+      <DependentUpon>G_Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -292,15 +292,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\GShop.Context.tt">
+    <Content Include="Models\G_Shop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GShop.edmx</DependentUpon>
-      <LastGenOutput>GShop.Context.cs</LastGenOutput>
+      <DependentUpon>G_Shop.edmx</DependentUpon>
+      <LastGenOutput>G_Shop.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\GShop.tt">
+    <Content Include="Models\G_Shop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GShop.edmx</DependentUpon>
-      <LastGenOutput>GShop.cs</LastGenOutput>
+      <DependentUpon>G_Shop.edmx</DependentUpon>
+      <LastGenOutput>G_Shop.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -336,12 +336,12 @@
     <Content Include="Areas\Admin\Views\Shared\_Paginate.cshtml" />
     <Content Include="Areas\Admin\Views\User\suanguoidung.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HoaDon_Ngay.cshtml" />
-    <EntityDeploy Include="Models\GShop.edmx">
+    <EntityDeploy Include="Models\G_Shop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GShop.Designer.cs</LastGenOutput>
+      <LastGenOutput>G_Shop.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\GShop.edmx.diagram">
-      <DependentUpon>GShop.edmx</DependentUpon>
+    <Content Include="Models\G_Shop.edmx.diagram">
+      <DependentUpon>G_Shop.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
