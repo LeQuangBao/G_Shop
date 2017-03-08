@@ -11,7 +11,8 @@ namespace G_Shop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class HoaDon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,8 @@ namespace G_Shop.Models
     
         public int MaHoaDon { get; set; }
         public int MaNguoiDung { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> NgayMua { get; set; }
         public Nullable<int> TongTien { get; set; }
         public string TinhTrang { get; set; }
