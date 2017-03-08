@@ -24,10 +24,8 @@ namespace G_Shop.Models
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
         public string Email { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
-        public string GioiTinh { get; set; }
         public string SoDienThoai { get; set; }
-        public string VaiTro { get; set; }
+        public Nullable<int> VaiTro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

@@ -12,7 +12,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class AdminHomeController : Controller
     {
-        GShopEntities3 db = new GShopEntities3();
+        GShopEntities2 db = new GShopEntities2();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
         // GET: Admin/Home
         public ActionResult Index()
@@ -47,7 +47,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 if (result == 1)
                 {
                     var admin = dao.GetUser(model.UserName);
-                    if (admin.VaiTro == "Quản trị viên")
+                    if (admin.VaiTro == 1)
                     {
                         Session["Admin"] = admin;
                         return RedirectToAction("Index","User");

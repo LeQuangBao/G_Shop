@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cfb5533786814055a59e3f3c9cbd259c" Name="Diagram1">
-        <EntityTypeShape EntityType="GShopModel.CaThe" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GShopModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GShopModel.HoaDon" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GShopModel.Loai" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+      <Diagram DiagramId="f9e34edb08264914b037972f2cf17f0a" Name="Diagram1">
+        <EntityTypeShape EntityType="GShopModel.CaThe" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GShopModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GShopModel.HoaDon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GShopModel.Loai" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GShopModel.NguoiDung" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="GShopModel.FK_CaThe_Loai" ManuallyRouted="false" />
         <AssociationConnector Association="GShopModel.FK_ChiTietHoaDon_CaThe" ManuallyRouted="false" />

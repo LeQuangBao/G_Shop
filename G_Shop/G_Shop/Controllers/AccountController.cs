@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class AccountController : Controller
     {
-        GShopEntities3 db = new GShopEntities3();
+        GShopEntities2 db = new GShopEntities2();
         // GET: Account
         public ActionResult Login()
         {
@@ -64,7 +64,7 @@ namespace G_Shop.Controllers
             //f.SaveAs(Server.MapPath("~/images/customers/" + f.FileName));
             try
             {
-                model.VaiTro = "Khách hàng";
+                model.VaiTro = 0;
                 db.NguoiDungs.Add(model);
                 db.SaveChanges();
                 //ModelState.AddModelError("", "Đăng ký thành công. Vui lòng nhận email và kích hoạt tài khoản !");

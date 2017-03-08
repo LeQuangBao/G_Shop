@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities3">
+  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities2">
     <EntitySetMapping Name="CaThes">
       <EntityTypeMapping TypeName="GShopModel.CaThe">
         <MappingFragment StoreEntitySet="CaThe">
@@ -8,10 +8,8 @@
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
           <ScalarProperty Name="TenCaThe" ColumnName="TenCaThe" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
-          <ScalarProperty Name="GiaMua" ColumnName="GiaMua" />
-          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
-          <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
+          <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
         </MappingFragment>
@@ -33,7 +31,6 @@
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
           <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
-          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -53,8 +50,6 @@
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
         </MappingFragment>
