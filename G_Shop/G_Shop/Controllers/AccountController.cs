@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class AccountController : Controller
     {
-        GShopEntities3 db = new GShopEntities3();
+        GShopEntities db = new GShopEntities();
         // GET: Account
         public ActionResult Login()
         {

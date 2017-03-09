@@ -27,6 +27,8 @@ namespace G_Shop.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> NgayMua { get; set; }
         public Nullable<int> TongTien { get; set; }
+        public Nullable<System.DateTime> NgayGiaoHang { get; set; }
+        public string DiaChi { get; set; }
         public string TinhTrang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

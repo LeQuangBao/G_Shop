@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class OrderController : Controller
     {
-        GShopEntities3 db = new GShopEntities3();
+        GShopEntities db = new GShopEntities();
         // GET: Order
 
         public ActionResult Checkout()

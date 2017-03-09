@@ -7,43 +7,53 @@ using G_Shop.DAO;
 using G_Shop.Models;
 using PagedList;
 using PagedList.Mvc;
-namespace G_Shop.Controllers {
-    public class HomeController : Controller {
-        GShopEntities3 db = new GShopEntities3();
-        public IEnumerable<CaThe> ListAllPageging4(int page, int pagesize) {
+namespace G_Shop.Controllers
+{
+    public class HomeController : Controller
+    {
+        GShopEntities db = new GShopEntities();
+        public IEnumerable<CaThe> ListAllPageging4(int page, int pagesize)
+        {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
             //return model;
             return db.CaThes.OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
         }
-        public ActionResult Index(int page = 4, int pagesize = 3) {
+
+        public ActionResult Index(int page = 1, int pagesize = 3) {
             if (Session["user"] == null) {
                 return View();
                 //return RedirectToAction("Login", "Account");
             } else {
+
                 var user = Session["user"] as NguoiDung;
                 ViewBag.tennguoidung = user.TenDangNhap;
                 var model = ListAllPageging4(page, pagesize);
                 //var model = new UserDAO().GetNewCaThe();
                 return View(model);
             }
+
         }
-        public IEnumerable<CaThe> ListAllPageging(int MaLoai, int page, int pagesize) {
+        public IEnumerable<CaThe> ListAllPageging(int MaLoai,int page, int pagesize)
+        {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
             //return model;
-            return db.CaThes.Where(n => n.MaLoai.Equals(MaLoai)).OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
+            return db.CaThes.Where(n=>n.MaLoai.Equals(MaLoai)).OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
         }
-        public ActionResult About() {
+        public ActionResult About()
+        {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact() {
+        public ActionResult Contact()
+        {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-        public ActionResult _Category() {
+        public ActionResult _Category()
+        {
             var model = new UserDAO().GetAllTenLoai();
             return PartialView(model);
         }
@@ -82,8 +92,9 @@ namespace G_Shop.Controllers {
 
 
         }
-
-        public ActionResult Tim(string ten) {
+        
+        public ActionResult Tim(string ten)
+        {
             var model = new UserDAO().TimCaThe(ten);
             return View(model);
         }
