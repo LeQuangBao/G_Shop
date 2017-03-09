@@ -7,37 +7,74 @@
 
 <script>
     $(document).ready(function () {
-        $('#submit').on('click', function () {
-            var tendangnhap = document.getElementById("tendangnhap").value;
-            console.log(tendangnhap);
-            var matkhau = document.getElementById("matkhau").value;
-            console.log(matkhau);
-            var matkhau1 = document.getElementById("matkhau1").value;
-            if (matkhau != matkhau1)
-            {
-                $("#thongbao").text = "Mật khẩu chưa khớp";
-            }
-            var email = document.getElementById("email").value;
-            console.log(email);
-            var sodienthoai = document.getElementById("sodienthoai").value;
-            console.log(sodienthoai);
-            var vaitro = document.getElementById("vaitro").value;
-            console.log(vaitro);
+        $('#them').on('click', function () {
+            var tenloai = $("#tenloai").val();
+            var mota = $("#mota").val();
+            console.log(tenloai);
             $.ajax({
                 type: "POST",
-                url: '/User/themnguoidung',
+                url: '/Loai/themloai',
                 data: {
-                    tendangnhap: tendangnhap,
-                    matkhau: matkhau,
-                    email: email,
-                    sodienthoai: sodienthoai,
-                    vaitro:vaitro
+                    tenloai: tenloai,
+                    mota: mota,
+                   
                 },
                 cache: false,
                 dataType: "json",
                 success: function (result) {
                     if (result == "ok") {
                         alert("Thêm thành công");
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    }
+
+
+                },
+                error: function (err) {
+                    console.log(err.status + " - " + err.statusText);
+                }
+            });
+        });
+        $("#sua").on('click', function () {
+            var maloai = $("#maloai").val();
+            console.log(maloai);
+            $.ajax({
+                type: "GET",
+                url: '/Loai/edit',
+                data: {
+                  maloai:maloai
+                },
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    $("#maloai1").val(maloai);
+                    $("#tenloai1").val(result.TenLoai);
+                    $("#mota1").val(result.MoTa);
+            
+                },
+                error: function (err) {
+                    console.log(err.status + " - " + err.statusText);
+                }
+            });
+        })
+        $("#capnhat").on('click', function () {
+            var maloai = $("#maloai1").val();
+            var tenloai = $("#tenloai1").val();
+            var mota = $("#mota1").val();
+            $.ajax({
+                type: "POST",
+                url: '/Loai/capnhat',
+                data: {
+                    maloai:maloai,
+                    tenloai: tenloai,
+                    mota: mota,
+                },
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    if (result == "ok") {
+                        alert("Cập nhật thành công");
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
@@ -95,7 +132,7 @@
                         
                         <td>
                             <input type="hidden" id="maloai" value="@Model[i].MaLoai" />          
-                                <i class="btn btn-primary" data-toggle="modal" data-target="#myModal_sua">
+                                <i class="btn btn-primary" data-toggle="modal" id="sua" data-target="#myModal_sua">
                                     <i class="glyphicon glyphicon-pencil">
                                         Sửa
                                     </i>
@@ -146,7 +183,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" id="submit">Lưu</button>
+                    <button type="button" class="btn btn-primary" id="them">Lưu</button>
                 </div>
             </div>
         </div>
@@ -162,11 +199,12 @@
                 <div class="modal-body">
                     <form id="add" name="add" class="form-horizontal" role="form" method="post">
                         <div class="form-group">
+                            <input type="hidden" id="maloai1" />
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                 Tên loài <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="tenloai" name="tenloai" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="tenloai1" name="tenloai" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="form-group">
@@ -174,7 +212,7 @@
                                 Mô tả <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="mota" name="mota" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="mota1" name="mota" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -183,7 +221,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" id="submit">Lưu</button>
+                    <button type="button" class="btn btn-primary" id="capnhat">Lưu</button>
                 </div>
             </div>
         </div>
