@@ -215,6 +215,8 @@ namespace G_Shop.Areas.Admin.Controllers
             ViewBag.NgayLap = hoadon.NgayMua;
             ViewBag.TongTien = hoadon.TongTien;
             ViewBag.TinhTrang = hoadon.TinhTrang;
+            ViewBag.NgayGiaoHang = hoadon.NgayGiaoHang;
+            ViewBag.DiaChi = hoadon.DiaChi;
             return View(model);
         }
 

@@ -16,13 +16,17 @@
             <dd>
                 <p id="mahd">@ViewBag.MaHD</p>
             </dd>
-
             <dt>
-                Ngày lập:
+                Ngày giao hàng:
             </dt>
-
             <dd>
-                @ViewBag.NgayLap
+                @Html.FormatValue(ViewBag.NgayGiaoHang,"{0:dd-MM-yyyy}")
+            </dd>
+            <dt>
+                Địa chỉ:
+            </dt>
+            <dd>
+                @ViewBag.DiaChi
             </dd>
         </dl>
         <hr />
@@ -45,14 +49,14 @@
                             @item.TenCaThe
                         </td>
                         <td>
-                            @item.Gia
+                            @Html.FormatValue(item.Gia,"{0:c}")
                         </td>
 
                     </tr>
                 }
                 <tr>
                     <td align="right"><strong>Tổng tiền:</strong></td>
-                    <td><strong>@ViewBag.TongTien</strong></td>
+                    <td><strong>@Html.FormatValue(ViewBag.TongTien, "{0:c}")</strong></td>
                 </tr>
             </tbody>
         </table>
@@ -65,7 +69,7 @@
             <dd>
                 @*<a href="#" id="dynamicdata" data-type="select" data-pk="1" data-value=@ViewBag.TinhTrang data-title="Chọn tình trạng hóa đơn"></a>*@
                 @*<a href="#" id="status" data-type="select" data-pk="1" data-title="Chọn tình trạng hóa đơn"></a><button id="enable" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>*@
-                @ViewBag.TinhTrang
+                <span id="enable">@ViewBag.TinhTrang</span>
                 <button id="btnEnable" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
                 @using (Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post))
                 {
@@ -78,6 +82,7 @@
                     <button id="btnSubmit" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
                 }
             </dd>
+            
         </dl>
     </div>
     <div class="col-md-5">
@@ -105,6 +110,8 @@
 </div>
 <script>
     $(function () {
+        if ($("#enable").text() == 'Hoàn thành' || $("#enable").text() == 'Hủy')
+            $("#btnEnable").hide();
         $("#selTinhTrang").hide();
         $("#btnSubmit").hide();
         $("#btnEnable").off('click').on('click', function () {

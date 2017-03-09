@@ -62,6 +62,7 @@ namespace G_Shop.DAO
             var model = (from cthd in db.ChiTietHoaDons
                          join ct in db.CaThes
                          on cthd.MaCaThe equals ct.MaCaThe
+                         join hd in db.HoaDons on cthd.MaHoaDon equals hd.MaHoaDon
                          where cthd.MaHoaDon == MaHD
                          select new
                          {

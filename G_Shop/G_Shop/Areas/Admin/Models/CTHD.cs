@@ -12,10 +12,9 @@ namespace G_Shop.Areas.Admin.Models
         public int MaHD { get; set; }
         public string TenNguoiDung { get; set; }
         public string SDT { get; set; }
-
         public string TenCaThe { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:n0}", ApplyFormatInEditMode = true)]
         public Nullable<int> Gia { get; set; }
+        public string DiaChi { get; set; }
+        public DateTime? NgayGiaoHang { get; set; }
     }
 }
