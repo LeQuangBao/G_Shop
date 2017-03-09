@@ -14,7 +14,7 @@
             </dt>
 
             <dd>
-                @ViewBag.MaHD
+                <p id="mahd">@ViewBag.MaHD</p>
             </dd>
 
             <dt>
@@ -51,8 +51,8 @@
                     </tr>
                 }
                 <tr>
-                    <td>Tổng:</td>
-                    <td>@ViewBag.TongTien</td>
+                    <td align="right"><strong>Tổng tiền:</strong></td>
+                    <td><strong>@ViewBag.TongTien</strong></td>
                 </tr>
             </tbody>
         </table>
@@ -63,11 +63,54 @@
             </dt>
 
             <dd>
-                Đã hoàn thành
+                @*<a href="#" id="dynamicdata" data-type="select" data-pk="1" data-value=@ViewBag.TinhTrang data-title="Chọn tình trạng hóa đơn"></a>*@
+                @*<a href="#" id="status" data-type="select" data-pk="1" data-title="Chọn tình trạng hóa đơn"></a><button id="enable" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>*@
+                @ViewBag.TinhTrang
+                <button id="btnEnable" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
+                @using (Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post))
+                {
+                    <input type="hidden" name="mahoadon" value="@ViewBag.MaHD" />
+                    <select name="tinhtrang" class="form-control" id="selTinhTrang">
+                        <option value="Chờ giao hàng">Chờ giao hàng</option>
+                        <option value="Hoàn thành">Hoàn thành</option>
+                        <option value="Hủy">Hủy</option>
+                    </select>
+                    <button id="btnSubmit" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
+                }
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-5">
+        <dl class="dl-horizontal">
+            <dt>
+                Tên người mua:
+            </dt>
+
+            <dd>
+                @ViewBag.TenNguoiDung
+            </dd>
+
+            <dt>
+                Số điện thoại:
+            </dt>
+
+            <dd>
+                @ViewBag.SDT
             </dd>
         </dl>
     </div>
 </div>
 <div class="col-md-offset-2">
-    <a href ="/Admin/AdminHome/HoaDon" title="Quay lại danh sách hóa đơn" class="btn btn-success">Quay lại</a>
+    <a href="/Admin/AdminHome/HoaDon" title="Quay lại danh sách hóa đơn" class="btn btn-success">Quay lại</a>
 </div>
+<script>
+    $(function () {
+        $("#selTinhTrang").hide();
+        $("#btnSubmit").hide();
+        $("#btnEnable").off('click').on('click', function () {
+            $("#selTinhTrang").show();
+            $("#btnSubmit").show();
+            $(this).hide();
+        });
+});
+</script>
