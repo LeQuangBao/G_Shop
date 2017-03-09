@@ -101,13 +101,14 @@ namespace G_Shop.Areas.Admin.Controllers
             {
                 string vaitro = Request.Form["vaitro"];
                 string gioiTinh = Request.Form["gioitinh"];
-                NguoiDung nd = new NguoiDung();
+                string ngaySinh = Request.Form["ngaySinh"];
+                NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
                 nd.TenDangNhap = model.TenDangNhap;
                 nd.MatKhau = model.MatKhau;
                 nd.Email = model.Email;
                 nd.SoDienThoai = model.SoDienThoai;
                 nd.GioiTinh = gioiTinh;
-                nd.NgaySinh = model.NgaySinh;
+                nd.NgaySinh = DateTime.Parse(ngaySinh);
                 nd.VaiTro = vaitro;
                 db.SaveChanges();
                 ModelState.AddModelError("", "Sửa thành công");
@@ -115,9 +116,9 @@ namespace G_Shop.Areas.Admin.Controllers
             catch
             {
                 ModelState.AddModelError("", "Sửa thất bại");
-                return View("suanguoidung",model);
             }
-            return View("Index", model);
+                return View("suanguoidung",model);
+            //return View("Index", model);
         }
         [HttpPost]
         public JsonResult themnguoidung(string tendangnhap, string matkhau, string email, string sodienthoai, string vaitro)
