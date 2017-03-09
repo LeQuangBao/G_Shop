@@ -11,7 +11,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
-        GShopEntities3 db = new GShopEntities3();
+        GShopEntities db = new GShopEntities();
         // GET: Admin/User
         protected override void Dispose(bool disposing)
         {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="GShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="GShopModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="CaThe">
     <Key>
       <PropertyRef Name="MaCaThe" />
@@ -31,6 +31,8 @@
     <Property Name="MaNguoiDung" Type="int" Nullable="false" />
     <Property Name="NgayMua" Type="date" />
     <Property Name="TongTien" Type="int" />
+    <Property Name="NgayGiaoHang" Type="date" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Loai">
@@ -102,7 +104,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopModelStoreContainer">
+  <EntityContainer Name="GShopModel1StoreContainer">
     <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />

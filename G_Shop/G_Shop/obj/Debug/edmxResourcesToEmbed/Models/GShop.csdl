@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="GShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="GShopModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="CaThe">
     <Key>
       <PropertyRef Name="MaCaThe" />
@@ -35,6 +35,8 @@
     <Property Name="MaNguoiDung" Type="Int32" Nullable="false" />
     <Property Name="NgayMua" Type="DateTime" Precision="0" />
     <Property Name="TongTien" Type="Int32" />
+    <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="NguoiDung" Relationship="Self.FK_HoaDon_NguoiDung" FromRole="HoaDon" ToRole="NguoiDung" />
@@ -110,7 +112,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GShopEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CaThes" EntityType="Self.CaThe" />
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
