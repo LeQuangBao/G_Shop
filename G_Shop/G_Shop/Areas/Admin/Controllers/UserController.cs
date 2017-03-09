@@ -83,45 +83,38 @@ namespace G_Shop.Areas.Admin.Controllers
                 return View(model);
            // }
         }
-        public ActionResult suanguoidung(int id)
+        public JsonResult sua(int id)
         {
-            if (Session["Admin"] == null)
-                return RedirectToAction("Login","/AdminHome");
-            else
-            {
-                var model = db.NguoiDungs.Find(id);
-                return View(model);
-            }
+            var model = db.NguoiDungs.Find(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
 
         }
         [HttpPost]
-        public ActionResult suanguoidung(NguoiDung model)
+        public JsonResult capnhat(NguoiDung model,string vaitro,string gioitinh, string ngaysinh)
         {
             try
             {
-                string vaitro = Request.Form["vaitro"];
-                string gioiTinh = Request.Form["gioitinh"];
-                string ngaySinh = Request.Form["ngaySinh"];
+             
                 NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
                 nd.TenDangNhap = model.TenDangNhap;
                 nd.MatKhau = model.MatKhau;
                 nd.Email = model.Email;
                 nd.SoDienThoai = model.SoDienThoai;
-                nd.GioiTinh = gioiTinh;
-                nd.NgaySinh = DateTime.Parse(ngaySinh);
+                nd.GioiTinh = gioitinh;
+                nd.NgaySinh = DateTime.Parse(ngaysinh);
                 nd.VaiTro = vaitro;
                 db.SaveChanges();
-                ModelState.AddModelError("", "Sửa thành công");
+                return Json("ok", JsonRequestBehavior.AllowGet);
             }
             catch
             {
-                ModelState.AddModelError("", "Sửa thất bại");
+                return Json("error", JsonRequestBehavior.AllowGet);
             }
-                return View("suanguoidung",model);
+               
             //return View("Index", model);
         }
         [HttpPost]
-        public JsonResult themnguoidung(string tendangnhap, string matkhau, string email, string sodienthoai, string vaitro)
+        public JsonResult themnguoidung(string tendangnhap, string matkhau, string email, string sodienthoai, string vaitro,string ngaysinh, string gioitinh)
         {
             try
             {
@@ -131,6 +124,8 @@ namespace G_Shop.Areas.Admin.Controllers
                 nd.TenDangNhap = tendangnhap;
                 nd.SoDienThoai = sodienthoai;
                 nd.VaiTro = vaitro;
+                nd.NgaySinh = Convert.ToDateTime(ngaysinh);
+                nd.GioiTinh = gioitinh;
                 db.NguoiDungs.Add(nd);
                 db.SaveChanges();
                 return Json("ok");
