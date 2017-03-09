@@ -205,8 +205,16 @@ namespace G_Shop.Areas.Admin.Controllers
             var model = new AdminDAO().GetCTHD_MaHD(MaHD);
             ViewBag.MaHD = MaHD;
             var hoadon = new AdminDAO().GetHoaDon_MaHD(MaHD);
+            var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(MaHD);
+            
+            foreach(var ngdung in nguoidung)
+            {
+                ViewBag.TenNguoiDung = ngdung.TenDangNhap;
+                ViewBag.SDT = ngdung.SoDienThoai;
+            }          
             ViewBag.NgayLap = hoadon.NgayMua;
             ViewBag.TongTien = hoadon.TongTien;
+            ViewBag.TinhTrang = hoadon.TinhTrang;
             return View(model);
         }
 
@@ -219,5 +227,11 @@ namespace G_Shop.Areas.Admin.Controllers
             return View(model);
         }
       
+        
+        public ActionResult SuaTinhTrang(int mahoadon, string tinhtrang)
+        {
+            new AdminDAO().SuaTinhTrang(mahoadon, tinhtrang);
+            return RedirectToAction("CTHD", "AdminHome",new { MaHD = mahoadon });
+        }
     }
 }

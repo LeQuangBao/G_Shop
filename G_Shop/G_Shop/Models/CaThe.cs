@@ -11,7 +11,8 @@ namespace G_Shop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CaThe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +27,8 @@ namespace G_Shop.Models
         public string MoTa { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public Nullable<int> GiaMua { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:n0}", ApplyFormatInEditMode = true)]
         public Nullable<int> GiaBan { get; set; }
         public Nullable<int> KhuyenMai { get; set; }
         public string TinhTrang { get; set; }

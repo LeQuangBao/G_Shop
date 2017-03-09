@@ -88,5 +88,30 @@ namespace G_Shop.DAO
         {
             return db.HoaDons.Where(x => x.MaHoaDon == MaHoaDon).First();
         }
+
+        public List<NguoiDung> GetNguoiDung_MaHoaDon(int MaHoaDon)
+        {
+            var model = (from ngdung in db.NguoiDungs
+                         join hd in db.HoaDons
+                         on ngdung.MaNguoiDung equals hd.MaNguoiDung
+                         where hd.MaHoaDon == MaHoaDon
+                         select new
+                         {
+                             tennguoidung = ngdung.TenDangNhap,
+                             sdt = ngdung.SoDienThoai
+                         }).AsEnumerable().Select(x => new NguoiDung()
+                         {
+                             TenDangNhap = x.tennguoidung,
+                             SoDienThoai = x.sdt
+                         }).ToList();
+            return model;
+        }           
+        
+        public void SuaTinhTrang(int MaHoaDon,string TinhTrang)
+        {
+            var model = db.HoaDons.Find(MaHoaDon);
+            model.TinhTrang = TinhTrang;
+            db.SaveChanges();
+        }              
     }
 }
