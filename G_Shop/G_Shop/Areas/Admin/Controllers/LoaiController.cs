@@ -24,12 +24,12 @@ namespace G_Shop.Areas.Admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public JsonResult themloai(string ten, string mota)
+        public JsonResult themloai(string tenloai, string mota)
         {
             try
             {
                 var loai = new Loai();
-                loai.TenLoai = ten;
+                loai.TenLoai = tenloai;
                 loai.MoTa = mota;
                 db.Loais.Add(loai);
                 db.SaveChanges();
@@ -47,12 +47,12 @@ namespace G_Shop.Areas.Admin.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult capnhat(int maloai,string ten, string mota)
+        public JsonResult capnhat(int maloai,string tenloai, string mota)
         {
             try
             {
                 var model = db.Loais.Find(maloai);
-                model.TenLoai = ten;
+                model.TenLoai = tenloai;
                 model.MoTa = mota;
                 db.SaveChanges();
                 return Json("ok", JsonRequestBehavior.AllowGet);
