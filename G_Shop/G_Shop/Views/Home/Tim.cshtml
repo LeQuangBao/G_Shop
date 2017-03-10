@@ -19,11 +19,11 @@
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(item.HinhAnh.Substring(0, item.HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">@item.Gia</h4>
-                    <h4>@item.TenCaThe</h4>
+                    <h4 class="pull-right">@item.GiaBan</h4>
+                    <h4>@item.TenCaThe @(item.TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= item.MaLoai, MaCaThe= item.MaCaThe})" class="pull-right">Xem chi tiết</a>
                     
-                    @if(Session["user"] != null) {
+                    @if(Session["user"] != null && item.TinhTrang == "Sẵn bán") {
                         <button class="add-to-cart" data-id="@item.MaCaThe">
                             <span class="glyphicon glyphicon-shopping-cart text-success">
 

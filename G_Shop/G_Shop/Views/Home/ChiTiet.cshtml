@@ -33,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenCaThe)
+            @Html.DisplayFor(model => model.TenCaThe) @(Model.TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")
         </dd>
 
         <dt>
@@ -52,7 +52,7 @@
             @Html.DisplayFor(model => model.GiaBan)
         </dd>
         <dt>
-            @if (Session["user"] != null)
+            @if (Session["user"] != null && Model.TinhTrang == "Sẵn bán")
             {
                 <button class="add-to-cart" data-id="@Model.MaCaThe">
                     <span class="glyphicon glyphicon-shopping-cart text-success">
