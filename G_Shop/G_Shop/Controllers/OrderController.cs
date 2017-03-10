@@ -29,6 +29,7 @@ namespace G_Shop.Controllers
                 model.TongTien = tongtien;
                 model.NgayMua = DateTime.Now;
                 model.MaNguoiDung = user.MaNguoiDung;
+                model.NguoiDung = user;
                 ViewBag.tennguoidung = user.TenDangNhap;
                 return View(model);
             }
@@ -36,10 +37,11 @@ namespace G_Shop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Checkout(HoaDon order)
+        public ActionResult Checkout(HoaDon order,FormCollection form)
         {
-            try
-            {
+           // try
+           // {
+                order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"]);
                 db.HoaDons.Add(order); // insert order
                 foreach (var p in ShoppingCart.Cart.Items)
                 {
@@ -55,12 +57,12 @@ namespace G_Shop.Controllers
                 ShoppingCart.Cart.Clear();
 
                 return RedirectToAction("List", "Order");
-            }
-            catch
-            {
-                ModelState.AddModelError("", "Lỗi đặt hàng !");
-                return View(order);
-            }
+            //}
+          //  catch
+          //  {
+               // ModelState.AddModelError("", "Lỗi đặt hàng !");
+               // return View(order);
+           // }
         }
 
         public ActionResult List()
@@ -73,7 +75,7 @@ namespace G_Shop.Controllers
                 var user = Session["user"] as NguoiDung;
                 var model = (from n in db.HoaDons
                              where n.MaNguoiDung.Equals(user.MaNguoiDung)
-                             select new HoaDon
+                             select new HoaDonDTO
                              {
                                  MaHoaDon=n.MaHoaDon,
                                  MaNguoiDung=n.MaNguoiDung,

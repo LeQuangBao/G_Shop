@@ -8,7 +8,11 @@
     <div class="row">
         <div class="form-group col-sm-6">
             <label>Khách hàng</label>
-            @Html.TextBoxFor(m => m.MaNguoiDung, new { @class = "form-control", @readonly = true })
+            @{ 
+                var tennguoidung = Model.NguoiDung.TenDangNhap;
+            }
+            <p class="form-control">@tennguoidung</p>
+            @Html.HiddenFor(m => m.MaNguoiDung, new { @class = "form-control", @readonly = true })
         </div>
 
         <div class="form-group col-sm-6">
@@ -22,9 +26,20 @@
             <label>Ngày mua</label>
             @Html.TextBoxFor(m => m.NgayMua, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
         </div>
+        <div class="form-group col-sm-6">
+            <label>Ngày giao</label>
+            @Html.TextBoxFor(m => m.NgayMua, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
+        </div>
 
      
     </div>
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <label>Địa chỉ giao hàng</label>
+            @Html.TextBoxFor(m => m.DiaChi, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
+        </div>
+    </div>
+
 }
 
 <fieldset>
@@ -39,7 +54,7 @@
         {
             <tr>
                 <td>@d.CaThe.TenCaThe</td>
-                <td>@Html.FormatValue(d.CaThe.Gia, "{0:c}")</td>         
+                <td>@Html.FormatValue(d.CaThe.GiaBan, "{0:c}")</td>         
                 <td>1</td>
              
             </tr>
