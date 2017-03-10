@@ -12,7 +12,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class AdminHomeController : Controller
     {
-        GShopEntities db = new GShopEntities();
+        GShopEntities1 db = new GShopEntities1();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
         // GET: Admin/Home
         public ActionResult Index()

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GShopModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CaThe">
           <Key>
             <PropertyRef Name="MaCaThe" />
@@ -109,7 +109,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GShopModel1StoreContainer">
+        <EntityContainer Name="GShopModelStoreContainer">
           <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -136,7 +136,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GShopModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CaThe">
           <Key>
             <PropertyRef Name="MaCaThe" />
@@ -249,7 +249,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GShopEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GShopEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CaThes" EntityType="Self.CaThe" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -277,9 +277,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GShopModel1StoreContainer" CdmEntityContainer="GShopEntities">
+        <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities1">
           <EntitySetMapping Name="CaThes">
-            <EntityTypeMapping TypeName="GShopModel1.CaThe">
+            <EntityTypeMapping TypeName="GShopModel.CaThe">
               <MappingFragment StoreEntitySet="CaThe">
                 <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
@@ -295,7 +295,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
-            <EntityTypeMapping TypeName="GShopModel1.ChiTietHoaDon">
+            <EntityTypeMapping TypeName="GShopModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
                 <ScalarProperty Name="MaChiTietHoaDon" ColumnName="MaChiTietHoaDon" />
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
@@ -304,7 +304,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="GShopModel1.HoaDon">
+            <EntityTypeMapping TypeName="GShopModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
@@ -317,7 +317,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Loais">
-            <EntityTypeMapping TypeName="GShopModel1.Loai">
+            <EntityTypeMapping TypeName="GShopModel.Loai">
               <MappingFragment StoreEntitySet="Loai">
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -326,7 +326,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
-            <EntityTypeMapping TypeName="GShopModel1.NguoiDung">
+            <EntityTypeMapping TypeName="GShopModel.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />

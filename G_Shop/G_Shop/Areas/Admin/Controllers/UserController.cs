@@ -11,7 +11,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
-        GShopEntities db = new GShopEntities();
+        GShopEntities1 db = new GShopEntities1();
         // GET: Admin/User
         protected override void Dispose(bool disposing)
         {
@@ -83,23 +83,23 @@ namespace G_Shop.Areas.Admin.Controllers
                 return View(model);
            // }
         }
-        public JsonResult sua(int id)
+        public JsonResult sua(int ma)
         {
-            var model = db.NguoiDungs.Find(id);
+            var model = db.NguoiDungs.Find(ma);
             return Json(model, JsonRequestBehavior.AllowGet);
 
         }
         [HttpPost]
-        public JsonResult capnhat(NguoiDung model,string vaitro,string gioitinh, string ngaysinh)
+        public JsonResult capnhat(string tendangnhap, string matkhau, string email, string sodienthoai, string vaitro, string ngaysinh, string gioitinh,int ma)
         {
             try
             {
              
-                NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
-                nd.TenDangNhap = model.TenDangNhap;
-                nd.MatKhau = model.MatKhau;
-                nd.Email = model.Email;
-                nd.SoDienThoai = model.SoDienThoai;
+                NguoiDung nd = db.NguoiDungs.Find(ma);
+                nd.TenDangNhap = tendangnhap;
+                nd.MatKhau = matkhau;
+                nd.Email = email;
+                nd.SoDienThoai = sodienthoai;
                 nd.GioiTinh = gioitinh;
                 nd.NgaySinh = DateTime.Parse(ngaysinh);
                 nd.VaiTro = vaitro;

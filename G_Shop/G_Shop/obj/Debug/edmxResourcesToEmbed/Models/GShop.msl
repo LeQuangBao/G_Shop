@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GShopModel1StoreContainer" CdmEntityContainer="GShopEntities">
+  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities1">
     <EntitySetMapping Name="CaThes">
-      <EntityTypeMapping TypeName="GShopModel1.CaThe">
+      <EntityTypeMapping TypeName="GShopModel.CaThe">
         <MappingFragment StoreEntitySet="CaThe">
           <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
@@ -18,7 +18,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ChiTietHoaDons">
-      <EntityTypeMapping TypeName="GShopModel1.ChiTietHoaDon">
+      <EntityTypeMapping TypeName="GShopModel.ChiTietHoaDon">
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
           <ScalarProperty Name="MaChiTietHoaDon" ColumnName="MaChiTietHoaDon" />
           <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HoaDons">
-      <EntityTypeMapping TypeName="GShopModel1.HoaDon">
+      <EntityTypeMapping TypeName="GShopModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
           <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
@@ -40,7 +40,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Loais">
-      <EntityTypeMapping TypeName="GShopModel1.Loai">
+      <EntityTypeMapping TypeName="GShopModel.Loai">
         <MappingFragment StoreEntitySet="Loai">
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="NguoiDungs">
-      <EntityTypeMapping TypeName="GShopModel1.NguoiDung">
+      <EntityTypeMapping TypeName="GShopModel.NguoiDung">
         <MappingFragment StoreEntitySet="NguoiDung">
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />

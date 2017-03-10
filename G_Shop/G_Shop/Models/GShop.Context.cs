@@ -13,10 +13,10 @@ namespace G_Shop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GShopEntities : DbContext
+    public partial class GShopEntities1 : DbContext
     {
-        public GShopEntities()
-            : base("name=GShopEntities")
+        public GShopEntities1()
+            : base("name=GShopEntities1")
         {
         }
     

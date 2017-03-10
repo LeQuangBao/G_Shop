@@ -222,6 +222,10 @@
     <Compile Include="Utils\ShoppingCart.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\GShop.mdf" />
+    <Content Include="App_Data\GShop_log.ldf">
+      <DependentUpon>GShop.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\Admin\Script\page.js" />
     <Content Include="Areas\Admin\Script\pagesearch.js" />
     <Content Include="assets\client\images\14822895365348483267.jpg" />
@@ -338,8 +342,9 @@
     <Content Include="Areas\Admin\Views\AdminHome\CTHD.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Paginate.cshtml" />
-    <Content Include="Areas\Admin\Views\User\suanguoidung.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HoaDon_Ngay.cshtml" />
+    <Content Include="Areas\Admin\Views\Loai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\timkiemnguoidung.cshtml" />
     <EntityDeploy Include="Models\GShop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GShop.Designer.cs</LastGenOutput>
@@ -347,8 +352,6 @@
     <Content Include="Models\GShop.edmx.diagram">
       <DependentUpon>GShop.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Loai\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\User\timkiemnguoidung.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -419,7 +422,6 @@
     <Content Include="Views\Order\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="fonts\font-awesome\" />
   </ItemGroup>
