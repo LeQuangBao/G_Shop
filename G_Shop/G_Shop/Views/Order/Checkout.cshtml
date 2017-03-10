@@ -44,7 +44,7 @@
     </div>
     <div class="form-group col-sm-12">
         <label>Ngày giao hàng</label>
-        <input class="form-control" type="date" placeholder="MM/dd/yyyy" name="ngaygiaohang" />
+        <input class="form-control" type="date" placeholder="MM/dd/yyyy" name="ngaygiaohang" onkeydown="return false"/>
     </div>
 
     <div class="col-sm-2">
@@ -53,3 +53,7 @@
 
 
 }
+<script type="">
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("ngaygiaohang")[0].setAttribute('min', today);
+</script>
