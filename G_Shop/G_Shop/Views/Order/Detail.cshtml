@@ -21,6 +21,7 @@
     <br />
     <label>Địa chỉ giao hàng:</label>
     @Html.DisplayFor(m => m.DiaChi, "{0:MM/dd/yyyy}", new { @class = "form-control" })
+    
     <br />
     <br />
 }
@@ -39,5 +40,12 @@
 
             </tr>
         }
+        
     </table>
+    <div class="well">
+
+        <label>Tình trạng:</label>
+        @Html.DisplayFor(m => m.TinhTrang)   
+    </div>
+          
 </fieldset>
