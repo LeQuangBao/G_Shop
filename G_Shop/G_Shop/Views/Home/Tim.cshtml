@@ -20,16 +20,18 @@
                 <img src="~/assets/client/images/@(item.HinhAnh.Substring(0, item.HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
                     <h4 class="pull-right">@item.GiaBan</h4>
-                    <h4>@item.TenCaThe @(item.TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</h4>
+                    <h4>@item.TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= item.MaLoai, MaCaThe= item.MaCaThe})" class="pull-right">Xem chi tiết</a>
                     
                     @if(Session["user"] != null && item.TinhTrang == "Sẵn bán") {
-                        <button class="add-to-cart" data-id="@item.MaCaThe">
+                        <button class="add-to-cart btn-lg" data-id="@item.MaCaThe">
                             <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>
                         </button>
                         @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
+                    } else {
+                        <p class="text-danger">@(item.TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</p>
                     }
 
 

@@ -84,27 +84,22 @@ namespace G_Shop.Controllers
 
         }
         [HttpGet]
-
         public ActionResult ChiTiet(int MaLoai, int MaCaThe) {
-            //    if(Session["user"]==null)
-            //    {
-            //        return RedirectToAction("Login", "Account");
-            //    }
-            //    else
-            //    {
             var user = Session["user"] as NguoiDung;
             if(user!=null)
                 ViewBag.tennguoidung = user.TenDangNhap;
             var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+            ViewBag.TuoiCaThe = new UserDAO().TuoiCaThe(MaCaThe);
             return View(model);
         }
         
         public ActionResult Tim(string ten)
         {
+            var user = Session["user"] as NguoiDung;
+            if(user != null)
+                ViewBag.tennguoidung = user.TenDangNhap;
             var model = new UserDAO().TimCaThe(ten);
             return View(model);
         }
-
-
     }
 }

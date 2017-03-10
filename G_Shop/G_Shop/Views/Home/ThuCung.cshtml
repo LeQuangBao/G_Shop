@@ -12,26 +12,24 @@
 </div>
 <hr />
 <div class="row">
-    @for (var i=0;i<Model.Count;i++)
-    {
+    @for(var i = 0; i < Model.Count; i++) {
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(Model[i].HinhAnh.Substring(0, Model[i].HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
                     <h4 class="pull-right">@Model[i].GiaBan</h4>
-                    <h4>@Model[i].TenCaThe @(Model[i].TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</h4>
+                    <h4>@Model[i].TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
-
                     @if(Session["user"] != null && Model[i].TinhTrang == "Sẵn bán") {
-                        <button class="add-to-cart" data-id="@Model[i].MaCaThe">
+                        <button class="add-to-cart btn-lg" data-id="@Model[i].MaCaThe">
                             <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>
                         </button>
                         @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
+                    } else {
+                        <p class="text-danger">@(Model[i].TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</p>
                     }
-
-
                 </div>
                 @*<div class="ratings">
                         <p class="pull-right">15 reviews</p>
@@ -46,13 +44,11 @@
             </div>
         </div>
     }
-   
-   
 </div>
 <div class="row">
     <div class="col-lg-offset-4">
         @Html.PagedListPager(Model, page => Url.Action("ThuCung", new { page = page, @MaLoai = ViewBag.MaLoai }))
     </div>
-   
+
 </div>
 

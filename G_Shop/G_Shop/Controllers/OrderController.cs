@@ -4,25 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using G_Shop.Models;
+using G_Shop.DAO;
 
-namespace G_Shop.Controllers
-{
-    public class OrderController : Controller
-    {
+namespace G_Shop.Controllers {
+    public class OrderController : Controller {
         GShopEntities1 db = new GShopEntities1();
         // GET: Order
 
-        public ActionResult Checkout()
-        {
-            if(Session["user"]==null)
-            {
+        public ActionResult Checkout() {
+            if(Session["user"] == null) {
                 return RedirectToAction("Login", "Account");
-            }
-          else  {
+            } else {
                 int? tongtien = 0;
                 var user = Session["user"] as NguoiDung;
-                foreach (var p in ShoppingCart.Cart.Items)
-                {
+                foreach(var p in ShoppingCart.Cart.Items) {
                     tongtien = tongtien + p.GiaBan;
                 }
                 var model = new HoaDon();
@@ -33,77 +28,62 @@ namespace G_Shop.Controllers
                 ViewBag.tennguoidung = user.TenDangNhap;
                 return View(model);
             }
-        
+
         }
 
         [HttpPost]
-        public ActionResult Checkout(HoaDon order,FormCollection form)
-        {
-           // try
-           // {
-                order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"]);
-                db.HoaDons.Add(order); // insert order
-                foreach (var p in ShoppingCart.Cart.Items)
-                {
-                    var detail = new ChiTietHoaDon
-                    {
-                        HoaDon = order,
-                        MaCaThe = p.MaCaThe,
-                    };
-                    db.ChiTietHoaDons.Add(detail); // insert orderdetail
-                }
-                db.SaveChanges();
+        public ActionResult Checkout(HoaDon order, FormCollection form) {
+            order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"]);
+            order.TinhTrang = "Chờ giao hàng";
+            db.HoaDons.Add(order); // insert order
+            UserDAO userDAO = new UserDAO();
+            foreach(var p in ShoppingCart.Cart.Items) {
+                var detail = new ChiTietHoaDon {
+                    HoaDon = order,
+                    MaCaThe = p.MaCaThe,
+                };
+                userDAO.BanCaThe(p.MaCaThe);
+                db.ChiTietHoaDons.Add(detail); // insert orderdetail
+            }
+            db.SaveChanges();
 
-                ShoppingCart.Cart.Clear();
-
-                return RedirectToAction("List", "Order");
-            //}
-          //  catch
-          //  {
-               // ModelState.AddModelError("", "Lỗi đặt hàng !");
-               // return View(order);
-           // }
+            ShoppingCart.Cart.Clear();
+            return RedirectToAction("Detail", "Order", new { id = order.MaHoaDon });
+            //return RedirectToAction("List", "Order");
         }
 
-        public ActionResult List()
-        {
-            if (Session["user"] == null)
-            {
+        public ActionResult List() {
+            if(Session["user"] == null) {
                 return RedirectToAction("Login", "Account");
-            }
-            else {
+            } else {
                 var user = Session["user"] as NguoiDung;
                 var model = (from n in db.HoaDons
                              where n.MaNguoiDung.Equals(user.MaNguoiDung)
-                             select new HoaDonDTO
-                             {
-                                 MaHoaDon=n.MaHoaDon,
-                                 MaNguoiDung=n.MaNguoiDung,
-                                 NgayMua=n.NgayMua,
-                                 TongTien=n.TongTien,
-                                 NguoiDung=n.NguoiDung
-                                 
+                             select new HoaDonDTO {
+                                 MaHoaDon = n.MaHoaDon,
+                                 MaNguoiDung = n.MaNguoiDung,
+                                 NgayMua = n.NgayMua,
+                                 TongTien = n.TongTien,
+                                 NguoiDung = n.NguoiDung
+
                              }).ToList();
 
                 ViewBag.tennguoidung = user.TenDangNhap;
                 return View(model);
             }
-         
+
         }
 
-        public ActionResult Detail(int Id)
-        {
-            if(Session["user"]==null)
-            {
+        public ActionResult Detail(int Id) {
+            if(Session["user"] == null) {
                 return RedirectToAction("Login", "Account");
-            }
-            else {
+            } else {
                 var user = Session["user"] as NguoiDung;
                 ViewBag.tennguoidung = user.TenDangNhap;
                 var model = db.HoaDons.Find(Id);
                 return View(model);
             }
-         
+
         }
 
         //public ActionResult Items()

@@ -49,7 +49,7 @@ namespace G_Shop.Controllers
         public ActionResult Logoff()
         {
             Session.Remove("user");
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()

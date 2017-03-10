@@ -1,4 +1,5 @@
 ﻿using G_Shop.Models;
+using Itenso.TimePeriod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,27 @@ namespace G_Shop.DAO
         public List<CaThe> TimCaThe(string ten)
         {
             return db.CaThes.Where(x => x.TenCaThe.Contains(ten)).ToList();
+        }
+
+        public string TuoiCaThe(int MaCaThe)
+        {
+            string tuoi;
+            var model = db.CaThes.Find(MaCaThe);
+            DateDiff ngaytuoi = new DateDiff(model.NgaySinh, DateTime.Now);
+            if (ngaytuoi.ElapsedYears == 0)
+                if (ngaytuoi.ElapsedMonths == 0)
+                    tuoi = ngaytuoi.ElapsedDays.ToString() + " ngày";
+                else
+                    tuoi=ngaytuoi.ElapsedMonths.ToString()+" tháng "+ ngaytuoi.ElapsedDays.ToString() + " ngày";
+            else
+                tuoi=ngaytuoi.ElapsedYears.ToString()+ " tuổi"+ngaytuoi.ElapsedMonths.ToString() + " tháng " + ngaytuoi.ElapsedDays.ToString() + " ngày";
+            return tuoi;
+        }
+
+        public void BanCaThe(int MaCaThe) {
+            CaThe cathe = db.CaThes.Find(MaCaThe);
+            cathe.TinhTrang = "Đã bán";
+            db.SaveChanges();
         }
     }
 }
