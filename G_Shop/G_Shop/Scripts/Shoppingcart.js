@@ -1,8 +1,8 @@
 ﻿$(function () {
     $(".add-to-cart").click(function () {
         var id = $(this).attr("data-id");
-
-        $(this).after('<span class="glyphicon glyphicon-ok"></span>')
+        $(this).addClass("btn btn-success active");
+        //$(this).after('<label class="label label-success"><i class="glyphicon glyphicon-ok"><i/></span>')
         $.ajax({
             url: "/Cart/Add",
             data: { id: id },
