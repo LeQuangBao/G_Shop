@@ -13,7 +13,10 @@
 @using(Html.BeginForm()) {
     <label>Khách hàng:</label>
     @Model.NguoiDung.TenDangNhap
+    // Ngày mua và tổng tiền hiển thị dưới dạng text, không phải input nên phải có đoạn hidden để truyền đi
     @Html.HiddenFor(m => m.MaNguoiDung, new { @class = "form-control" })
+    @Html.HiddenFor(m => m.NgayMua, new { @class = "form-control" })
+    @Html.HiddenFor(m => m.TongTien, new { @class = "form-control" })
     <br />
     <label>Ngày đặt hàng:</label>
     @Html.DisplayFor(m => m.NgayMua, "{dd/MM/yyyy}", new { @class = "form-control" })

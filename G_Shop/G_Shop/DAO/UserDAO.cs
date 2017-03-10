@@ -72,5 +72,11 @@ namespace G_Shop.DAO
                 tuoi=ngaytuoi.Years.ToString()+ " tuổi"+ngaytuoi.Months.ToString() + " tháng " + ngaytuoi.Days.ToString() + " ngày";
             return tuoi;
         }
+
+        public void BanCaThe(int MaCaThe) {
+            CaThe cathe = db.CaThes.Find(MaCaThe);
+            cathe.TinhTrang = "Đã bán";
+            db.SaveChanges();
+        }
     }
 }

@@ -101,7 +101,5 @@ namespace G_Shop.Controllers
             var model = new UserDAO().TimCaThe(ten);
             return View(model);
         }
-
-        
     }
 }
