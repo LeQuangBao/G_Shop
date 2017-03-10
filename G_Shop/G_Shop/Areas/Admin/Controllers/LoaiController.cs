@@ -41,26 +41,26 @@ namespace G_Shop.Areas.Admin.Controllers
                 return Json("error", JsonRequestBehavior.AllowGet);
             }
         }
-        public JsonResult edit(int maloai)
+        public ActionResult edit(int maloai)
         {
             var list = db.Loais.Find(maloai);
-            return Json(list, JsonRequestBehavior.AllowGet);
+            return View(list);
         }
         [HttpPost]
-        public JsonResult capnhat(int maloai,string tenloai, string mota)
+        public ActionResult capnhat(Loai loai)
         {
-            try
-            {
-                var model = db.Loais.Find(maloai);
-                model.TenLoai = tenloai;
-                model.MoTa = mota;
+            //try
+            //{
+                var model = db.Loais.Find(loai.MaLoai);
+                model.TenLoai = loai.TenLoai;
+                model.MoTa = loai.MoTa;
                 db.SaveChanges();
-                return Json("ok", JsonRequestBehavior.AllowGet);
-            }
-            catch
-            {
-                return Json("error", JsonRequestBehavior.AllowGet);
-            }
+                return RedirectToAction("Index", "Loai");
+           // }
+           // catch
+           // {
+               // return Json("error", JsonRequestBehavior.AllowGet);
+           // }
         }
      
         [HttpPost]

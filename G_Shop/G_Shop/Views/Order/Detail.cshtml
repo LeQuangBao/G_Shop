@@ -24,11 +24,11 @@
     <div class="row">
         <div class="form-group col-sm-6">
             <label>Ngày mua</label>
-            @Html.TextBoxFor(m => m.NgayMua, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
+            @Html.TextBoxFor(m => m.NgayMua, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = true })
         </div>
         <div class="form-group col-sm-6">
             <label>Ngày giao</label>
-            @Html.TextBoxFor(m => m.NgayMua, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
+            @Html.TextBoxFor(m => m.NgayMua, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = true })
         </div>
 
      
@@ -36,13 +36,12 @@
     <div class="row">
         <div class="form-group col-sm-12">
             <label>Địa chỉ giao hàng</label>
-            @Html.TextBoxFor(m => m.DiaChi, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = true })
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", @readonly = true })
         </div>
     </div>
 
 }
-
-<fieldset>
+   <fieldset>
     <legend>CHI TIẾT ĐƠN HÀNG</legend>
     <table class="table">
         <tr>
