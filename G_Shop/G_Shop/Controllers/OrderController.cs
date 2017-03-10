@@ -34,6 +34,7 @@ namespace G_Shop.Controllers {
         [HttpPost]
         public ActionResult Checkout(HoaDon order, FormCollection form) {
             order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"]);
+            order.TinhTrang = "Chờ giao hàng";
             db.HoaDons.Add(order); // insert order
             UserDAO userDAO = new UserDAO();
             foreach(var p in ShoppingCart.Cart.Items) {
@@ -47,8 +48,8 @@ namespace G_Shop.Controllers {
             db.SaveChanges();
 
             ShoppingCart.Cart.Clear();
-
-            return RedirectToAction("List", "Order");
+            return RedirectToAction("Detail", "Order", new { id = order.MaHoaDon });
+            //return RedirectToAction("List", "Order");
         }
 
         public ActionResult List() {
