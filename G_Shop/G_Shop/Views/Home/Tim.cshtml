@@ -31,7 +31,7 @@
                         </button>
                         @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
                     } else {
-                        <p class="text-danger">@(Model[i].TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</p>
+                        <p class="text-danger">@(item.TinhTrang != "Sẵn bán" ? "(Hết hàng)" : "")</p>
                     }
 
 
