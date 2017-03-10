@@ -84,3 +84,4 @@ C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
 C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
