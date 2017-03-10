@@ -16,21 +16,29 @@ namespace G_Shop.Controllers
         {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
             //return model;
-            return db.CaThes.OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
+            return db.CaThes.Where(x=>x.TinhTrang=="Sẵn bán").OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
         }
 
         public ActionResult Index(int page = 1, int pagesize = 3) {
-            if (Session["user"] == null) {
-                var model = ListAllPageging4(page, pagesize);
-                return View(model);
-            } else {
+
+            //if (Session["user"] == null) {
+            //    return View();
+            //    //return RedirectToAction("Login", "Account");
+            //} else {
+
+            //if (Session["user"] == null) {
+            //    var model = ListAllPageging4(page, pagesize);
+            //    return View(model);
+            //} else {
+
 
                 var user = Session["user"] as NguoiDung;
-                ViewBag.tennguoidung = user.TenDangNhap;
+                if(user!=null)
+                    ViewBag.tennguoidung = user.TenDangNhap;
                 var model = ListAllPageging4(page, pagesize);
                 //var model = new UserDAO().GetNewCaThe();
                 return View(model);
-            }
+            //}
 
         }
         public IEnumerable<CaThe> ListAllPageging(int MaLoai,int page, int pagesize)
