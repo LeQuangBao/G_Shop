@@ -29,7 +29,7 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenCaThe)
+            Tên cá thể:
         </dt>
 
         <dd>
@@ -37,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
+            Mô tả:
         </dt>
 
         <dd>
@@ -45,23 +45,32 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GiaBan)
+            Giá bán:
         </dt>
 
         <dd style="color:red;font-weight:bold">
             @Html.DisplayFor(model => model.GiaBan)
         </dd>
         <dt>
+            Tuổi:
+        </dt>
+        <dd>
+
+        </dd>
+        <dt>
+
+        </dt>
+        <dd>
             @if (Session["user"] != null)
             {
-                <button class="add-to-cart" data-id="@Model.MaCaThe">
-                    <span class="glyphicon glyphicon-shopping-cart text-success">
+                <button class="add-to-cart btn-lg" data-id="@Model.MaCaThe">
+                    <span class="glyphicon glyphicon-shopping-cart">
 
                     </span>
                 </button>
                 @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCaThe" src="~/assets/client/images/Add to basket.png" /></a>*@
             }
-        </dt>
+        </dd>
     </dl>
 </div>
 <script>

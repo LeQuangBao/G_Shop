@@ -22,7 +22,7 @@
                     <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
                     @if(Session["user"] != null) {
                         <button class="add-to-cart" data-id="@Model[i].MaCaThe">
-                            <span class="glyphicon glyphicon-shopping-cart text-success">
+                            <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>
                         </button>

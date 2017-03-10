@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,7 +9,6 @@
     <title>G_SHOP</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -21,75 +19,43 @@
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Scripts/bootstrap.min.js"></script>
-
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container" style="height:30px">
+        <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header" style="margin-top:20px">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="navbar-header" style="margin-top:4px">
+                
                 <a class="navbar-brand" href="/Home/Index">G_SHOP</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1" style="height:30px;margin-top:20px">
-                
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    
-                </ul>
+            <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1" style="margin-top:10px">
                 <div class="row">
-
-                    @using (Html.BeginForm("Tim", "Home", FormMethod.Get))
-                    {
-                        <div class="col-md-4">
-                            @Html.TextBox("ten", "", new { placeholder = "Gõ từ khóa", @class = "form-control" })
+                    @using(Html.BeginForm("Tim", "Home", FormMethod.Get)) {
+                        <div class="col-md-offset-3 col-md-3">
+                            @Html.TextBox("ten", "", new { placeholder = "Tìm kiếm", @class = "form-control" })
                         </div>
-                        <div class="col-md-4">
-                            <input type="submit" value="Tìm" class="btn btn-success" />
-
+                        <div class="col-md-1">
+                            <button type="submit" value="Tìm" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </div>
-
                     }
-                    <div class="col-lg-offset-10 col-md-4">
-                        @if (Session["user"] == null)
-                        {
-                            <p style="color:white">   
-                            <a href="/Account/Login">Đăng nhập</a>  &nbsp; &nbsp;  
-                            <a href="/Account/Register">Đăng kí</a>
+                    <div class="pull-right">
+                        @if(Session["user"] == null) {
+                            <p style="padding:8px 18px 0px 0px">
+                                <a href="/Account/Register" style="color:white">Đăng kí</a> &nbsp; &nbsp;
+                                <a href="/Account/Login" style="color:white">Đăng nhập</a>  
+                            </p>
+                        } else {
+                            <p style="padding:8px 18px 0px 0px; color:gray">
+                                Chào @ViewBag.tennguoidung &nbsp; &nbsp;
+                                <span><a href="/Account/Logoff" style="color:white">Đăng xuất</a></span>&nbsp; &nbsp;
+                                <span><a href="/Cart/Index" style="color:white">Giỏ hàng</a></span>
                             </p>
                         }
-                        else {
-                            <p style="color:white">
-                                Chào bạn, @ViewBag.tennguoidung &nbsp; &nbsp;
-                                <span><a href="/Account/Logoff">Đăng xuất</a></span>&nbsp; &nbsp;
-                                <span><a href="/Cart/Index">Giỏ hàng</a></span>
-                            </p>
-                        }
-                             
-
                     </div>
                 </div>
-
-
-            
             </div>
-            
-
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -98,14 +64,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <p class="lead">Shop bán thú cưng</p>
+                @*
+                    <p class="lead">Shop bán thú cưng</p>
+                *@
                 @{Html.RenderAction("_Category", "Home");}
             </div>
             <div class="col-md-9">
                 @RenderPage("_Slide.cshtml")
-                
-                    @RenderBody()
-                
+                @RenderBody()
             </div>
         </div>
     </div>
@@ -123,7 +89,5 @@
     </div>
     <!-- /.container -->
     <!-- jQuery -->
-    
-   
 </body>
 </html>

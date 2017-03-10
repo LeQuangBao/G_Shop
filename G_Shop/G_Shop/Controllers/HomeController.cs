@@ -57,7 +57,7 @@ namespace G_Shop.Controllers
             var model = new UserDAO().GetAllTenLoai();
             return PartialView(model);
         }
-        public ActionResult ThuCung(int MaLoai, int page = 4, int pagesize = 6) {
+        public ActionResult ThuCung(int MaLoai, int page = 1, int pagesize = 6) {
             //    if(Session["user"]==null)
             //    {
             //        return RedirectToAction("Login", "Account");
