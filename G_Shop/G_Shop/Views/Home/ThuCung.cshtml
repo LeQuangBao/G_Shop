@@ -18,7 +18,7 @@
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(Model[i].HinhAnh.Substring(0, Model[i].HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">@Model[i].Gia</h4>
+                    <h4 class="pull-right">@Model[i].GiaBan</h4>
                     <h4>@Model[i].TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
 

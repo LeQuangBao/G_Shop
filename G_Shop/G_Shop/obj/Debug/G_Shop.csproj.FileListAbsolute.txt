@@ -61,7 +61,6 @@ D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.xml
 D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
 D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\roslyn\csc.exe
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll

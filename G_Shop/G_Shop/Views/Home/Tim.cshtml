@@ -19,7 +19,7 @@
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(item.HinhAnh.Substring(0, item.HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">@item.Gia</h4>
+                    <h4 class="pull-right">@item.GiaBan</h4>
                     <h4>@item.TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= item.MaLoai, MaCaThe= item.MaCaThe})" class="pull-right">Xem chi tiết</a>
                     

@@ -21,8 +21,8 @@ namespace G_Shop.Controllers
 
         public ActionResult Index(int page = 1, int pagesize = 3) {
             if (Session["user"] == null) {
-                return View();
-                //return RedirectToAction("Login", "Account");
+                var model = ListAllPageging4(page, pagesize);
+                return View(model);
             } else {
 
                 var user = Session["user"] as NguoiDung;
@@ -89,8 +89,6 @@ namespace G_Shop.Controllers
                 ViewBag.tennguoidung = user.TenDangNhap;
             var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
             return View(model);
-
-
         }
         
         public ActionResult Tim(string ten)
