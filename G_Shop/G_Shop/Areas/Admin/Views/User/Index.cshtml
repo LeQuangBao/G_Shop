@@ -7,14 +7,17 @@
 <script>
     $(document).ready(function () {
         $('#them').on('click', function () {
-            var tendangnhap = $("#tendangnhap").val();
             var matkhau = $("#matkhau").val();
             var matkhau1 = $("#matkhau1").val();
-            var ngaysinh = $("#ngaysinh").val();
-            var gioitinh = $("#gioitinh").val();
             if (matkhau != matkhau1) {
                 $("#thongbao").text = "Mật khẩu chưa khớp";
+                return;
             }
+            var tendangnhap = $("#tendangnhap").val();
+           
+            var ngaysinh = $("#ngaysinh").val();
+            var gioitinh = $("#gioitinh").val();
+           
             var email = $("#email").val();
             var sodienthoai = $("#sodienthoai").val();
             var vaitro = $("#vaitro").val();
@@ -231,6 +234,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="password" id="matkhau1" name="password" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
+                            <p id="thongbao"></p>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
