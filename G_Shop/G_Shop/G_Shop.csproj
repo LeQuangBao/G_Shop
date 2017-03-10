@@ -224,9 +224,13 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Script\page.js" />
     <Content Include="Areas\Admin\Script\pagesearch.js" />
-    <Content Include="assets\client\images\anhcqmouse5.jpg" />
-    <Content Include="assets\client\images\hamster002uk4.jpg" />
-    <Content Include="assets\client\images\hamter002.jpg" />
+    <Content Include="assets\client\images\14822895365348483267.jpg" />
+    <Content Include="assets\client\images\hamster004.jpg" />
+    <Content Include="assets\client\images\Add to basket.png" />
+    <Content Include="assets\client\images\hamster001.jpg" />
+    <Content Include="assets\client\images\df8bdc0787eb68c35292ff74fa60466b_S.jpg" />
+    <Content Include="assets\client\images\hamster003.jpg" />
+    <Content Include="assets\client\images\hamster002.jpg" />
     <Content Include="assets\client\images\images %281%29.jpg" />
     <Content Include="assets\client\images\search.png" />
     <Content Include="assets\client\images\xamkhoi.jpg" />
