@@ -101,6 +101,9 @@ namespace G_Shop.Controllers
         
         public ActionResult Tim(string ten)
         {
+            var user = Session["user"] as NguoiDung;
+            if(user != null)
+                ViewBag.tennguoidung = user.TenDangNhap;
             var model = new UserDAO().TimCaThe(ten);
             return View(model);
         }
