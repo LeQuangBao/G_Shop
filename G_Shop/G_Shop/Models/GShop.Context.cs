@@ -16,7 +16,7 @@ namespace G_Shop.Models
     public partial class GShopEntities1 : DbContext
     {
         public GShopEntities1()
-            : base("name=GShopEntities1")
+            : base("name=GShopEntities")
         {
         }
     

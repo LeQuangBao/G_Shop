@@ -24,7 +24,7 @@ namespace G_Shop.Models
         public int MaLoai { get; set; }
         public string TenCaThe { get; set; }
         public string MoTa { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
+        public DateTime NgaySinh { get; set; }
         public Nullable<int> GiaMua { get; set; }
         public Nullable<int> GiaBan { get; set; }
         public Nullable<int> KhuyenMai { get; set; }
