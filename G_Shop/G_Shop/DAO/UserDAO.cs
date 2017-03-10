@@ -63,13 +63,13 @@ namespace G_Shop.DAO
             string tuoi;
             var model = db.CaThes.Find(MaCaThe);
             DateDiff ngaytuoi = new DateDiff(model.NgaySinh, DateTime.Now);
-            if (ngaytuoi.Years == 0)
-                if (ngaytuoi.Months == 0)
-                    tuoi = ngaytuoi.Days.ToString() + " ngày";
+            if (ngaytuoi.ElapsedYears == 0)
+                if (ngaytuoi.ElapsedMonths == 0)
+                    tuoi = ngaytuoi.ElapsedDays.ToString() + " ngày";
                 else
-                    tuoi=ngaytuoi.Months.ToString()+" tháng "+ ngaytuoi.Days.ToString() + " ngày";
+                    tuoi=ngaytuoi.ElapsedMonths.ToString()+" tháng "+ ngaytuoi.ElapsedDays.ToString() + " ngày";
             else
-                tuoi=ngaytuoi.Years.ToString()+ " tuổi"+ngaytuoi.Months.ToString() + " tháng " + ngaytuoi.Days.ToString() + " ngày";
+                tuoi=ngaytuoi.ElapsedYears.ToString()+ " tuổi"+ngaytuoi.ElapsedMonths.ToString() + " tháng " + ngaytuoi.ElapsedDays.ToString() + " ngày";
             return tuoi;
         }
 
