@@ -34,7 +34,7 @@ namespace G_Shop.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             Session.Remove("Admin");
-            return View("Login");
+            return View("/Home/Index");
         }
 
         [HttpPost]
@@ -157,7 +157,8 @@ namespace G_Shop.Areas.Admin.Controllers
 
         [HttpPost]
         public ActionResult Them(CaThe model)
-        {         
+        {
+            model.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
             if (Session["fileUpload"] != null)
             {
                 string _fileName;
@@ -190,6 +191,9 @@ namespace G_Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult SuaCaThe(CaThe cathe)
         {
+            cathe.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
+            string tinhtrang = Request.Form["tinhtrang"];
+            cathe.TinhTrang = tinhtrang;
             new AdminDAO().SuaCaThe(cathe);
             return RedirectToAction("CaThe",new { MaLoai=cathe.MaLoai});
         }

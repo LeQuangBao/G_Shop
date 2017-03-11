@@ -20,8 +20,10 @@ namespace G_Shop.Models
             this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
         }
     
+        
         public int MaCaThe { get; set; }
         public int MaLoai { get; set; }
+        
         public string TenCaThe { get; set; }
         public string MoTa { get; set; }
         public DateTime NgaySinh { get; set; }
