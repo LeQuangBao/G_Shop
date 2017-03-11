@@ -34,7 +34,7 @@ namespace G_Shop.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             Session.Remove("Admin");
-            return View("Login");
+            return View("/Home/Index");
         }
 
         [HttpPost]
