@@ -12,26 +12,26 @@ namespace G_Shop.Areas.Admin.Controllers
     {
         GShopEntities1 db = new GShopEntities1();
         // GET: Admin/Loai
-        public IPagedList<Loai> ListAllPageging4(int page, int pagesize)
+        //public IPagedList<Loai> ListAllPageging4(int page, int pagesize)
+        //{
+        //    //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
+        //    //return model;
+        //    return db.Loais.OrderByDescending(x => x.MaLoai).ToPagedList(page, pagesize);
+        //}
+        public ActionResult Index()
         {
-            //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
-            //return model;
-            return db.Loais.OrderByDescending(x => x.MaLoai).ToPagedList(page, pagesize);
-        }
-        public ActionResult Index(int page = 1, int pagesize = 5)
-        {
-            var model = ListAllPageging4(page, pagesize);
-            return View(model);
+            //var model = ListAllPageging4(page, pagesize);
+            return View();
         }
         [HttpPost]
-        public JsonResult themloai(string tenloai, string mota)
+        public JsonResult themloai(LoaiDTO loai)
         {
             try
             {
-                var loai = new Loai();
-                loai.TenLoai = tenloai;
-                loai.MoTa = mota;
-                db.Loais.Add(loai);
+                var loai1 = new Loai();
+                loai.TenLoai = loai.TenLoai;
+                loai.MoTa = loai.MoTa;
+                db.Loais.Add(loai1);
                 db.SaveChanges();
                 return Json("ok",JsonRequestBehavior.AllowGet);
 
@@ -47,7 +47,7 @@ namespace G_Shop.Areas.Admin.Controllers
             return View(list);
         }
         [HttpPost]
-        public ActionResult capnhat(Loai loai)
+        public JsonResult capnhat(LoaiDTO loai)
         {
             //try
             //{
@@ -55,59 +55,69 @@ namespace G_Shop.Areas.Admin.Controllers
                 model.TenLoai = loai.TenLoai;
                 model.MoTa = loai.MoTa;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Loai");
+            return Json("ok", JsonRequestBehavior.AllowGet);
            // }
            // catch
            // {
                // return Json("error", JsonRequestBehavior.AllowGet);
            // }
         }
-     
-        [HttpPost]
-        public ActionResult timkiemloai(FormCollection f, int? page)
+        public JsonResult get_allLoai()
         {
-            //if (SessionHandler.User != null)
-            //{
-            //    var user = SessionHandler.User;
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-            string tukhoa = f["txttimkiem"].ToString();
-            ViewBag.tukhoa = tukhoa;
-            List<Loai> listloai = db.Loais.Where(n => n.TenLoai.Contains(tukhoa)).ToList();
-            // phân trang
-            int pagenumber = (page ?? 1);
-            int pagesize = 10;
-            //if (listnguoidung.Count == 0)
-            //{
-            //    ViewBag.ThongBao = "Không tìm thấy bản ghi phù hợp";
-            return View(listloai.OrderBy(n => n.MaLoai).ToPagedList(pagenumber, pagesize));
-            //}
-            //ViewBag.ThongBao = "Đã tìm thấy" + "    " + listnguoidung.Count + "kết quả";
-            //return View(listnguoidung.OrderBy(n => n.MaNguoiDung).ToPagedList(pagenumber, pagesize));
+            var model = (from n in db.Loais
+                         select new LoaiDTO
+                         {
+                             MaLoai=n.MaLoai,
+                             TenLoai=n.TenLoai,
+                             MoTa=n.MoTa
+                         }).ToList();
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
-        public ActionResult timkiemloai(string tukhoa, int? page)
-        {
-            //if (SessionHandler.User != null)
-            //{
-            //    var user = SessionHandler.User;
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-            string tukhoa1 = tukhoa;
-            ViewBag.tukhoa = tukhoa1;
-            List<Loai> listloai = db.Loais.Where(n => n.TenLoai.Contains(tukhoa)).ToList();
-            // phân trang
-            int pagenumber = (page ?? 1);
-            int pagesize = 10;
-            //ViewBag.ThongBao = "Đã tìm thấy" + listnguoidung.Count + "kết quả";
-            return View(listloai.OrderBy(n => n.MaLoai).ToPagedList(pagenumber, pagesize));
-        }
+        //[HttpPost]
+        //public ActionResult timkiemloai(FormCollection f, int? page)
+        //{
+        //    //if (SessionHandler.User != null)
+        //    //{
+        //    //    var user = SessionHandler.User;
+        //    //}
+        //    //else
+        //    //{
+        //    //    return RedirectToAction("Login", "Account");
+        //    //}
+        //    string tukhoa = f["txttimkiem"].ToString();
+        //    ViewBag.tukhoa = tukhoa;
+        //    List<Loai> listloai = db.Loais.Where(n => n.TenLoai.Contains(tukhoa)).ToList();
+        //    // phân trang
+        //    int pagenumber = (page ?? 1);
+        //    int pagesize = 10;
+        //    //if (listnguoidung.Count == 0)
+        //    //{
+        //    //    ViewBag.ThongBao = "Không tìm thấy bản ghi phù hợp";
+        //    return View(listloai.OrderBy(n => n.MaLoai).ToPagedList(pagenumber, pagesize));
+        //    //}
+        //    //ViewBag.ThongBao = "Đã tìm thấy" + "    " + listnguoidung.Count + "kết quả";
+        //    //return View(listnguoidung.OrderBy(n => n.MaNguoiDung).ToPagedList(pagenumber, pagesize));
+        //}
+        //[HttpGet]
+        //public ActionResult timkiemloai(string tukhoa, int? page)
+        //{
+        //    //if (SessionHandler.User != null)
+        //    //{
+        //    //    var user = SessionHandler.User;
+        //    //}
+        //    //else
+        //    //{
+        //    //    return RedirectToAction("Login", "Account");
+        //    //}
+        //    string tukhoa1 = tukhoa;
+        //    ViewBag.tukhoa = tukhoa1;
+        //    List<Loai> listloai = db.Loais.Where(n => n.TenLoai.Contains(tukhoa)).ToList();
+        //    // phân trang
+        //    int pagenumber = (page ?? 1);
+        //    int pagesize = 10;
+        //    //ViewBag.ThongBao = "Đã tìm thấy" + listnguoidung.Count + "kết quả";
+        //    return View(listloai.OrderBy(n => n.MaLoai).ToPagedList(pagenumber, pagesize));
+        //}
 
       
     }

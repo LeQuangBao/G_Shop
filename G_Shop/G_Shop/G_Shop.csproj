@@ -173,6 +173,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiDTO.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungDTO.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\CTHD.cs" />
