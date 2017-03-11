@@ -134,18 +134,18 @@ namespace G_Shop.Areas.Admin.Controllers
             //return View("Index", model);
         }
         [HttpPost]
-        public JsonResult themnguoidung(NguoiDungDTO model)
+        public JsonResult themnguoidung(string tendangnhap, string sodienthoai,string matkhau, string gioitinh, string ngaysinh, string email, string vaitro)
         {
            // try
            // {
                 NguoiDung nd = new NguoiDung();
-                nd.Email = model.Email;
-                nd.MatKhau = model.MatKhau ;
-                nd.TenDangNhap = model.TenDangNhap;
-                nd.SoDienThoai = model.SoDienThoai;
-                nd.VaiTro = model.VaiTro;
-                nd.NgaySinh = Convert.ToDateTime(model.NgaySinh);
-                nd.GioiTinh = model.GioiTinh;
+                nd.Email = email;
+                nd.MatKhau = matkhau ;
+                nd.TenDangNhap = tendangnhap;
+                nd.SoDienThoai = sodienthoai;
+                nd.VaiTro = vaitro;
+                nd.NgaySinh = Convert.ToDateTime(ngaysinh);
+                nd.GioiTinh = gioitinh;
                 db.NguoiDungs.Add(nd);
                 db.SaveChanges();
                 return Json("ok");

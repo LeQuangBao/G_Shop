@@ -24,14 +24,14 @@ namespace G_Shop.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult themloai(LoaiDTO loai)
+        public JsonResult themloai(string tenloai, string mota)
         {
             try
             {
-                var loai1 = new Loai();
-                loai.TenLoai = loai.TenLoai;
-                loai.MoTa = loai.MoTa;
-                db.Loais.Add(loai1);
+                var loai = new Loai();
+                loai.TenLoai = tenloai;
+                loai.MoTa =mota ;
+                db.Loais.Add(loai);
                 db.SaveChanges();
                 return Json("ok",JsonRequestBehavior.AllowGet);
 

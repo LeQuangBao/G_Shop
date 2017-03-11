@@ -53,36 +53,61 @@
          //Create building item
          $scope.them = function () {
            
-                 var fd = new FormData();
-                 if ($scope.add.$valid) {
+                 //var fd = new FormData();
+                 //if ($scope.add.$valid) {
                      // mact = document.getElementById("MaCT").value;
                      //console.log(mact);
-                     var tendangnhap = document.getElementById("tendangnhap").value;
+                 var tendangnhap = document.getElementById("tendangnhap").value;
+                 var sodienthoai = document.getElementById("sodienthoai").value;
                      var matkhau = document.getElementById("matkhau").value;
                      var gioitinh = document.getElementById("gioitinh").value;
                      var ngaysinh = document.getElementById("ngaysinh").value;
                      var email = document.getElementById("email").value;
                      var vaitro = document.getElementById("vaitro").value;
-                      fd.append("TenDangNhap", tendangnhap);
-                      fd.append("MatKhau", matkhau);
-                      fd.append("GioiTinh", gioitinh);
-                      fd.append("NgaySinh", ngaysinh);
-                      fd.append("Email", email);
-                      fd.append("VaiTro", vaitro);
-                      $http.post('/User/themnguoidung', fd, {
-                            transformRequest: angular.identity,
-                            headers: { 'Content-Type': undefined }
-                             })
-                               .then(function (result) {
-                                   if (result.data == "ok") {
-                                       alert("Thêm thành công");
-                                       location.reload();
-                                   } else {
-                                       alert("Xảy ra lỗi");
+                      //fd.append("TenDangNhap", tendangnhap);
+                      //fd.append("MatKhau", matkhau);
+                      //fd.append("GioiTinh", gioitinh);
+                      //fd.append("NgaySinh", ngaysinh);
+                      //fd.append("Email", email);
+                      //fd.append("VaiTro", vaitro);
+                      //$http.post('/User/themnguoidung', fd, {
+                      //      transformRequest: angular.identity,
+                      //      headers: { 'Content-Type': undefined }
+                      //       })
+                      //         .then(function (result) {
+                      //             if (result.data == "ok") {
+                      //                 alert("Thêm thành công");
+                      //                 location.reload();
+                      //             } else {
+                      //                 alert("Xảy ra lỗi");
 
-                                   }
-                               });               
-                 };
+                      //             }
+                      //         }); 
+                     $http({
+                         method: "post",
+                         url: "/User/themnguoidung",
+                         data: 
+                             {
+                                 tendangnhap: tendangnhap,
+                                 email:email,
+                                 matkhau: matkhau,
+                                 gioitinh: gioitinh,
+                                 ngaysinh: ngaysinh,
+                                 vaitro: vaitro,
+                                 sodienthoai:sodienthoai
+                             },
+                         dataType: "json",
+                     })
+                       .then(function (result) {
+                           if (result.data == "ok") {
+                               alert("Thêm thành công");
+                               location.reload();
+                           } else {
+                               alert("Xảy ra lỗi");
+
+                           }
+                       });
+                 //};
          };
          //edit building item
          $scope.capnhat = function () {
@@ -186,7 +211,7 @@
                     <h4 class="modal-title" id="myModalLabel">Thêm người dùng</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="add" name="add" class="form-horizontal" role="form" method="post">
+                    <form @*id="add" name="add"*@ class="form-horizontal" role="form" method="post">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                 Tên đăng nhập <span class="required">*</span>

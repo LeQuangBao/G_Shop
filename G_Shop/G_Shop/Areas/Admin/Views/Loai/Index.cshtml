@@ -7,6 +7,7 @@
 <script src="~/Areas/Admin/Script/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
 <link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
+
 <script>
     angular.module('postApp', ['ui.bootstrap'])
      .controller('postController', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
@@ -51,27 +52,33 @@
          //Create building item
          $scope.them = function () {
                  var fd = new FormData();
-                 if ($scope.add.$valid) {
+                 //if ($scope.add.$valid) {
                      // mact = document.getElementById("MaCT").value;
                      //console.log(mact);
-                     var tendangnhap = document.getElementById("tenloai").value;
-                     var matkhau = document.getElementById("mota").value;    
-                      fd.append("TenLoai", tendangnhap);
-                      fd.append("MoTa", matkhau);
-                      $http.post('/Loai/themloai', fd, {
-                            transformRequest: angular.identity,
-                            headers: { 'Content-Type': undefined }
-                             })
-                               .then(function (result) {
-                                   if (result.data == "ok") {
-                                       alert("Thêm thành công");
-                                       location.reload();
-                                   } else {
-                                       alert("Xảy ra lỗi");
+                 var tenloai = document.getElementById("tenloai").value;
+                 var mota = document.getElementById("mota").value;
+                     //var matkhau = $scope.mota;
+                      fd.append("TenLoai", tenloai);
+                      fd.append("MoTa", mota);
+                      $http({
+                          method: "post",
+                          url: "/Loai/themloai",
+                          data: {
+                              TenLoai:tenloai,
+                              MoTa:mota
+                          },
+                          dataType: "json",
+                      })
+                 .then(function (result) {
+                     if (result.data == "ok") {
+                         alert("Lưu thành công");
+                         location.reload();
+                     } else {
+                         alert("Xảy ra lỗi");
 
-                                   }
-                               });
-                 };
+                     }
+                 });
+                 //};
          };
          //edit building item
          $scope.capnhat = function () {
@@ -95,40 +102,7 @@
 
      }]);
 </script>
-@*<script>
-    $(document).ready(function () {
-        $('#them').on('click', function () {
-            var tenloai = $("#tenloai").val();
-            var mota = $("#mota").val();
-            console.log(tenloai);
-            $.ajax({
-                type: "POST",
-                url: '/Loai/themloai',
-                data: {
-                    tenloai: tenloai,
-                    mota: mota,
-                   
-                },
-                cache: false,
-                dataType: "json",
-                success: function (result) {
-                    if (result == "ok") {
-                        alert("Thêm thành công");
-                        setTimeout(function () {
-                            location.reload();
-                        }, 2000);
-                    }
 
-
-                },
-                error: function (err) {
-                    console.log(err.status + " - " + err.statusText);
-                }
-            });
-        });
-
-    });
-</script>*@
 
 <section ng-app="postApp" ng-controller="postController">
     <div class="col-lg-12">
@@ -190,13 +164,13 @@
                     <h4 class="modal-title" id="myModalLabel">Thêm loài</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="add" name="add" class="form-horizontal" role="form" method="post">
+                    <form @*id="add" name="add"*@ class="form-horizontal" role="form" method="post">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                 Tên loài <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="tenloai" name="tenloai" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="tenloai" ng-model="name" name="tenloai" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="form-group">
@@ -204,7 +178,7 @@
                                 Mô tả <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="mota" name="mota" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="mota" name="mota" ng-model="mota" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -213,7 +187,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" id="them" ng-click="them()">Lưu</button>
+                    <button type="button" class="btn btn-primary"  ng-click="them()">Lưu</button>
                 </div>
             </div>
         </div>
@@ -227,7 +201,7 @@
                     <h4 class="modal-title" id="myModalLabel">Sửa loài</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="add" name="add" class="form-horizontal" role="form" method="post">
+                    <form @*id="edit" name="edit"*@ class="form-horizontal" role="form" method="post">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                 Tên loài <span class="required">*</span>
