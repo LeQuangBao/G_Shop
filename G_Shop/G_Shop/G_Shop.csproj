@@ -430,6 +430,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Order\Detail.cshtml" />
+    <Content Include="Views\Shared\_LayoutNotcate.cshtml" />
+    <Content Include="Views\Account\editprofile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\" />

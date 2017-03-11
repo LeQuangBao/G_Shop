@@ -79,6 +79,20 @@ namespace G_Shop.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
+        public ActionResult editprofile()
+        {
+            var user = Session ["user"] as NguoiDung;
+            var model = db.NguoiDungs.Find(user.MaNguoiDung);
+            return View(model);
+        }
+        public ActionResult sua(NguoiDung model)
+        {
+            NguoiDung nd = new NguoiDung();
+            nd.Email = model.Email;
+            nd.GioiTinh = model.GioiTinh;
+            nd.MatKhau = model.MatKhau;
+            return RedirectToAction("Index", "Home");
+        }
 
 
     }
