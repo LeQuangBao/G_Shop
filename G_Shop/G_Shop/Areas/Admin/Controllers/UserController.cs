@@ -116,7 +116,7 @@ namespace G_Shop.Areas.Admin.Controllers
            // {
              
                 NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
-                nd.TenDangNhap = model.TenDangNhap;
+                //nd.TenDangNhap = model.TenDangNhap;
                 nd.MatKhau = model.MatKhau;
                 nd.Email = model.Email;
                 nd.SoDienThoai = model.SoDienThoai;
