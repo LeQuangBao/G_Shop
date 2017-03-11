@@ -201,6 +201,9 @@ namespace G_Shop.Areas.Admin.Controllers
         public ActionResult HoaDon()
         {
             var model = new AdminDAO().GetAllHoaDon();
+            var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon);
+            foreach (var ngdung in nguoidung)
+                ViewBag.TenNguoiDung = ngdung.TenDangNhap;
             return View(model);
         }   
 
@@ -230,6 +233,8 @@ namespace G_Shop.Areas.Admin.Controllers
             string ngay_bd = Request.Form["ngay_bd"];
             string ngay_kt = Request.Form["ngay_kt"];
             var model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt));
+            var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon);
+            ViewBag.TenNguoiDung = nguoidung[0].TenDangNhap;
             return View(model);
         }
       

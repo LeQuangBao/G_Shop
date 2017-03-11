@@ -78,9 +78,10 @@
                 {
                     <input type="hidden" name="mahoadon" value="@ViewBag.MaHD" />
                     <select name="tinhtrang" class="form-control" id="selTinhTrang">
-                        <option value="Chờ giao hàng">Chờ giao hàng</option>
-                        <option value="Hoàn thành">Hoàn thành</option>
-                        <option value="Hủy">Hủy</option>
+                        <option value="Mới đặt hàng">Mới đặt hàng</option>
+                        <option value="Đã xác nhận">Đã xác nhận</option>
+                        <option value="Giao hàng thành công">Giao hàng thành công</option>
+                        <option value="Thất bại">Thất bại</option>
                     </select>
                     <button id="btnSubmit" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
                 }
@@ -113,7 +114,7 @@
 </div>
 <script>
     $(function () {
-        if ($("#enable").text() == 'Hoàn thành' || $("#enable").text() == 'Hủy')
+        if ($("#enable").text() == 'Giao hàng thành công' || $("#enable").text() == 'Thất bại')
             $("#btnEnable").hide();
         $("#selTinhTrang").hide();
         $("#btnSubmit").hide();
