@@ -11,7 +11,8 @@ namespace G_Shop
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.elevatezoom.js",
-                        "~/Scripts/moment.min.js"));
+                        "~/Scripts/moment.min.js",
+                        "~/Scripts/bootstrap-datetimepicker.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -27,8 +28,11 @@ namespace G_Shop
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-datetimepicker.min.css",
                       "~/Content/site.css",
-                      "~/Content/shop-homepage.css"));
+                      "~/Content/shop-homepage.css",
+                      "~/Content/jquery-ui.theme.min.css",
+                      "~/Content/jquery-ui.structure.min.css"));
         }
     }
 }
