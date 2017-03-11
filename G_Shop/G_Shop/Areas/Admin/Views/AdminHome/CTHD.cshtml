@@ -20,7 +20,7 @@
                 Ngày giao hàng:
             </dt>
             <dd>
-                @Html.FormatValue(ViewBag.NgayGiaoHang,"{0:dd-MM-yyyy}")
+                @Html.FormatValue(ViewBag.NgayGiaoHang, "{0:dd/MM/yyyy}")
             </dd>
             <dt>
                 Địa chỉ:
@@ -33,6 +33,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Sản phẩm</th>
                     <th>
                         Giá
@@ -41,10 +42,11 @@
                 </tr>
             </thead>
             <tbody>
-
+                @{int i = 0; }
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@(++i)</td>
                         <td>
                             @item.TenCaThe
                         </td>
@@ -55,6 +57,7 @@
                     </tr>
                 }
                 <tr>
+                    <td></td>
                     <td align="right"><strong>Tổng tiền:</strong></td>
                     <td><strong>@Html.FormatValue(ViewBag.TongTien, "{0:c}")</strong></td>
                 </tr>
