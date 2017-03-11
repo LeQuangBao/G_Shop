@@ -4,23 +4,26 @@
     Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
 }
 
-<h2>Danh sách đơn hàng</h2>
+<h2>Lịch sử đặt hàng</h2>
 
 <table class="table">
     <tr>
+        <th>STT</th>
         <th>Mã hóa đơn</th>
         <th>Ngày mua</th>
         <th>Tổng tiền</th>
-        <th>Khách hàng</th>
+       
         <th></th>
     </tr>
+@{ int i = 0; }
     @foreach (var o in Model)
     {
         <tr>
+            <td>@(++i)</td>
             <td>@o.MaHoaDon</td>
-            <td>@Html.FormatValue(o.NgayMua, "{0:MM/dd/yyyy}")</td>
+            <td>@Html.FormatValue(o.NgayMua, "{0:dd/MM/yyyy}")</td>
             <td>@Html.FormatValue(o.TongTien, "{0:c}")</td>
-            <td>@o.NguoiDung.TenDangNhap</td>
+            
             <td>
                 <a href="/Order/Detail/@o.MaHoaDon">Chi tiết</a>
             </td>

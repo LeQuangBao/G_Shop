@@ -13,7 +13,7 @@
         <button class="btn btn-success" data-toggle="modal" data-target="#ThemCaThe"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
     </p>
     <table class="table table-striped table-bordered table-hover">
-        <thead>
+        <thead>+
             <tr>
                 <th>STT</th>
                 <th>
@@ -55,7 +55,7 @@
                         @Html.DisplayFor(modelItem => item.MoTa)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NgaySinh)
+                        @Html.FormatValue(item.NgaySinh, "{0:dd/MM/yyyy}")
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.GiaBan)

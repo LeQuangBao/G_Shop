@@ -19,7 +19,7 @@
     @Html.HiddenFor(m => m.TongTien, new { @class = "form-control" })
     <br />
     <label>Ngày đặt hàng:</label>
-    @Html.DisplayFor(m => m.NgayMua, "{dd/MM/yyyy}", new { @class = "form-control" })
+    @Html.FormatValue(Model.NgayMua, "{0:dd/MM/yyyy}")
     <br />
     <br />
     <table class="table table-hover table-condensed">

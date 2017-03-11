@@ -69,7 +69,7 @@ namespace G_Shop.DAO
                 else
                     tuoi=ngaytuoi.ElapsedMonths.ToString()+" tháng "+ ngaytuoi.ElapsedDays.ToString() + " ngày";
             else
-                tuoi=ngaytuoi.ElapsedYears.ToString()+ " tuổi"+ngaytuoi.ElapsedMonths.ToString() + " tháng " + ngaytuoi.ElapsedDays.ToString() + " ngày";
+                tuoi=ngaytuoi.ElapsedYears.ToString()+ " tuổi "+ngaytuoi.ElapsedMonths.ToString() + " tháng " + ngaytuoi.ElapsedDays.ToString() + " ngày";
             return tuoi;
         }
 
