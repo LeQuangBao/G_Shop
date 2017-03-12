@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1" style="margin-top:10px">
                 <div class="row">
                     @using(Html.BeginForm("Tim", "Home", FormMethod.Get)) {
-                        <div class="col-md-offset-3 col-md-3">
+                        <div class="col-md-offset-2 col-md-3">
                             @Html.TextBox("ten", "", new { placeholder = "Tìm kiếm", @class = "form-control" })
                         </div>
                         <div class="col-md-1">
@@ -49,7 +49,7 @@
                                 Chào, @ViewBag.tennguoidung &nbsp; &nbsp;
                                 <span><a href="/Order/List" style="color:white">Hóa đơn</a></span>&nbsp; &nbsp;
                                 <span><a href="/Account/Logoff" style="color:white">Đăng xuất</a></span>&nbsp; &nbsp;
-                                <span><a href="/Cart/Index" style="color:white">Giỏ hàng</a></span>
+                                <span><a href="/Cart/Index" style="color:white">Giỏ hàng</a></span>&nbsp; &nbsp;
                                 <span><a href="/Account/editprofile" style="color:white">Sửa thông tin</a></span>
                             </p>
                         }
