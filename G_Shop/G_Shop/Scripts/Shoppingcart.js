@@ -1,15 +1,18 @@
 ﻿$(function () {
     $(".add-to-cart").click(function () {
         var id = $(this).attr("data-id");
+        if (!$(this).hasClass("active")) {
+
         $(this).addClass("btn btn-success active");
-        $(this).after('<h2 style="display:inline"><label class="label label-success"><i class="glyphicon glyphicon-ok"><i/></span></h2>')
+        //$(this).after('<h2 style="display:inline"><label class="label label-success"><i class="glyphicon glyphicon-ok"><i/></span></h2>')
+        $(this).after('<label class="btn btn-lg btn-success alertSuccess"><i class="glyphicon glyphicon-ok"><i/></span>')
+        }
+        
         $.ajax({
             url: "/Cart/Add",
             data: { id: id },
             success: function (response) {
                 //alert("Thêm sản phẩm thành công.");
-
-
             }
 
         });
