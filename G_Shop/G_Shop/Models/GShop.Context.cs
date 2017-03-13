@@ -13,10 +13,17 @@ namespace G_Shop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
+<<<<<<< HEAD:G_Shop/G_Shop/Models/GShop.Context.cs
     public partial class GShopEntities2 : DbContext
     {
         public GShopEntities2()
             : base("name=GShopEntities2")
+=======
+    public partial class GShopEntities1 : DbContext
+    {
+        public GShopEntities1()
+            : base("name=GShopEntities3")
+>>>>>>> parent of f6eb24b... Revert "change name of "context" to "GShopEntities1"":G_Shop/G_Shop/Models/Model.Context.cs
         {
         }
     
