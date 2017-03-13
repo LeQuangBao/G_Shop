@@ -128,7 +128,7 @@
 
 
                 <tr>
-                    <th>Mã loài</th>
+                    <th>STT</th>
                     <th>Tên loài</th>
                     <th>Mô tả</th>
                     <th>Điều khiển</th>
@@ -137,7 +137,8 @@
                 <tbody>
                     <!--                                    bắt đầu vòng lặp-->
                     <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {Name:data_search} | limitTo:10">
-                        <td>{{data.MaLoai}}</td>
+                        @*<td>{{data.MaLoai}}</td>*@
+                        <td>{{i + 1}}</td>
                         <td>{{data.TenLoai}}</td>
                         <td>{{data.MoTa}}</td>
       

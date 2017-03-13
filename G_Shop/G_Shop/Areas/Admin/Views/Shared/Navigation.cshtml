@@ -15,11 +15,11 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    @*<li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Người dùng</a>
-                    </li>*@
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Loài <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="/Admin/Loai"><i class="fa fa-fw fa-table"></i> Loài</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Cá thể <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             @foreach (var item in Model)
                             {
@@ -33,7 +33,7 @@
                         <a href="/Admin/AdminHome/HoaDon"><i class="fa fa-fw fa-table"></i> Hóa đơn</a>
                     </li>
                      <li>
-                         <a href="/Admin/User/Index"><i class="fa fa-fw fa-table"></i>Người dùng</a>
+                         <a href="/Admin/User/Index"><i class="fa fa-fw fa-table"></i> Người dùng</a>
                      </li>
     @*<li>
         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
