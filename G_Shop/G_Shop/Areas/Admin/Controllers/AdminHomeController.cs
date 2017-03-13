@@ -200,12 +200,12 @@ namespace G_Shop.Areas.Admin.Controllers
             return RedirectToAction("CaThe",new { MaLoai=cathe.MaLoai});
         }
      
-        public ActionResult HoaDon()
+        public ActionResult HoaDon(int? i) 
         {
-            var model = new AdminDAO().GetAllHoaDon();
-            var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon);
-            foreach (var ngdung in nguoidung)
-                ViewBag.TenNguoiDung = ngdung.TenDangNhap;
+            var model = new AdminDAO().GetAllHoaDon(i); 
+            if(model.Count>0)
+                ViewBag.TenNguoiDung = (new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon))[0].TenDangNhap;
+            ViewBag.tinhtrang = i;
             return View(model);
         }   
 
@@ -248,5 +248,12 @@ namespace G_Shop.Areas.Admin.Controllers
             int? tongtien=new AdminDAO().CapNhatCTHD(macathe, mahoadon);
             return Json(new {tong= tongtien}, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult LocTinhTrangHD(int tinhtrang)
+        {
+            return RedirectToAction("HoaDon","AdminHome", new { i =tinhtrang });
+        }
+
     }
 }

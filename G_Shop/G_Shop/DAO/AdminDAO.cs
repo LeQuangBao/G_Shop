@@ -52,9 +52,24 @@ namespace G_Shop.DAO
             db.SaveChanges();
         }
 
-        public List<HoaDon> GetAllHoaDon()
+        public List<HoaDon> GetAllHoaDon(int? i) 
         {
-            return db.HoaDons.ToList();
+            List<HoaDon> model=new List<HoaDon>();
+            if (i == null)
+                model = db.HoaDons.OrderByDescending(x => x.NgayMua).ToList();
+            else  //Biến i kiểm tra điều kiện lọc hóa đơn theo tình trạng
+            {
+                if(i==1)
+                    model=db.HoaDons.Where(x=>x.TinhTrang=="Mới đặt hàng").OrderByDescending(x => x.NgayMua).ToList();
+                if (i == 2)
+                    model=db.HoaDons.Where(x => x.TinhTrang == "Đã xác nhận").OrderByDescending(x => x.NgayMua).ToList();
+                if (i == 3)
+                    model=db.HoaDons.Where(x => x.TinhTrang == "Giao hàng thành công").OrderByDescending(x => x.NgayMua).ToList();
+                if (i == 4)
+                    model=db.HoaDons.Where(x => x.TinhTrang == "Thất bại").OrderByDescending(x => x.NgayMua).ToList();
+            }
+            
+            return model; 
         }
 
         public List<CTHD> GetCTHD_MaHD(int MaHD)
