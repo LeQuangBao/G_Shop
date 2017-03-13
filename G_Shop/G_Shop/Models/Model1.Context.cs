@@ -17,6 +17,7 @@ namespace G_Shop.Models
     {
         public GShopEntities1()
             : base("name=GShopEntities3")
+
         {
         }
     
