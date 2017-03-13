@@ -175,6 +175,8 @@
     <Compile Include="Areas\Admin\Controllers\LoaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiDTO.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungDTO.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportInfo.cs" />
+    <Compile Include="Areas\Admin\Controllers\RevenueController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\CTHD.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
@@ -438,6 +440,7 @@
     <Content Include="Views\Account\editprofile.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Revenue\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="fonts\font-awesome\" />
   </ItemGroup>
