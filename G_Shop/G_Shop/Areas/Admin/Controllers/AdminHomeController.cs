@@ -213,12 +213,8 @@ namespace G_Shop.Areas.Admin.Controllers
             ViewBag.MaHD = MaHD;
             var hoadon = new AdminDAO().GetHoaDon_MaHD(MaHD);
             var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(MaHD);
-            
-            foreach(var ngdung in nguoidung)
-            {
-                ViewBag.TenNguoiDung = ngdung.TenDangNhap;
-                ViewBag.SDT = ngdung.SoDienThoai;
-            }          
+            ViewBag.TenNguoiDung = nguoidung[0].TenDangNhap;
+            ViewBag.SDT = nguoidung[0].SoDienThoai;
             ViewBag.NgayLap = hoadon.NgayMua;
             ViewBag.TongTien = hoadon.TongTien;
             ViewBag.TinhTrang = hoadon.TinhTrang;
@@ -243,6 +239,12 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             new AdminDAO().SuaTinhTrang(mahoadon, tinhtrang);
             return RedirectToAction("CTHD", "AdminHome",new { MaHD = mahoadon });
+        }
+
+        public ActionResult CapNhatCTHD(int macathe, int mahoadon)
+        {
+            int? tongtien=new AdminDAO().CapNhatCTHD(macathe, mahoadon);
+            return Json(new {tong= tongtien}, JsonRequestBehavior.AllowGet);
         }
     }
 }

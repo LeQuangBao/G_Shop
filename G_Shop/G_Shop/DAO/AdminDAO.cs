@@ -68,12 +68,14 @@ namespace G_Shop.DAO
                          {
                              macthd = cthd.MaChiTietHoaDon,
                              mahd = cthd.MaHoaDon,
+                             macathe=ct.MaCaThe,
                              tenct = ct.TenCaThe,
                              gia = ct.GiaBan
                          }).AsEnumerable().Select(x => new CTHD()
                          {
                              MaCTHD = x.macthd,
                              MaHD = x.mahd,
+                             MaCaThe=x.macathe,
                              TenCaThe = x.tenct,
                              Gia = x.gia
                          }).ToList();
@@ -114,5 +116,20 @@ namespace G_Shop.DAO
             model.TinhTrang = TinhTrang;
             db.SaveChanges();
         }              
+
+        public int? CapNhatCTHD(int macathe, int mahoadon)
+        {
+            int? tongtien;
+            var cthd = db.ChiTietHoaDons.Where(x=>x.MaCaThe==macathe && x.MaHoaDon==mahoadon).First();
+            db.ChiTietHoaDons.Remove(cthd);
+            var hoadon = db.HoaDons.Find(mahoadon);
+            int? gia = db.CaThes.Find(macathe).GiaBan;
+            tongtien = hoadon.TongTien - gia;
+            hoadon.TongTien=tongtien;
+            db.SaveChanges();
+            return tongtien;
+        }
+
+        
     }
 }
