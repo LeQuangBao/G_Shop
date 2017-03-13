@@ -159,6 +159,7 @@ namespace G_Shop.Areas.Admin.Controllers
         public ActionResult Them(CaThe model)
         {
             model.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
+            model.Video = Request.Form["video"];
             if (Session["fileUpload"] != null)
             {
                 string _fileName;
@@ -191,6 +192,7 @@ namespace G_Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult SuaCaThe(CaThe cathe)
         {
+            cathe.Video = Request.Form["video"];
             cathe.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
             string tinhtrang = Request.Form["tinhtrang"];
             cathe.TinhTrang = tinhtrang;

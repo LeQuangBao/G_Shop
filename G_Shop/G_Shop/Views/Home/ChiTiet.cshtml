@@ -12,17 +12,19 @@
     </div>
     <div id="gallery_09">
         @{ string temp = Model.HinhAnh;
-            for (int i = 0; i < 4; i++)
-            {
-                if (temp.IndexOf("|") < 0) { break; }
+            for(int i = 0; i < 4; i++) {
+                if(temp.IndexOf("|") < 0) { break; }
                 <a href="#" data-image="/assets/client/images/@(temp.Substring(0, temp.IndexOf("|")))">
                     <img class="gal_detail" id="img_01" src="~/assets/client/images/@(temp.Substring(0, temp.IndexOf("|")))" />
                 </a>
                 temp = temp.Substring(temp.IndexOf("|") + 1);
             }
         }
+    <video width="320" height="240" controls>
+        <source src="~/assets/client/videos/@Model.Video" />
+        Trình duyệt của bạn không hỗ trợ thẻ video, vui lòng nâng cấp trình duyệt.
+    </video>
     </div>
-
 </div>
 <div class="col-md-6">
     <dl class="dl-horizontal">
@@ -53,7 +55,7 @@
         </dd>
         <dt>
 
-            Tuổi: 
+            Tuổi:
         </dt>
         <dd>
             @ViewBag.TuoiCaThe
@@ -62,11 +64,9 @@
 
         </dt>
         <dd>
-            
 
-            @if (Session["user"] != null && Model.TinhTrang == "Sẵn bán")
 
-            {
+            @if(Session["user"] != null && Model.TinhTrang == "Sẵn bán") {
                 <button class="add-to-cart btn-lg" data-id="@Model.MaCaThe">
                     <span class="glyphicon glyphicon-shopping-cart">
 
@@ -78,7 +78,7 @@
     </dl>
 </div>
 <script>
-    $("#img_01").elevateZoom({ gallery: 'gallery_09', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true});
+    $("#img_01").elevateZoom({ gallery: 'gallery_09', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true });
     $("#img_01").bind("click", function (e) {
         var ez = $('#img_01').data('elevateZoom');
         $.fancybox(ez.getGalleryList());
