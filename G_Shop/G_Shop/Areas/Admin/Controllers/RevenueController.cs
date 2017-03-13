@@ -42,48 +42,46 @@ namespace G_Shop.Areas.Admin.Controllers
                 {
                     Group = g.Key.TenLoai,
                     Count = g.Sum(p => p.CaThe.Loai.MaLoai),
-                    Total = g.Sum(p => p.CaThe. * p.Quantity),
-                    MinPrice = g.Min(p => p.UnitPrice),
-                    MaxPrice = g.Max(p => p.UnitPrice),
-                    AvgPrice = g.Average(p => p.UnitPrice)
+                    //Total = g.Sum(p => p.CaThe. * p.Quantity),
+                    //MinPrice = g.Min(p => p.UnitPrice),
+                    //MaxPrice = g.Max(p => p.UnitPrice),
+                    //AvgPrice = g.Average(p => p.UnitPrice)
                 });
             ViewBag.Group = "Category";
             return View("Revenue", model);
         }
 
-        public ActionResult BySupplier()
-        {
-            var model = db.OrderDetails.
-                GroupBy(p => p.Product.Supplier)
-                .Select(g => new ReportInfo
-                {
-                    Group = g.Key.Name,
-                    Count = g.Sum(p => p.Quantity),
-                    Total = g.Sum(p => p.UnitPrice * p.Quantity),
-                    MinPrice = g.Min(p => p.UnitPrice),
-                    MaxPrice = g.Max(p => p.UnitPrice),
-                    AvgPrice = g.Average(p => p.UnitPrice)
-                });
-            ViewBag.Group = "Supplier";
-            return View("Revenue", model);
-        }
+        //public ActionResult BySupplier()
+        //{
+        //    var model = db.OrderDetails.
+        //        GroupBy(p => p.Product.Supplier)
+        //        .Select(g => new ReportInfo {
+        //            Group = g.Key.Name,
+        //            Count = g.Sum(p => p.Quantity),
+        //            Total = g.Sum(p => p.UnitPrice * p.Quantity),
+        //            MinPrice = g.Min(p => p.UnitPrice),
+        //            MaxPrice = g.Max(p => p.UnitPrice),
+        //            AvgPrice = g.Average(p => p.UnitPrice)
+        //        });
+        //    ViewBag.Group = "Supplier";
+        //    return View("Revenue", model);
+        //}
 
-        public ActionResult ByCustomer()
-        {
-            var model = db.OrderDetails.
-                GroupBy(p => p.Order.Customer)
-                .Select(g => new ReportInfo
-                {
-                    Group = g.Key.Fullname,
-                    Count = g.Sum(p => p.Quantity),
-                    Total = g.Sum(p => p.UnitPrice * p.Quantity),
-                    MinPrice = g.Min(p => p.UnitPrice),
-                    MaxPrice = g.Max(p => p.UnitPrice),
-                    AvgPrice = g.Average(p => p.UnitPrice)
-                });
-            ViewBag.Group = "Customer";
-            return View("Revenue", model);
-        }
+        //public ActionResult ByCustomer()
+        //{
+        //    var model = db.OrderDetails.
+        //        GroupBy(p => p.Order.Customer)
+        //        .Select(g => new ReportInfo {
+        //            Group = g.Key.Fullname,
+        //            Count = g.Sum(p => p.Quantity),
+        //            Total = g.Sum(p => p.UnitPrice * p.Quantity),
+        //            MinPrice = g.Min(p => p.UnitPrice),
+        //            MaxPrice = g.Max(p => p.UnitPrice),
+        //            AvgPrice = g.Average(p => p.UnitPrice)
+        //        });
+        //    ViewBag.Group = "Customer";
+        //    return View("Revenue", model);
+        //}
 
     }
 }
