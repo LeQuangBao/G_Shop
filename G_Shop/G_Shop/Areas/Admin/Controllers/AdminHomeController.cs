@@ -78,14 +78,16 @@ namespace G_Shop.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult CaThe(int MaLoai)
+        public ActionResult CaThe(int MaLoai, int? i)
         {
             if (Session["Admin"] == null)
                 return View("Login");
             else
             { 
-                var model = new AdminDAO().GetCaThe_MaLoai(MaLoai);
+                var model = new AdminDAO().GetCaThe_MaLoai(MaLoai,i);
                 ViewBag.TenLoai = new AdminDAO().GetTenLoai_MaLoai(MaLoai);
+                ViewBag.MaLoai = MaLoai;
+                ViewBag.tinhtrang = i;
                 return View(model);
             }
         }
@@ -228,11 +230,21 @@ namespace G_Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult HoaDon_Ngay()
         {
+            List<HoaDon> model = new List<HoaDon>();
             string ngay_bd = Request.Form["ngay_bd"];
             string ngay_kt = Request.Form["ngay_kt"];
-            var model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt));
-            var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon);
-            ViewBag.TenNguoiDung = nguoidung[0].TenDangNhap;
+            string i = Request.Form["tinhtrang"];
+            if(i==null)
+                model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt),int.Parse("0"));
+            else
+            { 
+                model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt), int.Parse(i));
+                ViewBag.tinhtrang = i;
+            }
+            if (model.Count>0)
+                ViewBag.TenNguoiDung = (new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon))[0].TenDangNhap;
+            ViewBag.Ngaybd = ngay_bd;
+            ViewBag.Ngaykt = ngay_kt;
             return View(model);
         }
       
@@ -247,12 +259,6 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             int? tongtien=new AdminDAO().CapNhatCTHD(macathe, mahoadon);
             return Json(new {tong= tongtien}, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public ActionResult LocTinhTrangHD(int tinhtrang)
-        {
-            return RedirectToAction("HoaDon","AdminHome", new { i =tinhtrang });
         }
 
     }
