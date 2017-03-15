@@ -15,12 +15,12 @@
                 <div class="row">
                     <label class="control-label" style="float:left;padding-left:350px;">Từ</label>
                     <div class="col-lg-2">
-                        <input type="text" id="ngay_bd" name="ngay_bd" class="form-control custom_datepicker" />
+                        <input type="text" id="ngay_bd" name="ngay_bd" class="form-control custom_datepicker"/>
                     </div>
 
                     <label class="control-label" style="float:left;margin-left:10px;">Đến</label>
                     <div class="col-lg-2">
-                        <input type="text" id="ngay_kt" name="ngay_kt" class="form-control custom_datepicker" />
+                        <input type="text" id="ngay_kt" name="ngay_kt" data-date="" class="form-control custom_datepicker" />
                     </div>
                     <div class="col-lg-1">
                         <button type="submit" id="btnChon" class="btn btn-success">Xem</button>
@@ -29,6 +29,22 @@
             </div>
         </div>
     }
+
+    <br />
+    <div class="col-md-12">
+        <label>Lọc tình trạng hóa đơn: </label>
+        @using (Html.BeginForm("HoaDon_Ngay", "AdminHome", FormMethod.Post, new { @id = "form" }))
+        {
+            <label class="radio-inline"><input type="radio" name="tinhtrang" value="0" />Tất cả</label>
+            <label class="radio-inline"><input type="radio" name="tinhtrang" value="1" />Mới đặt hàng</label>
+            <label class="radio-inline"><input type="radio" name="tinhtrang" value="2" />Đã xác nhận</label>
+            <label class="radio-inline"><input type="radio" name="tinhtrang" value="3" />Giao hàng thành công</label>
+            <label class="radio-inline"><input type="radio" name="tinhtrang" value="4" />Thất bại</label>
+            <input type="hidden" id="ngaybd" name="ngay_bd" value="@ViewBag.Ngaybd"/>
+            <input type="hidden" id="ngaykt" name="ngay_kt" value="@ViewBag.Ngaykt" />
+        }
+    </div>
+
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
@@ -72,3 +88,37 @@
         </tbody>
     </table>
 </div>
+<input type="hidden" name="i" value="@ViewBag.tinhtrang" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".custom_datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
+        $(".custom_datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
+        $(".custom_datepicker").datepicker("option", "showAnim", "slideDown");
+        var ngay1=$("#ngaybd").val();
+        var ngay2=$("#ngaykt").val();
+        $('#ngay_bd').datepicker('setDate',ngay1);
+        $('#ngay_kt').datepicker('setDate', ngay2);
+        var i = $("input[name='i']").val();
+        if (i != null)
+        {
+            if (i == 0)
+                $("input[name='tinhtrang']:eq(0)").prop('checked', true);
+            if (i == 1)
+                $("input[name='tinhtrang']:eq(1)").prop('checked', true);
+            if (i == 2)
+                $("input[name='tinhtrang']:eq(2)").prop('checked', true);
+            if (i == 3)
+                $("input[name='tinhtrang']:eq(3)").prop('checked', true);
+            if (i == 4)
+                $("input[name='tinhtrang']:eq(4)").prop('checked', true);
+        }
+
+
+        $("input[name='tinhtrang']").off('change').on('change', function () {
+            $("#form").submit();
+        });
+    });
+</script>

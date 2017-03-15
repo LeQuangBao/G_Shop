@@ -43,14 +43,16 @@
     <br />
     <div class="col-md-12">
         <label>Lọc tình trạng hóa đơn: </label>
-        @using (Html.BeginForm("LocTinhTrangHD", "AdminHome", FormMethod.Post, new { @id = "form" }))
+        @using (Html.BeginForm("HoaDon", "AdminHome", FormMethod.Get, new { @id = "form" }))
         {
-            <label class="radio-inline"><input type="radio" name="tinhtrang" value="1" />Mới đặt hàng</label>
-            <label class="radio-inline"><input type="radio" name="tinhtrang" value="2" />Đã xác nhận</label>
-            <label class="radio-inline"><input type="radio" name="tinhtrang" value="3" />Giao hàng thành công</label>
-            <label class="radio-inline"><input type="radio" name="tinhtrang" value="4" />Thất bại</label>
+            <label class="radio-inline"><input type="radio" name="i" value="0" />Tất cả</label>
+            <label class="radio-inline"><input type="radio" name="i" value="1" />Mới đặt hàng</label>
+            <label class="radio-inline"><input type="radio" name="i" value="2" />Đã xác nhận</label>
+            <label class="radio-inline"><input type="radio" name="i" value="3" />Giao hàng thành công</label>
+            <label class="radio-inline"><input type="radio" name="i" value="4" />Thất bại</label>
         }
     </div>
+    <br />
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
@@ -96,23 +98,24 @@
         </tbody>
     </table>
 </div>
-<input type="hidden" name="i" value="@ViewBag.tinhtrang"/>
+<input type="hidden" name="tinhtrang" value="@ViewBag.tinhtrang"/>
 <script type="text/javascript">
     $(document).ready(function () {
-        var i = $("input[name='i']").val();
+        var i = $("input[name='tinhtrang']").val();
         if (i != null)
         {
+            if (i == 0)
+                $("input[name='i']:eq(0)").prop('checked', true);
             if (i == 1)
-                $("input[name='tinhtrang']:eq(0)").prop('checked', true);
+                $("input[name='i']:eq(1)").prop('checked', true);
             if (i == 2)
-                $("input[name='tinhtrang']:eq(1)").prop('checked', true);
+                $("input[name='i']:eq(2)").prop('checked', true);
             if (i == 3)
-                $("input[name='tinhtrang']:eq(2)").prop('checked', true);
+                $("input[name='i']:eq(3)").prop('checked', true);
             if (i == 4)
-                $("input[name='tinhtrang']:eq(3)").prop('checked', true);
-        }
-        
-        $("input[name='tinhtrang']").off('change').on('change', function () {
+                $("input[name='i']:eq(4)").prop('checked', true);
+        }        
+        $("input[name='i']").off('change').on('change', function () {
             $("#form").submit();
         });
     });
