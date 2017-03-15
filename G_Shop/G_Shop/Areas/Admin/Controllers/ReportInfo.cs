@@ -1,6 +1,6 @@
 ﻿namespace G_Shop.Areas.Admin.Controllers
 {
-    internal class ReportInfo
+    public class ReportInfo
     {
         public double? AvgPrice { get; set; }
         public int Count { get; set; }

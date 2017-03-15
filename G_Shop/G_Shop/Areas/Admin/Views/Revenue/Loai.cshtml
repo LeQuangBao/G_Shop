@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Loai";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thống kê theo loài</h2>
+@using (Html.BeginForm("Loai", "Revenue"))
+{
+    <div class="form-group">
+        <label>Từ ngày</label>
+        <input type="date" name="ngaybd" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Đến ngày</label>
+        <input type="date" name="ngaykt" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thống kê</button>
+}
+
+
+

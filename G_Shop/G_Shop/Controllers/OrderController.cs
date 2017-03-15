@@ -8,7 +8,7 @@ using G_Shop.DAO;
 
 namespace G_Shop.Controllers {
     public class OrderController : Controller {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities4 db = new GShopEntities4();
         // GET: Order
 
         public ActionResult Checkout() {

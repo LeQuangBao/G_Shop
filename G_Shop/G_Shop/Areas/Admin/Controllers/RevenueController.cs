@@ -9,21 +9,34 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class RevenueController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities4 db = new GShopEntities4();
         // GET: Admin/Revenue
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult thongke()
+        public ActionResult Cathe()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult ByCaThe(string ngaybd, string ngaykt)
+        public ActionResult Loai()
         {
+            return View();
+        }
+        public ActionResult KhachHang()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CaThe(FormCollection form)
+        {
+            string ngaybd = form["ngaybd"];
+            string ngaykt = form["ngaykt"];
+            DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
+            DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
-                Where(p=>p.HoaDon.NgayMua>=Convert.ToDateTime(ngaybd)&&p.HoaDon.NgayMua<=Convert.ToDateTime(ngaykt)).
+                Where(p => p.HoaDon.NgayMua >= ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
                 GroupBy(p => p.CaThe)
                 .Select(g => new ReportInfo
                 {
@@ -37,11 +50,15 @@ namespace G_Shop.Areas.Admin.Controllers
             ViewBag.Group = "Cá thể";
             return View("Index", model);
         }
-
-        public ActionResult ByCategory(string ngaybd, string ngaykt)
+        [HttpPost]
+        public ActionResult Loai(FormCollection form)
         {
+            string ngaybd = form["ngaybd"];
+            string ngaykt = form["ngaykt"];
+            DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
+            DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
-                Where(p => p.HoaDon.NgayMua >= Convert.ToDateTime(ngaybd) && p.HoaDon.NgayMua <= Convert.ToDateTime(ngaykt)).
+                Where(p => p.HoaDon.NgayMua >=ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
                 GroupBy(p => p.CaThe.Loai)
                 .Select(g => new ReportInfo
                 {
@@ -55,12 +72,15 @@ namespace G_Shop.Areas.Admin.Controllers
             ViewBag.Group = "Loài";
             return View("Index", model);
         }
-
-
-        public ActionResult ByCustomer(string ngaybd, string ngaykt)
+        [HttpPost]
+        public ActionResult KhachHang(FormCollection form)
         {
+            string ngaybd = form["ngaybd"];
+            string ngaykt = form["ngaykt"];
+            DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
+            DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
-                Where(p => p.HoaDon.NgayMua >= Convert.ToDateTime(ngaybd) && p.HoaDon.NgayMua <= Convert.ToDateTime(ngaykt)).
+                Where(p => p.HoaDon.NgayMua >=ngaybd1 && p.HoaDon.NgayMua <=ngaykt1).
                 GroupBy(p => p.HoaDon.NguoiDung)
                 .Select(g => new ReportInfo
                 {
@@ -72,7 +92,7 @@ namespace G_Shop.Areas.Admin.Controllers
                     AvgPrice = g.Average(p => p.HoaDon.TongTien)
                 });
             ViewBag.Group = "Khách hàng";
-            return View("Revenue", model);
+            return View("Index", model);
         }
 
     }

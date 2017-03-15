@@ -8,12 +8,13 @@
     <Property Name="MaLoai" Type="int" Nullable="false" />
     <Property Name="TenCaThe" Type="nvarchar" MaxLength="100" />
     <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
-    <Property Name="NgaySinh" Type="date" />
+    <Property Name="NgaySinh" Type="date" Nullable="false" />
     <Property Name="GiaMua" Type="int" />
     <Property Name="GiaBan" Type="int" />
     <Property Name="KhuyenMai" Type="int" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
     <Property Name="HinhAnh" Type="nvarchar" MaxLength="500" />
+    <Property Name="Video" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="ChiTietHoaDon">
     <Key>
@@ -49,11 +50,13 @@
     </Key>
     <Property Name="MaNguoiDung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenDangNhap" Type="nvarchar" MaxLength="500" />
+    <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="500" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="500" />
     <Property Name="NgaySinh" Type="date" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
     <Property Name="VaiTro" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK_CaThe_Loai">

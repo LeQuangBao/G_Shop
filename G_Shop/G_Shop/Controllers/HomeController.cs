@@ -11,7 +11,7 @@ namespace G_Shop.Controllers
 {
     public class HomeController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities4 db = new GShopEntities4();
         public IEnumerable<CaThe> ListAllPageging4(int page, int pagesize)
         {
             //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);

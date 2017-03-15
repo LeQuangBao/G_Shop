@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities1">
+  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities4">
     <EntitySetMapping Name="CaThes">
       <EntityTypeMapping TypeName="GShopModel.CaThe">
         <MappingFragment StoreEntitySet="CaThe">
@@ -14,6 +14,7 @@
           <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -53,11 +54,13 @@
         <MappingFragment StoreEntitySet="NguoiDung">
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
         </MappingFragment>
       </EntityTypeMapping>
