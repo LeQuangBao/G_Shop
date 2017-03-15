@@ -166,6 +166,8 @@ namespace G_Shop.DAO
             int? gia = db.CaThes.Find(macathe).GiaBan;
             tongtien = hoadon.TongTien - gia;
             hoadon.TongTien=tongtien;
+            var cathe = db.CaThes.Find(macathe);
+            cathe.TinhTrang = "Sẵn bán";
             db.SaveChanges();
             return tongtien;
         }
