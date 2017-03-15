@@ -248,7 +248,7 @@
     <Content Include="assets\client\images\images %281%29.jpg" />
     <Content Include="assets\client\images\search.png" />
     <Content Include="assets\client\images\xamkhoi.jpg" />
-    <Content Include="assets\client\videos\Video1.MP4" />
+    <Content Include="assets\client\videos\Video.MP4" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\EntityFramework.dll" />

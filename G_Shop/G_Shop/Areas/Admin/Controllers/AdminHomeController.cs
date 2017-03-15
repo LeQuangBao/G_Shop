@@ -195,13 +195,11 @@ namespace G_Shop.Areas.Admin.Controllers {
         }
 
         [HttpPost]
-<<<<<<< HEAD
+
         public ActionResult HoaDon_Ngay()
         {
             List<HoaDon> model = new List<HoaDon>();
-=======
-        public ActionResult HoaDon_Ngay() {
->>>>>>> origin/master
+
             string ngay_bd = Request.Form["ngay_bd"];
             string ngay_kt = Request.Form["ngay_kt"];
             string i = Request.Form["tinhtrang"];
@@ -230,13 +228,10 @@ namespace G_Shop.Areas.Admin.Controllers {
             return Json(new { tong = tongtien }, JsonRequestBehavior.AllowGet);
         }
 
-<<<<<<< HEAD
-=======
         [HttpPost]
         public ActionResult LocTinhTrangHD(int tinhtrang) {
             return RedirectToAction("HoaDon", "AdminHome", new { i = tinhtrang });
         }
 
->>>>>>> origin/master
     }
 }
