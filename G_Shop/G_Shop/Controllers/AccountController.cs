@@ -60,8 +60,7 @@ namespace G_Shop.Controllers
         [HttpPost]
         public ActionResult Register(NguoiDung model)
         {
-            //var f = Request.Files["upPhoto"];
-            //f.SaveAs(Server.MapPath("~/images/customers/" + f.FileName));
+            model.Email = Request.Form["email"];
             try
             {
                 model.VaiTro = "Khách hàng";

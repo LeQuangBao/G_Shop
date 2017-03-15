@@ -55,7 +55,8 @@
             @foreach(var item in Model)
             {
                 <tr>
-                    <td>@(i = i + 1)
+                    <td>
+                        @(i = i + 1)
                         <input type="hidden" id="getMaLoai" value="@item.MaLoai">
                     </td>
                     <td>
@@ -77,7 +78,10 @@
                         @Html.DisplayFor(modelItem => item.TinhTrang)
                     </td>
                     <td>
+                        <button class="btn btn-primary">
+
                         @Html.ActionLink("Sửa", "SuaCaThe", new { MaLoai = item.MaLoai, MaCaThe = item.MaCaThe})
+                        </button>
                     </td>
                 </tr>
             }

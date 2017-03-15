@@ -130,10 +130,10 @@ namespace G_Shop.Areas.Admin.Controllers {
         [HttpPost]
         public ActionResult Them(CaThe model, HttpPostedFileBase fileVideo) {
             model.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
-            model.Video = fileVideo.FileName;
+            model.Video = DateTime.Now.Ticks + fileVideo.FileName;
             if(fileVideo.ContentLength > 0) {
                 var fileName = Path.GetFileName(fileVideo.FileName);
-                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), fileName);
+                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
                 fileVideo.SaveAs(path);
             }            
             if(Session["fileUpload"] != null) {
@@ -163,8 +163,13 @@ namespace G_Shop.Areas.Admin.Controllers {
         }
 
         [HttpPost]
-        public ActionResult SuaCaThe(CaThe cathe) {
-            cathe.Video = Request.Form["video"];
+        public ActionResult SuaCaThe(CaThe cathe, HttpPostedFileBase fileVideo) {
+            if(fileVideo.ContentLength > 0) {
+                cathe.Video = DateTime.Now.Ticks + fileVideo.FileName;
+                var fileName = Path.GetFileName(fileVideo.FileName);
+                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
+                fileVideo.SaveAs(path);
+            }
             cathe.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
             string tinhtrang = Request.Form["tinhtrang"];
             cathe.TinhTrang = tinhtrang;

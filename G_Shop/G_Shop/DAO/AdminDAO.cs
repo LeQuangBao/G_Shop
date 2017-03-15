@@ -54,13 +54,16 @@ namespace G_Shop.DAO
 
         public void SuaCaThe(CaThe cathe)
         {
-            var model = db.CaThes.Find(cathe.MaCaThe);
+            CaThe model = db.CaThes.Find(cathe.MaCaThe);            
             model.TenCaThe = cathe.TenCaThe;
             model.MoTa = cathe.MoTa;
             model.NgaySinh = cathe.NgaySinh;
             model.GiaBan = cathe.GiaBan;
+            model.GiaMua = cathe.GiaMua;
+            model.KhuyenMai = cathe.KhuyenMai;
             model.TinhTrang = cathe.TinhTrang;
-            //model.HinhAnh = cathe.HinhAnh;
+            model.HinhAnh = cathe.HinhAnh;
+            model.Video = cathe.Video;
             db.SaveChanges();
         }
 
