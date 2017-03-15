@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-                @using (Html.BeginForm("Them", "AdminHome", FormMethod.Post, new { @id = "form", @class = "form-horizontal" }))
+                @using (Html.BeginForm("Them", "AdminHome", FormMethod.Post, new { @id = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
                 {
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="ten">Tên:</label>
@@ -45,9 +45,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="gia">Video:</label>
+                        <label class="control-label col-sm-2">Video:</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" name="video"/>
+                            <input type="file" class="form-control" name="filevideo"/>
                         </div>
                     </div>
                     @*<div class="form-group">
@@ -57,7 +57,6 @@
                             
                         </div>
                     </div>*@
-                }
                 <div class="row">
                     <label class="control-label col-sm-2" for="hinh" >Hình:</label>
                     <div class="col-sm-10">
@@ -68,9 +67,10 @@
                         </div>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-success" id="btnThem"><i class="glyphicon glyphicon-floppy-disk"></i> Thêm</button>
+                }
             </div>              
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" id="btnThem"><i class="glyphicon glyphicon-floppy-disk"></i> Thêm</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>           
         </div>

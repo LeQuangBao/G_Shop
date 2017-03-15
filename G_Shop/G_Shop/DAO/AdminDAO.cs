@@ -19,9 +19,21 @@ namespace G_Shop.DAO
         }
 
         
-        public List<CaThe> GetCaThe_MaLoai(int MaLoai)
+        public List<CaThe> GetCaThe_MaLoai(int MaLoai, int? i)
         {
-            return db.CaThes.Where(x=>x.MaLoai==MaLoai).ToList();
+            List<CaThe> model = new List<CaThe>();
+            if (i == null || i==0)
+                model = db.CaThes.Where(x => x.MaLoai == MaLoai).ToList();
+            else  //Biến i kiểm tra điều kiện lọc hóa đơn theo tình trạng
+            {
+                if (i == 1)
+                    model = db.CaThes.Where(x => x.TinhTrang == "Sẵn bán").ToList();
+                if (i == 2)
+                    model = db.CaThes.Where(x => x.TinhTrang == "Đã bán").ToList();
+                if (i == 3)
+                    model = db.CaThes.Where(x => x.TinhTrang == "Đã mất").ToList();
+            }
+            return model;
         }
         public string GetTenLoai_MaLoai(int MaLoai)
         {
@@ -55,7 +67,7 @@ namespace G_Shop.DAO
         public List<HoaDon> GetAllHoaDon(int? i) 
         {
             List<HoaDon> model=new List<HoaDon>();
-            if (i == null)
+            if (i == 0 || i==null)
                 model = db.HoaDons.OrderByDescending(x => x.NgayMua).ToList();
             else  //Biến i kiểm tra điều kiện lọc hóa đơn theo tình trạng
             {
@@ -68,7 +80,6 @@ namespace G_Shop.DAO
                 if (i == 4)
                     model=db.HoaDons.Where(x => x.TinhTrang == "Thất bại").OrderByDescending(x => x.NgayMua).ToList();
             }
-            
             return model; 
         }
 
@@ -97,9 +108,20 @@ namespace G_Shop.DAO
             return model;
         }
 
-        public List<HoaDon> HoaDon_Ngay(DateTime ngay_bd, DateTime ngay_kt)
+        public List<HoaDon> HoaDon_Ngay(DateTime ngay_bd, DateTime ngay_kt,int i)
         {
-            return db.HoaDons.Where(x=>x.NgayMua>=ngay_bd && x.NgayMua<=ngay_kt).ToList();
+            List<HoaDon> model = new List<HoaDon>();
+            if (i == 0)
+                model=db.HoaDons.Where(x=>x.NgayMua>=ngay_bd && x.NgayMua<=ngay_kt).OrderByDescending(x=>x.NgayMua).ToList();
+            if (i == 1)
+                model = db.HoaDons.Where(x => x.NgayMua >= ngay_bd && x.NgayMua <= ngay_kt && x.TinhTrang == "Mới đặt hàng").OrderByDescending(x => x.NgayMua).ToList();
+            if (i == 2)
+                model = db.HoaDons.Where(x => x.NgayMua >= ngay_bd && x.NgayMua <= ngay_kt && x.TinhTrang == "Đã xác nhận").OrderByDescending(x => x.NgayMua).ToList();
+            if (i == 3)
+                model = db.HoaDons.Where(x => x.NgayMua >= ngay_bd && x.NgayMua <= ngay_kt && x.TinhTrang == "Giao hàng thành công").OrderByDescending(x => x.NgayMua).ToList();
+            if (i == 4)
+                model = db.HoaDons.Where(x => x.NgayMua >= ngay_bd && x.NgayMua <= ngay_kt && x.TinhTrang == "Thất bại").OrderByDescending(x => x.NgayMua).ToList();
+            return model;
         }
 
         public HoaDon GetHoaDon_MaHD(int MaHoaDon)
