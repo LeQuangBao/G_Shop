@@ -4,7 +4,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
 <h2>Thống kê theo  @ViewBag.Group</h2>
+
+<h4>Thống kê từ ngày @ViewBag.ngaybd đến ngày @ViewBag.ngaykt</h4>
 
 <table class="table table-hover">
     <tr>
@@ -38,12 +41,6 @@
           {
             <text>["@Item.Group",  @Item.Total],</text>
           }
-          //['Task', 'Hours per Day'],
-          //['Work',     11],
-          //['Eat',      2],
-          //['Commute',  2],
-          //['Watch TV', 2],
-          //['Sleep',    7]
         ]);
 
         var options = {
