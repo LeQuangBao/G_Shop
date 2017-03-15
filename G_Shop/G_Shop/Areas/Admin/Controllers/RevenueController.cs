@@ -17,14 +17,28 @@ namespace G_Shop.Areas.Admin.Controllers
         }
         public ActionResult Cathe()
         {
+            if(Session["Admin"]==null)
+            {
+                return RedirectToAction("Login", "AdminHome");
+            }
             return View();
         }
         public ActionResult Loai()
         {
+
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "AdminHome");
+            }
             return View();
         }
         public ActionResult KhachHang()
         {
+
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "AdminHome");
+            }
             return View();
         }
 
@@ -33,6 +47,10 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
+            string[] angaybatdau = ngaybd.Split(new Char[] { '-' });
+            string[] angaykethuc = ngaykt.Split(new Char[] { '-' });
+            string ngaybatdau2 = angaybatdau[2] + "/" + angaybatdau[1] + "/" + angaybatdau[0];
+            string ngaykethuc2 = angaykethuc[2] + "/" + angaykethuc[1] + "/" + angaykethuc[0];
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
@@ -47,6 +65,8 @@ namespace G_Shop.Areas.Admin.Controllers
                     MaxPrice = g.Max(p => p.CaThe.GiaBan),
                     AvgPrice = g.Average(p => p.CaThe.GiaBan)
                 });
+            ViewBag.ngaybd = ngaybatdau2;
+            ViewBag.ngaykt = ngaykethuc2;
             ViewBag.Group = "Cá thể";
             return View("Index", model);
         }
@@ -55,6 +75,10 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
+            string[] angaybatdau = ngaybd.Split(new Char[] { '-' });
+            string[] angaykethuc = ngaykt.Split(new Char[] { '-' });
+            string ngaybatdau2 = angaybatdau[2] + "/" + angaybatdau[1] + "/" + angaybatdau[0];
+            string ngaykethuc2 = angaykethuc[2] + "/" + angaykethuc[1] + "/" + angaykethuc[0];
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
@@ -69,6 +93,8 @@ namespace G_Shop.Areas.Admin.Controllers
                     MaxPrice = g.Max(p => p.CaThe.GiaBan),
                     AvgPrice = g.Average(p => p.CaThe.GiaBan)
                 });
+            ViewBag.ngaybd = ngaybatdau2;
+            ViewBag.ngaykt = ngaykethuc2;
             ViewBag.Group = "Loài";
             return View("Index", model);
         }
@@ -77,6 +103,10 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
+            string[] angaybatdau = ngaybd.Split(new Char[] { '-' });
+            string[] angaykethuc = ngaykt.Split(new Char[] { '-' });
+            string ngaybatdau2 = angaybatdau[2] + "/" + angaybatdau[1] + "/" + angaybatdau[0];
+            string ngaykethuc2 = angaykethuc[2] + "/" + angaykethuc[1] + "/" + angaykethuc[0];
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
@@ -91,6 +121,8 @@ namespace G_Shop.Areas.Admin.Controllers
                     MaxPrice = g.Max(p => p.HoaDon.TongTien),
                     AvgPrice = g.Average(p => p.HoaDon.TongTien)
                 });
+            ViewBag.ngaybd = ngaybatdau2;
+            ViewBag.ngaykt = ngaykethuc2;
             ViewBag.Group = "Khách hàng";
             return View("Index", model);
         }
