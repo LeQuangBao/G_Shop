@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thống kê theo  @ViewBag.Group</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>Group</th>
+        <th>Count</th>
+        <th>Total</th>
+        <th>Min Price</th>
+        <th>Min Price</th>
+        <th>Avg Price</th>
+    </tr>
+    @foreach (var Item in Model)
+    {
+        <tr>
+            <td>@Item.Group</td>
+            <td>@Item.Count</td>
+            <td>@Html.FormatValue(Item.Total, "{0:c}")</td>
+            <td>@Html.FormatValue(Item.MinPrice, "{0:c}")</td>
+            <td>@Html.FormatValue(Item.MaxPrice, "{0:c}")</td>
+            <td>@Html.FormatValue(Item.AvgPrice, "{0:c}")</td>
+        </tr>
+    }
+</table>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales'],
+          @foreach (var Item in Model)
+          {
+            <text>["@Item.Group",  @Item.Total],</text>
+          }
+        ]);
+
+        var options = {
+            title: 'Company Performance',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+</script>
+<div id="curve_chart" style="width: 900px; height: 500px"></div>
+

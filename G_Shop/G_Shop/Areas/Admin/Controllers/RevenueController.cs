@@ -15,7 +15,7 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult ByCathe()
+        public ActionResult thongke()
         {
             return View();
         }
