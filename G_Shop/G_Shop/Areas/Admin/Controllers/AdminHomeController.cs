@@ -128,13 +128,14 @@ namespace G_Shop.Areas.Admin.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Them(CaThe model) {
+        public ActionResult Them(CaThe model, HttpPostedFileBase fileVideo) {
             model.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
-            var video = Request.Files["video"];
-            if(video.ContentLength > 0) {
-                model.Video = DateTime.Now.Ticks + video.FileName;
-                video.SaveAs(Server.MapPath("~/assets/videos/" + model.Video));
-            }
+            model.Video = fileVideo.FileName;
+            if(fileVideo.ContentLength > 0) {
+                var fileName = Path.GetFileName(fileVideo.FileName);
+                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), fileName);
+                fileVideo.SaveAs(path);
+            }            
             if(Session["fileUpload"] != null) {
                 string _fileName;
                 string listImages = "";

@@ -19,28 +19,28 @@
          $scope.get_loai = function () {
              $scope.list_loai = [];
              //get building_id form url;
-                 return $http({
-                     method: "GET",
-                     url: "/Admin/Loai/get_allLoai",
-                 })
-                     .then(function (response) {
-                         $scope.list_loai = response.data;
-                         $scope.totalItems = $scope.list_loai.length;
-                         $scope.$watch('currentPage + numPerPage', function () {
-                             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                             , end = begin + $scope.numPerPage;
+             return $http({
+                 method: "GET",
+                 url: "/Admin/Loai/get_allLoai",
+             })
+                 .then(function (response) {
+                     $scope.list_loai = response.data;
+                     $scope.totalItems = $scope.list_loai.length;
+                     $scope.$watch('currentPage + numPerPage', function () {
+                         var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+                         , end = begin + $scope.numPerPage;
 
-                             //$scope.setPage = function (pageNo) {
-                             //    $scope.currentPage = pageNo;
-                             //};
+                         //$scope.setPage = function (pageNo) {
+                         //    $scope.currentPage = pageNo;
+                         //};
 
-                             $scope.filteredTodos = $scope.list_loai.slice(begin, end);
-                         });
-
-                     }, function (response) {
-                         //showing errors
+                         $scope.filteredTodos = $scope.list_loai.slice(begin, end);
                      });
-             };
+
+                 }, function (response) {
+                     //showing errors
+                 });
+         };
          $scope.get_loai();
 
          //array did filter
@@ -51,34 +51,34 @@
 
          //Create building item
          $scope.them = function () {
-                 var fd = new FormData();
-                 //if ($scope.add.$valid) {
-                     // mact = document.getElementById("MaCT").value;
-                     //console.log(mact);
-                 var tenloai = document.getElementById("tenloai").value;
-                 var mota = document.getElementById("mota").value;
-                     //var matkhau = $scope.mota;
-                      fd.append("TenLoai", tenloai);
-                      fd.append("MoTa", mota);
-                      $http({
-                          method: "post",
-                          url: "/Loai/themloai",
-                          data: {
-                              TenLoai:tenloai,
-                              MoTa:mota
-                          },
-                          dataType: "json",
-                      })
-                 .then(function (result) {
-                     if (result.data == "ok") {
-                         alert("Lưu thành công");
-                         location.reload();
-                     } else {
-                         alert("Xảy ra lỗi");
+             var fd = new FormData();
+             //if ($scope.add.$valid) {
+             // mact = document.getElementById("MaCT").value;
+             //console.log(mact);
+             var tenloai = document.getElementById("tenloai").value;
+             var mota = document.getElementById("mota").value;
+             //var matkhau = $scope.mota;
+             fd.append("TenLoai", tenloai);
+             fd.append("MoTa", mota);
+             $http({
+                 method: "post",
+                 url: "/Loai/themloai",
+                 data: {
+                     TenLoai: tenloai,
+                     MoTa: mota
+                 },
+                 dataType: "json",
+             })
+        .then(function (result) {
+            if (result.data == "ok") {
+                alert("Lưu thành công");
+                location.reload();
+            } else {
+                alert("Xảy ra lỗi");
 
-                     }
-                 });
-                 //};
+            }
+        });
+             //};
          };
          //edit building item
          $scope.capnhat = function () {
@@ -101,6 +101,34 @@
          }
 
      }]);
+    //Bảo
+    function searchFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("filter");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    td = tr[i].getElementsByTagName("td")[2];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    }
 </script>
 
 
@@ -112,17 +140,14 @@
                 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_them"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
             </span>
         </h2>
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
-            @*<form action="/Admin/Loai/timkiemloai" method="post">
-                <div style="width:500px" class="input-group col-lg-offset-2">
-                    <input type="text" name="txttimkiem" id="keyword" class="form-control" placeholder="Tìm kiếm..." required>
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit" id="search">Tìm kiếm</button>
-                    </span>
-                </div>
-            </form>*@
-            <input type="text" class="form-control" ng-model="data_search" placeholder="Nhập dữ liệu cần tìm" />
-        </div>
+        <form class="form-inline">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group" style="margin-left:0px">
+                <label>Lọc theo tên hoặc mô tả</label>
+                <input id="filter" type="text" class="form-control" onkeyup="searchFunction()" @*ng-model="data_search"*@ placeholder="" />
+            </div>
+        </form>
+        <br />
+        <br />
         <div role="tabpanel" class="tab-pane" id="list">
             <table id="myTable" class="table table-striped table-bordered table-hover dataTable" role="grid" aria-describedby="myTable_info">
 
@@ -138,10 +163,10 @@
                     <!--                                    bắt đầu vòng lặp-->
                     <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {Name:data_search} | limitTo:10">
                         @*<td>{{data.MaLoai}}</td>*@
-                        <td>{{i + 1}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{data.TenLoai}}</td>
                         <td>{{data.MoTa}}</td>
-      
+
                         <td>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_sua" ng-click="sua(data)">Sửa</button>
                         </td>
@@ -188,7 +213,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary"  ng-click="them()">Lưu</button>
+                    <button type="button" class="btn btn-primary" ng-click="them()">Lưu</button>
                 </div>
             </div>
         </div>
