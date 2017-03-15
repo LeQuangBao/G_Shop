@@ -34,7 +34,7 @@ namespace G_Shop.Controllers {
         [HttpPost]
         public ActionResult Checkout(HoaDon order, FormCollection form) {
             order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"]);
-            order.TinhTrang = "Chờ giao hàng";
+            order.TinhTrang = "Mới đặt hàng";
             db.HoaDons.Add(order); // insert order
             UserDAO userDAO = new UserDAO();
             foreach(var p in ShoppingCart.Cart.Items) {
