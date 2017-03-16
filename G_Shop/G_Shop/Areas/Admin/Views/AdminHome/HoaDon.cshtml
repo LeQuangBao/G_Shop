@@ -67,7 +67,9 @@
                 <th>
                     Tình trạng
                 </th>
-                <th></th>
+                <th>
+                   
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -93,7 +95,10 @@
                             @Html.DisplayFor(m => item.TinhTrang)
                         </td>
                         <td>
-                            @Html.ActionLink("Chi tiết", "CTHD", new { MaHD = item.MaHoaDon })
+                            <button class="btn btn-primary">
+                                @Html.ActionLink("Chi tiết", "CTHD", new { MaHD = item.MaHoaDon }, new { @style = "color:white;" })
+                            </button>
+                            
                         </td>
                     </tr>
                 }
