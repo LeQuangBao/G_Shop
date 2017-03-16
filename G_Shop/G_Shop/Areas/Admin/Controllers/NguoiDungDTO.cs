@@ -13,6 +13,6 @@ namespace G_Shop.Areas.Admin.Controllers
         public string TenDangNhap { get; set; }
         public string VaiTro { get; set; }
         public string TenNguoiDung { get; set; }
-        public string DiaChi { get; internal set; }
+        public string DiaChi { get;  set; }
     }
 }
