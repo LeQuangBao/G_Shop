@@ -72,6 +72,10 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
+            string[] angaybatdau = ngaybd.Split(new Char[] { '/' });
+            string[] angaykethuc = ngaykt.Split(new Char[] { '/' });
+            string ngaybatdau2 = angaybatdau[1] + "/" + angaybatdau[0] + "/" + angaybatdau[2];
+            string ngaykethuc2 = angaykethuc[1] + "/" + angaykethuc[0] + "/" + angaykethuc[2];
 
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
@@ -82,7 +86,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 return View();
             }
             var model = db.ChiTietHoaDons.
-                Where(p => p.HoaDon.NgayMua >= ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
+                Where(h => h.HoaDon.NgayMua >= ngaybd1 && h.HoaDon.NgayMua <= ngaykt1).
                 GroupBy(p => p.CaThe.Loai)
                 .Select(g => new ReportInfo
                 {
@@ -93,16 +97,20 @@ namespace G_Shop.Areas.Admin.Controllers
                     MaxPrice = g.Max(p => p.CaThe.GiaBan),
                     AvgPrice = g.Average(p => p.CaThe.GiaBan)
                 });
-            ViewBag.ngaybd = ngaybd;
-            ViewBag.ngaykt = ngaykt;
-            ViewBag.Group = "Loài";
-            return View("Index", model);
+            ViewBag.ngaybd = ngaybatdau2;
+            ViewBag.ngaykt = ngaykethuc2;
+            //ViewBag.Group = "Loài";
+            return View(model);
         }
         [HttpPost]
         public ActionResult KhachHang(FormCollection form)
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
+            string[] angaybatdau = ngaybd.Split(new Char[] { '/' });
+            string[] angaykethuc = ngaykt.Split(new Char[] { '/' });
+            string ngaybatdau2 = angaybatdau[1] + "/" + angaybatdau[0] + "/" + angaybatdau[2];
+            string ngaykethuc2 = angaykethuc[1] + "/" + angaykethuc[0] + "/" + angaykethuc[2];
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             if (ngaykt1 < ngaybd1)
@@ -124,10 +132,10 @@ namespace G_Shop.Areas.Admin.Controllers
                 }).
                 OrderByDescending(g => g.Total)
                 .Take(5);
-            ViewBag.ngaybd = ngaybd;
-            ViewBag.ngaykt = ngaykt;
-            ViewBag.Group = "Khách hàng";
-            return View("Index", model);
+            ViewBag.ngaybd = ngaybatdau2;
+            ViewBag.ngaykt = ngaykethuc2;
+            //ViewBag.Group = "Khách hàng";
+            return View(model);
         }
         //[HttpPost]
         public ActionResult Thang()
