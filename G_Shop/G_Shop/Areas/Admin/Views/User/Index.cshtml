@@ -17,33 +17,33 @@
          $scope.numPerPage = 10,
          $scope.maxSize = 5;
 
-         $scope.get_nguoidung = function () {
-             $scope.list_nguoidung = [];
-             //get building_id form url;
-                 return $http({
-                     method: "GET",
-                     url: "/Admin/User/Get_nguoidung",
-                 })
-                     .then(function (response) {
-                         $scope.list_nguoidung = response.data;
-                         $scope.totalItems = $scope.list_nguoidung.length;
-                         $scope.$watch('currentPage + numPerPage', function () {
-                             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                             , end = begin + $scope.numPerPage;
+         //$scope.get_nguoidung = function () {
+         //    $scope.list_nguoidung = [];
+         //    //get building_id form url;
+         //        return $http({
+         //            method: "GET",
+         //            url: "/Admin/User/Get_nguoidung",
+         //        })
+         //            .then(function (response) {
+         //                $scope.list_nguoidung = response.data;
+         //                $scope.totalItems = $scope.list_nguoidung.length;
+         //                $scope.$watch('currentPage + numPerPage', function () {
+         //                    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+         //                    , end = begin + $scope.numPerPage;
 
-                             //$scope.setPage = function (pageNo) {
-                             //    $scope.currentPage = pageNo;
-                             //};
+         //                    //$scope.setPage = function (pageNo) {
+         //                    //    $scope.currentPage = pageNo;
+         //                    //};
 
-                             $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
-                         });
+         //                    $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
+         //                });
 
-                     }, function (response) {
-                         //showing errors
-                     });
-             };
-         $scope.get_nguoidung();
-
+         //            }, function (response) {
+         //                //showing errors
+         //            });
+         //    };
+         //$scope.get_nguoidung();
+         
          //array did filter
          $scope.list_temp_inf_edit = [];
          $scope.sua = function (data) {
@@ -128,12 +128,44 @@
 
                     }
                 });
-         }
+         };
 
+         $scope.loc_nguoidung = function () {
+             //alert($scope.selectedUser);
+             var i = $scope.selectedUser;
+             $scope.list_nguoidung = [];
+             //get building_id form url;
+             return $http({
+                 method: "POST",
+                 url: "/Admin/User/Loc_nguoidung",
+                 params:{i:i}
+             })
+                 .then(function (response) {
+                     $scope.list_nguoidung = response.data;
+                     $scope.totalItems = $scope.list_nguoidung.length;
+                     $scope.$watch('currentPage + numPerPage', function () {
+                         var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+                         , end = begin + $scope.numPerPage;
+
+                         //$scope.setPage = function (pageNo) {
+                         //    $scope.currentPage = pageNo;
+                         //};
+
+                         $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
+                     });
+
+                 }, function (response) {
+                     //showing errors
+                 });
+
+             
+         };
+         $scope.loc_nguoidung();
+         
      }]);
 </script>
 
-<section ng-app="postApp" ng-controller="postController" >
+<section ng-app="postApp" ng-controller="postController">
     <div class="col-lg-12">
         <h2>
             Quản lí người dùng
@@ -165,6 +197,13 @@
                 </dd>
             </dl>
         </div>
+        <br />
+        <div class="col-md-12">
+            <label>Lọc người dùng: </label>
+            <label class="radio-inline"><input type="radio" ng-value="0" ng-model="selectedUser" name="i" ng-change="loc_nguoidung()" />Tất cả</label>
+            <label class="radio-inline"><input type="radio" ng-value="1" ng-model="selectedUser" name="i" ng-change="loc_nguoidung()"/>Quản trị viên</label>
+            <label class="radio-inline"><input type="radio" ng-value="2" ng-model="selectedUser" name="i" ng-change="loc_nguoidung()"/>Khách hàng</label>
+        <br />
         <div role="tabpanel" class="tab-pane" id="list">
             <table id="myTable" class="table table-striped table-bordered table-hover dataTable" role="grid" aria-describedby="myTable_info">
                
@@ -181,9 +220,10 @@
                     </tr>
                
                 <tbody>
-                    <!--                                    bắt đầu vòng lặp-->
-                    <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {Name:data_search} | limitTo:10">
-                        <td>{{i + 1}}</td>
+                           
+                   @{int index = 0;}
+                    <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {name:i} | limitTo:10">
+                        <td>{{$index + 1}}</td>
                         <td>{{data.TenDangNhap}}</td>
                         <td>{{data.Email}}</td>
                         <td>{{data.SoDienThoai}}</td>
@@ -390,7 +430,7 @@
             </div>
         </div>
     </div>
-
+</div>
 </section>
 
 
