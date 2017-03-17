@@ -12,6 +12,7 @@ namespace G_Shop.Areas.Admin.Controllers {
     public class AdminHomeController : Controller {
         GShopEntities db = new GShopEntities();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
+        public List<HttpPostedFileBase> fileUpload2 = new List<HttpPostedFileBase>();
         // GET: Admin/Home
         public ActionResult Index() {
             if(Session["Admin"] == null)
@@ -121,6 +122,64 @@ namespace G_Shop.Areas.Admin.Controllers {
             }
         }
 
+        public ActionResult SaveUploadedFile2()
+        {
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                fName = file.FileName;
+                var fileName4 = Path.GetFileName(file.FileName);
+                if (file != null && file.ContentLength > 0)
+                {
+                    if (Session["fileUpload2"] == null)
+                    {
+                        fileUpload2.Add(file);
+                    }
+                    else
+                    {
+                        fileUpload2 = (List<HttpPostedFileBase>)Session["fileUpload2"];
+                        fileUpload2.Add(file);
+                    }
+                }
+            }
+            Session["fileUpload2"] = fileUpload2;
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteFile2(string id)
+        {
+            fileUpload2 = (List<HttpPostedFileBase>)Session["fileUpload2"];
+            Session.Remove("fileUpload2");
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            foreach (var file in fileUpload2)
+            {
+                if (file.FileName == id)
+                {
+                    fileUpload.Remove(file);
+                    break;
+                }
+            }
+            Session["fileUpload2"] = fileUpload2;
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in delete file" });
+            }
+        }
         [HttpGet]
         public PartialViewResult ThemCaThe() {
             return PartialView();
@@ -168,7 +227,7 @@ namespace G_Shop.Areas.Admin.Controllers {
             string tinhtrang = Request.Form["tinhtrang"];
             cathe.TinhTrang = tinhtrang;
             new AdminDAO().SuaCaThe(cathe);
-            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai });
+            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai, message="Sửa cá thể thành công" });
         }
 
         public ActionResult SuaHinhAnhCaThe(int MaLoai, int MaCaThe) {
@@ -249,6 +308,55 @@ namespace G_Shop.Areas.Admin.Controllers {
         [HttpPost]
         public ActionResult LocTinhTrangHD(int tinhtrang) {
             return RedirectToAction("HoaDon", "AdminHome", new { i = tinhtrang });
+        }
+
+        [HttpGet]
+        public ActionResult SuaHinh(int MaLoai, int MaCaThe)
+        {
+            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ThemHinh()
+        {
+            int maloai = int.Parse(Request.Form["maloai"]);
+            int macathe = int.Parse(Request.Form["macathe"]);
+            CaThe model = new G_Shop.Models.CaThe();
+            if (Session["fileUpload2"] != null)
+            {
+                string _fileName;
+                string listImages = "";
+                fileUpload = (List<HttpPostedFileBase>)Session["fileUpload2"];
+                foreach (var item in fileUpload)
+                {
+                    string pic = Path.GetFileName(item.FileName).Substring(0, Path.GetFileName(item.FileName).IndexOf("."));
+                    _fileName = pic + ".jpg";
+                    var path = Path.Combine(Server.MapPath("~/assets/client/images/"), _fileName);
+                    item.SaveAs(path);
+                    listImages += _fileName + "|";
+                }
+                model= db.CaThes.Where(x => x.MaLoai == maloai && x.MaCaThe == macathe).First();
+                model.HinhAnh = model.HinhAnh+listImages;
+                db.SaveChanges();
+                Session["fileUpload"] = null;
+            }
+            return RedirectToAction("SuaHinh", "AdminHome", new { MaLoai = maloai, MaCaThe = macathe });
+        }
+
+        [HttpPost]
+        public JsonResult XoaHinh(int MaLoai, int MaCaThe, string ten)
+        {
+            var model = db.CaThes.Where(x => x.MaLoai == MaLoai && x.MaCaThe == MaCaThe).First();
+            string ten2 = ten + '|';
+            model.HinhAnh=model.HinhAnh.Replace(ten2, "");
+            db.SaveChanges();
+            var delImg = Request.MapPath("~/assets/client/images/" + ten);
+            if (System.IO.File.Exists(delImg))
+            {
+                System.IO.File.Delete(delImg);
+            }
+            return Json("");
         }
 
     }
