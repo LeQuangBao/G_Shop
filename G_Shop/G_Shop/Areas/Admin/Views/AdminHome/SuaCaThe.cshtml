@@ -6,7 +6,7 @@
 }
 
 <h2>Sửa thông tin cá thể</h2>
-@Html.ActionLink("Đổi hình ảnh", "SuaHinhAnhCaThe", new { MaLoai = Model.MaLoai, MaCaThe = Model.MaCaThe }, new { @class=  "btn btn-primary"})
+@Html.ActionLink("Đổi hình ảnh", "SuaHinh", new { MaLoai = Model.MaLoai, MaCaThe = Model.MaCaThe }, new { @class=  "btn btn-primary"})
 @Html.ActionLink("Đổi video", "SuaVideoCaThe", new { MaLoai = Model.MaLoai, MaCaThe = Model.MaCaThe }, new {@class= "btn btn-primary"})
 
 @using(Html.BeginForm("SuaCaThe", "AdminHome", FormMethod.Post, new { @id = "form", @class = "form-horizontal", enctype = "multipart/form-data" })) {
