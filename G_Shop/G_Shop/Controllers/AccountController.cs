@@ -4,39 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using G_Shop.Models;
+using G_Shop.DAO;
 
-namespace G_Shop.Controllers
-{
-    public class AccountController : Controller
-    {
+namespace G_Shop.Controllers {
+    public class AccountController : Controller {
         GShopEntities db = new GShopEntities();
         // GET: Account
-        public ActionResult Login()
-        {
+        public ActionResult Login() {
             var cki = Request.Cookies["user"];
-            if (cki != null)
-            {
+            if(cki != null) {
                 ViewBag.Id = cki.Values["Id"];
                 ViewBag.Password = cki.Values["Pw"];
             }
             return View();
         }
         [HttpPost]
-        public ActionResult Login(ModelLogin nd)
-        {
+        public ActionResult Login(ModelLogin nd) {
 
             var user = db.NguoiDungs.Where(n => n.TenDangNhap.Equals(nd.UserName)).FirstOrDefault();
 
-            if (user == null)
-            {
+            if(user == null) {
                 ModelState.AddModelError("", "Sai tên đăng nhập !");
-            }
-            else if (user.MatKhau != nd.Password)
-            {
+            } else if(user.MatKhau != nd.Password) {
                 ModelState.AddModelError("", "Sai mật khẩu !");
-            }
-            else
-            {
+            } else {
                 Session["user"] = user;
                 //ModelState.AddModelError("", "Đăng nhập thành công !");
                 return RedirectToAction("Index", "Home");
@@ -46,23 +37,19 @@ namespace G_Shop.Controllers
 
             return View();
         }
-        public ActionResult Logoff()
-        {
+        public ActionResult Logoff() {
             Session.Remove("user");
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Register()
-        {
+        public ActionResult Register() {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(NguoiDung model)
-        {
+        public ActionResult Register(NguoiDung model) {
             model.Email = Request.Form["email"];
-            try
-            {
+            try {
                 model.VaiTro = "Khách hàng";
                 db.NguoiDungs.Add(model);
                 db.SaveChanges();
@@ -71,32 +58,37 @@ namespace G_Shop.Controllers
                 //var url = Request.Url.AbsoluteUri.Replace("Register", "") + "Activate/" + model.Id.ToBase64();
                 //var body = @"Click vào liên kết sau để kích hoạt tài khoản: <a href='" + url + "'>Activate</a>";
                 //XMail.Send(model.Email, "Welcome mail", body);
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 ModelState.AddModelError("", "Đăng ký thất bại !" + ex);
             }
             return RedirectToAction("Login", "Account");
         }
-        public ActionResult editprofile()
-        {
-            var user = Session ["user"] as NguoiDung;
+        public ActionResult editprofile() {
+            var user = Session["user"] as NguoiDung;
+            ViewBag.tennguoidung = user.TenDangNhap;
             var model = db.NguoiDungs.Find(user.MaNguoiDung);
             return View(model);
         }
-        public ActionResult sua(NguoiDung model)
-        {
+        public ActionResult sua(NguoiDung model) {
             NguoiDung nd = new NguoiDung();
             nd.Email = model.Email;
             nd.GioiTinh = model.GioiTinh;
             nd.MatKhau = model.MatKhau;
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult editPassword()
-        {
-            return View();
+        public ActionResult editPassword(string message = "") {
+            var user = Session["user"] as NguoiDung;
+            ViewBag.tennguoidung = user.TenDangNhap;
+            var model = db.NguoiDungs.Find(user.MaNguoiDung);
+            ViewBag.message = message;
+            return View(model);
         }
-
-
+        [HttpPost]
+        public ActionResult editPassword(NguoiDung nguoiDung, string oldPassword, string newPassword) {
+            if(new UserDAO().changePassword(nguoiDung.MaNguoiDung, oldPassword, newPassword)) {
+                return RedirectToAction("editprofile", "Account");
+            }
+            return RedirectToAction("editpassword", "Account", new { message = "Thông tin không chính xác, vui lòng nhập lại" });
+        }
     }
 }
