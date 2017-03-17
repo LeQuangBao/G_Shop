@@ -92,6 +92,10 @@ namespace G_Shop.Controllers
             nd.MatKhau = model.MatKhau;
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult editPassword()
+        {
+            return View();
+        }
 
 
     }
