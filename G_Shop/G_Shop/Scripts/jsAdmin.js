@@ -57,4 +57,8 @@ $(function () {
     });
     $(".custom_datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
     $(".custom_datepicker").datepicker("option", "showAnim", "slideDown");
+
+    $("input[type='radio']").checkboxradio({      
+    });
 });
+
