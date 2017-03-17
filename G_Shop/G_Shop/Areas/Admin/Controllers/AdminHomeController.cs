@@ -186,6 +186,7 @@ namespace G_Shop.Areas.Admin.Controllers {
                 var fileName = Path.GetFileName(fileVideo.FileName);
                 var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
                 fileVideo.SaveAs(path);
+                new AdminDAO().SuaVideoCaThe(cathe);
             }
             return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai, message="Sửa Video thành công" });
         }

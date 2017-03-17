@@ -175,6 +175,10 @@ namespace G_Shop.DAO
             return tongtien;
         }
 
-        
+        public void SuaVideoCaThe(CaThe cathe) {
+            CaThe model = db.CaThes.Find(cathe.MaCaThe);
+            model.Video = cathe.Video;
+            db.SaveChanges();
+        }
     }
 }
