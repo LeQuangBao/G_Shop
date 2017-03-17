@@ -30,7 +30,8 @@ namespace G_Shop.Controllers
         public ActionResult Remove(int Id)
         {
             ShoppingCart.Cart.Remove(Id);
-            return Json("", JsonRequestBehavior.AllowGet);
+            int? tongtien = ShoppingCart.Cart.Amount;
+            return Json(new { tong = tongtien }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Clear()

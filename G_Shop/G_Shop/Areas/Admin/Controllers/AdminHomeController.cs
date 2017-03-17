@@ -252,8 +252,13 @@ namespace G_Shop.Areas.Admin.Controllers {
 
         public ActionResult HoaDon(int? i) {
             var model = new AdminDAO().GetAllHoaDon(i);
-            if(model.Count > 0)
-                ViewBag.TenNguoiDung = (new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon))[0].TenDangNhap;
+            List<NguoiDung> TenNguoiDung = new List<NguoiDung>();
+            if (model.Count > 0)
+            {
+                foreach(var m in model)
+                    TenNguoiDung.Add(new AdminDAO().GetNguoiDung_MaHoaDon(m.MaHoaDon));
+            }
+            ViewBag.TenNguoiDung = TenNguoiDung;
             ViewBag.tinhtrang = i;
             return View(model);
         }
@@ -263,8 +268,8 @@ namespace G_Shop.Areas.Admin.Controllers {
             ViewBag.MaHD = MaHD;
             var hoadon = new AdminDAO().GetHoaDon_MaHD(MaHD);
             var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(MaHD);
-            ViewBag.TenNguoiDung = nguoidung[0].TenDangNhap;
-            ViewBag.SDT = nguoidung[0].SoDienThoai;
+            ViewBag.TenNguoiDung = nguoidung.TenNguoiDung;
+            ViewBag.SDT = nguoidung.SoDienThoai;
             ViewBag.NgayLap = hoadon.NgayMua;
             ViewBag.TongTien = hoadon.TongTien;
             ViewBag.TinhTrang = hoadon.TinhTrang;
@@ -277,7 +282,7 @@ namespace G_Shop.Areas.Admin.Controllers {
 
         public ActionResult HoaDon_Ngay() {
             List<HoaDon> model = new List<HoaDon>();
-
+            List<NguoiDung> TenNguoiDung = new List<NguoiDung>();
             string ngay_bd = Request.Form["ngay_bd"];
             string ngay_kt = Request.Form["ngay_kt"];
             string i = Request.Form["tinhtrang"];
@@ -287,8 +292,12 @@ namespace G_Shop.Areas.Admin.Controllers {
                 model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt), int.Parse(i));
                 ViewBag.tinhtrang = i;
             }
-            if(model.Count > 0)
-                ViewBag.TenNguoiDung = (new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon))[0].TenDangNhap;
+            if (model.Count > 0)
+            {
+                foreach (var m in model)
+                    TenNguoiDung.Add(new AdminDAO().GetNguoiDung_MaHoaDon(m.MaHoaDon));
+            }
+            ViewBag.TenNguoiDung = TenNguoiDung;
             ViewBag.Ngaybd = ngay_bd;
             ViewBag.Ngaykt = ngay_kt;
             return View(model);

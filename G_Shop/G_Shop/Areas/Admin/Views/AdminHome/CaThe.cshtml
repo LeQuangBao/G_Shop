@@ -18,6 +18,17 @@
             <strong>@ViewBag.Message</strong>
         </div>
     }    
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                Tổng số cá thể:
+            </dt>
+
+            <dd id="tongcathe">
+            </dd>
+        </dl>
+    </div>
+    <br />
     <div class="col-md-12">
         <label>Lọc tình trạng cá thể: </label>
         @using (Html.BeginForm("CaThe", "AdminHome", FormMethod.Get, new { @id = "form" }))
@@ -91,11 +102,13 @@
             }
         </tbody>
     </table>
+    <input type="hidden" value="@i" id="tong" />
 </div>
 @Html.Partial("ThemCaThe", new G_Shop.Models.CaThe())
 <input type="hidden" name="tinhtrang" value="@ViewBag.tinhtrang" />
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#tongcathe").text($("#tong").val());
         var i = $("input[name='tinhtrang']").val();
         if (i != null)
         {

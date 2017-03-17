@@ -130,7 +130,7 @@ namespace G_Shop.DAO
             return db.HoaDons.Where(x => x.MaHoaDon == MaHoaDon).First();
         }
 
-        public List<NguoiDung> GetNguoiDung_MaHoaDon(int MaHoaDon)
+        public NguoiDung GetNguoiDung_MaHoaDon(int MaHoaDon)
         {
             var model = (from ngdung in db.NguoiDungs
                          join hd in db.HoaDons
@@ -138,13 +138,13 @@ namespace G_Shop.DAO
                          where hd.MaHoaDon == MaHoaDon
                          select new
                          {
-                             tennguoidung = ngdung.TenDangNhap,
+                             tennguoidung = ngdung.TenNguoiDung,
                              sdt = ngdung.SoDienThoai
                          }).AsEnumerable().Select(x => new NguoiDung()
                          {
-                             TenDangNhap = x.tennguoidung,
+                             TenNguoiDung = x.tennguoidung,
                              SoDienThoai = x.sdt
-                         }).ToList();
+                         }).First();
             return model;
         }           
         
