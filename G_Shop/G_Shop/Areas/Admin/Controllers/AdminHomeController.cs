@@ -168,7 +168,7 @@ namespace G_Shop.Areas.Admin.Controllers {
             string tinhtrang = Request.Form["tinhtrang"];
             cathe.TinhTrang = tinhtrang;
             new AdminDAO().SuaCaThe(cathe);
-            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai });
+            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai, message="Sửa cá thể thành công" });
         }
 
         public ActionResult SuaHinhAnhCaThe(int MaLoai, int MaCaThe) {

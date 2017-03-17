@@ -71,7 +71,7 @@
              })
         .then(function (result) {
             if (result.data == "ok") {
-                alert(location.href = window.location.host + "/Admin/Loai?message=Thêm thành công");
+                //alert(location.href = window.location.host + "/Admin/Loai?message=Thêm thành công");
                 location.href = window.location.origin + "/Admin/Loai?message=Thêm thành công";
             } else {
                 alert("Xảy ra lỗi");
@@ -91,8 +91,9 @@
              })
                 .then(function (result) {
                     if (result.data == "ok") {
-                        alert("Cập nhật thành công");
-                        location.reload();
+                        //alert("Cập nhật thành công");
+                        //location.reload();
+                        location.href = window.location.origin + "/Admin/Loai?message=Sửa thành công";
                     } else {
                         alert("Xảy ra lỗi");
 

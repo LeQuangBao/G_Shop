@@ -106,8 +106,7 @@
                      })
                        .then(function (result) {
                            if (result.data == "ok") {
-                               alert("Thêm thành công");
-                               location.reload();
+                               location.href = window.location.origin + "/Admin/User?message=Thêm thành công";
                            } else {
                                alert("Xảy ra lỗi");
 
@@ -126,8 +125,7 @@
              })
                 .then(function (result) {
                     if (result.data == "ok") {
-                        alert("Cập nhật thành công");
-                       location.reload();
+                        location.href = window.location.origin + "/Admin/User?message=Sửa thành công";
                     } else {
                         alert("Xảy ra lỗi");
 
