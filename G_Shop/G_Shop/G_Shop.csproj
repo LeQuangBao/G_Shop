@@ -369,6 +369,7 @@
     <Content Include="Models\GShop.edmx.diagram">
       <DependentUpon>GShop.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\AdminHome\SuaHinh.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -414,7 +415,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Shoppingcart.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -444,6 +447,7 @@
     <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Shared\_LayoutNotcate.cshtml" />
     <Content Include="Views\Account\editprofile.cshtml" />
+    <Content Include="Views\Account\editPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
