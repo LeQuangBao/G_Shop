@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+.editPass a
+{
+    margin-top: 20px;
+}
+.formEdit
+{
+  padding-bottom: 55px;
+}
