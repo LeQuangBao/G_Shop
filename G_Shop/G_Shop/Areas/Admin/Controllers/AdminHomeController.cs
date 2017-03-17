@@ -29,7 +29,7 @@ namespace G_Shop.Areas.Admin.Controllers {
 
         public ActionResult Logout() {
             Session.Remove("Admin");
-            return View("/Home/Index");
+            return RedirectToAction("Login", "AdminHome");
         }
 
         [HttpPost]

@@ -7,26 +7,26 @@
 
 <h2>Thống kê theo  @ViewBag.Group</h2>
 
-<h4>Thống kê từ ngày @ViewBag.ngaybd đến ngày @ViewBag.ngaykt</h4>
+<p>Thống kê từ ngày @ViewBag.ngaybd đến ngày @ViewBag.ngaykt</p>
 
 <table class="table table-hover">
     <tr>
         <th>Tên</th>
-        <th>Số lượng</th>
+        @*<th>Số lượng</th>*@
         <th>Tổng cộng</th>
+        @*<th>Giá cao nhất</th>
         <th>Giá cao nhất</th>
-        <th>Giá cao nhất</th>
-        <th>Giá trung bình</th>
+        <th>Giá trung bình</th>*@
     </tr>
     @foreach (var Item in Model)
     {
         <tr>
             <td>@Item.Group</td>
-            <td>@Item.Count</td>
+            @*<td>@Item.Count</td>*@
             <td>@Html.FormatValue(Item.Total, "{0:c}")</td>
-            <td>@Html.FormatValue(Item.MinPrice, "{0:c}")</td>
+            @*<td>@Html.FormatValue(Item.MinPrice, "{0:c}")</td>
             <td>@Html.FormatValue(Item.MaxPrice, "{0:c}")</td>
-            <td>@Html.FormatValue(Item.AvgPrice, "{0:c}")</td>
+            <td>@Html.FormatValue(Item.AvgPrice, "{0:c}")</td>*@
         </tr>
     }
 </table>
@@ -34,11 +34,11 @@
 <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+      function drawChart() {   
           var data = google.visualization.arrayToDataTable([
           ['Tên', 'Doanh số'],
           @foreach (var Item in Model)
-          {
+          {       
             <text>["@Item.Group",  @Item.Total],</text>
           }
         ]);
