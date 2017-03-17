@@ -10,7 +10,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class LoaiController : Controller
     {
-        GShopEntities4 db = new GShopEntities4();
+        GShopEntities db = new GShopEntities();
         // GET: Admin/Loai
         //public IPagedList<Loai> ListAllPageging4(int page, int pagesize)
         //{

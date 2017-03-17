@@ -9,10 +9,10 @@ namespace G_Shop.DAO
 {
     public class UserDAO
     {
-        GShopEntities4 db = null;
+        GShopEntities db = null;
         public UserDAO()
         {
-            db = new GShopEntities4();
+            db = new GShopEntities();
         }
         public int Login(string username, string password)
         {

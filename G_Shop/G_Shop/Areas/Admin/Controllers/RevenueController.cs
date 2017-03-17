@@ -9,7 +9,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class RevenueController : Controller
     {
-        GShopEntities4 db = new GShopEntities4();
+        GShopEntities db = new GShopEntities();
         // GET: Admin/Revenue
         public ActionResult Index()
         {
@@ -17,7 +17,7 @@ namespace G_Shop.Areas.Admin.Controllers
         }
         public ActionResult Cathe()
         {
-            if(Session["Admin"]==null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("Login", "AdminHome");
             }
@@ -47,7 +47,7 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
-          
+
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
@@ -57,7 +57,7 @@ namespace G_Shop.Areas.Admin.Controllers
                 {
                     Group = g.Key.TenCaThe,
                     Count = g.Sum(p => p.MaCaThe),
-                    Total = g.Sum(p => p.CaThe.GiaBan*1),
+                    Total = g.Sum(p => p.CaThe.GiaBan * 1),
                     MinPrice = g.Min(p => p.CaThe.GiaBan),
                     MaxPrice = g.Max(p => p.CaThe.GiaBan),
                     AvgPrice = g.Average(p => p.CaThe.GiaBan)
@@ -72,11 +72,17 @@ namespace G_Shop.Areas.Admin.Controllers
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
-         
+
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
+
+            if (ngaykt1 < ngaybd1)
+            {
+                ModelState.AddModelError("", "Ngày bắt đầu phải lớn hơn ngày kết thúc");
+                return View();
+            }
             var model = db.ChiTietHoaDons.
-                Where(p => p.HoaDon.NgayMua >=ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
+                Where(p => p.HoaDon.NgayMua >= ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
                 GroupBy(p => p.CaThe.Loai)
                 .Select(g => new ReportInfo
                 {
@@ -99,23 +105,49 @@ namespace G_Shop.Areas.Admin.Controllers
             string ngaykt = form["ngaykt"];
             DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
-            var model = db.ChiTietHoaDons.
-                Where(p => p.HoaDon.NgayMua >=ngaybd1 && p.HoaDon.NgayMua <=ngaykt1).
-                GroupBy(p => p.HoaDon.NguoiDung)
+            if (ngaykt1 < ngaybd1)
+            {
+                ModelState.AddModelError("", "Ngày bắt đầu phải lớn hơn ngày kết thúc");
+                return View();
+            }
+            var model = db.HoaDons.
+                Where(p => p.NgayMua >= ngaybd1 && p.NgayMua <= ngaykt1).
+                GroupBy(p => p.NguoiDung)
                 .Select(g => new ReportInfo
                 {
                     Group = g.Key.TenNguoiDung,
                     Count = g.Sum(p => p.MaHoaDon),
-                    Total = g.Sum(p => p.HoaDon.TongTien),
-                    MinPrice = g.Min(p => p.HoaDon.TongTien),
-                    MaxPrice = g.Max(p => p.HoaDon.TongTien),
-                    AvgPrice = g.Average(p => p.HoaDon.TongTien)
-                });
+                    Total = g.Sum(p => p.TongTien),
+                    MinPrice = g.Min(p => p.TongTien),
+                    MaxPrice = g.Max(p => p.TongTien),
+                    AvgPrice = g.Average(p => p.TongTien)
+                }).
+                OrderByDescending(g => g.Total)
+                .Take(5);
             ViewBag.ngaybd = ngaybd;
             ViewBag.ngaykt = ngaykt;
             ViewBag.Group = "Khách hàng";
             return View("Index", model);
         }
+        //[HttpPost]
+        public ActionResult Thang()
+        {
+            var model = db.HoaDons.
+                GroupBy(p => p.NgayMua.Month)
+                .Select(g => new ReportInfo
+                {
+                    Group = g.Key.ToString(),
+                    Count = g.Sum(p => p.MaHoaDon),
+                    Total = g.Sum(p => p.TongTien),
+                    MinPrice = g.Min(p => p.TongTien),
+                    MaxPrice = g.Max(p => p.TongTien),
+                    AvgPrice = g.Average(p => p.TongTien)
+                })
+                .OrderBy(r => r.Group); ;
+            ViewBag.Group = "Tháng";
+            return View("Index", model);
+        }
+
 
     }
 }

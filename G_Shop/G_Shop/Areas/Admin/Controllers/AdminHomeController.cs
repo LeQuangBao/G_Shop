@@ -10,7 +10,7 @@ using System.IO;
 
 namespace G_Shop.Areas.Admin.Controllers {
     public class AdminHomeController : Controller {
-        GShopEntities4 db = new GShopEntities4();
+        GShopEntities db = new GShopEntities();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
         // GET: Admin/Home
         public ActionResult Index() {
