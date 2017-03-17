@@ -177,6 +177,15 @@ namespace G_Shop.Areas.Admin.Controllers {
             return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai });
         }
 
+        public ActionResult SuaHinhAnhCaThe(int MaLoai, int MaCaThe) {
+            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+            return View(model);
+        }
+        //[httppost]
+        //public actionresult suahinhanhcathe() {
+
+        //}
+
         public ActionResult HoaDon(int? i) {
             var model = new AdminDAO().GetAllHoaDon(i);
             if(model.Count > 0)

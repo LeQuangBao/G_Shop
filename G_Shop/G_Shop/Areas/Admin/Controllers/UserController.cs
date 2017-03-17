@@ -105,6 +105,51 @@ namespace G_Shop.Areas.Admin.Controllers
                          }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult Loc_nguoidung(string i)
+        {
+            List<NguoiDungDTO> list = new List<NguoiDungDTO>();
+            string vai_tro=null;
+            if (i == null || i=="0")
+            {
+                list = (from n in db.NguoiDungs
+                            select new NguoiDungDTO
+                            {
+                                MaNguoiDung = n.MaNguoiDung,
+                                TenDangNhap = n.TenDangNhap,
+                                SoDienThoai = n.SoDienThoai,
+                                MatKhau = n.MatKhau,
+                                Email = n.Email,
+                                VaiTro = n.VaiTro,
+                                GioiTinh = n.GioiTinh,
+                                NgaySinh = n.NgaySinh
+
+                            }).ToList();
+            }
+            else
+            { 
+                if (i == "1")
+                    vai_tro = "Quản trị viên";
+                if (i == "2")
+                    vai_tro = "Khách hàng";
+                list = (from n in db.NguoiDungs
+                            where n.VaiTro == vai_tro
+                            select new NguoiDungDTO
+                            {
+                                MaNguoiDung = n.MaNguoiDung,
+                                TenDangNhap = n.TenDangNhap,
+                                SoDienThoai = n.SoDienThoai,
+                                MatKhau = n.MatKhau,
+                                Email = n.Email,
+                                VaiTro = n.VaiTro,
+                                GioiTinh = n.GioiTinh,
+                                NgaySinh = n.NgaySinh
+
+                            }).ToList();
+            }
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
         //public ActionResult sua(int ma)
         //{
         //    var model = db.NguoiDungs.Find(ma);
