@@ -13,7 +13,11 @@
         <button class="btn btn-primary" data-toggle="modal" data-target="#ThemCaThe"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
     </span>
     </h2>
-    <br />
+    @if(ViewBag.Message != "") {
+        <div class="alert alert-success">
+            <strong>@ViewBag.Message</strong>
+        </div>
+    }    
     <div class="col-md-12">
         <label>Lọc tình trạng cá thể: </label>
         @using (Html.BeginForm("CaThe", "AdminHome", FormMethod.Get, new { @id = "form" }))

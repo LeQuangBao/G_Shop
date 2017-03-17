@@ -245,6 +245,9 @@
     <Content Include="assets\client\images\search.png" />
     <Content Include="assets\client\images\xamkhoi.jpg" />
     <Content Include="assets\client\videos\Video.MP4" />
+    <Content Include="assets\client\videos\video2.mp4" />
+    <Content Include="assets\client\videos\video3.mp4" />
+    <Content Include="assets\client\videos\video4.mp4" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\EntityFramework.dll" />
@@ -365,6 +368,7 @@
     </Content>
     <Content Include="Areas\Admin\Views\Revenue\Loai.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\KhachHang.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SuaVideoCaThe.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />

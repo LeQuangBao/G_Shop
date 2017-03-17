@@ -64,16 +64,15 @@ namespace G_Shop.Areas.Admin.Controllers {
         }
 
         [HttpGet]
-        public ActionResult CaThe(int MaLoai, int? i)
-        {
-            if (Session["Admin"] == null)
+        public ActionResult CaThe(int MaLoai, int? i, string message = "") {
+            if(Session["Admin"] == null)
                 return View("Login");
-            else
-            { 
-                var model = new AdminDAO().GetCaThe_MaLoai(MaLoai,i);
+            else {
+                var model = new AdminDAO().GetCaThe_MaLoai(MaLoai, i);
                 ViewBag.TenLoai = new AdminDAO().GetTenLoai_MaLoai(MaLoai);
                 ViewBag.MaLoai = MaLoai;
                 ViewBag.tinhtrang = i;
+                ViewBag.message = message;
                 return View(model);
             }
         }
@@ -135,7 +134,7 @@ namespace G_Shop.Areas.Admin.Controllers {
                 var fileName = Path.GetFileName(fileVideo.FileName);
                 var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
                 fileVideo.SaveAs(path);
-            }            
+            }
             if(Session["fileUpload"] != null) {
                 string _fileName;
                 string listImages = "";
@@ -153,7 +152,7 @@ namespace G_Shop.Areas.Admin.Controllers {
                 dao.ThemCaThe(model);
                 Session["fileUpload"] = null;
             }
-            return RedirectToAction("CaThe", new { MaLoai = model.MaLoai });
+            return RedirectToAction("CaThe", new { MaLoai = model.MaLoai, message="Thêm cá thể thành công" });
         }
 
         [HttpGet]
@@ -164,12 +163,7 @@ namespace G_Shop.Areas.Admin.Controllers {
 
         [HttpPost]
         public ActionResult SuaCaThe(CaThe cathe, HttpPostedFileBase fileVideo) {
-            if(fileVideo.ContentLength > 0) {
-                cathe.Video = DateTime.Now.Ticks + fileVideo.FileName;
-                var fileName = Path.GetFileName(fileVideo.FileName);
-                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
-                fileVideo.SaveAs(path);
-            }
+            
             cathe.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
             string tinhtrang = Request.Form["tinhtrang"];
             cathe.TinhTrang = tinhtrang;
@@ -181,10 +175,20 @@ namespace G_Shop.Areas.Admin.Controllers {
             var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
             return View(model);
         }
-        //[httppost]
-        //public actionresult suahinhanhcathe() {
-
-        //}
+        public ActionResult SuaVideoCaThe(int MaLoai, int MaCaThe) {
+            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult SuaVideoCaThe(CaThe cathe, HttpPostedFileBase fileVideo) {
+            if(fileVideo.ContentLength > 0) {
+                cathe.Video = DateTime.Now.Ticks + fileVideo.FileName;
+                var fileName = Path.GetFileName(fileVideo.FileName);
+                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
+                fileVideo.SaveAs(path);
+            }
+            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai, message="Sửa Video thành công" });
+        }
 
         public ActionResult HoaDon(int? i) {
             var model = new AdminDAO().GetAllHoaDon(i);
@@ -211,21 +215,19 @@ namespace G_Shop.Areas.Admin.Controllers {
 
         [HttpPost]
 
-        public ActionResult HoaDon_Ngay()
-        {
+        public ActionResult HoaDon_Ngay() {
             List<HoaDon> model = new List<HoaDon>();
 
             string ngay_bd = Request.Form["ngay_bd"];
             string ngay_kt = Request.Form["ngay_kt"];
             string i = Request.Form["tinhtrang"];
-            if(i==null)
-                model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt),int.Parse("0"));
-            else
-            { 
+            if(i == null)
+                model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt), int.Parse("0"));
+            else {
                 model = new AdminDAO().HoaDon_Ngay(DateTime.Parse(ngay_bd), DateTime.Parse(ngay_kt), int.Parse(i));
                 ViewBag.tinhtrang = i;
             }
-            if (model.Count>0)
+            if(model.Count > 0)
                 ViewBag.TenNguoiDung = (new AdminDAO().GetNguoiDung_MaHoaDon(model[0].MaHoaDon))[0].TenDangNhap;
             ViewBag.Ngaybd = ngay_bd;
             ViewBag.Ngaykt = ngay_kt;

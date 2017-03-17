@@ -18,9 +18,9 @@ namespace G_Shop.Areas.Admin.Controllers
         //    //return model;
         //    return db.Loais.OrderByDescending(x => x.MaLoai).ToPagedList(page, pagesize);
         //}
-        public ActionResult Index()
+        public ActionResult Index(string message = "")
         {
-            //var model = ListAllPageging4(page, pagesize);
+            ViewBag.Message = message;
             return View();
         }
         [HttpPost]

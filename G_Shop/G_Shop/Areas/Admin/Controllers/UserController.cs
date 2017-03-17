@@ -70,7 +70,7 @@ namespace G_Shop.Areas.Admin.Controllers
         //    return View(listnguoidung.OrderBy(n => n.MaNguoiDung).ToPagedList(pagenumber, pagesize));
         //}
 
-        public ActionResult Index()
+        public ActionResult Index(string message = "")
         {
             //var user = Session["Admin"] as NguoiDung;
             //if(user==null)
@@ -82,6 +82,7 @@ namespace G_Shop.Areas.Admin.Controllers
             //ViewBag.tennguoidung = user.TenDangNhap;
             var list = db.NguoiDungs.ToList();
             ViewBag.tongso = list.Count;
+            ViewBag.Message = message;
             return View();
            // }
         }

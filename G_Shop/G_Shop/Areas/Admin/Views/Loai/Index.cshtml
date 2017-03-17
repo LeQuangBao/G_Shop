@@ -71,8 +71,8 @@
              })
         .then(function (result) {
             if (result.data == "ok") {
-                alert("Lưu thành công");
-                location.reload();
+                alert(location.href = window.location.host + "/Admin/Loai?message=Thêm thành công");
+                location.href = window.location.origin + "/Admin/Loai?message=Thêm thành công";
             } else {
                 alert("Xảy ra lỗi");
 
@@ -140,6 +140,11 @@
                 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_them"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
             </span>
         </h2>
+        @if(ViewBag.Message != "") {
+            <div class="alert alert-success">
+                <strong>@ViewBag.Message</strong>
+            </div>
+        }        
         <form class="form-inline">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group" style="margin-left:0px">
                 <label>Lọc theo tên hoặc mô tả: </label>

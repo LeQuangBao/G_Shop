@@ -141,6 +141,11 @@
                 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_them"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
             </span>
         </h2>
+        @if(ViewBag.Message != "") {
+            <div class="alert alert-success">
+                <strong>@ViewBag.Message</strong>
+            </div>
+        } 
         <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
             @*<form action="/Admin/User/timkiemnguoidung" method="post">
                 <div style="width:500px" class="input-group col-lg-offset-2">
@@ -183,7 +188,7 @@
                 <tbody>
                     <!--                                    bắt đầu vòng lặp-->
                     <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {Name:data_search} | limitTo:10">
-                        <td>{{i + 1}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{data.TenDangNhap}}</td>
                         <td>{{data.Email}}</td>
                         <td>{{data.SoDienThoai}}</td>
