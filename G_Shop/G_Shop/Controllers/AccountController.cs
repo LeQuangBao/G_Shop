@@ -70,7 +70,7 @@ namespace G_Shop.Controllers {
             return View(model);
         }
         [HttpPost]
-        public ActionResult sua(NguoiDung model) {
+        public ActionResult editprofile(NguoiDung model) {
             NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
             nd.Email = model.Email;
             nd.GioiTinh = model.GioiTinh;
@@ -80,7 +80,8 @@ namespace G_Shop.Controllers {
             nd.SoDienThoai = model.SoDienThoai;
             nd.DiaChi = model.DiaChi;
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            ViewBag.Message = "Sửa thành công.";
+            return View(model);
         }
         public ActionResult editPassword(string message = "") {
             var user = Session["user"] as NguoiDung;

@@ -141,6 +141,8 @@ namespace G_Shop.Areas.Admin.Controllers
                             select new NguoiDungDTO
                             {
                                 MaNguoiDung = n.MaNguoiDung,
+                                TenNguoiDung = n.TenNguoiDung,
+                                DiaChi = n.DiaChi,
                                 TenDangNhap = n.TenDangNhap,
                                 SoDienThoai = n.SoDienThoai,
                                 MatKhau = n.MatKhau,

@@ -107,7 +107,6 @@ D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
 D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
 C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
 E:\New folder\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 E:\New folder\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
 E:\New folder\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config

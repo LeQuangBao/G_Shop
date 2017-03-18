@@ -87,7 +87,7 @@
                         @Html.FormatValue(item.NgaySinh, "{0:dd/MM/yyyy}")
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.GiaBan)
+                        @Html.FormatValue(item.GiaBan, "{0:c}")
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TinhTrang)

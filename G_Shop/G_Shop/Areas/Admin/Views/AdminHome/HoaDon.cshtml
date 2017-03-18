@@ -90,7 +90,7 @@
                             @Html.FormatValue(Model[a].NgayMua, "{0:dd/MM/yyyy}")
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => Model[a].TongTien)
+                            @Html.FormatValue(Model[a].TongTien, "{0:c}")
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => Model[a].TinhTrang)

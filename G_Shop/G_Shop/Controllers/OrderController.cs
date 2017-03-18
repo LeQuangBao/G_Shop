@@ -25,6 +25,7 @@ namespace G_Shop.Controllers {
                 model.NgayMua = DateTime.Now;
                 model.MaNguoiDung = user.MaNguoiDung;
                 model.NguoiDung = user;
+                model.DiaChi = user.DiaChi;
                 ViewBag.tennguoidung = user.TenDangNhap;
                 return View(model);
             }

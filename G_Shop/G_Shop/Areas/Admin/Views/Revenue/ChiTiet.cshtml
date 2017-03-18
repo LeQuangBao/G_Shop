@@ -1,8 +1,9 @@
 ﻿@model G_Shop.Models.HoaDon
 @{
-    ViewBag.Title = "Detail";
-    Layout = "~/Views/Shared/_LayoutNotSlide.cshtml";
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <fieldset>
     <legend>CHI TIẾT ĐƠN HÀNG</legend>
     @using(Html.BeginForm()) {
@@ -52,10 +53,11 @@
     </div>
 
 </fieldset>
-<div class="row">
-        <div class="col-md-offset-4 col-md-4">
-                <a href="/Home/Index" class="btn btn-default">Tiếp tục mua hàng</a>
-        
+@*<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <a href="/Home/Index" class="btn btn-default">Tiếp tục mua hàng</a>
+
     </div>
-    
-</div>
+
+</div>*@
+

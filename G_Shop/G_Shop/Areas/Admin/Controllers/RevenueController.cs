@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using G_Shop.Models;
+using G_Shop.Controllers;
 
 namespace G_Shop.Areas.Admin.Controllers
 {
@@ -155,7 +156,41 @@ namespace G_Shop.Areas.Admin.Controllers
             ViewBag.Group = "Tháng";
             return View("Index", model);
         }
+        public ActionResult thongkehoadon() {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult thongkehoadon(FormCollection form) {
+            var ngaybatdau = form["ngaybd"];
+            var ngayketthuc = form["ngaykt"];
+            DateTime ngaybd = Convert.ToDateTime(ngaybatdau);
+            DateTime ngaykt = Convert.ToDateTime(ngayketthuc);
+            var model = db.HoaDons
+                         .Where(p => p.NgayMua >= ngaybd && p.NgayMua <= ngaykt)
+                         .Select(g => new HoaDonDTO1 {
+                             MaHoaDon = g.MaHoaDon,
+                             TenNguoiMua = g.NguoiDung.TenNguoiDung,
+                             NgayMua = g.NgayMua,
+                             TongTien = g.TongTien,
+                             TinhTrang=g.TinhTrang
+                         });
+            float? tongtien = 0;
+            int dem = 0;
+            foreach(var item in model) {
+                tongtien = tongtien + item.TongTien;
+                dem = dem + 1;
+            }
+            ViewBag.tongtien = tongtien.ToString();
+            ViewBag.tongso = dem.ToString();
+            return View(model);
+        }
+        public ActionResult ChiTiet(int id) {
+            var model = db.HoaDons.Find(id);
+            return View(model); 
+        }
 
 
     }
+
+   
 }

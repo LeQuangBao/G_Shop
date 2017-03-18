@@ -106,7 +106,9 @@
                      })
                        .then(function (result) {
                            if (result.data == "ok") {
-                               location.href = window.location.origin + "/Admin/User?message=Thêm thành công";
+                               $("#divmessage").show();
+                               $("#message").text("Thêm thành công");
+                               $("#divmessage").delay(2000).hide(0);
                            } else {
                                alert("Xảy ra lỗi");
 
@@ -125,7 +127,9 @@
              })
                 .then(function (result) {
                     if (result.data == "ok") {
-                        location.href = window.location.origin + "/Admin/User?message=Sửa thành công";
+                        $("#divmessage").show();
+                        $("#message").text("Sửa thành công");
+                        $("#divmessage").delay(2000).hide(0);
                     } else {
                         alert("Xảy ra lỗi");
 
@@ -178,9 +182,12 @@
         </h2>
         @if(ViewBag.Message != "") {
             <div class="alert alert-success">
-                <strong>@ViewBag.Message</strong>
+                <strong id="message">@ViewBag.Message</strong>
             </div>
         } 
+        <div class="alert alert-success" id="divmessage" style="display:none">
+            <strong id="message"></strong>
+        </div>
         <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
             @*<form action="/Admin/User/timkiemnguoidung" method="post">
                 <div style="width:500px" class="input-group col-lg-offset-2">
@@ -274,7 +281,7 @@
                     <form @*id="add" name="add"*@ class="form-horizontal" role="form" method="post">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Tên đăng nhập <span class="required">*</span>
+                                Tên đăng nhập
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="tendangnhap" name="tendangnhap" required="required" class="form-control col-md-7 col-xs-12">
@@ -282,7 +289,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Tên người dùng <span class="required">*</span>
+                                Tên người dùng
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="tennguoidung" name="tennguoidung" required="required" class="form-control col-md-7 col-xs-12">
@@ -290,7 +297,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Địa chỉ <span class="required">*</span>
+                                Địa chỉ
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="diachi" name="diachi" required="required" class="form-control col-md-7 col-xs-12">
@@ -298,23 +305,25 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Mật khẩu <span class="required">*</span>
+                                Mật khẩu 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="password" id="matkhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="password" id="matkhau" name="password" required="required" class="form-control col-md-7 col-xs-12" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Nhập lại mật khẩu <span class="required">*</span>
+                                Nhập lại mật khẩu 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="password" id="matkhau1" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="password" id="matkhau1" name="password" required="required" class="form-control col-md-7 col-xs-12" onkeyup="ValidatePass()">
+                                <span id="verify" class="text-danger"></span>
+                                <span id="verify1" class="text-success"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Ngày sinh <span class="required">*</span>
+                                Ngày sinh
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="ngaysinh" name="ngaysinh" required="required" class="form-control col-md-7 col-xs-12 custom_datepicker">
@@ -322,7 +331,7 @@
                         </div>
                         <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Email <span class="required">*</span>
+                                Email
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input id="email" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
@@ -331,7 +340,7 @@
                         </div>
                         <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Giới tính <span class="required">*</span>
+                                Giới tính 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select id="gioitinh" class="form-control">
@@ -343,7 +352,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Số điện thoại <span class="required">*</span>
+                                Số điện thoại
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input id="sodienthoai" name="sodienthoai" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
@@ -352,7 +361,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Vai trò <span class="required">*</span>
+                                Vai trò 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @*<input id="sdt" name="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">*@
@@ -367,7 +376,7 @@
 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <button type="button" class="btn btn-primary" id="them" ng-click="them()">Thêm</button>
+                                <button type="button" class="btn btn-primary" id="them" ng-click="them()" data-dismiss="modal">Thêm</button>
                             </div>
                         </div>
                     </form>
@@ -401,7 +410,7 @@
                         <div class="form-group">
                             <input type="hidden" ng-model="list_temp_inf_edit.MaNguoiDung" />
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Tên người dùng <span class="required">*</span>
+                                Tên người dùng 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="tennguoidung" ng-model="list_temp_inf_edit.TenNguoiDung" name="tennguoidung" required="required" class="form-control col-md-7 col-xs-12">
@@ -409,7 +418,7 @@
                         </div>
                         <div class="form-group">  
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                 Địa chỉ<span class="required">*</span>
+                                 Địa chỉ
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="diachi" ng-model="list_temp_inf_edit.DiaChi" name="diachi" required="required" class="form-control col-md-7 col-xs-12">
@@ -417,7 +426,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Mật khẩu <span class="required">*</span>
+                                Mật khẩu 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="password" id="matkhau2" ng-model="list_temp_inf_edit.MatKhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
@@ -445,7 +454,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Số điện thoại <span class="required">*</span>
+                                Số điện thoại 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input id="sodienthoai1" ng-model="list_temp_inf_edit.SoDienThoai" name="sodienthoai" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
@@ -454,7 +463,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Vai trò <span class="required">*</span>
+                                Vai trò 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 @*<input id="sdt" name="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">*@
@@ -469,7 +478,7 @@
 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <button type="button" class="btn btn-primary" id="capnhat" ng-click="capnhat()">Sửa</button>
+                                <button type="button" class="btn btn-primary" id="capnhat" ng-click="capnhat()" data-dismiss="modal">Sửa</button>
                             </div>
                         </div>
                     </form>
@@ -483,5 +492,18 @@
     </div>
 </div>
 </section>
-
+<script type="text/javascript">
+    function ValidatePass() {
+        var pass1 = document.getElementById("matkhau").value;
+        var pass2 = document.getElementById("matkhau1").value;
+        if (pass1 != pass2) {
+            document.getElementById("verify").innerHTML = "Không khớp mật khẩu";
+            document.getElementById("verify1").innerHTML = "";
+        }
+        else {
+            document.getElementById("verify1").innerHTML = "Mật khẩu trùng khớp";
+            document.getElementById("verify").innerHTML = "";
+        }
+    }
+</script>
 
