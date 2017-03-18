@@ -17,7 +17,7 @@
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(Model[i].HinhAnh.Substring(0, Model[i].HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">@Html.FormatValue(Model[i].GiaBan, "{0:c}")</h4>
+                    <h5 class="pull-right">@Html.FormatValue(Model[i].GiaBan, "{0:c}")</h5>
                     <h4>@Model[i].TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
                     @if(Session["user"] != null && Model[i].TinhTrang=="Sẵn bán") {
