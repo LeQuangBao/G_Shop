@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using G_Shop.Models;
+using System.Globalization;
 
 namespace G_Shop.Controllers
 {
@@ -31,7 +32,8 @@ namespace G_Shop.Controllers
         {
             ShoppingCart.Cart.Remove(Id);
             int? tongtien = ShoppingCart.Cart.Amount;
-            return Json(new { tong = tongtien }, JsonRequestBehavior.AllowGet);
+            string tong = tongtien.Value.ToString("C", CultureInfo.CurrentCulture);
+            return Json(new { tong = tong }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Clear()

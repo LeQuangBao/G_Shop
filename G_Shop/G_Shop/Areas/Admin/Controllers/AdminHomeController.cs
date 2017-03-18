@@ -7,6 +7,7 @@ using G_Shop.Models;
 using G_Shop.Areas.Admin.Models;
 using G_Shop.DAO;
 using System.IO;
+using System.Globalization;
 
 namespace G_Shop.Areas.Admin.Controllers {
     public class AdminHomeController : Controller {
@@ -311,7 +312,8 @@ namespace G_Shop.Areas.Admin.Controllers {
 
         public ActionResult CapNhatCTHD(int macathe, int mahoadon) {
             int? tongtien = new AdminDAO().CapNhatCTHD(macathe, mahoadon);
-            return Json(new { tong = tongtien }, JsonRequestBehavior.AllowGet);
+            string tong = tongtien.Value.ToString("C", CultureInfo.CurrentCulture);
+            return Json(new { tong = tong }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
