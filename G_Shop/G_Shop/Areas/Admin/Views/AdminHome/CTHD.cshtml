@@ -76,16 +76,15 @@
             <dd>
                 @*<a href="#" id="dynamicdata" data-type="select" data-pk="1" data-value=@ViewBag.TinhTrang data-title="Chọn tình trạng hóa đơn"></a>*@
                 @*<a href="#" id="status" data-type="select" data-pk="1" data-title="Chọn tình trạng hóa đơn"></a><button id="enable" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>*@
-                <span id="enable">@ViewBag.TinhTrang</span>
-                <button id="btnEnable" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
                 @using (Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post))
                 {
                     <input type="hidden" name="mahoadon" value="@ViewBag.MaHD" />
+                    <input type="hidden" name="i" value="@ViewBag.i" />
                     <select name="tinhtrang" class="form-control" id="selTinhTrang">
                         <option value="Mới đặt hàng">Mới đặt hàng</option>
-                        <option value="Đã xác nhận">Đã xác nhận</option>
-                        <option value="Giao hàng thành công">Giao hàng thành công</option>
-                        <option value="Thất bại">Thất bại</option>
+                        <option value="Đã xác nhận" @(ViewBag.TinhTrang=="Đã xác nhận"?"selected='selected'":"")>Đã xác nhận</option>
+                        <option value="Giao hàng thành công" @(ViewBag.TinhTrang=="Giao hàng thành công"?"selected='selected'":"")>Giao hàng thành công</option>
+                        <option value="Thất bại" @(ViewBag.TinhTrang=="Thất bại"?"selected='selected'":"")>Thất bại</option>
                     </select>
                     <button id="btnSubmit" type="submit" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>
                 }
@@ -114,20 +113,20 @@
     </div>
 </div>
 <div class="col-md-offset-2">
-    <a href="/Admin/AdminHome/HoaDon" title="Quay lại danh sách hóa đơn" class="btn btn-success">Quay lại</a>
+    <a href="/Admin/AdminHome/HoaDon?i=@ViewBag.i" title="Quay lại danh sách hóa đơn" class="btn btn-success">Quay lại</a>
 </div>
 <script>
     $(function () {
-        if ($("#enable").text() == 'Giao hàng thành công' || $("#enable").text() == 'Thất bại')
-            $("#btnEnable").hide();
-        $("#selTinhTrang").hide();
-        $("#btnSubmit").hide();
-        $("#btnEnable").off('click').on('click', function () {
-            $("#selTinhTrang").show();
-            $("#btnSubmit").show();
-            $(this).hide();
-        });
-
+        //if ($("#enable").text() == 'Giao hàng thành công' || $("#enable").text() == 'Thất bại')
+        //    $("#btnEnable").hide();
+        //$("#selTinhTrang").hide();
+        //$("#btnSubmit").hide();
+        //$("#btnEnable").off('click').on('click', function () {
+        //    $("#selTinhTrang").show();
+        //    $("#btnSubmit").show();
+        //    $(this).hide();
+        //});
+        
         $(".remove-from-order").click(function () {
             
             

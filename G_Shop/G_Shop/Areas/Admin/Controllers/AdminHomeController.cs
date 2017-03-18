@@ -264,7 +264,7 @@ namespace G_Shop.Areas.Admin.Controllers {
             return View(model);
         }
 
-        public ActionResult CTHD(int MaHD) {
+        public ActionResult CTHD(int MaHD, int i) {
             var model = new AdminDAO().GetCTHD_MaHD(MaHD);
             ViewBag.MaHD = MaHD;
             var hoadon = new AdminDAO().GetHoaDon_MaHD(MaHD);
@@ -276,6 +276,7 @@ namespace G_Shop.Areas.Admin.Controllers {
             ViewBag.TinhTrang = hoadon.TinhTrang;
             ViewBag.NgayGiaoHang = hoadon.NgayGiaoHang;
             ViewBag.DiaChi = hoadon.DiaChi;
+            ViewBag.i = i;
             return View(model);
         }
 
@@ -305,9 +306,9 @@ namespace G_Shop.Areas.Admin.Controllers {
         }
 
 
-        public ActionResult SuaTinhTrang(int mahoadon, string tinhtrang) {
+        public ActionResult SuaTinhTrang(int mahoadon, string tinhtrang, int i) {
             new AdminDAO().SuaTinhTrang(mahoadon, tinhtrang);
-            return RedirectToAction("CTHD", "AdminHome", new { MaHD = mahoadon });
+            return RedirectToAction("CTHD", "AdminHome", new { MaHD = mahoadon, i=i });
         }
 
         public ActionResult CapNhatCTHD(int macathe, int mahoadon) {

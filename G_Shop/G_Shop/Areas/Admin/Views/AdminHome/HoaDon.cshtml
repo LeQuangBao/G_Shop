@@ -97,7 +97,7 @@
                         </td>
                         <td>
                             <button class="btn btn-primary">
-                                @Html.ActionLink("Chi tiết", "CTHD", new { MaHD = Model[a].MaHoaDon }, new { @style = "color:white;" })
+                                @Html.ActionLink("Chi tiết", "CTHD", new { MaHD = Model[a].MaHoaDon, i = (ViewBag.tinhtrang == null ? 0:ViewBag.tinhtrang)}, new { @style = "color:white;" })
                             </button>
                             
                         </td>
