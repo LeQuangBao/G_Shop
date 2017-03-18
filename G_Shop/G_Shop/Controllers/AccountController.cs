@@ -69,11 +69,17 @@ namespace G_Shop.Controllers {
             var model = db.NguoiDungs.Find(user.MaNguoiDung);
             return View(model);
         }
+        [HttpPost]
         public ActionResult sua(NguoiDung model) {
-            NguoiDung nd = new NguoiDung();
+            NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
             nd.Email = model.Email;
             nd.GioiTinh = model.GioiTinh;
-            nd.MatKhau = model.MatKhau;
+            //nd.NgaySinh = model.NgaySinh;
+            nd.TenNguoiDung = model.TenNguoiDung;
+            nd.GioiTinh = model.GioiTinh;
+            nd.SoDienThoai = model.SoDienThoai;
+            nd.DiaChi = model.DiaChi;
+            db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
         public ActionResult editPassword(string message = "") {

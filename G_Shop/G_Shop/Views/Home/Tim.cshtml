@@ -24,7 +24,7 @@
                     <a href="@Url.Action("ChiTiet",new { MaLoai= item.MaLoai, MaCaThe= item.MaCaThe})" class="pull-right">Xem chi tiết</a>
                     
                     @if(Session["user"] != null && item.TinhTrang == "Sẵn bán") {
-                        <button class="add-to-cart btn-lg" data-id="@item.MaCaThe">
+                        <button class="add-to-cart btn-lg gioHang" data-id="@item.MaCaThe" data-toggle="tooltip" title="Thêm vào giỏ hàng">
                             <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>

@@ -21,7 +21,7 @@
                     <h4>@Model[i].TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
                     @if(Session["user"] != null && Model[i].TinhTrang == "Sẵn bán") {
-                        <button class="add-to-cart btn-lg" data-id="@Model[i].MaCaThe">
+                        <button class="add-to-cart btn-lg gioHang" data-id="@Model[i].MaCaThe" data-toggle="tooltip" title="Thêm vào giỏ hàng">
                             <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>
