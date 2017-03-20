@@ -78,8 +78,8 @@ namespace G_Shop.Areas.Admin.Controllers
             string ngaybatdau2 = angaybatdau[1] + "/" + angaybatdau[0] + "/" + angaybatdau[2];
             string ngaykethuc2 = angaykethuc[1] + "/" + angaykethuc[0] + "/" + angaykethuc[2];
 
-            DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
-            DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
+            DateTime ngaybd1 = Convert.ToDateTime(ngaybatdau2);
+            DateTime ngaykt1 = Convert.ToDateTime(ngaykethuc2);
 
             if (ngaykt1 < ngaybd1)
             {
@@ -112,8 +112,8 @@ namespace G_Shop.Areas.Admin.Controllers
             string[] angaykethuc = ngaykt.Split(new Char[] { '/' });
             string ngaybatdau2 = angaybatdau[1] + "/" + angaybatdau[0] + "/" + angaybatdau[2];
             string ngaykethuc2 = angaykethuc[1] + "/" + angaykethuc[0] + "/" + angaykethuc[2];
-            DateTime ngaybd1 = Convert.ToDateTime(ngaybd);
-            DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
+            DateTime ngaybd1 = Convert.ToDateTime(ngaybatdau2);
+            DateTime ngaykt1 = Convert.ToDateTime(ngaykethuc2);
             if (ngaykt1 < ngaybd1)
             {
                 ModelState.AddModelError("", "Ngày bắt đầu phải lớn hơn ngày kết thúc");
@@ -163,8 +163,12 @@ namespace G_Shop.Areas.Admin.Controllers
         public ActionResult thongkehoadon(FormCollection form) {
             var ngaybatdau = form["ngaybd"];
             var ngayketthuc = form["ngaykt"];
-            DateTime ngaybd = Convert.ToDateTime(ngaybatdau);
-            DateTime ngaykt = Convert.ToDateTime(ngayketthuc);
+            string[] angaybatdau = ngaybatdau.Split(new Char[] { '/' });
+            string[] angaykethuc = ngayketthuc.Split(new Char[] { '/' });
+            string ngaybatdau2 = angaybatdau[1] + "/" + angaybatdau[0] + "/" + angaybatdau[2];
+            string ngaykethuc2 = angaykethuc[1] + "/" + angaykethuc[0] + "/" + angaykethuc[2];
+            DateTime ngaybd = Convert.ToDateTime(ngaybatdau2);
+            DateTime ngaykt = Convert.ToDateTime(ngaykethuc2);
             var model = db.HoaDons
                          .Where(p => p.NgayMua >= ngaybd && p.NgayMua <= ngaykt)
                          .Select(g => new HoaDonDTO1 {
