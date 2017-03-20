@@ -371,5 +371,12 @@ namespace G_Shop.Areas.Admin.Controllers {
             return Json("");
         }
 
+        public ActionResult CapNhatDiaChi(int mahoadon, string diachi)
+        {
+            var model = db.HoaDons.Find(mahoadon);
+            model.DiaChi = diachi;
+            db.SaveChanges();
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
     }
 }
