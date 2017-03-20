@@ -46,7 +46,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Ngày sinh</label>
             <div class="col-md-10">
-                <input type="text" class="form-control custom_datepicker" id="ngaysinh" name="ngaysinh" value="@Model.NgaySinh" onkeydown="return false"/>
+                <input type="text" class="form-control custom_datepicker" id="ngaysinh" name="ngaysinh" value="@Model.NgaySinh.Date.ToString("d")" onkeydown="return false"/>
             </div>
         </div>
 
@@ -100,8 +100,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lưu thay đổi" class="btn btn-default" />
-                <a href="/Home/Index" title="Quay lại trang chủ" class="btn btn-success">Quay lại</a>
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                <a href="/Home/Index" title="Quay lại trang chủ" class="btn btn-default">Quay lại</a>
             </div>
         </div>
     </div>
@@ -110,7 +110,9 @@
     
 </div>
 <script type="">
-    $(".custom_datepicker").datepicker({
-        maxDate: 0
-    });
+    //var birthday = $("#ngaysinh").val();
+    //$(".custom_datepicker").datepicker({
+    //    maxDate: 0,
+    //    defaultDate: new Date(birthday)
+    //});
 </script>
