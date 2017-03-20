@@ -242,13 +242,19 @@
     <Content Include="assets\client\images\df8bdc0787eb68c35292ff74fa60466b_S.jpg" />
     <Content Include="assets\client\images\hamster003.jpg" />
     <Content Include="assets\client\images\hamster002.jpg" />
+    <Content Include="assets\client\images\hamster010.jpg" />
+    <Content Include="assets\client\images\hamster011.jpg" />
+    <Content Include="assets\client\images\hamster012.jpg" />
+    <Content Include="assets\client\images\hamster013.jpg" />
+    <Content Include="assets\client\images\hamster014.jpg" />
     <Content Include="assets\client\images\images %281%29.jpg" />
     <Content Include="assets\client\images\search.png" />
     <Content Include="assets\client\images\xamkhoi.jpg" />
+    <Content Include="assets\client\videos\636253639017479541Video.MP4" />
+    <Content Include="assets\client\videos\636254227788962605Hamster.MP4" />
+    <Content Include="assets\client\videos\636256266118598849hamster3.m4v" />
+    <Content Include="assets\client\videos\636256268575413684Video.MP4" />
     <Content Include="assets\client\videos\Video.MP4" />
-    <Content Include="assets\client\videos\video2.mp4" />
-    <Content Include="assets\client\videos\video3.mp4" />
-    <Content Include="assets\client\videos\video4.mp4" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\EntityFramework.dll" />
@@ -373,6 +379,7 @@
     <Content Include="Models\GShop.edmx.diagram">
       <DependentUpon>GShop.edmx</DependentUpon>
     </Content>
+    <Content Include="assets\client\videos\636254231369325854hamster2.webm" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />

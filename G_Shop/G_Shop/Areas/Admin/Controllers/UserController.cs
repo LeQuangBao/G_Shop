@@ -106,8 +106,8 @@ namespace G_Shop.Areas.Admin.Controllers
                          }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
-
-        [HttpPost]
+        
+        //[HttpPost]
         public JsonResult Loc_nguoidung(string i)
         {
             List<NguoiDungDTO> list = new List<NguoiDungDTO>();

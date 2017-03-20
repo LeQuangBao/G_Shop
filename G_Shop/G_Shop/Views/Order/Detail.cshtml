@@ -19,9 +19,11 @@
         <label>Ngày giao:</label>
         @Html.FormatValue(Model.NgayGiaoHang, "{0:dd/MM/yyyy}")
         <br />
+        <label>Giờ giao hàng:</label>
+        @Html.DisplayFor(m => m.GioGiaoHang, new { @class= "form-control"})
+        <br />
         <label>Địa chỉ giao hàng:</label>
-        @Html.DisplayFor(m => m.DiaChi, new { @class = "form-control" })
-
+        @Html.DisplayFor(m => m.DiaChi, new { @class = "form-control" })        
         <br />
         <br />
     }

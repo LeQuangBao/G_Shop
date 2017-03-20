@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using G_Shop.Models;
 using G_Shop.DAO;
+using System.Globalization;
 
 namespace G_Shop.Controllers {
     public class OrderController : Controller {
@@ -34,8 +35,12 @@ namespace G_Shop.Controllers {
 
         [HttpPost]
         public ActionResult Checkout(HoaDon order, FormCollection form) {
-            order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"]);
             order.TinhTrang = "Mới đặt hàng";
+            order.GioGiaoHang = Request.Form["gioGiaoHang"] + ":" + Request.Form["phutGiaoHang"] + " " + Request.Form["buoiGiaoHang"];
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            string format = "dd/MM/yyyy";
+            order.NgayGiaoHang = DateTime.ParseExact(Request.Form["ngayGiaoHang"], format, provider);
+            //order.NgayGiaoHang = Convert.ToDateTime(form["ngaygiaohang"], );
             db.HoaDons.Add(order); // insert order
             UserDAO userDAO = new UserDAO();
             foreach(var p in ShoppingCart.Cart.Items) {

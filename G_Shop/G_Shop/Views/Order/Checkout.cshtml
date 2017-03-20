@@ -5,7 +5,7 @@
 }
 @Html.ValidationSummary()
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <h3>Xem lại đơn hàng</h3>
     </div>
 </div>
@@ -45,16 +45,35 @@
             <th>@Html.FormatValue(Model.TongTien, "{0:c}")</th>
         </tr>
     </table>
-    <div class="form-group col-sm-12">
+    <div class="form-group col-md-12">
         <label>Địa chỉ giao hàng</label>
-        @Html.TextAreaFor(m => m.DiaChi, new { @class = "form-control", @style="height:110px"})
+        @Html.TextAreaFor(m => m.DiaChi, new { @class = "form-control", @style = "height:110px" })
     </div>
-    <div class="form-group col-sm-12">
+    <div class="form-group col-md-12">
         <label>Ngày giao hàng</label>
-        <input class="form-control custom_datepicker" type="text" name="ngaygiaohang" onkeydown="return false"/>
+        <input class="form-control custom_datepicker" type="text" name="ngaygiaohang" onkeydown="return false" />
     </div>
-
-    <div class="col-sm-2">
+    <div class="form-group col-md-12">
+        <label>Giờ giao hàng</label>
+        <select name="gioGiaoHang">
+            @for(int i = 1; i < 13; i++) {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <span>:
+        </span>
+        <select name="phutGiaoHang">
+            <option value="00">00</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+        </select>
+        <select name="buoiGiaoHang">
+            <option value="Sáng">Sáng</option>
+            <option value="Chiều">Chiều</option>
+        </select>
+    </div>
+    <div class="col-md-2">
         <button class="btn btn-primary form-control" type="submit">Đặt hàng</button>
     </div>
 

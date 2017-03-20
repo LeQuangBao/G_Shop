@@ -23,10 +23,19 @@
                 @Html.FormatValue(ViewBag.NgayGiaoHang, "{0:dd/MM/yyyy}")
             </dd>
             <dt>
+                Giờ giao hàng:
+            </dt>
+            <dd>
+                @ViewBag.GioGiaoHang
+            </dd>
+            <dt>
                 Địa chỉ giao hàng:
             </dt>
             <dd>
-                <input type="text" id="idDiaChi" value="@ViewBag.DiaChi" class="form-control"/> <button id="btnSuaDC" class="btn btn-success" style="display:none;">Lưu</button><div id="idMessage" style="color:green;"></div>
+                @*<input type="text" id="idDiaChi" value="@ViewBag.DiaChi" class="form-control" />*@ <button id="btnSuaDC" class="btn btn-success" style="display:none;">Lưu</button><div id="idMessage" style="color:green;"></div>
+                <textarea id="idDiaChi" value="@ViewBag.DiaChi" class="form-control" rows="4" cols="500"> @ViewBag.DiaChi
+                </textarea>
+                <button id="btnSuaDC" class="btn btn-success" style="display:none;">Lưu</button><div id="idMessage" style="color:green;"></div>
             </dd>
         </dl>
         <hr />
@@ -44,8 +53,7 @@
             </thead>
             <tbody>
                 @{int i = 1; }
-                @foreach (var item in Model)
-                {
+                @foreach(var item in Model) {
                     <tr>
                         <td id="stt@(i)" class="stt">@(i++)</td>
                         <td>
@@ -53,7 +61,7 @@
                         </td>
                         <td><img src="~/assets/client/images/@item.Hinh" style="width:100px;height:50px;" alt=""></td>
                         <td>
-                            @Html.FormatValue(item.Gia,"{0:c}")
+                            @Html.FormatValue(item.Gia, "{0:c}")
                         </td>
                         <td>
                             <a href="#" class="remove-from-order" data-id="@item.MaCaThe">
@@ -79,20 +87,19 @@
             <dd>
                 @*<a href="#" id="dynamicdata" data-type="select" data-pk="1" data-value=@ViewBag.TinhTrang data-title="Chọn tình trạng hóa đơn"></a>*@
                 @*<a href="#" id="status" data-type="select" data-pk="1" data-title="Chọn tình trạng hóa đơn"></a><button id="enable" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>*@
-                @using (Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post))
-                {
+                @using(Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post)) {
                     <input type="hidden" name="mahoadon" value="@ViewBag.MaHD" />
                     <input type="hidden" name="i" value="@ViewBag.i" />
                     <select name="tinhtrang" class="form-control" id="selTinhTrang">
                         <option value="Mới đặt hàng">Mới đặt hàng</option>
-                        <option value="Đã xác nhận" @(ViewBag.TinhTrang=="Đã xác nhận"?"selected='selected'":"")>Đã xác nhận</option>
-                        <option value="Giao hàng thành công" @(ViewBag.TinhTrang=="Giao hàng thành công"?"selected='selected'":"")>Giao hàng thành công</option>
-                        <option value="Thất bại" @(ViewBag.TinhTrang=="Thất bại"?"selected='selected'":"")>Thất bại</option>
+                        <option value="Đã xác nhận" @(ViewBag.TinhTrang == "Đã xác nhận" ? "selected='selected'" : "")>Đã xác nhận</option>
+                        <option value="Giao hàng thành công" @(ViewBag.TinhTrang == "Giao hàng thành công" ? "selected='selected'" : "")>Giao hàng thành công</option>
+                        <option value="Thất bại" @(ViewBag.TinhTrang == "Thất bại" ? "selected='selected'" : "")>Thất bại</option>
                     </select>
                     <button id="btnSubmit" type="submit" class="btn btn-success" style="display:none">Lưu</button>
                 }
             </dd>
-            
+
         </dl>
     </div>
     <div class="col-md-4">
@@ -117,30 +124,36 @@
 </div>
 <br />
 <div class="col-md-12">
-    <a href="/Admin/AdminHome/HoaDon?i=@ViewBag.i" title="Quay lại danh sách hóa đơn" class="btn btn-success">Quay lại danh sách hóa đơn</a>
+    <dl class="dl-horizontal">
+        <dt></dt>
+        <dd>
+
+            <a href="/Admin/AdminHome/HoaDon?i=@ViewBag.i" title="Quay lại" class="btn btn-default">Quay lại</a>
+        </dd>
+    </dl>
 </div>
 <script type="text/javascript">
     $(function () {
-        $(".remove-from-order").click(function () {            
+        $(".remove-from-order").click(function () {
             var stt = 1;
             var idcathe = $(this).attr("data-id");
             var idhoadon = $("#mahd").text();
             // Xóa <tr> chứa sản phẩm bị xóa
-            
+
             $(this).parents("tr").remove();
             $.ajax({
                 url: "/AdminHome/CapNhatCTHD",
-                data: { macathe: idcathe,mahoadon:idhoadon },
+                data: { macathe: idcathe, mahoadon: idhoadon },
                 success: function (response) {
                     $("#tongtien").text(response.tong);
                     $("td[id^=stt]").each(function (index, element) {
                         $(this).prop("id", "stt" + stt);
-                        $("#stt"+stt).text(stt);
+                        $("#stt" + stt).text(stt);
                         stt++;
                     });
                 }
             });
-            
+
             return false;
         });
         $("#idDiaChi").keyup(function () {
@@ -157,11 +170,11 @@
                     $("#idMessage").text("Lưu thành công").delay(2000).hide(0);
                 }
             });
-            
+
         });
 
         $("#selTinhTrang").change(function () {
             $("#btnSubmit").show();
         });
-});
+    });
 </script>
