@@ -9,6 +9,7 @@
         <tr>
             <th>STT</th>
             <th>Tên</th>
+            <th>Hình</th>
             <th>Số lượng</th>
             <th>Giá</th>
             <th></th>
@@ -19,6 +20,7 @@
             <tr>
                 <td>@(i = i + 1)</td>
                 <td>@p.TenCaThe</td>
+                <td><img src="~/assets/client/images/@(p.HinhAnh.Substring(0, p.HinhAnh.IndexOf("|")))" style="width:100px;height:50px;" alt=""></td>
                 <td>1</td>
                 <td>@Html.FormatValue(p.GiaBan, "{0:c}")</td>
                 <td>
@@ -30,6 +32,7 @@
             tongtien += p.GiaBan;
         }
         <tr>
+            <th></th>
             <th></th>
             <th></th>
             <th>Tổng tiền</th>

@@ -97,6 +97,7 @@ namespace G_Shop.DAO
                              mahd = cthd.MaHoaDon,
                              macathe=ct.MaCaThe,
                              tenct = ct.TenCaThe,
+                             hinh = ct.HinhAnh.Substring(0, ct.HinhAnh.IndexOf("|")),
                              gia = ct.GiaBan
                          }).AsEnumerable().Select(x => new CTHD()
                          {
@@ -104,6 +105,7 @@ namespace G_Shop.DAO
                              MaHD = x.mahd,
                              MaCaThe=x.macathe,
                              TenCaThe = x.tenct,
+                             Hinh = x.hinh,
                              Gia = x.gia
                          }).ToList();
             return model;

@@ -24,22 +24,29 @@
     <br />
     <table class="table table-hover table-condensed">
         <tr>
+            <th>STT</th>
             <th>Tên cá thể</th>
+            <th>Hình</th>
             <th>Giá</th>
         </tr>
         @foreach(var p in ShoppingCart.Cart.Items) {
+            int i = 0;
             <tr>
+                <td>@(++i)</td>
                 <td>@p.TenCaThe</td>
+                <td><img src="~/assets/client/images/@(p.HinhAnh.Substring(0, p.HinhAnh.IndexOf("|")))" style="width:100px;height:50px;" alt=""></td>
                 <td>@Html.FormatValue(p.GiaBan, "{0:c}")</td>
             </tr>
         }
         <tr>
+            <th></th>
+            <th></th>
             <th>Tổng tiền</th>
             <th>@Html.FormatValue(Model.TongTien, "{0:c}")</th>
         </tr>
     </table>
     <div class="form-group col-sm-12">
-        <label>Địa chỉ</label>
+        <label>Địa chỉ giao hàng</label>
         @Html.TextAreaFor(m => m.DiaChi, new { @class = "form-control", @style="height:110px"})
     </div>
     <div class="form-group col-sm-12">
@@ -53,7 +60,8 @@
 
 
 }
-<script type="">
-    var today = new Date().toISOString().split('T')[0];
-    document.getElementsByName("ngaygiaohang")[0].setAttribute('min', today);
+<script type="text/javascript">
+    $(".custom_datepicker").datepicker({
+        minDate: 0
+    });
 </script>

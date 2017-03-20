@@ -110,6 +110,7 @@
     
 </div>
 <script type="">
-    var today = new Date().toISOString().split('T')[0];
-    document.getElementsByName("ngaysinh")[0].setAttribute('min', today);
+    $(".custom_datepicker").datepicker({
+        maxDate: 0
+    });
 </script>
