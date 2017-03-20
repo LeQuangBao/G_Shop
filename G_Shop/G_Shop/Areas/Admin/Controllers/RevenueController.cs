@@ -10,7 +10,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class RevenueController : Controller
     {
-        GShopEntities db = new GShopEntities();
+        GShopEntities2 db = new GShopEntities2();
         // GET: Admin/Revenue
         public ActionResult Index()
         {

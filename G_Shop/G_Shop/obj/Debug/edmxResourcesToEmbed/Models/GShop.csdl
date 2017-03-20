@@ -116,7 +116,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GShopEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CaThes" EntityType="Self.CaThe" />
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
