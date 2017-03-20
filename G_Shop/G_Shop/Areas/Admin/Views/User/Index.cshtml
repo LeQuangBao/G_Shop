@@ -3,12 +3,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+@*<script src="~/Areas/Admin/Script/moment.js"></script>*@
 @*<script src="~/Areas/Admin/Script/angular-ui-router.min.js"></script>*@
+<script>document.write('<base href="' + document.location + '" />');</script>
+
+ 
 <script src="~/Areas/Admin/Script/angular.min.js"></script>
 <script src="~/Areas/Admin/Script/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
 <link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
-
 <script>
     angular.module('postApp', ['ui.bootstrap'])
      .controller('postController', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
@@ -16,6 +19,7 @@
          $scope.currentPage = 1,
          $scope.numPerPage = 10,
          $scope.maxSize = 5;
+         //$scope.today = new Date();
 
          //$scope.get_nguoidung = function () {
          //    $scope.list_nguoidung = [];
@@ -149,12 +153,10 @@
              })
                  .then(function (response) {
                      $scope.list_nguoidung = response.data;
+                     //$scope.list_nguoidung.NgaySinh = new Date(response.data.NgaySinh);
                      //for (var ng in $scope.list_nguoidung) {
-                     //    var re = /\/Date\(([0-9]*)\)\//;
-                     //    var m = ng.NgaySinh.match(re);
-                     //    if (m) {
-                     //        ng.NgaySinh = new Date(parseInt(m[1]));
-                     //    }
+                       
+                     //    console.log(ng.NgaySinh);
                      //}
 
                      $scope.totalItems = $scope.list_nguoidung.length;
@@ -176,7 +178,6 @@
 
          };
          $scope.loc_nguoidung();
-
      }]);
 </script>
 
@@ -205,7 +206,7 @@
                         </span>
                     </div>
                 </form>*@
-            @*<input type="text" class="form-control" ng-model="data_search" placeholder="Nhập dữ liệu cần tìm" />*@
+      @*<input type="text" class="form-control" ng-model="data_search" placeholder="Nhập dữ liệu cần tìm" />*@
 
 
         </div>
@@ -238,6 +239,7 @@
                         <th>Địa chỉ</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
+                        @*<th>Ngày sinh</th>*@
                         <th>Giới tính</th>
                         <th>Vai trò</th>
                         <th></th>
@@ -259,7 +261,7 @@
                             <td>{{data.DiaChi}}</td>
                             <td>{{data.Email}}</td>
                             <td>{{data.SoDienThoai}}</td>
-                            @*<td>{{data.NgaySinh | date:'dd/MM/y'}}</td>*@
+                            @*<td>{{data.NgaySinh | date : 'dd/MM/yyyy'}}</td>*@
                             <td>{{data.GioiTinh}}</td>
                             <td>{{data.VaiTro}}</td>
 
@@ -439,14 +441,14 @@
                                     <input type="password" id="matkhau2" ng-model="list_temp_inf_edit.MatKhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                     Ngày sinh
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="ngaysinh" name="ngaysinh" required="required" class="form-control col-md-7 col-xs-12 custom_datepicker">
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
                                     Email
