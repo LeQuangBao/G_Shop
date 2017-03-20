@@ -33,6 +33,7 @@
     <Property Name="NgayMua" Type="date" />
     <Property Name="TongTien" Type="int" />
     <Property Name="NgayGiaoHang" Type="date" />
+    <Property Name="GioGiaoHang" Type="nvarchar" MaxLength="500" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
   </EntityType>
@@ -53,7 +54,7 @@
     <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="500" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="500" />
-    <Property Name="NgaySinh" Type="date" />
+    <Property Name="NgaySinh" Type="date" Nullable="false" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />

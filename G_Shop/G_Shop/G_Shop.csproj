@@ -363,6 +363,9 @@
     <Content Include="Areas\Admin\Views\Revenue\Loai.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\KhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SuaVideoCaThe.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SuaHinh.cshtml" />
+    <Content Include="Areas\Admin\Views\Revenue\thongkehoadon.cshtml" />
+    <Content Include="Areas\Admin\Views\Revenue\ChiTiet.cshtml" />
     <EntityDeploy Include="Models\GShop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GShop.Designer.cs</LastGenOutput>
@@ -370,9 +373,6 @@
     <Content Include="Models\GShop.edmx.diagram">
       <DependentUpon>GShop.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\AdminHome\SuaHinh.cshtml" />
-    <Content Include="Areas\Admin\Views\Revenue\thongkehoadon.cshtml" />
-    <Content Include="Areas\Admin\Views\Revenue\ChiTiet.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
