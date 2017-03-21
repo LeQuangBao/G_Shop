@@ -46,17 +46,17 @@ using G_Shop.Models;
     ///// <summary>
     ///// Tính tổng số tiền của giỏ hàng
     ///// </summary>
-    //public double Amount
-    //{
-    //    get
-    //    {
-    //        if (Items.Count > 0)
-    //        {
-    //            return Items.Sum(p => p.Quantity * p.UnitPrice * (1 - p.Discount));
-    //        }
-    //        return 0;
-    //    }
-    //}
+    public int? Amount
+    {
+        get
+        {
+            if (Items.Count > 0)
+            {
+                return Items.Sum(p => p.GiaBan);
+            }
+            return 0;
+        }
+    }
 
     /// <summary>
     /// Chọn hàng (bỏ hàng vào giỏ)
@@ -70,7 +70,7 @@ using G_Shop.Models;
         }
         catch // Chưa có trong giỏ -> Lấy từ DB
         {
-            using (var db = new GShopEntities1())
+            using (var db = new GShopEntities2())
             {
                 var p = db.CaThes.Find(Id);
                 Items.Add(p);

@@ -39,28 +39,6 @@ C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\PagedList.dll
 C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.dll
 C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\PagedList.xml
 C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\csc.exe
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\System.Collections.Immutable.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\System.Reflection.Metadata.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\vbc.exe
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\VBCSCompiler.exe
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\VBCSCompiler.exe.config
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll.config
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\G_Shop.pdb
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.xml
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
-D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\roslyn\csc.exe
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -83,7 +61,6 @@ C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\PagedList.xml
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 C:\Users\Me.Me-PC\Desktop\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
-C:\Users\Administrator\Documents\GitHub\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
 C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config
 C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\roslyn\csc.exe
 C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -107,4 +84,48 @@ C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
 C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache
 C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
 C:\Users\DLT\Documents\GitHub\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
+E:\New folder\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\csc.exe
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\System.Collections.Immutable.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\System.Reflection.Metadata.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\vbc.exe
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\VBCSCompiler.exe
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\roslyn\VBCSCompiler.exe.config
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll.config
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\G_Shop.pdb
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\PagedList.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.dll
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\PagedList.xml
+E:\New folder\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\ApplicationInsights.config
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\csc.exe
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\System.Collections.Immutable.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\System.Reflection.Metadata.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\vbc.exe
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\VBCSCompiler.exe
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\roslyn\VBCSCompiler.exe.config
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll.config
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\G_Shop.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\G_Shop.pdb
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.xml
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.dll
+D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.pdb
 D:\Software\VisualStudio_WorkSpace\G_Shop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache

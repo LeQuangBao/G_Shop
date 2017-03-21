@@ -19,12 +19,12 @@
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(item.HinhAnh.Substring(0, item.HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">@item.GiaBan</h4>
+                    <h5 class="pull-right">@Html.FormatValue(@item.GiaBan, "{0:c}")</h5>
                     <h4>@item.TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= item.MaLoai, MaCaThe= item.MaCaThe})" class="pull-right">Xem chi tiết</a>
                     
                     @if(Session["user"] != null && item.TinhTrang == "Sẵn bán") {
-                        <button class="add-to-cart btn-lg" data-id="@item.MaCaThe">
+                        <button class="add-to-cart btn-lg gioHang" data-id="@item.MaCaThe" data-toggle="tooltip" title="Thêm vào giỏ hàng">
                             <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>

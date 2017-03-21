@@ -9,6 +9,7 @@
         <tr>
             <th>STT</th>
             <th>Tên</th>
+            <th>Hình</th>
             <th>Số lượng</th>
             <th>Giá</th>
             <th></th>
@@ -19,10 +20,11 @@
             <tr>
                 <td>@(i = i + 1)</td>
                 <td>@p.TenCaThe</td>
+                <td><img src="~/assets/client/images/@(p.HinhAnh.Substring(0, p.HinhAnh.IndexOf("|")))" style="width:100px;height:50px;" alt=""></td>
                 <td>1</td>
                 <td>@Html.FormatValue(p.GiaBan, "{0:c}")</td>
                 <td>
-                    <a href="#" class="remove-from-cart" data-id="@p.MaCaThe">
+                    <a href="#" class="remove-from-cart" data-id="@p.MaCaThe" data-gia="@p.GiaBan">
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
                 </td>
@@ -32,20 +34,21 @@
         <tr>
             <th></th>
             <th></th>
+            <th></th>
             <th>Tổng tiền</th>
-            <th>@Html.FormatValue(tongtien, "{0:c}")</th>
+            <th id="sum">@Html.FormatValue(tongtien, "{0:c}")</th>
             <th></th>
         </tr>
     </table>
     <script>
         $(function(){
             $(".remove-from-cart").click(function () {
-              
                     var id = $(this).attr("data-id");
                     $.ajax({
                         url: "/Cart/Remove",
                         data: { id: id },
                         success: function (response) {
+                            $("#sum").text(response.tong);
                             //$(".nn-cart #cnt").html(response.Count);
                             //$(".nn-cart #amt").html(response.Amount);
                         }

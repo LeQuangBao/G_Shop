@@ -10,7 +10,7 @@ namespace G_Shop.Areas.Admin.Controllers
 {
     public class LoaiController : Controller
     {
-        GShopEntities1 db = new GShopEntities1();
+        GShopEntities2 db = new GShopEntities2();
         // GET: Admin/Loai
         //public IPagedList<Loai> ListAllPageging4(int page, int pagesize)
         //{
@@ -18,9 +18,9 @@ namespace G_Shop.Areas.Admin.Controllers
         //    //return model;
         //    return db.Loais.OrderByDescending(x => x.MaLoai).ToPagedList(page, pagesize);
         //}
-        public ActionResult Index()
+        public ActionResult Index(string message = "")
         {
-            //var model = ListAllPageging4(page, pagesize);
+            ViewBag.Message = message;
             return View();
         }
         [HttpPost]

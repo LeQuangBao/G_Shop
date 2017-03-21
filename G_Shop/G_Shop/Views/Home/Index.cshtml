@@ -17,11 +17,11 @@
             <div class="thumbnail">
                 <img src="~/assets/client/images/@(Model[i].HinhAnh.Substring(0, Model[i].HinhAnh.IndexOf("|")))" style="width:320px;height:150px;" alt="">
                 <div class="caption">
-                    <h4 class="pull-right">@Html.FormatValue(Model[i].GiaBan, "{0:c}")</h4>
+                    <h5 class="pull-right">@Html.FormatValue(Model[i].GiaBan, "{0:c}")</h5>
                     <h4>@Model[i].TenCaThe</h4>
                     <a href="@Url.Action("ChiTiet",new { MaLoai= Model[i].MaLoai, MaCaThe= Model[i].MaCaThe})" class="pull-right">Xem chi tiết</a>
                     @if(Session["user"] != null && Model[i].TinhTrang=="Sẵn bán") {
-                        <button class="add-to-cart btn-lg" data-id="@Model[i].MaCaThe">
+                        <button class="add-to-cart btn-lg gioHang" data-id="@Model[i].MaCaThe" data-toggle="tooltip" title="Thêm vào giỏ hàng">
                             <span class="glyphicon glyphicon-shopping-cart">
 
                             </span>
@@ -31,115 +31,7 @@
                         <p class="text-danger">@(Model[i].TinhTrang != "Sẵn bán" ? "(Đã bán)" : "")</p>
                     }
                 </div>
-
-                @*<div class="ratings">
-                        <p class="pull-right">15 reviews</p>
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
-                    </div>*@
             </div>
         </div>
     }
 </div>
-@*<div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-            <img src="http://placehold.it/320x150" alt="">
-            <div class="caption">
-                <h4 class="pull-right">$64.99</h4>
-                <h4>
-                    <a href="#">Second Product</a>
-                </h4>
-                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="ratings">
-                <p class="pull-right">12 reviews</p>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-            <img src="http://placehold.it/320x150" alt="">
-            <div class="caption">
-                <h4 class="pull-right">$74.99</h4>
-                <h4>
-                    <a href="#">Third Product</a>
-                </h4>
-                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="ratings">
-                <p class="pull-right">31 reviews</p>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-            <img src="http://placehold.it/320x150" alt="">
-            <div class="caption">
-                <h4 class="pull-right">$84.99</h4>
-                <h4>
-                    <a href="#">Fourth Product</a>
-                </h4>
-                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="ratings">
-                <p class="pull-right">6 reviews</p>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-            <img src="http://placehold.it/320x150" alt="">
-            <div class="caption">
-                <h4 class="pull-right">$94.99</h4>
-                <h4>
-                    <a href="#">Fifth Product</a>
-                </h4>
-                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="ratings">
-                <p class="pull-right">18 reviews</p>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <h4>
-            <a href="#">Like this template?</a>
-        </h4>
-        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-    </div>*@
-
-

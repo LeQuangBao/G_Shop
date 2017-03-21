@@ -35,6 +35,23 @@
                      <li>
                          <a href="/Admin/User/Index"><i class="fa fa-fw fa-table"></i> Người dùng</a>
                      </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> Thống kê <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse">
+                                <li>
+                                    <a href="@Url.Action("KhachHang","Revenue")">Khách hàng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Thang","Revenue")">Tháng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Loai","Revenue")">Loài</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("thongkehoadon","Revenue")">Hóa đơn</a>
+                                </li>
+                        </ul>
+                    </li>
     @*<li>
         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
     </li>

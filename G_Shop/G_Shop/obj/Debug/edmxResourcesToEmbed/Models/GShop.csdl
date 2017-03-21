@@ -8,12 +8,13 @@
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
     <Property Name="TenCaThe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="GiaMua" Type="Int32" />
     <Property Name="GiaBan" Type="Int32" />
     <Property Name="KhuyenMai" Type="Int32" />
     <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="HinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Loai" Relationship="Self.FK_CaThe_Loai" FromRole="CaThe" ToRole="Loai" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="CaThe" ToRole="ChiTietHoaDon" />
   </EntityType>
@@ -36,6 +37,7 @@
     <Property Name="NgayMua" Type="DateTime" Precision="0" />
     <Property Name="TongTien" Type="Int32" />
     <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" />
+    <Property Name="GioGiaoHang" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
@@ -56,11 +58,13 @@
     </Key>
     <Property Name="MaNguoiDung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenDangNhap" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TenNguoiDung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="VaiTro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_NguoiDung" FromRole="NguoiDung" ToRole="HoaDon" />
   </EntityType>
@@ -112,7 +116,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GShopEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CaThes" EntityType="Self.CaThe" />
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
