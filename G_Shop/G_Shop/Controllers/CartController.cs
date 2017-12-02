@@ -42,15 +42,5 @@ namespace G_Shop.Controllers
             return View("Index");
         }
 
-        //public ActionResult Update()
-        //{
-        //    foreach (var p in ShoppingCart.Cart.Items)
-        //    {
-        //        String txtName = p.Id.ToString();
-        //        int newQty = int.Parse(Request[txtName]);
-        //        p.Quantity = newQty;
-        //    }
-        //    return View("Index");
-        //}
     }
 }

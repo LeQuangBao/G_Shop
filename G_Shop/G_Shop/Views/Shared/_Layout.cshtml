@@ -24,6 +24,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="~/Scripts/jsUser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -37,14 +38,6 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse row" id="bs-example-navbar-collapse-1" style="margin-top:10px">
                 <div class="row">
-                    @using(Html.BeginForm("Tim", "Home", FormMethod.Get)) {
-                        <div class="col-md-offset-2 col-md-3">
-                            @Html.TextBox("ten", "", new { placeholder = "Tìm kiếm", @class = "form-control" })
-                        </div>
-                        <div class="col-md-1">
-                            <button type="submit" value="Tìm" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-                        </div>
-                    }
                     <div class="pull-right">
                         @if(Session["user"] == null) {
                             <p style="padding:8px 18px 0px 0px">
@@ -70,14 +63,7 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                @*
-                    <p class="lead">Shop bán thú cưng</p>
-                *@
-                @{Html.RenderAction("_Category", "Home");}
-            </div>
-            <div class="col-md-9">
-                @RenderPage("_Slide.cshtml")
+            <div class="col-md-12">
                 @RenderBody()
             </div>
         </div>
