@@ -28,6 +28,14 @@
     <NavigationProperty Name="CaThe" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="ChiTietHoaDon" ToRole="CaThe" />
     <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
   </EntityType>
+  <EntityType Name="Giong">
+    <Key>
+      <PropertyRef Name="MaGiong" />
+    </Key>
+    <Property Name="MaGiong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenGiong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Loais" Relationship="Self.FK_Loai_Giong" FromRole="Giong" ToRole="Loai" />
+  </EntityType>
   <EntityType Name="HoaDon">
     <Key>
       <PropertyRef Name="MaHoaDon" />
@@ -37,6 +45,7 @@
     <Property Name="NgayMua" Type="DateTime" Precision="0" />
     <Property Name="TongTien" Type="Int32" />
     <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" />
+    <Property Name="GioGiaoHang" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
@@ -47,9 +56,11 @@
       <PropertyRef Name="MaLoai" />
     </Key>
     <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaGiong" Type="Int32" Nullable="false" />
     <Property Name="TenLoai" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CaThes" Relationship="Self.FK_CaThe_Loai" FromRole="Loai" ToRole="CaThe" />
+    <NavigationProperty Name="Giong" Relationship="Self.FK_Loai_Giong" FromRole="Loai" ToRole="Giong" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>
@@ -60,7 +71,7 @@
     <Property Name="TenNguoiDung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -103,6 +114,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Loai_Giong">
+    <End Role="Giong" Type="Self.Giong" Multiplicity="1" />
+    <End Role="Loai" Type="Self.Loai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Giong">
+        <PropertyRef Name="MaGiong" />
+      </Principal>
+      <Dependent Role="Loai">
+        <PropertyRef Name="MaGiong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HoaDon_NguoiDung">
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
@@ -115,9 +138,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GShopEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CaThes" EntityType="Self.CaThe" />
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
+    <EntitySet Name="Giongs" EntityType="Self.Giong" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
     <EntitySet Name="Loais" EntityType="Self.Loai" />
     <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
@@ -132,6 +156,10 @@
     <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
       <End Role="HoaDon" EntitySet="HoaDons" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loai_Giong" Association="Self.FK_Loai_Giong">
+      <End Role="Giong" EntitySet="Giongs" />
+      <End Role="Loai" EntitySet="Loais" />
     </AssociationSet>
     <AssociationSet Name="FK_HoaDon_NguoiDung" Association="Self.FK_HoaDon_NguoiDung">
       <End Role="NguoiDung" EntitySet="NguoiDungs" />

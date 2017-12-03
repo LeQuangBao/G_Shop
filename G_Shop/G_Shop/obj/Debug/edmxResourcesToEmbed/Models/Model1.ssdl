@@ -24,6 +24,13 @@
     <Property Name="MaHoaDon" Type="int" Nullable="false" />
     <Property Name="MaCaThe" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Giong">
+    <Key>
+      <PropertyRef Name="MaGiong" />
+    </Key>
+    <Property Name="MaGiong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenGiong" Type="nvarchar" MaxLength="500" />
+  </EntityType>
   <EntityType Name="HoaDon">
     <Key>
       <PropertyRef Name="MaHoaDon" />
@@ -33,6 +40,7 @@
     <Property Name="NgayMua" Type="date" />
     <Property Name="TongTien" Type="int" />
     <Property Name="NgayGiaoHang" Type="date" />
+    <Property Name="GioGiaoHang" Type="nvarchar" MaxLength="500" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
   </EntityType>
@@ -41,6 +49,7 @@
       <PropertyRef Name="MaLoai" />
     </Key>
     <Property Name="MaLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaGiong" Type="int" Nullable="false" />
     <Property Name="TenLoai" Type="nvarchar" MaxLength="500" />
     <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
   </EntityType>
@@ -53,7 +62,7 @@
     <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="500" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="500" />
-    <Property Name="NgaySinh" Type="date" />
+    <Property Name="NgaySinh" Type="date" Nullable="false" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
@@ -107,9 +116,22 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Loai_Giong">
+    <End Role="Giong" Type="Self.Giong" Multiplicity="1" />
+    <End Role="Loai" Type="Self.Loai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Giong">
+        <PropertyRef Name="MaGiong" />
+      </Principal>
+      <Dependent Role="Loai">
+        <PropertyRef Name="MaGiong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="GShopModelStoreContainer">
     <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Giong" EntityType="Self.Giong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
@@ -128,6 +150,10 @@
     <AssociationSet Name="FK_HoaDon_NguoiDung" Association="Self.FK_HoaDon_NguoiDung">
       <End Role="NguoiDung" EntitySet="NguoiDung" />
       <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loai_Giong" Association="Self.FK_Loai_Giong">
+      <End Role="Giong" EntitySet="Giong" />
+      <End Role="Loai" EntitySet="Loai" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

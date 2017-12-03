@@ -29,6 +29,13 @@
           <Property Name="MaHoaDon" Type="int" Nullable="false" />
           <Property Name="MaCaThe" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Giong">
+          <Key>
+            <PropertyRef Name="MaGiong" />
+          </Key>
+          <Property Name="MaGiong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenGiong" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="HoaDon">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -47,6 +54,7 @@
             <PropertyRef Name="MaLoai" />
           </Key>
           <Property Name="MaLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaGiong" Type="int" Nullable="false" />
           <Property Name="TenLoai" Type="nvarchar" MaxLength="500" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
         </EntityType>
@@ -113,9 +121,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Loai_Giong">
+          <End Role="Giong" Type="Self.Giong" Multiplicity="1" />
+          <End Role="Loai" Type="Self.Loai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Giong">
+              <PropertyRef Name="MaGiong" />
+            </Principal>
+            <Dependent Role="Loai">
+              <PropertyRef Name="MaGiong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="GShopModelStoreContainer">
           <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Giong" EntityType="Self.Giong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
@@ -134,6 +155,10 @@
           <AssociationSet Name="FK_HoaDon_NguoiDung" Association="Self.FK_HoaDon_NguoiDung">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loai_Giong" Association="Self.FK_Loai_Giong">
+            <End Role="Giong" EntitySet="Giong" />
+            <End Role="Loai" EntitySet="Loai" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -169,6 +194,14 @@
           <NavigationProperty Name="CaThe" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="ChiTietHoaDon" ToRole="CaThe" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
         </EntityType>
+        <EntityType Name="Giong">
+          <Key>
+            <PropertyRef Name="MaGiong" />
+          </Key>
+          <Property Name="MaGiong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenGiong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Loais" Relationship="Self.FK_Loai_Giong" FromRole="Giong" ToRole="Loai" />
+        </EntityType>
         <EntityType Name="HoaDon">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -189,9 +222,11 @@
             <PropertyRef Name="MaLoai" />
           </Key>
           <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaGiong" Type="Int32" Nullable="false" />
           <Property Name="TenLoai" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CaThes" Relationship="Self.FK_CaThe_Loai" FromRole="Loai" ToRole="CaThe" />
+          <NavigationProperty Name="Giong" Relationship="Self.FK_Loai_Giong" FromRole="Loai" ToRole="Giong" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
@@ -245,6 +280,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Loai_Giong">
+          <End Role="Giong" Type="Self.Giong" Multiplicity="1" />
+          <End Role="Loai" Type="Self.Loai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Giong">
+              <PropertyRef Name="MaGiong" />
+            </Principal>
+            <Dependent Role="Loai">
+              <PropertyRef Name="MaGiong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HoaDon_NguoiDung">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
@@ -257,9 +304,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GShopEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GShopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CaThes" EntityType="Self.CaThe" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
+          <EntitySet Name="Giongs" EntityType="Self.Giong" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
           <EntitySet Name="Loais" EntityType="Self.Loai" />
           <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
@@ -275,6 +323,10 @@
             <End Role="HoaDon" EntitySet="HoaDons" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
           </AssociationSet>
+          <AssociationSet Name="FK_Loai_Giong" Association="Self.FK_Loai_Giong">
+            <End Role="Giong" EntitySet="Giongs" />
+            <End Role="Loai" EntitySet="Loais" />
+          </AssociationSet>
           <AssociationSet Name="FK_HoaDon_NguoiDung" Association="Self.FK_HoaDon_NguoiDung">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="HoaDon" EntitySet="HoaDons" />
@@ -285,7 +337,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities2">
+        <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities">
           <EntitySetMapping Name="CaThes">
             <EntityTypeMapping TypeName="GShopModel.CaThe">
               <MappingFragment StoreEntitySet="CaThe">
@@ -312,6 +364,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Giongs">
+            <EntityTypeMapping TypeName="GShopModel.Giong">
+              <MappingFragment StoreEntitySet="Giong">
+                <ScalarProperty Name="MaGiong" ColumnName="MaGiong" />
+                <ScalarProperty Name="TenGiong" ColumnName="TenGiong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="GShopModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
@@ -330,6 +390,7 @@
             <EntityTypeMapping TypeName="GShopModel.Loai">
               <MappingFragment StoreEntitySet="Loai">
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="MaGiong" ColumnName="MaGiong" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>

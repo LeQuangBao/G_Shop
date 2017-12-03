@@ -12,21 +12,18 @@ namespace G_Shop.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Loai
+    public partial class Giong
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Loai()
+        public Giong()
         {
-            this.CaThes = new HashSet<CaThe>();
+            this.Loais = new HashSet<Loai>();
         }
     
-        public int MaLoai { get; set; }
         public int MaGiong { get; set; }
-        public string TenLoai { get; set; }
-        public string MoTa { get; set; }
+        public string TenGiong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CaThe> CaThes { get; set; }
-        public virtual Giong Giong { get; set; }
+        public virtual ICollection<Loai> Loais { get; set; }
     }
 }

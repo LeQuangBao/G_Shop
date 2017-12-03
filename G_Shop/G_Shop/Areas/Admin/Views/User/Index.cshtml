@@ -7,7 +7,7 @@
 @*<script src="~/Areas/Admin/Script/angular-ui-router.min.js"></script>*@
 <script>document.write('<base href="' + document.location + '" />');</script>
 
- 
+
 <script src="~/Areas/Admin/Script/angular.min.js"></script>
 <script src="~/Areas/Admin/Script/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
@@ -19,34 +19,6 @@
          $scope.currentPage = 1,
          $scope.numPerPage = 10,
          $scope.maxSize = 5;
-         //$scope.today = new Date();
-
-         //$scope.get_nguoidung = function () {
-         //    $scope.list_nguoidung = [];
-         //    //get building_id form url;
-         //        return $http({
-         //            method: "GET",
-         //            url: "/Admin/User/Get_nguoidung",
-         //        })
-         //            .then(function (response) {
-         //                $scope.list_nguoidung = response.data;
-         //                $scope.totalItems = $scope.list_nguoidung.length;
-         //                $scope.$watch('currentPage + numPerPage', function () {
-         //                    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-         //                    , end = begin + $scope.numPerPage;
-
-         //                    //$scope.setPage = function (pageNo) {
-         //                    //    $scope.currentPage = pageNo;
-         //                    //};
-
-         //                    $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
-         //                });
-
-         //            }, function (response) {
-         //                //showing errors
-         //            });
-         //    };
-         //$scope.get_nguoidung();
 
          //array did filter
          $scope.list_temp_inf_edit = [];
@@ -56,11 +28,6 @@
 
          //Create building item
          $scope.them = function () {
-
-             //var fd = new FormData();
-             //if ($scope.add.$valid) {
-             // mact = document.getElementById("MaCT").value;
-             //console.log(mact);
              var tendangnhap = document.getElementById("tendangnhap").value;
              var sodienthoai = document.getElementById("sodienthoai").value;
              var matkhau = document.getElementById("matkhau").value;
@@ -69,28 +36,7 @@
              var email = document.getElementById("email").value;
              var vaitro = document.getElementById("vaitro").value;
              var diachi = document.getElementById("diachi").value;
-             //alert(diachi);
              var tennguoidung = document.getElementById("tennguoidung").value;
-             //alert(tennguoidung);
-             //fd.append("TenDangNhap", tendangnhap);
-             //fd.append("MatKhau", matkhau);
-             //fd.append("GioiTinh", gioitinh);
-             //fd.append("NgaySinh", ngaysinh);
-             //fd.append("Email", email);
-             //fd.append("VaiTro", vaitro);
-             //$http.post('/User/themnguoidung', fd, {
-             //      transformRequest: angular.identity,
-             //      headers: { 'Content-Type': undefined }
-             //       })
-             //         .then(function (result) {
-             //             if (result.data == "ok") {
-             //                 alert("Thêm thành công");
-             //                 location.reload();
-             //             } else {
-             //                 alert("Xảy ra lỗi");
-
-             //             }
-             //         });
              $http({
                  method: "post",
                  url: "/User/themnguoidung",
@@ -118,11 +64,9 @@
 
                    }
                });
-             //};
          };
          //edit building item
          $scope.capnhat = function () {
-             // console.log($scope.list_temp_inf_edit);
              $http({
                  method: "post",
                  url: "/User/capnhat",
@@ -155,7 +99,7 @@
                      $scope.list_nguoidung = response.data;
                      //$scope.list_nguoidung.NgaySinh = new Date(response.data.NgaySinh);
                      //for (var ng in $scope.list_nguoidung) {
-                       
+
                      //    console.log(ng.NgaySinh);
                      //}
 
@@ -169,6 +113,7 @@
                          //};
 
                          $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
+                         console.log($scope.filteredTodos);
                      });
 
                  }, function (response) {
@@ -206,7 +151,7 @@
                         </span>
                     </div>
                 </form>*@
-      @*<input type="text" class="form-control" ng-model="data_search" placeholder="Nhập dữ liệu cần tìm" />*@
+            @*<input type="text" class="form-control" ng-model="data_search" placeholder="Nhập dữ liệu cần tìm" />*@
 
 
         </div>
@@ -442,13 +387,13 @@
                                 </div>
                             </div>
                             @*<div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Ngày sinh
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="ngaysinh" name="ngaysinh" required="required" class="form-control col-md-7 col-xs-12 custom_datepicker">
-                                </div>
-                            </div>*@
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                        Ngày sinh
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="ngaysinh" name="ngaysinh" required="required" class="form-control col-md-7 col-xs-12 custom_datepicker">
+                                    </div>
+                                </div>*@
                             <div class="form-group">
                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
                                     Email
