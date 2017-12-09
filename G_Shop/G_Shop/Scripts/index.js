@@ -53,16 +53,16 @@
     }
 
     $scope.addToCart = function(id, event) {
-        $.ajax({
+        $http({
             url: "/Cart/Add",
             data: { id: id },
-            success: function (response) {
-                //alert("Thêm sản phẩm thành công.");
-            }
-
+            method: "POST"
+        }).then(function(response) {
+            console.log(response);
+        }, function(response) {
+            console.log(response);
         });
         $(event.currentTarget).addClass("btn btn-success active");
-        $(event.currentTarget).after('<label class="btn btn-lg btn-success alertSuccess"><i class="glyphicon glyphicon-ok"><i/></span>');
     }
 
     function buildUrlChiTiet(maLoai, maCaThe) {

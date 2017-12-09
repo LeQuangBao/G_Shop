@@ -7,9 +7,13 @@
 
 <script src="~/Scripts/Shoppingcart.js"></script>
 <script src="~/Scripts/index.js"></script>
+
 <div class="col-lg-12" ng-controller="indexController">
     <div class="row">
         <div class="col-lg-12">
+            @if(Session["user"] == null) {
+                <p style="position:fixed;bottom:10px;right:10px;background-color:yellow;border:1px solid black;z-index: 98; padding: 4px">Bạn chưa đăng nhập, vui lòng đăng nhập để xem giỏ hàng và thanh toán</p>
+            }
             <h3>Danh sách thú cưng mới nhất</h3>
         </div>
     </div>
