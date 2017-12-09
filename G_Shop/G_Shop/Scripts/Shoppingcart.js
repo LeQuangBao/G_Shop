@@ -3,9 +3,9 @@
         var id = $(this).attr("data-id");
         if (!$(this).hasClass("active")) {
 
-        $(this).addClass("btn btn-success active");
-        //$(this).after('<h2 style="display:inline"><label class="label label-success"><i class="glyphicon glyphicon-ok"><i/></span></h2>')
-        $(this).after('<label class="btn btn-lg btn-success alertSuccess"><i class="glyphicon glyphicon-ok"><i/></span>')
+            //$(this).after('<h2 style="display:inline"><label class="label label-success"><i class="glyphicon glyphicon-ok"><i/></span></h2>')
+            $(this).addClass("btn btn-success active");
+            $(this).after('<label class="btn btn-lg btn-success alertSuccess"><i class="glyphicon glyphicon-ok"><i/></span>');
         }
         
         $.ajax({
