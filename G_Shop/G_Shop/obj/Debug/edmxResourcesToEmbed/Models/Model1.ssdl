@@ -24,6 +24,14 @@
     <Property Name="MaHoaDon" Type="int" Nullable="false" />
     <Property Name="MaCaThe" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="GoiY">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="C1" Type="int" />
+    <Property Name="C2" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="Giong">
     <Key>
       <PropertyRef Name="MaGiong" />
@@ -131,6 +139,7 @@
   <EntityContainer Name="GShopModelStoreContainer">
     <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoiY" EntityType="Self.GoiY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Giong" EntityType="Self.Giong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />

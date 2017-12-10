@@ -51,5 +51,16 @@ namespace G_Shop.Controllers
                         }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult getGoiY() {
+            var list = (from n in db.GoiYs
+                        select new GoiYDTO {
+                            id = n.id,
+                            C1 = n.C1,
+                            C2 = n.C2
+                        }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
     }
 }

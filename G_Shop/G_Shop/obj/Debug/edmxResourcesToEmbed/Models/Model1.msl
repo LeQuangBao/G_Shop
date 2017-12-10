@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities">
+  <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities1">
     <EntitySetMapping Name="CaThes">
       <EntityTypeMapping TypeName="GShopModel.CaThe">
         <MappingFragment StoreEntitySet="CaThe">
@@ -24,6 +24,15 @@
           <ScalarProperty Name="MaChiTietHoaDon" ColumnName="MaChiTietHoaDon" />
           <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
           <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoiYs">
+      <EntityTypeMapping TypeName="GShopModel.GoiY">
+        <MappingFragment StoreEntitySet="GoiY">
+          <ScalarProperty Name="C1" ColumnName="C1" />
+          <ScalarProperty Name="C2" ColumnName="C2" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

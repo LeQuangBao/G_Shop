@@ -1,9 +1,19 @@
-﻿app.controller('indexController', function ($scope, $http) {
+﻿app.controller('chiTietController', function ($scope, $http) {
   var url = "http://localhost:60181/";
+  
   var data = [];
- 
+
   $scope.data = [];
+  $scope.goiY = [];
+
   $scope.filter = "";
+
+  // get maCaThe
+  // var temp = window.location.href.split("=");
+  // $scope.maCaThe = temp[temp.length - 1];
+  var link = window.location.href;
+  var objectLink = new URL(link);
+  $scope.maCaThe = objectLink.searchParams.get("MaCaThe");
   //------------
   $http({
     method: "GET",
@@ -34,9 +44,9 @@
       }).then(function (response) {
         giongs = response.data;
         $scope.giongs = response.data;
-        $scope.giongs.forEach(function(g, i) {
+        $scope.giongs.forEach(function (g, i) {
           $scope.giongs[i].loais = [];
-          $scope.loais.forEach(function(l){
+          $scope.loais.forEach(function (l) {
             if (l.MaGiong === g.MaGiong) {
               $scope.giongs[i].loais.push(l);
             }
@@ -51,13 +61,33 @@
             }
           })
         });
-        data.forEach(function (caThe) {
-          caThe.image = caThe.HinhAnh.split("|")[0];
-          caThe.url = buildUrlChiTiet(caThe.MaLoai, caThe.MaCaThe);
+
+        // get GoiY
+        $http({
+          method: "GET",
+          url: url + "CaThe/getGoiY"
+        }).then(function (response) {
+          var goiY = response.data;
+          var l = [];
+         
+          goiY.forEach(function (g) {
+            if (g.C1 === $scope.maCaThe * 1) {
+              l.push(g.C2);
+            }
+          });
+          data.forEach(function (caThe, i) {
+            l.forEach(function(o) {
+              if (o === caThe.MaCaThe) {
+                $scope.goiY.push(caThe);
+              }
+            })
+          });
+          $scope.data = data;
+          console.log($scope.data);
+          console.log($scope.goiY);
+        }, function (response) {
+
         });
-        console.log($scope.giongs);
-        $scope.data = data;
-        console.log($scope.data);
       }, function (response) {
 
       });
@@ -67,11 +97,8 @@
   }, function (response) {
 
   });
-  
-  $scope.setFilter = function (filter) {
-    $scope.filter = filter;
-  }
-  $scope.setFilter({MaLoai: {MaLoai: 1}});
+
+ 
   $scope.addToCart = function (id, event) {
     $http({
       url: "/Cart/Add",

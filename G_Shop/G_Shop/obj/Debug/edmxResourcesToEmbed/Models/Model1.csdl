@@ -28,6 +28,14 @@
     <NavigationProperty Name="CaThe" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="ChiTietHoaDon" ToRole="CaThe" />
     <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
   </EntityType>
+  <EntityType Name="GoiY">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="C1" Type="Int32" />
+    <Property Name="C2" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
   <EntityType Name="Giong">
     <Key>
       <PropertyRef Name="MaGiong" />
@@ -138,9 +146,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GShopEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GShopEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CaThes" EntityType="Self.CaThe" />
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
+    <EntitySet Name="GoiYs" EntityType="Self.GoiY" />
     <EntitySet Name="Giongs" EntityType="Self.Giong" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
     <EntitySet Name="Loais" EntityType="Self.Loai" />
