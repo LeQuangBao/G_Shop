@@ -60,7 +60,7 @@ namespace G_Shop.DAO {
         public List<CaThe> TimCaThe(string ten) {
             return db.CaThes.Where(x => x.TenCaThe.Contains(ten)).ToList();
         }
-
+        
         public string TuoiCaThe(int MaCaThe) {
             string tuoi;
             var model = db.CaThes.Find(MaCaThe);

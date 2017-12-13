@@ -1,7 +1,6 @@
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\bin\Debug\GShop_Win.exe.config
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\bin\Debug\GShop_Win.exe
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\bin\Debug\GShop_Win.pdb
-D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csprojResolveAssemblyReference.cache
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\MainWindow.g.cs
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\App.g.cs
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win_MarkupCompile.cache
@@ -12,3 +11,4 @@ D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.Properties.Resources.resour
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csproj.GenerateResource.Cache
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.exe
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.pdb
+D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csprojResolveAssemblyReference.cache

@@ -21,6 +21,12 @@
             <span class="list-group-item list-group-item-success" ng-click="setFilter({MaLoai: {MaGiong: {MaGiong:g.MaGiong}}})">{{g.TenGiong}} </span>
             <span class="list-group-item" style="margin-left:10px" ng-click="setFilter({MaLoai: {MaLoai: l.MaLoai}})" ng-repeat="l in g.loais">{{l.TenLoai}}</span>
         </div>
+        <div>
+            <span class="list-group-item list-group-item-success">Tuổi</span>
+            <span class="list-group-item" style="margin-left:10px" ng-click="setFilter(filterAge('NgaySinh',1))">< 3 tháng</span>
+            <span class="list-group-item" style="margin-left:10px" ng-click="setFilter(filterAge('NgaySinh',2))">3 tháng -1 năm</span>
+            <span class="list-group-item" style="margin-left:10px" ng-click="setFilter(filterAge('NgaySinh',3))" >> 1 năm</span>
+        </div>
     </div>
     <div class="col-lg-9">
 

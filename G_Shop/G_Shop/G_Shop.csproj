@@ -172,13 +172,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GoiYController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonDTO1.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiDTO.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungDTO.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportInfo.cs" />
     <Compile Include="Areas\Admin\Controllers\RevenueController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CaTheController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\CTHD.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
