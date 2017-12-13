@@ -151,5 +151,4 @@ D:\DVWVUD\GSHop\G_Shop\G_Shop\bin\PagedList.dll
 D:\DVWVUD\GSHop\G_Shop\G_Shop\bin\PagedList.Mvc.dll
 D:\DVWVUD\GSHop\G_Shop\G_Shop\bin\PagedList.xml
 D:\DVWVUD\GSHop\G_Shop\G_Shop\bin\PagedList.Mvc.xml
-D:\DVWVUD\GSHop\G_Shop\G_Shop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\DVWVUD\GSHop\G_Shop\G_Shop\obj\Debug\G_Shop.csprojResolveAssemblyReference.cache

@@ -115,11 +115,11 @@
           var agestring = getAge(bt);
           var ageAray = agestring.split(' ');
           switch (id) {
-              case 1: if ((agestring.includes('m') && !agestring.includes('y') && ageAray[0] <= 3) || (!agestring.includes('m') && !agestring.includes('y'))) return true;
+              case 1: if ((agestring.indexOf('m') != 0 && agestring.indexOf('y') < 0 && ageAray[0] <= 3) || (agestring.indexOf('m') < 0 && agestring.indexOf('y') < 0)) return true;
                   break;
-              case 2: if ((agestring.includes('m') && !agestring.includes('y') && ageAray[0] >= 3 && ageAray[0] < 12) || (agestring.includes('y') && !agestring.includes('m') && !agestring.includes('d') && ageAray[0] == 1)) return true;
+              case 2: if ((agestring.indexOf('m') !=0 && agestring.indexOf('y')<0 && ageAray[0] >= 3 && ageAray[0] < 12) || (agestring.indexOf('y')>=0 && agestring.indexOf('m') < 0 && agestring.indexOf('d')<0 && ageAray[0] == 1)) return true;
                   break;
-              case 3: if (agestring.includes('y') && (agestring.includes('m') || agestring.includes('d')) && ageAray[0] >= 1) return true;
+              case 3: if (agestring.indexOf('y')>=0 && (agestring.indexOf('m')>=0 || agestring.indexOf('d') >=0) && ageAray[0] >= 1) return true;
                   break;
           }
       }
