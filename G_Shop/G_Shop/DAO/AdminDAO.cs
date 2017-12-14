@@ -177,5 +177,13 @@ namespace G_Shop.DAO
             model.Video = cathe.Video;
             db.SaveChanges();
         }
+        public List<CaThe> GetAllCaTheExcept(int Macathe)
+        {
+            return db.CaThes.Where(x=>x.MaCaThe!=Macathe).ToList();
+        }
+        public List<int?> GetAllLienQuan(int MaCaThe)
+        {
+            return db.GoiYs.Where(x=>x.C1==MaCaThe).Select(x => x.C2).ToList();
+        }
     }
 }
