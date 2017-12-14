@@ -65,15 +65,19 @@
                         @{
                             if (ViewBag.Del.IndexOf(item.MaCaThe) >= 0)
                             {
+                            <a href="http://localhost:60181/Admin/GoiY/xoaGoiY?c1=@ViewBag.ID&c2=@item.MaCaThe">
                                 <button class="btn btn-primary" style="background-color:darkgreen">
-                                    @Html.ActionLink("Xóa", "xoaGoiY", new { c1 = ViewBag.ID,c2 = item.MaCaThe }, new { @style = "color:white;" })
-                             </button>
+                                    Xóa
+                                </button>
+                            </a>
                             }
                             else
                             {
-                                <button class="btn btn-primary">
-                                    @Html.ActionLink("Thêm", "themGoiY", new { c1 = ViewBag.ID, c2 = item.MaCaThe }, new { @style = "color:white;" })
-                                </button>
+                                <a href="http://localhost:60181/Admin/GoiY/themGoiY?c1=@ViewBag.ID&c2=@item.MaCaThe">
+                                    <button class="btn btn-primary" >
+                                        Thêm
+                                    </button>
+                                </a>
                             }
                         }
                                    

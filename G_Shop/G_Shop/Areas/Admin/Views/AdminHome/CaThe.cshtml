@@ -93,10 +93,11 @@
                         @Html.DisplayFor(modelItem => item.TinhTrang)
                     </td>
                     <td>
+                        <a href="http://localhost:60181/Admin/AdminHome/SuaCaThe?MaLoai=@item.MaLoai&MaCaThe=@item.MaCaThe">
                         <button class="btn btn-primary">
-
-                        @Html.ActionLink("Sửa", "SuaCaThe", new { MaLoai = item.MaLoai, MaCaThe = item.MaCaThe}, new { @style = "color:white;" })
+                            Sửa
                         </button>
+                        </a>
                     </td>
                 </tr>
             }
