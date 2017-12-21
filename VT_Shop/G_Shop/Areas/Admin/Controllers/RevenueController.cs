@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using G_Shop.Models;
-using G_Shop.Controllers;
+using VT_Shop.Models;
+using VT_Shop.Controllers;
 
-namespace G_Shop.Areas.Admin.Controllers
+namespace VT_Shop.Areas.Admin.Controllers
 {
     public class RevenueController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        VTShopEntities db = new VTShopEntities();
         // GET: Admin/Revenue
         public ActionResult Index()
         {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using G_Shop.Models;
+using VT_Shop.Models;
 using System.Globalization;
 
-namespace G_Shop.Controllers
+namespace VT_Shop.Controllers
 {
     public class CartController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        VTShopEntities db = new VTShopEntities();
         // GET: Cart
         public ActionResult Index()
         {

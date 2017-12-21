@@ -1,4 +1,4 @@
-﻿@model IEnumerable<G_Shop.Models.CaThe>
+﻿@model IEnumerable<VT_Shop.Models.CaThe>
 
 @{
     ViewBag.Title = "Các con Hamster";
@@ -105,7 +105,7 @@
     </table>
     <input type="hidden" value="@i" id="tong" />
 </div>
-@Html.Partial("ThemCaThe", new G_Shop.Models.CaThe())
+@Html.Partial("ThemCaThe", new VT_Shop.Models.CaThe())
 <input type="hidden" name="tinhtrang" value="@ViewBag.tinhtrang" />
 <script type="text/javascript">
     $(document).ready(function () {

@@ -1,15 +1,15 @@
-﻿using G_Shop.Models;
+﻿using VT_Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace G_Shop.Controllers
+namespace VT_Shop.Controllers
 {
     public class CaTheController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        VTShopEntities db = new VTShopEntities();
 
         [HttpGet]
         public JsonResult getCaThe() {
@@ -52,15 +52,5 @@ namespace G_Shop.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult getGoiY() {
-            var list = (from n in db.GoiYs
-                        select new GoiYDTO {
-                            id = n.id,
-                            C1 = n.C1,
-                            C2 = n.C2
-                        }).ToList();
-            return Json(list, JsonRequestBehavior.AllowGet);
-        }
     }
 }

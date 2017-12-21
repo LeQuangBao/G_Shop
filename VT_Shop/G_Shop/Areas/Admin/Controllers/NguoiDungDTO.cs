@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace G_Shop.Areas.Admin.Controllers
+namespace VT_Shop.Areas.Admin.Controllers
 {
     public class NguoiDungDTO
     {

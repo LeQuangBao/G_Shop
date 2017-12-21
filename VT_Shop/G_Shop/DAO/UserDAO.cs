@@ -1,15 +1,15 @@
-﻿using G_Shop.Models;
+﻿using VT_Shop.Models;
 using Itenso.TimePeriod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace G_Shop.DAO {
+namespace VT_Shop.DAO {
     public class UserDAO {
-        GShopEntities2 db = null;
+        VTShopEntities db = null;
         public UserDAO() {
-            db = new GShopEntities2();
+            db = new VTShopEntities();
         }
         public int Login(string username, string password) {
             var result = db.NguoiDungs.SingleOrDefault(x => x.TenDangNhap == username && x.MatKhau == password);

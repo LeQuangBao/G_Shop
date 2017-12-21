@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="VTShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CaThe">
           <Key>
             <PropertyRef Name="MaCaThe" />
@@ -28,14 +28,6 @@
           <Property Name="MaChiTietHoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaHoaDon" Type="int" Nullable="false" />
           <Property Name="MaCaThe" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="GoiY">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="C1" Type="int" />
-          <Property Name="C2" Type="int" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Giong">
           <Key>
@@ -141,10 +133,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GShopModelStoreContainer">
+        <EntityContainer Name="VTShopModelStoreContainer">
           <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GoiY" EntityType="Self.GoiY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Giong" EntityType="Self.Giong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
@@ -174,7 +165,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="VTShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CaThe">
           <Key>
             <PropertyRef Name="MaCaThe" />
@@ -202,14 +193,6 @@
           <Property Name="MaCaThe" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CaThe" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="ChiTietHoaDon" ToRole="CaThe" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
-        </EntityType>
-        <EntityType Name="GoiY">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="C1" Type="Int32" />
-          <Property Name="C2" Type="Int32" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="Giong">
           <Key>
@@ -321,10 +304,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GShopEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VTShopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CaThes" EntityType="Self.CaThe" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
-          <EntitySet Name="GoiYs" EntityType="Self.GoiY" />
           <EntitySet Name="Giongs" EntityType="Self.Giong" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
           <EntitySet Name="Loais" EntityType="Self.Loai" />
@@ -355,9 +337,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GShopModelStoreContainer" CdmEntityContainer="GShopEntities1">
+        <EntityContainerMapping StorageEntityContainer="VTShopModelStoreContainer" CdmEntityContainer="VTShopEntities">
           <EntitySetMapping Name="CaThes">
-            <EntityTypeMapping TypeName="GShopModel.CaThe">
+            <EntityTypeMapping TypeName="VTShopModel.CaThe">
               <MappingFragment StoreEntitySet="CaThe">
                 <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
@@ -374,7 +356,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
-            <EntityTypeMapping TypeName="GShopModel.ChiTietHoaDon">
+            <EntityTypeMapping TypeName="VTShopModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
                 <ScalarProperty Name="MaChiTietHoaDon" ColumnName="MaChiTietHoaDon" />
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
@@ -382,17 +364,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GoiYs">
-            <EntityTypeMapping TypeName="GShopModel.GoiY">
-              <MappingFragment StoreEntitySet="GoiY">
-                <ScalarProperty Name="C1" ColumnName="C1" />
-                <ScalarProperty Name="C2" ColumnName="C2" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Giongs">
-            <EntityTypeMapping TypeName="GShopModel.Giong">
+            <EntityTypeMapping TypeName="VTShopModel.Giong">
               <MappingFragment StoreEntitySet="Giong">
                 <ScalarProperty Name="MaGiong" ColumnName="MaGiong" />
                 <ScalarProperty Name="TenGiong" ColumnName="TenGiong" />
@@ -400,7 +373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="GShopModel.HoaDon">
+            <EntityTypeMapping TypeName="VTShopModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
@@ -414,7 +387,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Loais">
-            <EntityTypeMapping TypeName="GShopModel.Loai">
+            <EntityTypeMapping TypeName="VTShopModel.Loai">
               <MappingFragment StoreEntitySet="Loai">
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="MaGiong" ColumnName="MaGiong" />
@@ -424,7 +397,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
-            <EntityTypeMapping TypeName="GShopModel.NguoiDung">
+            <EntityTypeMapping TypeName="VTShopModel.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace G_Shop.Areas.Admin
+namespace VT_Shop.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration 
     {

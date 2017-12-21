@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace VT_Shop.Areas.Admin.Controllers {
     public class AdminHomeController : Controller {
-        VTShopEntity db = new VTShopEntity();
+        VTShopEntities db = new VTShopEntities();
         public List<HttpPostedFileBase> fileUpload = new List<HttpPostedFileBase>();
         public List<HttpPostedFileBase> fileUpload2 = new List<HttpPostedFileBase>();
         // GET: Admin/Home

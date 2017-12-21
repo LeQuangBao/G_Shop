@@ -1,7 +1,7 @@
 ﻿using System;
-using G_Shop.Models;
+using VT_Shop.Models;
 
-namespace G_Shop.Controllers
+namespace VT_Shop.Controllers
 {
     public class HoaDonDTO
     {

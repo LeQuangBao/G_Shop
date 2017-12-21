@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using G_Shop.DAO;
-using G_Shop.Models;
+using VT_Shop.DAO;
+using VT_Shop.Models;
 using PagedList;
 using PagedList.Mvc;
-namespace G_Shop.Controllers {
+namespace VT_Shop.Controllers {
     public class HomeController : Controller {
-        GShopEntities2 db = new GShopEntities2();
+        VTShopEntities db = new VTShopEntities();
         public IEnumerable<CaThe> ListAllPageging4(int page, int pagesize) {
             return db.CaThes.Where(x => x.TinhTrang == "Sẵn bán").OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
         }

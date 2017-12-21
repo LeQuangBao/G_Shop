@@ -70,7 +70,7 @@ using VT_Shop.Models;
         }
         catch // Chưa có trong giỏ -> Lấy từ DB
         {
-            using (var db = new GShopEntities2())
+            using (var db = new VTShopEntities())
             {
                 var p = db.CaThes.Find(Id);
                 Items.Add(p);

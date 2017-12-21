@@ -1,17 +1,17 @@
-﻿using G_Shop.Models;
+﻿using VT_Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using G_Shop.Areas.Admin.Models;
-namespace G_Shop.DAO
+using VT_Shop.Areas.Admin.Models;
+namespace VT_Shop.DAO
 {
     public class AdminDAO
     {
-        GShopEntities2 db = null;
+        VTShopEntities db = null;
         public AdminDAO()
         {
-            db = new GShopEntities2();
+            db = new VTShopEntities();
         }
         public List<Loai> GetAllTenLoai()
         {
@@ -180,10 +180,6 @@ namespace G_Shop.DAO
         public List<CaThe> GetAllCaTheExcept(int Macathe)
         {
             return db.CaThes.Where(x=>x.MaCaThe!=Macathe).ToList();
-        }
-        public List<int?> GetAllLienQuan(int MaCaThe)
-        {
-            return db.GoiYs.Where(x=>x.C1==MaCaThe).Select(x => x.C2).ToList();
         }
     }
 }

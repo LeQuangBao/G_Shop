@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using G_Shop.Models;
+using VT_Shop.Models;
 using PagedList.Mvc;
 using PagedList;
 
-namespace G_Shop.Areas.Admin.Controllers {
+namespace VT_Shop.Areas.Admin.Controllers {
     public class UserController : Controller {
-        GShopEntities2 db = new GShopEntities2();
+        VTShopEntities db = new VTShopEntities();
         // GET: Admin/User
         protected override void Dispose(bool disposing) {
             db.Dispose();

@@ -10,7 +10,7 @@ namespace VT_Shop.Areas.Admin.Controllers
 {
     public class LoaiController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        VTShopEntities db = new VTShopEntities();
         // GET: Admin/Loai
         //public IPagedList<Loai> ListAllPageging4(int page, int pagesize)
         //{

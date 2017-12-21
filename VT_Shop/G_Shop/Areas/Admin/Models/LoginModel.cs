@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace G_Shop.Areas.Admin.Models
+namespace VT_Shop.Areas.Admin.Models
 {
     public class LoginModel
     {

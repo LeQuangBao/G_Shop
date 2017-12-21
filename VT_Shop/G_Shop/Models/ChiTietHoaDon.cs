@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace G_Shop.Models
+namespace VT_Shop.Models
 {
     using System;
     using System.Collections.Generic;
