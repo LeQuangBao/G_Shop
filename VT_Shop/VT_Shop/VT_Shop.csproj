@@ -199,38 +199,38 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\CaThe.cs">
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Giong.cs">
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Loai.cs">
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelLogin.cs" />
     <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VTShopModel.Context.cs">
+    <Compile Include="Models\VT_ShopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VTShopModel.Context.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VTShopModel.cs">
+    <Compile Include="Models\VT_ShopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VTShopModel.tt</DependentUpon>
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VTShopModel.Designer.cs">
+    <Compile Include="Models\VT_ShopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VTShopModel.edmx</DependentUpon>
+      <DependentUpon>VT_ShopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -336,15 +336,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\VTShopModel.Context.tt">
+    <Content Include="Models\VT_ShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VTShopModel.edmx</DependentUpon>
-      <LastGenOutput>VTShopModel.Context.cs</LastGenOutput>
+      <DependentUpon>VT_ShopModel.edmx</DependentUpon>
+      <LastGenOutput>VT_ShopModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\VTShopModel.tt">
+    <Content Include="Models\VT_ShopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VTShopModel.edmx</DependentUpon>
-      <LastGenOutput>VTShopModel.cs</LastGenOutput>
+      <DependentUpon>VT_ShopModel.edmx</DependentUpon>
+      <LastGenOutput>VT_ShopModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -394,15 +394,12 @@
     <Content Include="Areas\Admin\Views\Revenue\thongkehoadon.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\ChiTiet.cshtml" />
     <Content Include="assets\client\videos\636254231369325854hamster2.webm" />
-    <Content Include="Areas\Admin\Views\GoiY\CaTheLienQuan.cshtml" />
-    <Content Include="Areas\Admin\Views\GoiY\themGoiY.cshtml" />
-    <Content Include="Areas\Admin\Views\GoiY\xoaGoiY.cshtml" />
-    <EntityDeploy Include="Models\VTShopModel.edmx">
+    <EntityDeploy Include="Models\VT_ShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>VTShopModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>VT_ShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\VTShopModel.edmx.diagram">
-      <DependentUpon>VTShopModel.edmx</DependentUpon>
+    <Content Include="Models\VT_ShopModel.edmx.diagram">
+      <DependentUpon>VT_ShopModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
