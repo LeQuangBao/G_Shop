@@ -247,26 +247,8 @@
     <Content Include="Areas\Admin\Script\page.js" />
     <Content Include="Areas\Admin\Script\pagesearch.js" />
     <Content Include="Areas\Admin\Script\ui-bootstrap-tpls-2.5.0.min.js" />
-    <Content Include="assets\client\images\14822895365348483267.jpg" />
-    <Content Include="assets\client\images\hamster004.jpg" />
     <Content Include="assets\client\images\Add to basket.png" />
-    <Content Include="assets\client\images\hamster001.jpg" />
-    <Content Include="assets\client\images\df8bdc0787eb68c35292ff74fa60466b_S.jpg" />
-    <Content Include="assets\client\images\hamster003.jpg" />
-    <Content Include="assets\client\images\hamster002.jpg" />
-    <Content Include="assets\client\images\hamster010.jpg" />
-    <Content Include="assets\client\images\hamster011.jpg" />
-    <Content Include="assets\client\images\hamster012.jpg" />
-    <Content Include="assets\client\images\hamster013.jpg" />
-    <Content Include="assets\client\images\hamster014.jpg" />
-    <Content Include="assets\client\images\images %281%29.jpg" />
     <Content Include="assets\client\images\search.png" />
-    <Content Include="assets\client\images\xamkhoi.jpg" />
-    <Content Include="assets\client\videos\636253639017479541Video.MP4" />
-    <Content Include="assets\client\videos\636254227788962605Hamster.MP4" />
-    <Content Include="assets\client\videos\636256266118598849hamster3.m4v" />
-    <Content Include="assets\client\videos\636256268575413684Video.MP4" />
-    <Content Include="assets\client\videos\Video.MP4" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\EntityFramework.dll" />
@@ -372,7 +354,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="Areas\Admin\Views\AdminHome\CaThe.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\TopMenu.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHome\SuaCaThe.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SuaCay.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HoaDon.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\CTHD.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
@@ -383,13 +365,12 @@
     <Content Include="Areas\Admin\Views\Loai\timkiemloai.cshtml" />
     <Content Include="Areas\Admin\Views\Loai\edit.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Revenue\Cathe.cshtml" />
+    <Content Include="Areas\Admin\Views\Revenue\Cay.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\Loai.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\KhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SuaHinh.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\thongkehoadon.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\ChiTiet.cshtml" />
-    <Content Include="assets\client\videos\636254231369325854hamster2.webm" />
     <EntityDeploy Include="Models\VT_ShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>VT_ShopModel.Designer.cs</LastGenOutput>
@@ -463,8 +444,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Category.cshtml" />
     <Content Include="Views\Shared\_Slide.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHome\ThemCaThe.cshtml" />
-    <Content Include="Views\Home\ThuCung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\ThemCay.cshtml" />
+    <Content Include="Views\Home\Cay.cshtml" />
     <Content Include="Views\Shared\_LayoutNotSlide.cshtml" />
     <Content Include="Views\Home\ChiTiet.cshtml" />
     <Content Include="Views\Home\Tim.cshtml" />
@@ -483,7 +464,6 @@
     <Folder Include="Content\plugins\" />
     <Folder Include="fonts\font-awesome\" />
     <Folder Include="obj\Debug\" />
-    <Folder Include="Views\CaThe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

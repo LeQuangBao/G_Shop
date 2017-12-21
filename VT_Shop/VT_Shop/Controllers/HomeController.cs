@@ -37,7 +37,7 @@ namespace VT_Shop.Controllers {
             var model = new UserDAO().GetAllTenLoai();
             return PartialView(model);
         }
-        public ActionResult ThuCung(int MaLoai, int page = 1, int pagesize = 6) {
+        public ActionResult Cay(int MaLoai, int page = 1, int pagesize = 6) {
             var user = Session["user"] as NguoiDung;
             if(user != null)
                 ViewBag.tennguoidung = user.TenDangNhap;
