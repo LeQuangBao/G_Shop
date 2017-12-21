@@ -19,19 +19,19 @@ namespace VT_Shop.DAO
         }
 
         
-        public List<CaThe> GetCaThe_MaLoai(int MaLoai, int? i)
+        public List<Cay> GetCay_MaLoai(int MaLoai, int? i)
         {
-            List<CaThe> model = new List<CaThe>();
+            List<Cay> model = new List<Cay>();
             if (i == null || i==0)
-                model = db.CaThes.Where(x => x.MaLoai == MaLoai).ToList();
+                model = db.Cays.Where(x => x.MaLoai == MaLoai).ToList();
             else  //Biến i kiểm tra điều kiện lọc hóa đơn theo tình trạng
             {
                 if (i == 1)
-                    model = db.CaThes.Where(x => x.TinhTrang == "Sẵn bán").ToList();
+                    model = db.Cays.Where(x => x.TinhTrang == "Sẵn bán").ToList();
                 if (i == 2)
-                    model = db.CaThes.Where(x => x.TinhTrang == "Đã bán").ToList();
+                    model = db.Cays.Where(x => x.TinhTrang == "Đã bán").ToList();
                 if (i == 3)
-                    model = db.CaThes.Where(x => x.TinhTrang == "Đã mất").ToList();
+                    model = db.Cays.Where(x => x.TinhTrang == "Đã mất").ToList();
             }
             return model;
         }
@@ -41,27 +41,26 @@ namespace VT_Shop.DAO
             return model.TenLoai;
         }
 
-        public void ThemCaThe(CaThe model)
+        public void ThemCay(Cay model)
         {
-            db.CaThes.Add(model);
+            db.Cays.Add(model);
             db.SaveChanges();
         }
 
-        public CaThe GetCaThe_MaLoai_MaCaThe(int MaLoai, int MaCaThe)
+        public Cay GetCay_MaLoai_MaCay(int MaLoai, int MaCay)
         {
-            return db.CaThes.Where(x => x.MaLoai == MaLoai && x.MaCaThe == MaCaThe).FirstOrDefault();
+            return db.Cays.Where(x => x.MaLoai == MaLoai && x.MaCay == MaCay).FirstOrDefault();
         }
 
-        public void SuaCaThe(CaThe cathe)
+        public void SuaCay(Cay Cay)
         {
-            CaThe model = db.CaThes.Find(cathe.MaCaThe);
-            model.TenCaThe = cathe.TenCaThe;
-            model.MoTa = cathe.MoTa;
-            model.NgaySinh = cathe.NgaySinh;
-            model.GiaBan = cathe.GiaBan;
-            model.GiaMua = cathe.GiaMua;
-            model.KhuyenMai = cathe.KhuyenMai;
-            model.TinhTrang = cathe.TinhTrang;
+            Cay model = db.Cays.Find(Cay.MaCay);
+            model.TenCay = Cay.TenCay;
+            model.MoTa = Cay.MoTa;
+            model.GiaBan = Cay.GiaBan;
+            model.GiaMua = Cay.GiaMua;
+            model.KhuyenMai = Cay.KhuyenMai;
+            model.TinhTrang = Cay.TinhTrang;
             db.SaveChanges();
         }
 
@@ -87,24 +86,24 @@ namespace VT_Shop.DAO
         public List<CTHD> GetCTHD_MaHD(int MaHD)
         {
             var model = (from cthd in db.ChiTietHoaDons
-                         join ct in db.CaThes
-                         on cthd.MaCaThe equals ct.MaCaThe
+                         join ct in db.Cays
+                         on cthd.MaCay equals ct.MaCay
                          join hd in db.HoaDons on cthd.MaHoaDon equals hd.MaHoaDon
                          where cthd.MaHoaDon == MaHD
                          select new
                          {
                              macthd = cthd.MaChiTietHoaDon,
                              mahd = cthd.MaHoaDon,
-                             macathe=ct.MaCaThe,
-                             tenct = ct.TenCaThe,
+                             maCay=ct.MaCay,
+                             tenct = ct.TenCay,
                              hinh = ct.HinhAnh.Substring(0, ct.HinhAnh.IndexOf("|")),
                              gia = ct.GiaBan
                          }).AsEnumerable().Select(x => new CTHD()
                          {
                              MaCTHD = x.macthd,
                              MaHD = x.mahd,
-                             MaCaThe=x.macathe,
-                             TenCaThe = x.tenct,
+                             MaCay=x.maCay,
+                             TenCay = x.tenct,
                              Hinh = x.hinh,
                              Gia = x.gia
                          }).ToList();
@@ -157,29 +156,24 @@ namespace VT_Shop.DAO
             db.SaveChanges();
         }              
 
-        public int? CapNhatCTHD(int macathe, int mahoadon)
+        public int? CapNhatCTHD(int maCay, int mahoadon)
         {
             int? tongtien;
-            var cthd = db.ChiTietHoaDons.Where(x=>x.MaCaThe==macathe && x.MaHoaDon==mahoadon).First();
+            var cthd = db.ChiTietHoaDons.Where(x=>x.MaCay==maCay && x.MaHoaDon==mahoadon).First();
             db.ChiTietHoaDons.Remove(cthd);
             var hoadon = db.HoaDons.Find(mahoadon);
-            int? gia = db.CaThes.Find(macathe).GiaBan;
+            int? gia = db.Cays.Find(maCay).GiaBan;
             tongtien = hoadon.TongTien - gia;
             hoadon.TongTien=tongtien;
-            var cathe = db.CaThes.Find(macathe);
-            cathe.TinhTrang = "Sẵn bán";
+            var Cay = db.Cays.Find(maCay);
+            Cay.TinhTrang = "Sẵn bán";
             db.SaveChanges();
             return tongtien;
         }
 
-        public void SuaVideoCaThe(CaThe cathe) {
-            CaThe model = db.CaThes.Find(cathe.MaCaThe);
-            model.Video = cathe.Video;
-            db.SaveChanges();
-        }
-        public List<CaThe> GetAllCaTheExcept(int Macathe)
+        public List<Cay> GetAllCayExcept(int MaCay)
         {
-            return db.CaThes.Where(x=>x.MaCaThe!=Macathe).ToList();
+            return db.Cays.Where(x=>x.MaCay!=MaCay).ToList();
         }
     }
 }

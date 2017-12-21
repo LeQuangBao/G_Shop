@@ -46,9 +46,9 @@ namespace VT_Shop.Controllers {
             foreach(var p in ShoppingCart.Cart.Items) {
                 var detail = new ChiTietHoaDon {
                     HoaDon = order,
-                    MaCaThe = p.MaCaThe,
+                    MaCay = p.MaCay,
                 };
-                userDAO.BanCaThe(p.MaCaThe);
+                userDAO.BanCay(p.MaCay);
                 db.ChiTietHoaDons.Add(detail); // insert orderdetail
             }
             db.SaveChanges();
@@ -97,7 +97,7 @@ namespace VT_Shop.Controllers {
         //    var user = Session["user"] as NguoiDung;
         //    var model = db.ChiTietHoaDons
         //        .Where(d => d.HoaDon.MaNguoiDung == user.MaNguoiDung)
-        //        .Select(d => d.CaThe)
+        //        .Select(d => d.Cay)
         //        .Distinct().ToList();
         //    return View("../Product/List", model);
         //}

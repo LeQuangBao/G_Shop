@@ -16,7 +16,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult Cathe()
+        public ActionResult Cay()
         {
             if (Session["Admin"] == null)
             {
@@ -44,7 +44,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult CaThe(FormCollection form)
+        public ActionResult Cay(FormCollection form)
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
@@ -53,15 +53,15 @@ namespace VT_Shop.Areas.Admin.Controllers
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
                 Where(p => p.HoaDon.NgayMua >= ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
-                GroupBy(p => p.CaThe)
+                GroupBy(p => p.Cay)
                 .Select(g => new ReportInfo
                 {
-                    Group = g.Key.TenCaThe,
-                    Count = g.Sum(p => p.MaCaThe),
-                    Total = g.Sum(p => p.CaThe.GiaBan * 1),
-                    MinPrice = g.Min(p => p.CaThe.GiaBan),
-                    MaxPrice = g.Max(p => p.CaThe.GiaBan),
-                    AvgPrice = g.Average(p => p.CaThe.GiaBan)
+                    Group = g.Key.TenCay,
+                    Count = g.Sum(p => p.MaCay),
+                    Total = g.Sum(p => p.Cay.GiaBan * 1),
+                    MinPrice = g.Min(p => p.Cay.GiaBan),
+                    MaxPrice = g.Max(p => p.Cay.GiaBan),
+                    AvgPrice = g.Average(p => p.Cay.GiaBan)
                 });
             ViewBag.ngaybd = ngaybd;
             ViewBag.ngaykt = ngaykt;
@@ -88,15 +88,15 @@ namespace VT_Shop.Areas.Admin.Controllers
             }
             var model = db.ChiTietHoaDons.
                 Where(h => h.HoaDon.NgayMua >= ngaybd1 && h.HoaDon.NgayMua <= ngaykt1).
-                GroupBy(p => p.CaThe.Loai)
+                GroupBy(p => p.Cay.Loai)
                 .Select(g => new ReportInfo
                 {
                     Group = g.Key.TenLoai,
-                    Count = g.Sum(p => p.CaThe.Loai.MaLoai),
-                    Total = g.Sum(p => p.CaThe.GiaBan * 1),
-                    MinPrice = g.Min(p => p.CaThe.GiaBan),
-                    MaxPrice = g.Max(p => p.CaThe.GiaBan),
-                    AvgPrice = g.Average(p => p.CaThe.GiaBan)
+                    Count = g.Sum(p => p.Cay.Loai.MaLoai),
+                    Total = g.Sum(p => p.Cay.GiaBan * 1),
+                    MinPrice = g.Min(p => p.Cay.GiaBan),
+                    MaxPrice = g.Max(p => p.Cay.GiaBan),
+                    AvgPrice = g.Average(p => p.Cay.GiaBan)
                 });
             ViewBag.ngaybd = ngaybatdau2;
             ViewBag.ngaykt = ngaykethuc2;

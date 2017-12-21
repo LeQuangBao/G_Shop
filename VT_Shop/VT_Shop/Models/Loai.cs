@@ -17,7 +17,7 @@ namespace VT_Shop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Loai()
         {
-            this.CaThes = new HashSet<CaThe>();
+            this.Cays = new HashSet<Cay>();
         }
     
         public int MaLoai { get; set; }
@@ -26,7 +26,7 @@ namespace VT_Shop.Models
         public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CaThe> CaThes { get; set; }
+        public virtual ICollection<Cay> Cays { get; set; }
         public virtual Giong Giong { get; set; }
     }
 }

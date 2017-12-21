@@ -3,11 +3,11 @@ using VT_Shop.Models;
 using System;
 
 namespace VT_Shop.Controllers {
-    public partial class CaTheDTO {
+    public partial class CayDTO {
 
-        public int MaCaThe { get; set; }
+        public int MaCay { get; set; }
         public int MaLoai { get; set; }
-        public string TenCaThe { get; set; }
+        public string TenCay { get; set; }
         public string MoTa { get; set; }
         public DateTime NgaySinh { get; set; }
         public int? GiaMua { get; set; }

@@ -8,39 +8,39 @@
 
   $scope.filter = "";
 
-  // get maCaThe
+  // get maCay
   // var temp = window.location.href.split("=");
-  // $scope.maCaThe = temp[temp.length - 1];
+  // $scope.maCay = temp[temp.length - 1];
   var link = window.location.href;
   var objectLink = new URL(link);
-  $scope.maCaThe = objectLink.searchParams.get("MaCaThe");
+  $scope.maCay = objectLink.searchParams.get("MaCay");
   //------------
   $http({
     method: "GET",
-    url: url + "CaThe/getCaThe"
+    url: url + "Cay/getCay"
   }).then(function (response) {
     data = response.data;
     //------------
     $http({
       method: "GET",
-      url: url + "CaThe/getLoai"
+      url: url + "Cay/getLoai"
     }).then(function (response) {
       // scope
       $scope.loais = response.data;
 
-      // Add Loai to CaThe
+      // Add Loai to Cay
       loais = response.data;
-      data.forEach(function (caThe) {
+      data.forEach(function (Cay) {
         loais.forEach(function (loai) {
-          if (loai.MaLoai === caThe.MaLoai) {
-            caThe.MaLoai = loai;
+          if (loai.MaLoai === Cay.MaLoai) {
+            Cay.MaLoai = loai;
           }
         })
       });
       //------------
       $http({
         method: "GET",
-        url: url + "CaThe/getGiong"
+        url: url + "Cay/getGiong"
       }).then(function (response) {
         giongs = response.data;
         $scope.giongs = response.data;
@@ -53,11 +53,11 @@
           });
         });
 
-        // Add Giong to CaThe
-        data.forEach(function (caThe) {
+        // Add Giong to Cay
+        data.forEach(function (Cay) {
           giongs.forEach(function (giong) {
-            if (giong.MaGiong === caThe.MaLoai.MaGiong) {
-              caThe.MaLoai.MaGiong = giong;
+            if (giong.MaGiong === Cay.MaLoai.MaGiong) {
+              Cay.MaLoai.MaGiong = giong;
             }
           })
         });
@@ -65,20 +65,20 @@
         // get GoiY
         $http({
           method: "GET",
-          url: url + "CaThe/getGoiY"
+          url: url + "Cay/getGoiY"
         }).then(function (response) {
           var goiY = response.data;
           var l = [];
          
           goiY.forEach(function (g) {
-            if (g.C1 === $scope.maCaThe * 1) {
+            if (g.C1 === $scope.maCay * 1) {
               l.push(g.C2);
             }
           });
-          data.forEach(function (caThe, i) {
+          data.forEach(function (Cay, i) {
             l.forEach(function(o) {
-              if (o === caThe.MaCaThe) {
-                $scope.goiY.push(caThe);
+              if (o === Cay.MaCay) {
+                $scope.goiY.push(Cay);
               }
             })
           });
@@ -112,8 +112,8 @@
     $(event.currentTarget).addClass("btn btn-success active");
   }
 
-  function buildUrlChiTiet(maLoai, maCaThe) {
-    var urlChiTiet = "/Home/ChiTiet?MaLoai=" + maLoai.MaLoai + "&MaCaThe=" + maCaThe;
+  function buildUrlChiTiet(maLoai, maCay) {
+    var urlChiTiet = "/Home/ChiTiet?MaLoai=" + maLoai.MaLoai + "&MaCay=" + maCay;
     return urlChiTiet;
   }
 });

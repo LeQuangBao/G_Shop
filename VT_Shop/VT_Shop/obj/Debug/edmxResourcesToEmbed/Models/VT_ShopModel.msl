@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="VTShopModelStoreContainer" CdmEntityContainer="VTShopEntities">
-    <EntitySetMapping Name="CaThes">
-      <EntityTypeMapping TypeName="VTShopModel.CaThe">
-        <MappingFragment StoreEntitySet="CaThe">
-          <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
+    <EntitySetMapping Name="Cays">
+      <EntityTypeMapping TypeName="VTShopModel.Cay">
+        <MappingFragment StoreEntitySet="Cay">
+          <ScalarProperty Name="MaCay" ColumnName="MaCay" />
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
-          <ScalarProperty Name="TenCaThe" ColumnName="TenCaThe" />
+          <ScalarProperty Name="TenCay" ColumnName="TenCay" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
           <ScalarProperty Name="GiaMua" ColumnName="GiaMua" />
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
           <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
-          <ScalarProperty Name="Video" ColumnName="Video" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -23,7 +21,7 @@
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
           <ScalarProperty Name="MaChiTietHoaDon" ColumnName="MaChiTietHoaDon" />
           <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
-          <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
+          <ScalarProperty Name="MaCay" ColumnName="MaCay" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

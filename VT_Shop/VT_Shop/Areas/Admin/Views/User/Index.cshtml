@@ -3,8 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-@*<script src="~/Areas/Admin/Script/moment.js"></script>*@
-@*<script src="~/Areas/Admin/Script/angular-ui-router.min.js"></script>*@
+
 <script>document.write('<base href="' + document.location + '" />');</script>
 
 
@@ -97,20 +96,11 @@
              })
                  .then(function (response) {
                      $scope.list_nguoidung = response.data;
-                     //$scope.list_nguoidung.NgaySinh = new Date(response.data.NgaySinh);
-                     //for (var ng in $scope.list_nguoidung) {
-
-                     //    console.log(ng.NgaySinh);
-                     //}
 
                      $scope.totalItems = $scope.list_nguoidung.length;
                      $scope.$watch('currentPage + numPerPage', function () {
                          var begin = (($scope.currentPage - 1) * $scope.numPerPage)
                          , end = begin + $scope.numPerPage;
-
-                         //$scope.setPage = function (pageNo) {
-                         //    $scope.currentPage = pageNo;
-                         //};
 
                          $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
                          console.log($scope.filteredTodos);
@@ -143,16 +133,6 @@
             <strong id="message"></strong>
         </div>
         <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="margin-left:200px">
-            @*<form action="/Admin/User/timkiemnguoidung" method="post">
-                    <div style="width:500px" class="input-group col-lg-offset-2">
-                        <input type="text" name="txttimkiem" id="keyword" class="form-control" placeholder="Tìm kiếm..." required>
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit" id="search">Tìm kiếm</button>
-                        </span>
-                    </div>
-                </form>*@
-            @*<input type="text" class="form-control" ng-model="data_search" placeholder="Nhập dữ liệu cần tìm" />*@
-
 
         </div>
         <div class="col-md-6">
@@ -184,7 +164,6 @@
                         <th>Địa chỉ</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
-                        @*<th>Ngày sinh</th>*@
                         <th>Giới tính</th>
                         <th>Vai trò</th>
                         <th></th>
@@ -193,13 +172,7 @@
 
                     <tbody>
 
-                        <!--                                    bắt đầu vòng lặp-->
-                        @*<tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {Name:data_search} | limitTo:10">*@
-
-
-                        @*@{int index = 0;}*@
                         <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {name:i} | limitTo:10">
-                            @*>>>>>>> c662a89... Admin: filter User*@
                             <td>{{$index + 1}}</td>
                             <td>{{data.TenDangNhap}}</td>
                             <td>{{data.TenNguoiDung}}</td>
@@ -232,7 +205,7 @@
                         <h4 class="modal-title" id="myModalLabel">Thêm người dùng</h4>
                     </div>
                     <div class="modal-body">
-                        <form @*id="add" name="add"*@ class="form-horizontal" role="form" method="post">
+                        <form  class="form-horizontal" role="form" method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                     Tên đăng nhập
@@ -318,7 +291,6 @@
                                     Vai trò
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @*<input id="sdt" name="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">*@
                                     <select class="date-picker form-control col-md-7 col-xs-12" id="vaitro">
                                         <option value="Khách hàng">Khách hàng</option>
                                         <option value="Quản trị viên">Người quản trị</option>
@@ -336,7 +308,6 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        @*<button type="button" class="btn btn-primary" id="them">Lưu</button>*@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
@@ -351,16 +322,7 @@
                         <h4 class="modal-title" id="myModalLabel">Sửa người dùng</h4>
                     </div>
                     <div class="modal-body">
-                        <form @*id="add" name="add"*@ class="form-horizontal" role="form" method="post">
-                            @*<div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                        Tên đăng nhập <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                        <input type="text" id="tendangnhap1" ng-model="list_temp_inf_edit.TenDangNhap" name="tendangnhap" required="required" class="form-control col-md-7 col-xs-12">
-                                    </div>
-                                </div>*@
+                        <form  class="form-horizontal" role="form" method="post">
                             <div class="form-group">
                                 <input type="hidden" ng-model="list_temp_inf_edit.MaNguoiDung" />
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
@@ -386,14 +348,6 @@
                                     <input type="password" id="matkhau2" ng-model="list_temp_inf_edit.MatKhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
-                            @*<div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                        Ngày sinh
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="ngaysinh" name="ngaysinh" required="required" class="form-control col-md-7 col-xs-12 custom_datepicker">
-                                    </div>
-                                </div>*@
                             <div class="form-group">
                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
                                     Email
@@ -428,7 +382,6 @@
                                     Vai trò
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @*<input id="sdt" name="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">*@
                                     <select ng-model="list_temp_inf_edit.VaiTro" class="date-picker form-control col-md-7 col-xs-12" id="vaitro1">
                                         <option value="Khách hàng">Khách hàng</option>
                                         <option value="Quản trị viên">Người quản trị</option>
@@ -446,7 +399,6 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        @*<button type="button" class="btn btn-primary" id="them">Lưu</button>*@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>

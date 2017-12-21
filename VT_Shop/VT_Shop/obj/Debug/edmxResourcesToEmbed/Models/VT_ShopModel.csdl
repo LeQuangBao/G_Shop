@@ -1,22 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="VTShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="CaThe">
+  <EntityType Name="Cay">
     <Key>
-      <PropertyRef Name="MaCaThe" />
+      <PropertyRef Name="MaCay" />
     </Key>
-    <Property Name="MaCaThe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaCay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
-    <Property Name="TenCaThe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenCay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="GiaMua" Type="Int32" />
     <Property Name="GiaBan" Type="Int32" />
     <Property Name="KhuyenMai" Type="Int32" />
     <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="HinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Loai" Relationship="Self.FK_CaThe_Loai" FromRole="CaThe" ToRole="Loai" />
-    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="CaThe" ToRole="ChiTietHoaDon" />
+    <NavigationProperty Name="Loai" Relationship="Self.FK_Cay_Loai" FromRole="Cay" ToRole="Loai" />
+    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_Cay" FromRole="Cay" ToRole="ChiTietHoaDon" />
   </EntityType>
   <EntityType Name="ChiTietHoaDon">
     <Key>
@@ -24,8 +22,8 @@
     </Key>
     <Property Name="MaChiTietHoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaHoaDon" Type="Int32" Nullable="false" />
-    <Property Name="MaCaThe" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CaThe" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="ChiTietHoaDon" ToRole="CaThe" />
+    <Property Name="MaCay" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cay" Relationship="Self.FK_ChiTietHoaDon_Cay" FromRole="ChiTietHoaDon" ToRole="Cay" />
     <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
   </EntityType>
   <EntityType Name="Giong">
@@ -59,7 +57,7 @@
     <Property Name="MaGiong" Type="Int32" Nullable="false" />
     <Property Name="TenLoai" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CaThes" Relationship="Self.FK_CaThe_Loai" FromRole="Loai" ToRole="CaThe" />
+    <NavigationProperty Name="Cays" Relationship="Self.FK_Cay_Loai" FromRole="Loai" ToRole="Cay" />
     <NavigationProperty Name="Giong" Relationship="Self.FK_Loai_Giong" FromRole="Loai" ToRole="Giong" />
   </EntityType>
   <EntityType Name="NguoiDung">
@@ -78,27 +76,27 @@
     <Property Name="VaiTro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_NguoiDung" FromRole="NguoiDung" ToRole="HoaDon" />
   </EntityType>
-  <Association Name="FK_CaThe_Loai">
+  <Association Name="FK_Cay_Loai">
     <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
-    <End Role="CaThe" Type="Self.CaThe" Multiplicity="*" />
+    <End Role="Cay" Type="Self.Cay" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Loai">
         <PropertyRef Name="MaLoai" />
       </Principal>
-      <Dependent Role="CaThe">
+      <Dependent Role="Cay">
         <PropertyRef Name="MaLoai" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ChiTietHoaDon_CaThe">
-    <End Role="CaThe" Type="Self.CaThe" Multiplicity="1" />
+  <Association Name="FK_ChiTietHoaDon_Cay">
+    <End Role="Cay" Type="Self.Cay" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CaThe">
-        <PropertyRef Name="MaCaThe" />
+      <Principal Role="Cay">
+        <PropertyRef Name="MaCay" />
       </Principal>
       <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="MaCaThe" />
+        <PropertyRef Name="MaCay" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -139,18 +137,18 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="VTShopEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CaThes" EntityType="Self.CaThe" />
+    <EntitySet Name="Cays" EntityType="Self.Cay" />
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="Giongs" EntityType="Self.Giong" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
     <EntitySet Name="Loais" EntityType="Self.Loai" />
     <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
-    <AssociationSet Name="FK_CaThe_Loai" Association="Self.FK_CaThe_Loai">
+    <AssociationSet Name="FK_Cay_Loai" Association="Self.FK_Cay_Loai">
       <End Role="Loai" EntitySet="Loais" />
-      <End Role="CaThe" EntitySet="CaThes" />
+      <End Role="Cay" EntitySet="Cays" />
     </AssociationSet>
-    <AssociationSet Name="FK_ChiTietHoaDon_CaThe" Association="Self.FK_ChiTietHoaDon_CaThe">
-      <End Role="CaThe" EntitySet="CaThes" />
+    <AssociationSet Name="FK_ChiTietHoaDon_Cay" Association="Self.FK_ChiTietHoaDon_Cay">
+      <End Role="Cay" EntitySet="Cays" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
     </AssociationSet>
     <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">

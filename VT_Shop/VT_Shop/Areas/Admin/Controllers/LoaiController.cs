@@ -14,7 +14,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         // GET: Admin/Loai
         //public IPagedList<Loai> ListAllPageging4(int page, int pagesize)
         //{
-        //    //var model = new UserDAO().GetNewCaThe().ToPagedList(page,pagesize);
+        //    //var model = new UserDAO().GetNewCay().ToPagedList(page,pagesize);
         //    //return model;
         //    return db.Loais.OrderByDescending(x => x.MaLoai).ToPagedList(page, pagesize);
         //}

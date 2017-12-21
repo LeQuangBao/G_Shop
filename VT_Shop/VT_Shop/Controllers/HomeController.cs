@@ -10,8 +10,8 @@ using PagedList.Mvc;
 namespace VT_Shop.Controllers {
     public class HomeController : Controller {
         VTShopEntities db = new VTShopEntities();
-        public IEnumerable<CaThe> ListAllPageging4(int page, int pagesize) {
-            return db.CaThes.Where(x => x.TinhTrang == "Sẵn bán").OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
+        public IEnumerable<Cay> ListAllPageging4(int page, int pagesize) {
+            return db.Cays.Where(x => x.TinhTrang == "Sẵn bán").OrderByDescending(x => x.MaCay).ToPagedList(page, pagesize);
         }
 
         public ActionResult Index(int page = 1, int pagesize = 3) {
@@ -21,8 +21,8 @@ namespace VT_Shop.Controllers {
             var model = ListAllPageging4(page, pagesize);
             return View(model);
         }
-        public IEnumerable<CaThe> ListAllPageging(int MaLoai, int page, int pagesize) {
-            return db.CaThes.Where(n => n.MaLoai.Equals(MaLoai)).OrderByDescending(x => x.MaCaThe).ToPagedList(page, pagesize);
+        public IEnumerable<Cay> ListAllPageging(int MaLoai, int page, int pagesize) {
+            return db.Cays.Where(n => n.MaLoai.Equals(MaLoai)).OrderByDescending(x => x.MaCay).ToPagedList(page, pagesize);
         }
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
@@ -47,12 +47,11 @@ namespace VT_Shop.Controllers {
             return View(model);
         }
         [HttpGet]
-        public ActionResult ChiTiet(int MaLoai, int MaCaThe) {
+        public ActionResult ChiTiet(int MaLoai, int MaCay) {
             var user = Session["user"] as NguoiDung;
             if(user != null)
                 ViewBag.tennguoidung = user.TenDangNhap;
-            var model = new UserDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
-            ViewBag.TuoiCaThe = new UserDAO().TuoiCaThe(MaCaThe);
+            var model = new UserDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
             return View(model);
         }
 
@@ -60,7 +59,7 @@ namespace VT_Shop.Controllers {
             var user = Session["user"] as NguoiDung;
             if(user != null)
                 ViewBag.tennguoidung = user.TenDangNhap;
-            var model = new UserDAO().TimCaThe(ten);
+            var model = new UserDAO().TimCay(ten);
             return View(model);
         }
     }

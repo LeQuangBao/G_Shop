@@ -57,14 +57,14 @@
                     <tr>
                         <td id="stt@(i)" class="stt">@(i++)</td>
                         <td>
-                            @item.TenCaThe
+                            @item.TenCay
                         </td>
                         <td><img src="~/assets/client/images/@item.Hinh" style="width:100px;height:50px;" alt=""></td>
                         <td>
                             @Html.FormatValue(item.Gia, "{0:c}")
                         </td>
                         <td>
-                            <a href="#" class="remove-from-order" data-id="@item.MaCaThe">
+                            <a href="#" class="remove-from-order" data-id="@item.MaCay">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>
@@ -85,8 +85,6 @@
             </dt>
 
             <dd>
-                @*<a href="#" id="dynamicdata" data-type="select" data-pk="1" data-value=@ViewBag.TinhTrang data-title="Chọn tình trạng hóa đơn"></a>*@
-                @*<a href="#" id="status" data-type="select" data-pk="1" data-title="Chọn tình trạng hóa đơn"></a><button id="enable" class="btn btn-default">Sửa <span class="glyphicon glyphicon-edit"></span></button>*@
                 @using(Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post)) {
                     <input type="hidden" name="mahoadon" value="@ViewBag.MaHD" />
                     <input type="hidden" name="i" value="@ViewBag.i" />
@@ -136,14 +134,13 @@
     $(function () {
         $(".remove-from-order").click(function () {
             var stt = 1;
-            var idcathe = $(this).attr("data-id");
+            var idCay = $(this).attr("data-id");
             var idhoadon = $("#mahd").text();
-            // Xóa <tr> chứa sản phẩm bị xóa
 
             $(this).parents("tr").remove();
             $.ajax({
                 url: "/AdminHome/CapNhatCTHD",
-                data: { macathe: idcathe, mahoadon: idhoadon },
+                data: { maCay: idCay, mahoadon: idhoadon },
                 success: function (response) {
                     $("#tongtien").text(response.tong);
                     $("td[id^=stt]").each(function (index, element) {

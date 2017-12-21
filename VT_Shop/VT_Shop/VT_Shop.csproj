@@ -198,7 +198,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Models\CaThe.cs">
+    <Compile Include="Models\Cay.cs">
       <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
@@ -386,7 +386,6 @@
     <Content Include="Areas\Admin\Views\Revenue\Cathe.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\Loai.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\KhachHang.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHome\SuaVideoCaThe.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SuaHinh.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\thongkehoadon.cshtml" />
     <Content Include="Areas\Admin\Views\Revenue\ChiTiet.cshtml" />

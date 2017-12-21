@@ -7,25 +7,23 @@ using System.Web.Mvc;
 
 namespace VT_Shop.Controllers
 {
-    public class CaTheController : Controller
+    public class CayController : Controller
     {
         VTShopEntities db = new VTShopEntities();
 
         [HttpGet]
-        public JsonResult getCaThe() {
-            var list = (from n in db.CaThes
-                        select new CaTheDTO {
-                            MaCaThe = n.MaCaThe,
+        public JsonResult getCay() {
+            var list = (from n in db.Cays
+                        select new CayDTO {
+                            MaCay = n.MaCay,
                             MaLoai = n.MaLoai,
-                            TenCaThe = n.TenCaThe,
+                            TenCay = n.TenCay,
                             MoTa = n.MoTa,
-                            NgaySinh = n.NgaySinh,
                             GiaMua = n.GiaMua,
                             GiaBan = n.GiaBan,
                             KhuyenMai = n.KhuyenMai,
                             TinhTrang = n.TinhTrang,
                             HinhAnh = n.HinhAnh,
-                            Video = n.Video
                         }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }

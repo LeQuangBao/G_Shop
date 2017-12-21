@@ -40,12 +40,12 @@ namespace VT_Shop.DAO {
             return db.Loais.ToList();
         }
 
-        public List<CaThe> GetAllCaThe_MaLoai(int MaLoai) {
-            return db.CaThes.Where(x => x.MaLoai == MaLoai).ToList();
+        public List<Cay> GetAllCay_MaLoai(int MaLoai) {
+            return db.Cays.Where(x => x.MaLoai == MaLoai).ToList();
         }
 
-        public List<CaThe> GetNewCaThe() {
-            return db.CaThes.OrderByDescending(x => x.MaCaThe).Take(3).ToList();
+        public List<Cay> GetNewCay() {
+            return db.Cays.OrderByDescending(x => x.MaCay).Take(3).ToList();
         }
 
         public string GetTenLoai_MaLoai(int MaLoai) {
@@ -53,31 +53,18 @@ namespace VT_Shop.DAO {
             return model.TenLoai;
         }
 
-        public CaThe GetCaThe_MaLoai_MaCaThe(int MaLoai, int MaCaThe) {
-            return db.CaThes.Where(x => x.MaLoai == MaLoai && x.MaCaThe == MaCaThe).FirstOrDefault();
+        public Cay GetCay_MaLoai_MaCay(int MaLoai, int MaCay) {
+            return db.Cays.Where(x => x.MaLoai == MaLoai && x.MaCay == MaCay).FirstOrDefault();
         }
 
-        public List<CaThe> TimCaThe(string ten) {
-            return db.CaThes.Where(x => x.TenCaThe.Contains(ten)).ToList();
+        public List<Cay> TimCay(string ten) {
+            return db.Cays.Where(x => x.TenCay.Contains(ten)).ToList();
         }
         
-        public string TuoiCaThe(int MaCaThe) {
-            string tuoi;
-            var model = db.CaThes.Find(MaCaThe);
-            DateDiff ngaytuoi = new DateDiff(model.NgaySinh, DateTime.Now);
-            if(ngaytuoi.ElapsedYears == 0)
-                if(ngaytuoi.ElapsedMonths == 0)
-                    tuoi = ngaytuoi.ElapsedDays.ToString() + " ngày";
-                else
-                    tuoi = ngaytuoi.ElapsedMonths.ToString() + " tháng " + ngaytuoi.ElapsedDays.ToString() + " ngày";
-            else
-                tuoi = ngaytuoi.ElapsedYears.ToString() + " tuổi " + ngaytuoi.ElapsedMonths.ToString() + " tháng " + ngaytuoi.ElapsedDays.ToString() + " ngày";
-            return tuoi;
-        }
 
-        public void BanCaThe(int MaCaThe) {
-            CaThe cathe = db.CaThes.Find(MaCaThe);
-            cathe.TinhTrang = "Đã bán";
+        public void BanCay(int MaCay) {
+            Cay Cay = db.Cays.Find(MaCay);
+            Cay.TinhTrang = "Đã bán";
             db.SaveChanges();
         }
     }

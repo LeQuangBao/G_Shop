@@ -1,4 +1,4 @@
-﻿@model VT_Shop.Models.CaThe
+﻿@model VT_Shop.Models.Cay
 
 @{
     ViewBag.Title = "SuaHinh";
@@ -7,7 +7,7 @@
 }
 <link href="~/Scripts/dropzone/basic.css" rel="stylesheet" />
 <link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
-<h2>Sửa hình của @Model.TenCaThe</h2>
+<h2>Sửa hình của @Model.TenCay</h2>
 <div class="col-md-12">
     @for(int i = 0; i < listImage.Count() - 1; i++) {
         if(listImage[i] == "") {
@@ -24,7 +24,7 @@
 <label style="margin-top:20px;margin-left:30px;">Thêm hình:</label>
 @using(Html.BeginForm("ThemHinh", "AdminHome", FormMethod.Post, new { @id = "form", @class = "form-horizontal", enctype = "multipart/form-data" })) {
     <input type="hidden" name="maloai" value="@Model.MaLoai" />
-    <input type="hidden" name="macathe" value="@Model.MaCaThe" />
+    <input type="hidden" name="maCay" value="@Model.MaCay" />
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
             <div id="dZUpload2" class="dropzone dz-clickable">
@@ -46,14 +46,14 @@
         $(".btnDel").click(function () {
             var ten = $(this).val();
             var maloai=@Model.MaLoai;
-            var macathe=@Model.MaCaThe;
+            var maCay=@Model.MaCay;
             var id=$(this).data("id");
             $("#"+id).hide(400);
             $.ajax({
                 url: "@Url.Action("XoaHinh","AdminHome")", // create urls properly
                 type: "POST",
                 dataType: "json",
-                data: {MaLoai:maloai,MaCaThe:macathe,ten: ten},
+                data: {MaLoai:maloai,MaCay:maCay,ten: ten},
                 success: function (node) {
                     if (node.success) {
                         //alert("Success"); //your success callback logic goes here

@@ -16,9 +16,9 @@ namespace VT_Shop.Models
     {
         public int MaChiTietHoaDon { get; set; }
         public int MaHoaDon { get; set; }
-        public int MaCaThe { get; set; }
+        public int MaCay { get; set; }
     
-        public virtual CaThe CaThe { get; set; }
+        public virtual Cay Cay { get; set; }
         public virtual HoaDon HoaDon { get; set; }
     }
 }

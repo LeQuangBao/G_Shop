@@ -30,10 +30,6 @@
                          var begin = (($scope.currentPage - 1) * $scope.numPerPage)
                          , end = begin + $scope.numPerPage;
 
-                         //$scope.setPage = function (pageNo) {
-                         //    $scope.currentPage = pageNo;
-                         //};
-
                          $scope.filteredTodos = $scope.list_loai.slice(begin, end);
                      });
 
@@ -52,12 +48,9 @@
          //Create building item
          $scope.them = function () {
              var fd = new FormData();
-             //if ($scope.add.$valid) {
-             // mact = document.getElementById("MaCT").value;
-             //console.log(mact);
+
              var tenloai = document.getElementById("tenloai").value;
              var mota = document.getElementById("mota").value;
-             //var matkhau = $scope.mota;
              fd.append("TenLoai", tenloai);
              fd.append("MoTa", mota);
              $http({
@@ -71,14 +64,12 @@
              })
         .then(function (result) {
             if (result.data == "ok") {
-                //alert(location.href = window.location.host + "/Admin/Loai?message=Thêm thành công");
                 location.href = window.location.origin + "/Admin/Loai?message=Thêm thành công";
             } else {
                 alert("Xảy ra lỗi");
 
             }
         });
-             //};
          };
          //edit building item
          $scope.capnhat = function () {
@@ -91,8 +82,6 @@
              })
                 .then(function (result) {
                     if (result.data == "ok") {
-                        //alert("Cập nhật thành công");
-                        //location.reload();
                         location.href = window.location.origin + "/Admin/Loai?message=Sửa thành công";
                     } else {
                         alert("Xảy ra lỗi");
@@ -149,7 +138,7 @@
         <form class="form-inline">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group" style="margin-left:0px">
                 <label>Lọc theo tên hoặc mô tả: </label>
-                <input id="filter" type="text" class="form-control" onkeyup="searchFunction()" @*ng-model="data_search"*@ placeholder="" />
+                <input id="filter" type="text" class="form-control" onkeyup="searchFunction()" placeholder="" />
             </div>
         </form>
         <br />
@@ -239,7 +228,7 @@
                     <h4 class="modal-title" id="myModalLabel">Sửa loài</h4>
                 </div>
                 <div class="modal-body">
-                    <form @*id="edit" name="edit"*@ class="form-horizontal" role="form" method="post">
+                    <form  class="form-horizontal" role="form" method="post">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                 Tên loài <span class="required">*</span>

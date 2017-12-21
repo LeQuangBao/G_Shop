@@ -66,11 +66,11 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         [HttpGet]
-        public ActionResult CaThe(int MaLoai, int? i, string message = "") {
+        public ActionResult Cay(int MaLoai, int? i, string message = "") {
             if(Session["Admin"] == null)
                 return View("Login");
             else {
-                var model = new AdminDAO().GetCaThe_MaLoai(MaLoai, i);
+                var model = new AdminDAO().GetCay_MaLoai(MaLoai, i);
                 ViewBag.TenLoai = new AdminDAO().GetTenLoai_MaLoai(MaLoai);
                 ViewBag.MaLoai = MaLoai;
                 ViewBag.tinhtrang = i;
@@ -182,19 +182,12 @@ namespace VT_Shop.Areas.Admin.Controllers {
             }
         }
         [HttpGet]
-        public PartialViewResult ThemCaThe() {
+        public PartialViewResult ThemCay() {
             return PartialView();
         }
 
         [HttpPost]
-        public ActionResult Them(CaThe model, HttpPostedFileBase fileVideo) {
-            model.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
-            model.Video = DateTime.Now.Ticks + fileVideo.FileName;
-            if(fileVideo.ContentLength > 0) {
-                var fileName = Path.GetFileName(fileVideo.FileName);
-                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
-                fileVideo.SaveAs(path);
-            }
+        public ActionResult Them(Cay model, HttpPostedFileBase fileVideo) {
             if(Session["fileUpload"] != null) {
                 string _fileName;
                 string listImages = "";
@@ -209,46 +202,34 @@ namespace VT_Shop.Areas.Admin.Controllers {
                 model.HinhAnh = listImages;
                 model.TinhTrang = "Sẵn bán";
                 var dao = new AdminDAO();
-                dao.ThemCaThe(model);
+                dao.ThemCay(model);
                 Session["fileUpload"] = null;
             }
-            return RedirectToAction("CaThe", new { MaLoai = model.MaLoai, message="Thêm cá thể thành công" });
+            return RedirectToAction("Cay", new { MaLoai = model.MaLoai, message="Thêm cá thể thành công" });
         }
 
         [HttpGet]
-        public ActionResult SuaCaThe(int MaLoai, int MaCaThe) {
-            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+        public ActionResult SuaCay(int MaLoai, int MaCay) {
+            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult SuaCaThe(CaThe cathe, HttpPostedFileBase fileVideo) {
+        public ActionResult SuaCay(Cay Cay, HttpPostedFileBase fileVideo) {
             
-            cathe.NgaySinh = DateTime.Parse(Request.Form["NgaySinh"]);
             string tinhtrang = Request.Form["tinhtrang"];
-            cathe.TinhTrang = tinhtrang;
-            new AdminDAO().SuaCaThe(cathe);
-            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai, message="Sửa cá thể thành công" });
+            Cay.TinhTrang = tinhtrang;
+            new AdminDAO().SuaCay(Cay);
+            return RedirectToAction("Cay", new { MaLoai = Cay.MaLoai, message="Sửa cá thể thành công" });
         }
 
-        public ActionResult SuaHinhAnhCaThe(int MaLoai, int MaCaThe) {
-            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+        public ActionResult SuaHinhAnhCay(int MaLoai, int MaCay) {
+            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
             return View(model);
         }
-        public ActionResult SuaVideoCaThe(int MaLoai, int MaCaThe) {
-            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+        public ActionResult SuaVideoCay(int MaLoai, int MaCay) {
+            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
             return View(model);
-        }
-        [HttpPost]
-        public ActionResult SuaVideoCaThe(CaThe cathe, HttpPostedFileBase fileVideo) {
-            if(fileVideo.ContentLength > 0) {
-                cathe.Video = DateTime.Now.Ticks + fileVideo.FileName;
-                var fileName = Path.GetFileName(fileVideo.FileName);
-                var path = Path.Combine(Server.MapPath("~/assets/client/videos/"), DateTime.Now.Ticks + fileName);
-                fileVideo.SaveAs(path);
-                new AdminDAO().SuaVideoCaThe(cathe);
-            }
-            return RedirectToAction("CaThe", new { MaLoai = cathe.MaLoai, message="Sửa Video thành công" });
         }
 
         public ActionResult HoaDon(int? i) {
@@ -312,8 +293,8 @@ namespace VT_Shop.Areas.Admin.Controllers {
             return RedirectToAction("CTHD", "AdminHome", new { MaHD = mahoadon, i=i });
         }
 
-        public ActionResult CapNhatCTHD(int macathe, int mahoadon) {
-            int? tongtien = new AdminDAO().CapNhatCTHD(macathe, mahoadon);
+        public ActionResult CapNhatCTHD(int maCay, int mahoadon) {
+            int? tongtien = new AdminDAO().CapNhatCTHD(maCay, mahoadon);
             string tong = tongtien.Value.ToString("C", CultureInfo.CurrentCulture);
             return Json(new { tong = tong }, JsonRequestBehavior.AllowGet);
         }
@@ -324,9 +305,9 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         [HttpGet]
-        public ActionResult SuaHinh(int MaLoai, int MaCaThe)
+        public ActionResult SuaHinh(int MaLoai, int MaCay)
         {
-            var model = new AdminDAO().GetCaThe_MaLoai_MaCaThe(MaLoai, MaCaThe);
+            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
             return View(model);
         }
 
@@ -334,8 +315,8 @@ namespace VT_Shop.Areas.Admin.Controllers {
         public ActionResult ThemHinh()
         {
             int maloai = int.Parse(Request.Form["maloai"]);
-            int macathe = int.Parse(Request.Form["macathe"]);
-            CaThe model = new VT_Shop.Models.CaThe();
+            int maCay = int.Parse(Request.Form["maCay"]);
+            Cay model = new VT_Shop.Models.Cay();
             if (Session["fileUpload2"] != null)
             {
                 string _fileName;
@@ -349,18 +330,18 @@ namespace VT_Shop.Areas.Admin.Controllers {
                     item.SaveAs(path);
                     listImages += _fileName + "|";
                 }
-                model= db.CaThes.Where(x => x.MaLoai == maloai && x.MaCaThe == macathe).First();
+                model= db.Cays.Where(x => x.MaLoai == maloai && x.MaCay == maCay).First();
                 model.HinhAnh = model.HinhAnh+listImages;
                 db.SaveChanges();
                 Session["fileUpload"] = null;
             }
-            return RedirectToAction("SuaHinh", "AdminHome", new { MaLoai = maloai, MaCaThe = macathe });
+            return RedirectToAction("SuaHinh", "AdminHome", new { MaLoai = maloai, MaCay = maCay });
         }
 
         [HttpPost]
-        public JsonResult XoaHinh(int MaLoai, int MaCaThe, string ten)
+        public JsonResult XoaHinh(int MaLoai, int MaCay, string ten)
         {
-            var model = db.CaThes.Where(x => x.MaLoai == MaLoai && x.MaCaThe == MaCaThe).First();
+            var model = db.Cays.Where(x => x.MaLoai == MaLoai && x.MaCay == MaCay).First();
             string ten2 = ten + '|';
             model.HinhAnh=model.HinhAnh.Replace(ten2, "");
             db.SaveChanges();

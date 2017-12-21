@@ -25,11 +25,7 @@
         <table class="table table-hover">
             <tr>
                 <th>Tên</th>
-                @*<th>Số lượng</th>*@
                 <th>Tổng cộng</th>
-                @*<th>Giá cao nhất</th>
-                    <th>Giá cao nhất</th>
-                    <th>Giá trung bình</th>*@
             </tr>
             @if (Model != null)
             {
@@ -37,11 +33,7 @@
                 {
                     <tr>
                         <td>@Item.Group</td>
-                        @*<td>@Item.Count</td>*@
                         <td>@Html.FormatValue(Item.Total, "{0:c}")</td>
-                        @*<td>@Html.FormatValue(Item.MinPrice, "{0:c}")</td>
-                            <td>@Html.FormatValue(Item.MaxPrice, "{0:c}")</td>
-                            <td>@Html.FormatValue(Item.AvgPrice, "{0:c}")</td>*@
                     </tr>
                 }
             }

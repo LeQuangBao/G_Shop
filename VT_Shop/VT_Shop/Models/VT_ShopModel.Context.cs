@@ -25,7 +25,7 @@ namespace VT_Shop.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CaThe> CaThes { get; set; }
+        public virtual DbSet<Cay> Cays { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<Giong> Giongs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }

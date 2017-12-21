@@ -5,21 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="VTShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="CaThe">
+        <EntityType Name="Cay">
           <Key>
-            <PropertyRef Name="MaCaThe" />
+            <PropertyRef Name="MaCay" />
           </Key>
-          <Property Name="MaCaThe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaCay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaLoai" Type="int" Nullable="false" />
-          <Property Name="TenCaThe" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenCay" Type="nvarchar" MaxLength="100" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
-          <Property Name="NgaySinh" Type="date" Nullable="false" />
           <Property Name="GiaMua" Type="int" />
           <Property Name="GiaBan" Type="int" />
           <Property Name="KhuyenMai" Type="int" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
           <Property Name="HinhAnh" Type="nvarchar" MaxLength="500" />
-          <Property Name="Video" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
@@ -27,7 +25,7 @@
           </Key>
           <Property Name="MaChiTietHoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaHoaDon" Type="int" Nullable="false" />
-          <Property Name="MaCaThe" Type="int" Nullable="false" />
+          <Property Name="MaCay" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Giong">
           <Key>
@@ -73,27 +71,27 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
           <Property Name="VaiTro" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK_CaThe_Loai">
+        <Association Name="FK_Cay_Loai">
           <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
-          <End Role="CaThe" Type="Self.CaThe" Multiplicity="*" />
+          <End Role="Cay" Type="Self.Cay" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Loai">
               <PropertyRef Name="MaLoai" />
             </Principal>
-            <Dependent Role="CaThe">
+            <Dependent Role="Cay">
               <PropertyRef Name="MaLoai" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ChiTietHoaDon_CaThe">
-          <End Role="CaThe" Type="Self.CaThe" Multiplicity="1" />
+        <Association Name="FK_ChiTietHoaDon_Cay">
+          <End Role="Cay" Type="Self.Cay" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CaThe">
-              <PropertyRef Name="MaCaThe" />
+            <Principal Role="Cay">
+              <PropertyRef Name="MaCay" />
             </Principal>
             <Dependent Role="ChiTietHoaDon">
-              <PropertyRef Name="MaCaThe" />
+              <PropertyRef Name="MaCay" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -134,18 +132,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="VTShopModelStoreContainer">
-          <EntitySet Name="CaThe" EntityType="Self.CaThe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cay" EntityType="Self.Cay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Giong" EntityType="Self.Giong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CaThe_Loai" Association="Self.FK_CaThe_Loai">
+          <AssociationSet Name="FK_Cay_Loai" Association="Self.FK_Cay_Loai">
             <End Role="Loai" EntitySet="Loai" />
-            <End Role="CaThe" EntitySet="CaThe" />
+            <End Role="Cay" EntitySet="Cay" />
           </AssociationSet>
-          <AssociationSet Name="FK_ChiTietHoaDon_CaThe" Association="Self.FK_ChiTietHoaDon_CaThe">
-            <End Role="CaThe" EntitySet="CaThe" />
+          <AssociationSet Name="FK_ChiTietHoaDon_Cay" Association="Self.FK_ChiTietHoaDon_Cay">
+            <End Role="Cay" EntitySet="Cay" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
           </AssociationSet>
           <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
@@ -166,23 +164,21 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VTShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CaThe">
+        <EntityType Name="Cay">
           <Key>
-            <PropertyRef Name="MaCaThe" />
+            <PropertyRef Name="MaCay" />
           </Key>
-          <Property Name="MaCaThe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaCay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaLoai" Type="Int32" Nullable="false" />
-          <Property Name="TenCaThe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenCay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="GiaMua" Type="Int32" />
           <Property Name="GiaBan" Type="Int32" />
           <Property Name="KhuyenMai" Type="Int32" />
           <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="HinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Loai" Relationship="Self.FK_CaThe_Loai" FromRole="CaThe" ToRole="Loai" />
-          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="CaThe" ToRole="ChiTietHoaDon" />
+          <NavigationProperty Name="Loai" Relationship="Self.FK_Cay_Loai" FromRole="Cay" ToRole="Loai" />
+          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_Cay" FromRole="Cay" ToRole="ChiTietHoaDon" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
@@ -190,8 +186,8 @@
           </Key>
           <Property Name="MaChiTietHoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaHoaDon" Type="Int32" Nullable="false" />
-          <Property Name="MaCaThe" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CaThe" Relationship="Self.FK_ChiTietHoaDon_CaThe" FromRole="ChiTietHoaDon" ToRole="CaThe" />
+          <Property Name="MaCay" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cay" Relationship="Self.FK_ChiTietHoaDon_Cay" FromRole="ChiTietHoaDon" ToRole="Cay" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="Giong">
@@ -225,7 +221,7 @@
           <Property Name="MaGiong" Type="Int32" Nullable="false" />
           <Property Name="TenLoai" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CaThes" Relationship="Self.FK_CaThe_Loai" FromRole="Loai" ToRole="CaThe" />
+          <NavigationProperty Name="Cays" Relationship="Self.FK_Cay_Loai" FromRole="Loai" ToRole="Cay" />
           <NavigationProperty Name="Giong" Relationship="Self.FK_Loai_Giong" FromRole="Loai" ToRole="Giong" />
         </EntityType>
         <EntityType Name="NguoiDung">
@@ -244,27 +240,27 @@
           <Property Name="VaiTro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_NguoiDung" FromRole="NguoiDung" ToRole="HoaDon" />
         </EntityType>
-        <Association Name="FK_CaThe_Loai">
+        <Association Name="FK_Cay_Loai">
           <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
-          <End Role="CaThe" Type="Self.CaThe" Multiplicity="*" />
+          <End Role="Cay" Type="Self.Cay" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Loai">
               <PropertyRef Name="MaLoai" />
             </Principal>
-            <Dependent Role="CaThe">
+            <Dependent Role="Cay">
               <PropertyRef Name="MaLoai" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ChiTietHoaDon_CaThe">
-          <End Role="CaThe" Type="Self.CaThe" Multiplicity="1" />
+        <Association Name="FK_ChiTietHoaDon_Cay">
+          <End Role="Cay" Type="Self.Cay" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CaThe">
-              <PropertyRef Name="MaCaThe" />
+            <Principal Role="Cay">
+              <PropertyRef Name="MaCay" />
             </Principal>
             <Dependent Role="ChiTietHoaDon">
-              <PropertyRef Name="MaCaThe" />
+              <PropertyRef Name="MaCay" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -305,18 +301,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="VTShopEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CaThes" EntityType="Self.CaThe" />
+          <EntitySet Name="Cays" EntityType="Self.Cay" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="Giongs" EntityType="Self.Giong" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
           <EntitySet Name="Loais" EntityType="Self.Loai" />
           <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
-          <AssociationSet Name="FK_CaThe_Loai" Association="Self.FK_CaThe_Loai">
+          <AssociationSet Name="FK_Cay_Loai" Association="Self.FK_Cay_Loai">
             <End Role="Loai" EntitySet="Loais" />
-            <End Role="CaThe" EntitySet="CaThes" />
+            <End Role="Cay" EntitySet="Cays" />
           </AssociationSet>
-          <AssociationSet Name="FK_ChiTietHoaDon_CaThe" Association="Self.FK_ChiTietHoaDon_CaThe">
-            <End Role="CaThe" EntitySet="CaThes" />
+          <AssociationSet Name="FK_ChiTietHoaDon_Cay" Association="Self.FK_ChiTietHoaDon_Cay">
+            <End Role="Cay" EntitySet="Cays" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
           </AssociationSet>
           <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
@@ -338,20 +334,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="VTShopModelStoreContainer" CdmEntityContainer="VTShopEntities">
-          <EntitySetMapping Name="CaThes">
-            <EntityTypeMapping TypeName="VTShopModel.CaThe">
-              <MappingFragment StoreEntitySet="CaThe">
-                <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
+          <EntitySetMapping Name="Cays">
+            <EntityTypeMapping TypeName="VTShopModel.Cay">
+              <MappingFragment StoreEntitySet="Cay">
+                <ScalarProperty Name="MaCay" ColumnName="MaCay" />
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
-                <ScalarProperty Name="TenCaThe" ColumnName="TenCaThe" />
+                <ScalarProperty Name="TenCay" ColumnName="TenCay" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="GiaMua" ColumnName="GiaMua" />
                 <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
                 <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
-                <ScalarProperty Name="Video" ColumnName="Video" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -360,7 +354,7 @@
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
                 <ScalarProperty Name="MaChiTietHoaDon" ColumnName="MaChiTietHoaDon" />
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
-                <ScalarProperty Name="MaCaThe" ColumnName="MaCaThe" />
+                <ScalarProperty Name="MaCay" ColumnName="MaCay" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

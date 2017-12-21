@@ -7,30 +7,30 @@
   //------------
   $http({
     method: "GET",
-    url: url + "CaThe/getCaThe"
+    url: url + "Cay/getCay"
   }).then(function (response) {
     data = response.data;
     //------------
     $http({
       method: "GET",
-      url: url + "CaThe/getLoai"
+      url: url + "Cay/getLoai"
     }).then(function (response) {
       // scope
       $scope.loais = response.data;
 
-      // Add Loai to CaThe
+      // Add Loai to Cay
       loais = response.data;
-      data.forEach(function (caThe) {
+      data.forEach(function (Cay) {
         loais.forEach(function (loai) {
-          if (loai.MaLoai === caThe.MaLoai) {
-            caThe.MaLoai = loai;
+          if (loai.MaLoai === Cay.MaLoai) {
+            Cay.MaLoai = loai;
           }
         })
       });
       //------------
       $http({
         method: "GET",
-        url: url + "CaThe/getGiong"
+        url: url + "Cay/getGiong"
       }).then(function (response) {
         giongs = response.data;
         $scope.giongs = response.data;
@@ -43,18 +43,18 @@
           });
         });
 
-        // Add Giong to CaThe
-        data.forEach(function (caThe) {
+        // Add Giong to Cay
+        data.forEach(function (Cay) {
           giongs.forEach(function (giong) {
-            if (giong.MaGiong === caThe.MaLoai.MaGiong) {
-              caThe.MaLoai.MaGiong = giong;
+            if (giong.MaGiong === Cay.MaLoai.MaGiong) {
+              Cay.MaLoai.MaGiong = giong;
             }
           })
         });
-        data.forEach(function (caThe) {
-            caThe.NgaySinh = caThe.NgaySinh.substring(6,19);
-          caThe.image = caThe.HinhAnh.split("|")[0];
-          caThe.url = buildUrlChiTiet(caThe.MaLoai, caThe.MaCaThe);
+        data.forEach(function (Cay) {
+            Cay.NgaySinh = Cay.NgaySinh.substring(6,19);
+          Cay.image = Cay.HinhAnh.split("|")[0];
+          Cay.url = buildUrlChiTiet(Cay.MaLoai, Cay.MaCay);
         });
         console.log($scope.giongs);
         $scope.data = data;
@@ -125,8 +125,8 @@
       }
   }
   
-  function buildUrlChiTiet(maLoai, maCaThe) {
-    var urlChiTiet = "/Home/ChiTiet?MaLoai=" + maLoai.MaLoai + "&MaCaThe=" + maCaThe;
+  function buildUrlChiTiet(maLoai, maCay) {
+    var urlChiTiet = "/Home/ChiTiet?MaLoai=" + maLoai.MaLoai + "&MaCay=" + maCay;
     return urlChiTiet;
   }
   

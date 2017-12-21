@@ -4,9 +4,9 @@ GO
 CREATE DATABASE [VTShop]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'VTShop', FILENAME = N'E:\Source_Code\G-Shop\VT_Shop\VT_Shop\App_Data\VTShop.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'VTShop', FILENAME = N'E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\App_Data\VTShop.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'VTShop_log', FILENAME = N'E:\Source_Code\G-Shop\VT_Shop\VT_Shop\App_Data\VTShop_log.ldf' , SIZE = 2048KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'VTShop_log', FILENAME = N'E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\App_Data\VTShop_log.ldf' , SIZE = 2048KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 ALTER DATABASE [VTShop] SET COMPATIBILITY_LEVEL = 120
 GO
@@ -75,26 +75,24 @@ ALTER DATABASE [VTShop] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [VTShop]
 GO
-/****** Object:  Table [dbo].[CaThe]    Script Date: 10/12/2017 4:02:59 CH ******/
+/****** Object:  Table [dbo].[Cay]    Script Date: 10/12/2017 4:02:59 CH ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[CaThe](
-	[MaCaThe] [int] IDENTITY(1,1) NOT NULL,
+CREATE TABLE [dbo].[Cay](
+	[MaCay] [int] IDENTITY(1,1) NOT NULL,
 	[MaLoai] [int] NOT NULL,
-	[TenCaThe] [nvarchar](100) NULL,
+	[TenCay] [nvarchar](100) NULL,
 	[MoTa] [nvarchar](500) NULL,
-	[NgaySinh] [date] NOT NULL,
 	[GiaMua] [int] NULL,
 	[GiaBan] [int] NULL,
 	[KhuyenMai] [int] NULL,
 	[TinhTrang] [nvarchar](100) NULL,
 	[HinhAnh] [nvarchar](500) NULL,
-	[Video] [nvarchar](500) NULL,
- CONSTRAINT [PK_CaThe] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Cay] PRIMARY KEY CLUSTERED 
 (
-	[MaCaThe] ASC
+	[MaCay] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -107,7 +105,7 @@ GO
 CREATE TABLE [dbo].[ChiTietHoaDon](
 	[MaChiTietHoaDon] [int] IDENTITY(1,1) NOT NULL,
 	[MaHoaDon] [int] NOT NULL,
-	[MaCaThe] [int] NOT NULL,
+	[MaCay] [int] NOT NULL,
  CONSTRAINT [PK_ChiTietHoaDon] PRIMARY KEY CLUSTERED 
 (
 	[MaChiTietHoaDon] ASC
@@ -192,15 +190,15 @@ CREATE TABLE [dbo].[NguoiDung](
 ) ON [PRIMARY]
 
 GO
-ALTER TABLE [dbo].[CaThe]  WITH CHECK ADD  CONSTRAINT [FK_CaThe_Loai] FOREIGN KEY([MaLoai])
+ALTER TABLE [dbo].[Cay]  WITH CHECK ADD  CONSTRAINT [FK_Cay_Loai] FOREIGN KEY([MaLoai])
 REFERENCES [dbo].[Loai] ([MaLoai])
 GO
-ALTER TABLE [dbo].[CaThe] CHECK CONSTRAINT [FK_CaThe_Loai]
+ALTER TABLE [dbo].[Cay] CHECK CONSTRAINT [FK_Cay_Loai]
 GO
-ALTER TABLE [dbo].[ChiTietHoaDon]  WITH CHECK ADD  CONSTRAINT [FK_ChiTietHoaDon_CaThe] FOREIGN KEY([MaCaThe])
-REFERENCES [dbo].[CaThe] ([MaCaThe])
+ALTER TABLE [dbo].[ChiTietHoaDon]  WITH CHECK ADD  CONSTRAINT [FK_ChiTietHoaDon_Cay] FOREIGN KEY([MaCay])
+REFERENCES [dbo].[Cay] ([MaCay])
 GO
-ALTER TABLE [dbo].[ChiTietHoaDon] CHECK CONSTRAINT [FK_ChiTietHoaDon_CaThe]
+ALTER TABLE [dbo].[ChiTietHoaDon] CHECK CONSTRAINT [FK_ChiTietHoaDon_Cay]
 GO
 ALTER TABLE [dbo].[ChiTietHoaDon]  WITH CHECK ADD  CONSTRAINT [FK_ChiTietHoaDon_HoaDon] FOREIGN KEY([MaHoaDon])
 REFERENCES [dbo].[HoaDon] ([MaHoaDon])
