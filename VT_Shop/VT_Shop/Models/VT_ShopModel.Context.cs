@@ -13,10 +13,10 @@ namespace VT_Shop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VTShopEntities1 : DbContext
+    public partial class VTShopEntities : DbContext
     {
-        public VTShopEntities1()
-            : base("name=VTShopEntities1")
+        public VTShopEntities()
+            : base("name=VTShopEntities")
         {
         }
     

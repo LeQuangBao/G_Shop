@@ -23,12 +23,12 @@ E:\Source_Code\G-Shop\VT_Shop\G_Shop\obj\Debug\VT_Shop.csproj.GenerateResource.C
 E:\Source_Code\G-Shop\VT_Shop\G_Shop\obj\Debug\VT_Shop.csproj.CoreCompileInputs.cache
 E:\Source_Code\G-Shop\VT_Shop\G_Shop\obj\Debug\VT_Shop.dll
 E:\Source_Code\G-Shop\VT_Shop\G_Shop\obj\Debug\VT_Shop.pdb
+E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\ApplicationInsights.config
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\csc.exe
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.CSharp.Core.targets
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\Microsoft.VisualBasic.Core.targets
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\roslyn\System.Collections.Immutable.dll
@@ -43,7 +43,6 @@ E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\PagedList.dll
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\PagedList.Mvc.dll
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\PagedList.xml
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\bin\PagedList.Mvc.xml
-E:\Source_Code\G-Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.csprojResolveAssemblyReference.cache
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.Properties.Resources.resources
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.csproj.GenerateResource.Cache
 E:\Source_Code\G-Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.csproj.CoreCompileInputs.cache

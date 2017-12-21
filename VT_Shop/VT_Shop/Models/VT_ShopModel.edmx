@@ -304,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VTShopEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VTShopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CaThes" EntityType="Self.CaThe" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="Giongs" EntityType="Self.Giong" />
@@ -337,7 +337,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VTShopModelStoreContainer" CdmEntityContainer="VTShopEntities1">
+        <EntityContainerMapping StorageEntityContainer="VTShopModelStoreContainer" CdmEntityContainer="VTShopEntities">
           <EntitySetMapping Name="CaThes">
             <EntityTypeMapping TypeName="VTShopModel.CaThe">
               <MappingFragment StoreEntitySet="CaThe">
