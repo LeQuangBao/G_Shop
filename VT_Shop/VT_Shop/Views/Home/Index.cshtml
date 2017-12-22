@@ -6,15 +6,16 @@
 }
 
 
-@if(Session["user"] == null) {
-    <p style="position:fixed;bottom:10px;right:10px;background-color:yellow;border:1px solid black;z-index: 98; padding: 4px">Bạn chưa đăng nhập, vui lòng đăng nhập để xem giỏ hàng và thanh toán</p>
+@if (Session["user"] == null)
+{
+    @*<p style="position:fixed;bottom:10px;right:10px;background-color:yellow;border:1px solid black;z-index: 98; padding: 4px">Bạn chưa đăng nhập, vui lòng đăng nhập để xem giỏ hàng và thanh toán</p>*@
 }
 
 <div class="col-lg-12" ng-controller="indexController">
     <div class="col-lg-3">
         <div class="row">
             <div class="col-lg-12">
-               <h3 class="pull-right">Bộ lọc</h3>
+                <h3 class="pull-right">Bộ lọc</h3>
             </div>
         </div>
         <div class="list-group" ng-repeat="g in giongs">
@@ -26,16 +27,17 @@
 
         <div class="row">
             <div class="col-lg-12">
-               <h3>Danh sách cây mới nhất</h3>
+                <h3>Danh sách cây mới nhất</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="c in data | filter: filter">
                 <div class="thumbnail">
+                    <img src="~/assets/client/images/{{c.image}}" style="width:320px;height:150px;" alt="" style="z-index:999">
                     <div class="caption">
-                        @*<img src="~/assets/client/images/{{c.image}}" style="width:320px;height:150px;" alt="" style="z-index:999">*@
+
                         <h5 class="pull-right" ng-bind="c.GiaBan"></h5>
-                        <h4>{{c.TenTree}}</h4>
+                        <h5>{{c.TenTree}}</h5>
                         <a href="{{c.url}}" class="pull-right">Xem chi tiết</a>
                         <button class="add-to-cart btn-lg gioHang" ng-hide="c.TinhTrang != 'Sẵn bán'" ng-click="addToCart(c.TreeId, $event)" data-toggle="tooltip" title="Thêm vào giỏ hàng">
                             <span class="glyphicon glyphicon-shopping-cart">
