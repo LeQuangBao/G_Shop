@@ -30,9 +30,11 @@ namespace VT_Shop
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datetimepicker.min.css",
                       "~/Content/site.css",
-                      "~/Content/shop-homepage.css",
                       "~/Content/jquery-ui.theme.min.css",
                       "~/Content/jquery-ui.structure.min.css"));
+
+            bundles.Add(new StyleBundle("~/SCSS/src/css").Include(
+                      "~/SCSS/src/shop-homepage.css"));
         }
     }
 }
