@@ -5,7 +5,6 @@
 }
 <h2>Sửa thông tin cây</h2>
 @Html.ActionLink("Đổi hình ảnh", "SuaHinh", new { LoaiId = Model.LoaiId, TreeId = Model.TreeId }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Thêm cá thể liên quan", "TreeLienQuan","GoiY", new { LoaiId = Model.LoaiId, TreeId = Model.TreeId }, new { @class = "btn btn-primary" })
 @using(Html.BeginForm("SuaTree", "AdminHome", FormMethod.Post, new { @id = "form", @class = "form-horizontal", enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -68,8 +67,11 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-2">
+            <div class="col-md-offset-2 col-md-1">
                 <input type="submit" value="Sửa" class="btn btn-primary" />
+                
+            </div>
+            <div class="col-md-2">
                 <button class="btn btn-default">
                     @Html.ActionLink("Quay lại", "Tree", new { LoaiId = Model.LoaiId })
                 </button>

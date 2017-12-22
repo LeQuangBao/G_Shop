@@ -33,6 +33,7 @@
             <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="c in data | filter: filter">
                 <div class="thumbnail">
                     <div class="caption">
+                        @*<img src="~/assets/client/images/{{c.image}}" style="width:320px;height:150px;" alt="" style="z-index:999">*@
                         <h5 class="pull-right" ng-bind="c.GiaBan"></h5>
                         <h4>{{c.TenTree}}</h4>
                         <a href="{{c.url}}" class="pull-right">Xem chi tiết</a>

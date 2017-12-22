@@ -36,7 +36,7 @@ $("#dZUpload").dropzone({ //Đăng hình ảnh
     },
 });
 
-$("#btnThem").off('click').on('click', function () { //Nút thêm cá thể
+$("#btnThem").off('click').on('click', function () { //Nút thêm cây
     $("#form").submit();
 });
 

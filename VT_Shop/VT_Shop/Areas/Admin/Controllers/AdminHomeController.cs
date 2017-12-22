@@ -66,7 +66,7 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         [HttpGet]
-        public ActionResult Tree(int LoaiId, int? i, string message = "") {
+        public ActionResult Cay(int LoaiId, int? i, string message = "") {
             if(Session["Admin"] == null)
                 return View("Login");
             else {
@@ -205,29 +205,25 @@ namespace VT_Shop.Areas.Admin.Controllers {
                 dao.ThemTree(model);
                 Session["fileUpload"] = null;
             }
-            return RedirectToAction("Tree", new { LoaiId = model.LoaiId, message="Thêm cá thể thành công" });
+            return RedirectToAction("Tree", new { LoaiId = model.LoaiId, message="Thêm cây thành công" });
         }
 
         [HttpGet]
-        public ActionResult SuaTree(int LoaiId, int TreeId) {
+        public ActionResult SuaCay(int LoaiId, int TreeId) {
             var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult SuaTree(Tree Tree, HttpPostedFileBase fileVideo) {
+        public ActionResult SuaCay(Tree Tree, HttpPostedFileBase fileVideo) {
             
             string tinhtrang = Request.Form["tinhtrang"];
             Tree.TinhTrang = tinhtrang;
             new AdminDAO().SuaTree(Tree);
-            return RedirectToAction("Tree", new { LoaiId = Tree.LoaiId, message="Sửa cá thể thành công" });
+            return RedirectToAction("Tree", new { LoaiId = Tree.LoaiId, message="Sửa cây thành công" });
         }
 
         public ActionResult SuaHinhAnhTree(int LoaiId, int TreeId) {
-            var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
-            return View(model);
-        }
-        public ActionResult SuaVideoTree(int LoaiId, int TreeId) {
             var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }

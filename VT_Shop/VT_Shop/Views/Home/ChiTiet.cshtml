@@ -11,12 +11,7 @@
     <div>
         <img id="img_01" src="~/assets/client/images/@(Model.HinhAnh.Substring(0,Model.HinhAnh.IndexOf("|")))" class="img_detail" />
     </div>
-    
-    <video width="400" height="240" controls>
-        <source src="~/assets/client/videos/@Model.Video" type="video/mp4"/>
-        Trình duyệt của bạn không hỗ trợ thẻ video, vui lòng nâng cấp trình duyệt.
-    </video>
-    </div>
+</div>
 
 <div class="col-md-6">
     <dl class="dl-horizontal">
@@ -51,7 +46,8 @@
         <dd>
 
 
-            @if(Session["user"] != null && Model.TinhTrang == "Sẵn bán") {
+            @if (Session["user"] != null && Model.TinhTrang == "Sẵn bán")
+            {
                 <button class="add-to-cart btn-lg" data-id="@Model.TreeId">
                     <span class="glyphicon glyphicon-shopping-cart">
 
@@ -62,29 +58,29 @@
         </dd>
     </dl>
 </div>
-<div class="col-lg-12"  ng-controller="chiTietController">
+@*<div class="col-lg-12"  ng-controller="chiTietController">
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h3>Cây liên quan</h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Cây liên quan</h3>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="c in goiY">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h5 class="pull-right" ng-bind="c.GiaBan"></h5>
-                    <h4>{{c.TenTree}}</h4>
-                    <a href="{{c.url}}" class="pull-right">Xem chi tiết</a>
-                    <button class="add-to-cart btn-lg gioHang" ng-hide="c.TinhTrang != 'Sẵn bán'" ng-click="addToCart(c.TreeId, $event)" data-toggle="tooltip" title="Thêm vào giỏ hàng">
-                        <span class="glyphicon glyphicon-shopping-cart">
+        <div class="row">
+            <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="c in goiY">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5 class="pull-right" ng-bind="c.GiaBan"></h5>
+                        <h4>{{c.TenTree}}</h4>
+                        <a href="{{c.url}}" class="pull-right">Xem chi tiết</a>
+                        <button class="add-to-cart btn-lg gioHang" ng-hide="c.TinhTrang != 'Sẵn bán'" ng-click="addToCart(c.TreeId, $event)" data-toggle="tooltip" title="Thêm vào giỏ hàng">
+                            <span class="glyphicon glyphicon-shopping-cart">
 
-                        </span>
-                    </button>
-                    <p class="text-danger">{{c.TinhTrang != "Sẵn bán" ? "(Đã bán)" : ""}}</p>
+                            </span>
+                        </button>
+                        <p class="text-danger">{{c.TinhTrang != "Sẵn bán" ? "(Đã bán)" : ""}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-</div>
+
+    </div>*@

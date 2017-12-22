@@ -65,7 +65,7 @@ namespace VT_Shop.Areas.Admin.Controllers
                 });
             ViewBag.ngaybd = ngaybd;
             ViewBag.ngaykt = ngaykt;
-            ViewBag.Group = "Cá thể";
+            ViewBag.Group = "cây";
             return View("Index", model);
         }
         [HttpPost]

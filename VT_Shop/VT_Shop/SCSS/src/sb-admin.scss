@@ -5,10 +5,11 @@
  */
 
 /* Global Styles */
+@import "color/colors.scss";
 
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: $background-color1;
 }
 
 
@@ -19,7 +20,7 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #fff;
+    background-color: $background-color2;
 }
 
 .huge {
@@ -40,33 +41,33 @@ body {
             padding-top: 15px;
             padding-bottom: 15px;
             line-height: 20px;
-            color: #999;
+            color: $color1;
 
             &:hover {
-                color: #fff;
-                background-color: #000;
+                color: $color2;
+                background-color: $background-color3;
             }
 
             &:focus {
-                color: #fff;
-                background-color: #000;
+                color: $color2;
+                background-color: $background-color3;
             }
         }
     }
 
     .open {
         a {
-            color: #fff;
-            background-color: #000;
+            color: $color2;
+            background-color: $background-color3;
 
             &:hover {
-                color: #fff;
-                background-color: #000;
+                color: $color2;
+                background-color: $background-color3;
             }
 
             &:focus {
-                color: #fff;
-                background-color: #000;
+                color: $color2;
+                background-color: $background-color3;
             }
         }
     }
@@ -78,7 +79,7 @@ body {
         border: 1px solid rgba(0,0,0,.15);
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        background-color: #fff;
+        background-color: $background-color2;
         -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
 
@@ -140,7 +141,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #222;
+        background-color: $background-color1;
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
@@ -154,12 +155,12 @@ ul.alert-dropdown {
 
             &:hover {
                 outline: none;
-                background-color: #000 !important;
+                background-color: $background-color3 !important;
             }
 
             &:focus {
                 outline: none;
-                background-color: #000 !important;
+                background-color: $background-color3 !important;
             }
         }
     }
@@ -175,10 +176,10 @@ ul.alert-dropdown {
                     display: block;
                     padding: 10px 15px 10px 38px;
                     text-decoration: none;
-                    color: #999;
+                    color: $color1;
 
                     &:hover {
-                        color: #fff;
+                        color: $color2;
                     }
                 }
             }
@@ -206,57 +207,57 @@ ul.alert-dropdown {
 }
 
 .panel-green {
-    border-color: #5cb85c;
+    border-color: $border-color3;
 
     .panel-heading {
-        border-color: #5cb85c;
-        color: #fff;
-        background-color: #5cb85c;
+        border-color: $border-color3;
+        color: $color2;
+        background-color: $background-color4;
     }
 
     a {
-        color: #5cb85c;
+        color: $color4;
 
         &:hover {
-            color: #3d8b3d;
+            color: $color5;
         }
     }
 }
 
 
 .panel-red {
-    border-color: #d9534f;
+    border-color: $border-color1;
 
     .panel-heading {
-        border-color: #d9534f;
-        color: #fff;
-        background-color: #d9534f;
+        border-color: $border-color1;
+        color: $color2;
+        background-color: $background-color5;
     }
 
     a {
-        color: #d9534f;
+        color: $color6;
 
         &:hover {
-            color: #b52b27;
+            color: $color7;
         }
     }
 }
 
 
 .panel-yellow {
-    border-color: #f0ad4e;
+    border-color: $color8;
 
     .panel-heading {
-        border-color: #f0ad4e;
+        border-color: $color8;
         color: #fff ;
-        background-color: #f0ad4e;
+        background-color: $background-color6;
     }
 
     a {
-        color: #f0ad4e;
+        color: $color8;
 
         &:hover {
-            color: #df8a13;
+            color: $color9;
         }
     }
 }

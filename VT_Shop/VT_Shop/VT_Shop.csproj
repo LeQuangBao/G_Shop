@@ -176,6 +176,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GiongController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GiongDTO.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonDTO1.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiDTO.cs" />
@@ -187,10 +189,10 @@
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CaTheController.cs" />
+    <Compile Include="Controllers\CayController.cs" />
     <Compile Include="Controllers\GiongDTO.cs" />
     <Compile Include="Controllers\LoaiDTO.cs" />
-    <Compile Include="Controllers\CaTheDTO.cs" />
+    <Compile Include="Controllers\CayDTO.cs" />
     <Compile Include="Controllers\HoaDonDTO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -250,6 +252,31 @@
     <Content Include="Areas\Admin\Script\pagesearch.js" />
     <Content Include="Areas\Admin\Script\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="assets\client\images\Add to basket.png" />
+    <Content Include="assets\client\images\image_1.jpg" />
+    <Content Include="assets\client\images\image_10.jpg" />
+    <Content Include="assets\client\images\image_11.jpg" />
+    <Content Include="assets\client\images\image_12.jpg" />
+    <Content Include="assets\client\images\image_13.jpg" />
+    <Content Include="assets\client\images\image_14.jpg" />
+    <Content Include="assets\client\images\image_15.jpg" />
+    <Content Include="assets\client\images\image_16.jpg" />
+    <Content Include="assets\client\images\image_17.jpg" />
+    <Content Include="assets\client\images\image_18.jpg" />
+    <Content Include="assets\client\images\image_19.jpg" />
+    <Content Include="assets\client\images\image_2.jpg" />
+    <Content Include="assets\client\images\image_20.jpg" />
+    <Content Include="assets\client\images\image_21.jpg" />
+    <Content Include="assets\client\images\image_22.jpg" />
+    <Content Include="assets\client\images\image_23.jpg" />
+    <Content Include="assets\client\images\image_24.jpg" />
+    <Content Include="assets\client\images\image_25.jpg" />
+    <Content Include="assets\client\images\image_3.jpg" />
+    <Content Include="assets\client\images\image_4.jpg" />
+    <Content Include="assets\client\images\image_5.jpg" />
+    <Content Include="assets\client\images\image_6.jpg" />
+    <Content Include="assets\client\images\image_7.jpg" />
+    <Content Include="assets\client\images\image_8.jpg" />
+    <Content Include="assets\client\images\image_9.jpg" />
     <Content Include="assets\client\images\search.png" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
@@ -320,6 +347,7 @@
       <DependentUpon>VT_ShopModel.edmx</DependentUpon>
       <LastGenOutput>VT_ShopModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SCSS\src\color\colors.css" />
     <Content Include="SCSS\src\sb-admin.css" />
     <Content Include="SCSS\src\shop-homepage.css" />
     <Content Include="favicon.ico" />
@@ -353,7 +381,7 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="Areas\Admin\Views\AdminHome\CaThe.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Cay.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\TopMenu.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SuaCay.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HoaDon.cshtml" />
@@ -379,6 +407,9 @@
     <Content Include="Models\VT_ShopModel.edmx.diagram">
       <DependentUpon>VT_ShopModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Giong\edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Giong\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Giong\timkiemgiong.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -463,13 +494,13 @@
     <Content Include="SCSS\package.json" />
     <Content Include="SCSS\src\shop-homepage.scss" />
     <Content Include="SCSS\src\sb-admin.scss" />
+    <Content Include="SCSS\src\color\colors.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="fonts\font-awesome\" />
     <Folder Include="obj\Debug\" />
-    <Folder Include="SCSS\src\color\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
