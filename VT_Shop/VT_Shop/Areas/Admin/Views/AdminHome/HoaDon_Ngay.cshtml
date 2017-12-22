@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "HoaDon";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var TenNguoiDung = ViewBag.TenNguoiDung as List<VT_Shop.Models.NguoiDung>;
+    var Ten = ViewBag.Ten as List<VT_Shop.Models.User>;
 }
 
 <div class="col-lg-12">
@@ -57,7 +57,7 @@
                     </td>
 
                     <td>
-                        @(TenNguoiDung[a].TenNguoiDung)
+                        @(Ten[a].Ten)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => Model[a].NgayMua)
@@ -66,7 +66,7 @@
                         @Html.DisplayFor(modelItem => Model[a].TongTien)
                     </td>
                     <td>
-                        @Html.ActionLink("Xem chi tiết", "CTHD", new { MaHD = Model[a].MaHoaDon })
+                        @Html.ActionLink("Xem chi tiết", "CTHD", new { MaHD = Model[a].HoaDonId })
                     </td>
                 </tr>
                 }

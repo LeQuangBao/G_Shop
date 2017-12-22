@@ -1,7 +1,7 @@
-﻿@model PagedList.IPagedList<VT_Shop.Models.NguoiDung>
+﻿@model PagedList.IPagedList<VT_Shop.Models.User>
 @using PagedList.Mvc
 @{
-    ViewBag.Title = "timkiemnguoidung";
+    ViewBag.Title = "timkiemUser";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -31,12 +31,12 @@
                 {
                     <tr>
                         <td>@(i + 1)</td>
-                        <td>@Model[i].TenDangNhap</td>
+                        <td>@Model[i].UserName</td>
                         <td>@Model[i].Email</td>
                         <td>@Model[i].SoDienThoai</td>
                         <td>@Model[i].VaiTro</td>
                         <td>
-                            <a href="/Admin/User/suanguoidung?id=@Model[i].MaNguoiDung" style="color:white">
+                            <a href="/Admin/User/suaUser?id=@Model[i].UserId" style="color:white">
                                 <i class="btn btn-primary">
                                     <i class="glyphicon glyphicon-pencil">
                                         Sửa
@@ -52,7 +52,7 @@
     </div>
     <div class="row">
         <div class="col-lg-offset-4">
-            @Html.PagedListPager(Model, page => Url.Action("timkiemnguoidung", new { page=page,@tukhoa=ViewBag.tukhoa }))
+            @Html.PagedListPager(Model, page => Url.Action("timkiemUser", new { page=page,@tukhoa=ViewBag.tukhoa }))
         </div>
 
     </div>

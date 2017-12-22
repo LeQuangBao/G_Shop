@@ -1,5 +1,5 @@
-﻿var maloai = $("#getMaLoai").val(); 
-$("MaLoai").val(maloai);
+﻿var LoaiId = $("#getLoaiId").val(); 
+$("LoaiId").val(LoaiId);
         
 autoProcessQueue: false;
 Dropzone.autoDiscover = false;

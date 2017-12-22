@@ -27,29 +27,29 @@
 
          //Create building item
          $scope.them = function () {
-             var tendangnhap = document.getElementById("tendangnhap").value;
+             var UserName = document.getElementById("UserName").value;
              var sodienthoai = document.getElementById("sodienthoai").value;
-             var matkhau = document.getElementById("matkhau").value;
+             var Password = document.getElementById("Password").value;
              var gioitinh = document.getElementById("gioitinh").value;
              var ngaysinh = document.getElementById("ngaysinh").value;
              var email = document.getElementById("email").value;
              var vaitro = document.getElementById("vaitro").value;
              var diachi = document.getElementById("diachi").value;
-             var tennguoidung = document.getElementById("tennguoidung").value;
+             var Ten = document.getElementById("Ten").value;
              $http({
                  method: "post",
-                 url: "/User/themnguoidung",
+                 url: "/User/themUser",
                  data:
                      {
-                         tendangnhap: tendangnhap,
+                         UserName: UserName,
                          email: email,
-                         matkhau: matkhau,
+                         Password: Password,
                          gioitinh: gioitinh,
                          ngaysinh: ngaysinh,
                          vaitro: vaitro,
                          sodienthoai: sodienthoai,
                          diachi: diachi,
-                         tennguoidung: tennguoidung
+                         Ten: Ten
                      },
                  dataType: "json",
              })
@@ -84,25 +84,25 @@
                 });
          };
 
-         $scope.loc_nguoidung = function () {
+         $scope.loc_User = function () {
              //alert($scope.selectedUser);
              var i = $scope.selectedUser;
-             $scope.list_nguoidung = [];
+             $scope.list_User = [];
              //get building_id form url;
              return $http({
                  method: "POST",
-                 url: "/Admin/User/Loc_nguoidung",
+                 url: "/Admin/User/Loc_User",
                  params: { i: i }
              })
                  .then(function (response) {
-                     $scope.list_nguoidung = response.data;
+                     $scope.list_User = response.data;
 
-                     $scope.totalItems = $scope.list_nguoidung.length;
+                     $scope.totalItems = $scope.list_User.length;
                      $scope.$watch('currentPage + numPerPage', function () {
                          var begin = (($scope.currentPage - 1) * $scope.numPerPage)
                          , end = begin + $scope.numPerPage;
 
-                         $scope.filteredTodos = $scope.list_nguoidung.slice(begin, end);
+                         $scope.filteredTodos = $scope.list_User.slice(begin, end);
                          console.log($scope.filteredTodos);
                      });
 
@@ -112,7 +112,7 @@
 
 
          };
-         $scope.loc_nguoidung();
+         $scope.loc_User();
      }]);
 </script>
 
@@ -149,9 +149,9 @@
         <br />
         <div class="col-md-12">
             <label style="padding-left:13px">Lọc người dùng: </label>
-            <label class="radio-inline"><input type="radio" ng-value="0" ng-model="selectedUser" name="i" ng-change="loc_nguoidung()" />Tất cả</label>
-            <label class="radio-inline"><input type="radio" ng-value="1" ng-model="selectedUser" name="i" ng-change="loc_nguoidung()" />Quản trị viên</label>
-            <label class="radio-inline"><input type="radio" ng-value="2" ng-model="selectedUser" name="i" ng-change="loc_nguoidung()" />Khách hàng</label>
+            <label class="radio-inline"><input type="radio" ng-value="0" ng-model="selectedUser" name="i" ng-change="loc_User()" />Tất cả</label>
+            <label class="radio-inline"><input type="radio" ng-value="1" ng-model="selectedUser" name="i" ng-change="loc_User()" />Quản trị viên</label>
+            <label class="radio-inline"><input type="radio" ng-value="2" ng-model="selectedUser" name="i" ng-change="loc_User()" />Khách hàng</label>
             <br />
             <div role="tabpanel" class="tab-pane" id="list">
                 <table id="myTable" class="table table-striped table-bordered table-hover dataTable" role="grid" aria-describedby="myTable_info">
@@ -174,8 +174,8 @@
 
                         <tr role="row" class="odd" ng-repeat="data in filteredTodos | filter: {name:i} | limitTo:10">
                             <td>{{$index + 1}}</td>
-                            <td>{{data.TenDangNhap}}</td>
-                            <td>{{data.TenNguoiDung}}</td>
+                            <td>{{data.UserName}}</td>
+                            <td>{{data.Ten}}</td>
                             <td>{{data.DiaChi}}</td>
                             <td>{{data.Email}}</td>
                             <td>{{data.SoDienThoai}}</td>
@@ -211,7 +211,7 @@
                                     Tên đăng nhập
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="tendangnhap" name="tendangnhap" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" id="UserName" name="UserName" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -219,7 +219,7 @@
                                     Tên người dùng
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="tennguoidung" name="tennguoidung" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" id="Ten" name="Ten" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -235,7 +235,7 @@
                                     Mật khẩu
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="password" id="matkhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="password" id="Password" name="password" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -243,7 +243,7 @@
                                     Nhập lại mật khẩu
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="password" id="matkhau1" name="password" required="required" class="form-control col-md-7 col-xs-12" onkeyup="ValidatePass()">
+                                    <input type="password" id="Password1" name="password" required="required" class="form-control col-md-7 col-xs-12" onkeyup="ValidatePass()">
                                     <span id="verify" class="text-danger"></span>
                                     <span id="verify1" class="text-success"></span>
                                 </div>
@@ -324,12 +324,12 @@
                     <div class="modal-body">
                         <form  class="form-horizontal" role="form" method="post">
                             <div class="form-group">
-                                <input type="hidden" ng-model="list_temp_inf_edit.MaNguoiDung" />
+                                <input type="hidden" ng-model="list_temp_inf_edit.UserId" />
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                     Tên người dùng
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="tennguoidung" ng-model="list_temp_inf_edit.TenNguoiDung" name="tennguoidung" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" id="Ten" ng-model="list_temp_inf_edit.Ten" name="Ten" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -345,7 +345,7 @@
                                     Mật khẩu
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="password" id="matkhau2" ng-model="list_temp_inf_edit.MatKhau" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="password" id="Password2" ng-model="list_temp_inf_edit.Password" name="password" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -408,8 +408,8 @@
 </section>
 <script type="text/javascript">
     function ValidatePass() {
-        var pass1 = document.getElementById("matkhau").value;
-        var pass2 = document.getElementById("matkhau1").value;
+        var pass1 = document.getElementById("Password").value;
+        var pass2 = document.getElementById("Password1").value;
         if (pass1 != pass2) {
             document.getElementById("verify").innerHTML = "Không khớp mật khẩu";
             document.getElementById("verify1").innerHTML = "";

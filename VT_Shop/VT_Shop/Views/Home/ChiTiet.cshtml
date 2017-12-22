@@ -1,4 +1,4 @@
-﻿@model VT_Shop.Models.Cay
+﻿@model VT_Shop.Models.Tree
 
 @{
     ViewBag.Title = "ChiTiet";
@@ -27,7 +27,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenCay) @(Model.TinhTrang != "Sẵn bán" ? "Đã bán" : "")
+            @Html.DisplayFor(model => model.TenTree) @(Model.TinhTrang != "Sẵn bán" ? "Đã bán" : "")
         </dd>
 
         <dt>
@@ -52,12 +52,12 @@
 
 
             @if(Session["user"] != null && Model.TinhTrang == "Sẵn bán") {
-                <button class="add-to-cart btn-lg" data-id="@Model.MaCay">
+                <button class="add-to-cart btn-lg" data-id="@Model.TreeId">
                     <span class="glyphicon glyphicon-shopping-cart">
 
                     </span>
                 </button>
-                @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].MaCay" src="~/assets/client/images/Add to basket.png" /></a>*@
+                @*<a href="#"><img style="width:50px;height:30px" class="add-to-cart" data-id="@Model[i].TreeId" src="~/assets/client/images/Add to basket.png" /></a>*@
             }
         </dd>
     </dl>
@@ -74,9 +74,9 @@
             <div class="thumbnail">
                 <div class="caption">
                     <h5 class="pull-right" ng-bind="c.GiaBan"></h5>
-                    <h4>{{c.TenCay}}</h4>
+                    <h4>{{c.TenTree}}</h4>
                     <a href="{{c.url}}" class="pull-right">Xem chi tiết</a>
-                    <button class="add-to-cart btn-lg gioHang" ng-hide="c.TinhTrang != 'Sẵn bán'" ng-click="addToCart(c.MaCay, $event)" data-toggle="tooltip" title="Thêm vào giỏ hàng">
+                    <button class="add-to-cart btn-lg gioHang" ng-hide="c.TinhTrang != 'Sẵn bán'" ng-click="addToCart(c.TreeId, $event)" data-toggle="tooltip" title="Thêm vào giỏ hàng">
                         <span class="glyphicon glyphicon-shopping-cart">
 
                         </span>

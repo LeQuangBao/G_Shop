@@ -7,54 +7,54 @@
   //------------
   $http({
     method: "GET",
-    url: url + "Cay/getCay"
+    url: url + "Tree/getTree"
   }).then(function (response) {
     data = response.data;
     //------------
     $http({
       method: "GET",
-      url: url + "Cay/getLoai"
+      url: url + "Tree/getLoai"
     }).then(function (response) {
       // scope
       $scope.loais = response.data;
 
-      // Add Loai to Cay
+      // Add Loai to Tree
       loais = response.data;
-      data.forEach(function (Cay) {
+      data.forEach(function (Tree) {
         loais.forEach(function (loai) {
-          if (loai.MaLoai === Cay.MaLoai) {
-            Cay.MaLoai = loai;
+          if (loai.LoaiId === Tree.LoaiId) {
+            Tree.LoaiId = loai;
           }
         })
       });
       //------------
       $http({
         method: "GET",
-        url: url + "Cay/getGiong"
+        url: url + "Tree/getGiong"
       }).then(function (response) {
         giongs = response.data;
         $scope.giongs = response.data;
         $scope.giongs.forEach(function(g, i) {
           $scope.giongs[i].loais = [];
           $scope.loais.forEach(function(l){
-            if (l.MaGiong === g.MaGiong) {
+            if (l.GiongId === g.GiongId) {
               $scope.giongs[i].loais.push(l);
             }
           });
         });
 
-        // Add Giong to Cay
-        data.forEach(function (Cay) {
+        // Add Giong to Tree
+        data.forEach(function (Tree) {
           giongs.forEach(function (giong) {
-            if (giong.MaGiong === Cay.MaLoai.MaGiong) {
-              Cay.MaLoai.MaGiong = giong;
+            if (giong.GiongId === Tree.LoaiId.GiongId) {
+              Tree.LoaiId.GiongId = giong;
             }
           })
         });
-        data.forEach(function (Cay) {
-            Cay.NgaySinh = Cay.NgaySinh.substring(6,19);
-          Cay.image = Cay.HinhAnh.split("|")[0];
-          Cay.url = buildUrlChiTiet(Cay.MaLoai, Cay.MaCay);
+        data.forEach(function (Tree) {
+            Tree.NgaySinh = Tree.NgaySinh.substring(6,19);
+          Tree.image = Tree.HinhAnh.split("|")[0];
+          Tree.url = buildUrlChiTiet(Tree.LoaiId, Tree.TreeId);
         });
         console.log($scope.giongs);
         $scope.data = data;
@@ -72,7 +72,7 @@
   $scope.setFilter = function (filter) {
     $scope.filter = filter;
   }
-  $scope.setFilter({MaLoai: {MaLoai: 1}});
+  $scope.setFilter({LoaiId: {LoaiId: 1}});
   $scope.addToCart = function (id, event) {
     $http({
       url: "/Cart/Add",
@@ -125,8 +125,8 @@
       }
   }
   
-  function buildUrlChiTiet(maLoai, maCay) {
-    var urlChiTiet = "/Home/ChiTiet?MaLoai=" + maLoai.MaLoai + "&MaCay=" + maCay;
+  function buildUrlChiTiet(LoaiId, TreeId) {
+    var urlChiTiet = "/Home/ChiTiet?LoaiId=" + LoaiId.LoaiId + "&TreeId=" + TreeId;
     return urlChiTiet;
   }
   

@@ -57,14 +57,14 @@
                     <tr>
                         <td id="stt@(i)" class="stt">@(i++)</td>
                         <td>
-                            @item.TenCay
+                            @item.TenTree
                         </td>
                         <td><img src="~/assets/client/images/@item.Hinh" style="width:100px;height:50px;" alt=""></td>
                         <td>
                             @Html.FormatValue(item.Gia, "{0:c}")
                         </td>
                         <td>
-                            <a href="#" class="remove-from-order" data-id="@item.MaCay">
+                            <a href="#" class="remove-from-order" data-id="@item.TreeId">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>
@@ -86,7 +86,7 @@
 
             <dd>
                 @using(Html.BeginForm("SuaTinhTrang", "AdminHome", FormMethod.Post)) {
-                    <input type="hidden" name="mahoadon" value="@ViewBag.MaHD" />
+                    <input type="hidden" name="HoaDonId" value="@ViewBag.MaHD" />
                     <input type="hidden" name="i" value="@ViewBag.i" />
                     <select name="tinhtrang" class="form-control" id="selTinhTrang">
                         <option value="Mới đặt hàng">Mới đặt hàng</option>
@@ -107,7 +107,7 @@
             </dt>
 
             <dd>
-                @ViewBag.TenNguoiDung
+                @ViewBag.Ten
             </dd>
 
             <dt>
@@ -134,13 +134,13 @@
     $(function () {
         $(".remove-from-order").click(function () {
             var stt = 1;
-            var idCay = $(this).attr("data-id");
+            var idTree = $(this).attr("data-id");
             var idhoadon = $("#mahd").text();
 
             $(this).parents("tr").remove();
             $.ajax({
                 url: "/AdminHome/CapNhatCTHD",
-                data: { maCay: idCay, mahoadon: idhoadon },
+                data: { TreeId: idTree, HoaDonId: idhoadon },
                 success: function (response) {
                     $("#tongtien").text(response.tong);
                     $("td[id^=stt]").each(function (index, element) {
@@ -161,7 +161,7 @@
             var idhoadon = $("#mahd").text();
             $.ajax({
                 url: "/AdminHome/CapNhatDiaChi",
-                data: { mahoadon: idhoadon, diachi: diachi },
+                data: { HoaDonId: idhoadon, diachi: diachi },
                 success: function (response) {
                     $("#btnSuaDC").hide();
                     $("#idMessage").text("Lưu thành công").delay(2000).hide(0);

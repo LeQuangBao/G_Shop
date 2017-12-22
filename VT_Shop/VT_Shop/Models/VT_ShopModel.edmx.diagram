@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9bee58f5bec84857840ed9b546686731" Name="Diagram1">
-        <EntityTypeShape EntityType="VTShopModel.Cay" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="869bc695c91e483a947a1969cdec23aa" Name="Diagram1">
         <EntityTypeShape EntityType="VTShopModel.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VTShopModel.Giong" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VTShopModel.HoaDon" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="VTShopModel.Loai" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VTShopModel.NguoiDung" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="VTShopModel.FK_Cay_Loai" ManuallyRouted="false" />
-        <AssociationConnector Association="VTShopModel.FK_ChiTietHoaDon_Cay" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VTShopModel.Tree" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VTShopModel.User" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="VTShopModel.FK_ChiTietHoaDon_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="VTShopModel.FK_ChiTietHoaDon_Tree" ManuallyRouted="false" />
         <AssociationConnector Association="VTShopModel.FK_Loai_Giong" ManuallyRouted="false" />
-        <AssociationConnector Association="VTShopModel.FK_HoaDon_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="VTShopModel.FK_HoaDon_User" ManuallyRouted="false" />
+        <AssociationConnector Association="VTShopModel.FK_Tree_Loai" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

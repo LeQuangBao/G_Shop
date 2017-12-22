@@ -15,10 +15,10 @@ namespace VT_Shop.Models
     public partial class ChiTietHoaDon
     {
         public int MaChiTietHoaDon { get; set; }
-        public int MaHoaDon { get; set; }
-        public int MaCay { get; set; }
+        public int HoaDonId { get; set; }
+        public int TreeId { get; set; }
     
-        public virtual Cay Cay { get; set; }
         public virtual HoaDon HoaDon { get; set; }
+        public virtual Tree Tree { get; set; }
     }
 }

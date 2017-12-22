@@ -21,11 +21,11 @@ namespace VT_Shop.Controllers {
         [HttpPost]
         public ActionResult Login(ModelLogin nd) {
 
-            var user = db.NguoiDungs.Where(n => n.TenDangNhap.Equals(nd.UserName)).FirstOrDefault();
+            var user = db.Users.Where(n => n.UserName.Equals(nd.UserName)).FirstOrDefault();
 
             if(user == null) {
                 ModelState.AddModelError("", "Sai tên đăng nhập !");
-            } else if(user.MatKhau != nd.Password) {
+            } else if(user.Password != nd.Password) {
                 ModelState.AddModelError("", "Sai mật khẩu !");
             } else {
                 Session["user"] = user;
@@ -47,11 +47,11 @@ namespace VT_Shop.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Register(NguoiDung model) {
+        public ActionResult Register(User model) {
             model.Email = Request.Form["email"];
             try {
                 model.VaiTro = "Khách hàng";
-                db.NguoiDungs.Add(model);
+                db.Users.Add(model);
                 db.SaveChanges();
                 //ModelState.AddModelError("", "Đăng ký thành công. Vui lòng nhận email và kích hoạt tài khoản !");
 
@@ -64,18 +64,18 @@ namespace VT_Shop.Controllers {
             return RedirectToAction("Login", "Account");
         }
         public ActionResult editprofile() {
-            var user = Session["user"] as NguoiDung;
-            ViewBag.tennguoidung = user.TenDangNhap;
-            var model = db.NguoiDungs.Find(user.MaNguoiDung);
+            var user = Session["user"] as User;
+            ViewBag.Ten = user.UserName;
+            var model = db.Users.Find(user.UserId);
             return View(model);
         }
         [HttpPost]
-        public ActionResult editprofile(NguoiDung model) {
-            NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
+        public ActionResult editprofile(User model) {
+            User nd = db.Users.Find(model.UserId);
             nd.Email = model.Email;
             nd.GioiTinh = model.GioiTinh;
             //nd.NgaySinh = model.NgaySinh;
-            nd.TenNguoiDung = model.TenNguoiDung;
+            nd.Ten = model.Ten;
             nd.GioiTinh = model.GioiTinh;
             nd.SoDienThoai = model.SoDienThoai;
             nd.DiaChi = model.DiaChi;
@@ -84,15 +84,15 @@ namespace VT_Shop.Controllers {
             return View(model);
         }
         public ActionResult editPassword(string message = "") {
-            var user = Session["user"] as NguoiDung;
-            ViewBag.tennguoidung = user.TenDangNhap;
-            var model = db.NguoiDungs.Find(user.MaNguoiDung);
+            var user = Session["user"] as User;
+            ViewBag.Ten = user.UserName;
+            var model = db.Users.Find(user.UserId);
             ViewBag.message = message;
             return View(model);
         }
         [HttpPost]
-        public ActionResult editPassword(NguoiDung nguoiDung, string oldPassword, string newPassword) {
-            if(new UserDAO().changePassword(nguoiDung.MaNguoiDung, oldPassword, newPassword)) {
+        public ActionResult editPassword(User User, string oldPassword, string newPassword) {
+            if(new UserDAO().changePassword(User.UserId, oldPassword, newPassword)) {
                 return RedirectToAction("editprofile", "Account");
             }
             return RedirectToAction("editpassword", "Account", new { message = "Thông tin không chính xác, vui lòng nhập lại" });

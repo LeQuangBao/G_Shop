@@ -12,24 +12,24 @@ namespace VT_Shop.DAO {
             db = new VTShopEntities();
         }
         public int Login(string username, string password) {
-            var result = db.NguoiDungs.SingleOrDefault(x => x.TenDangNhap == username && x.MatKhau == password);
+            var result = db.Users.SingleOrDefault(x => x.UserName == username && x.Password == password);
             if(result == null)
                 return 0;
             else
                 return 1;
         }
-        public NguoiDung GetUser(string username) {
-            return db.NguoiDungs.SingleOrDefault(x => x.TenDangNhap == username);
+        public User GetUser(string username) {
+            return db.Users.SingleOrDefault(x => x.UserName == username);
         }
 
-        public NguoiDung GetUser(int id) {
-            return db.NguoiDungs.Find(id);
+        public User GetUser(int id) {
+            return db.Users.Find(id);
         }
 
         public bool changePassword(int id, string oldPassword, string newPassword) {
-            NguoiDung nguoiDung = db.NguoiDungs.Find(id);
-            if(nguoiDung.MatKhau == oldPassword) {
-                nguoiDung.MatKhau = newPassword;
+            User User = db.Users.Find(id);
+            if(User.Password == oldPassword) {
+                User.Password = newPassword;
                 db.SaveChanges();
                 return true;
             }
@@ -40,31 +40,31 @@ namespace VT_Shop.DAO {
             return db.Loais.ToList();
         }
 
-        public List<Cay> GetAllCay_MaLoai(int MaLoai) {
-            return db.Cays.Where(x => x.MaLoai == MaLoai).ToList();
+        public List<Tree> GetAllTree_LoaiId(int LoaiId) {
+            return db.Trees.Where(x => x.LoaiId == LoaiId).ToList();
         }
 
-        public List<Cay> GetNewCay() {
-            return db.Cays.OrderByDescending(x => x.MaCay).Take(3).ToList();
+        public List<Tree> GetNewTree() {
+            return db.Trees.OrderByDescending(x => x.TreeId).Take(3).ToList();
         }
 
-        public string GetTenLoai_MaLoai(int MaLoai) {
-            var model = db.Loais.Find(MaLoai);
+        public string GetTenLoai_LoaiId(int LoaiId) {
+            var model = db.Loais.Find(LoaiId);
             return model.TenLoai;
         }
 
-        public Cay GetCay_MaLoai_MaCay(int MaLoai, int MaCay) {
-            return db.Cays.Where(x => x.MaLoai == MaLoai && x.MaCay == MaCay).FirstOrDefault();
+        public Tree GetTree_LoaiId_TreeId(int LoaiId, int TreeId) {
+            return db.Trees.Where(x => x.LoaiId == LoaiId && x.TreeId == TreeId).FirstOrDefault();
         }
 
-        public List<Cay> TimCay(string ten) {
-            return db.Cays.Where(x => x.TenCay.Contains(ten)).ToList();
+        public List<Tree> TimTree(string ten) {
+            return db.Trees.Where(x => x.TenTree.Contains(ten)).ToList();
         }
         
 
-        public void BanCay(int MaCay) {
-            Cay Cay = db.Cays.Find(MaCay);
-            Cay.TinhTrang = "Đã bán";
+        public void BanTree(int TreeId) {
+            Tree Tree = db.Trees.Find(TreeId);
+            Tree.TinhTrang = "Đã bán";
             db.SaveChanges();
         }
     }

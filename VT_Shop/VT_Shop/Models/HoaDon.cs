@@ -20,8 +20,8 @@ namespace VT_Shop.Models
             this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
         }
     
-        public int MaHoaDon { get; set; }
-        public int MaNguoiDung { get; set; }
+        public int HoaDonId { get; set; }
+        public int UserId { get; set; }
         public Nullable<System.DateTime> NgayMua { get; set; }
         public Nullable<int> TongTien { get; set; }
         public Nullable<System.DateTime> NgayGiaoHang { get; set; }
@@ -31,6 +31,6 @@ namespace VT_Shop.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        public virtual NguoiDung NguoiDung { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "HoaDon";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var TenNguoiDung = ViewBag.TenNguoiDung as List<VT_Shop.Models.NguoiDung>;
+    var Ten = ViewBag.Ten as List<VT_Shop.Models.User>;
 }
 
 <div class="col-lg-12">
@@ -64,7 +64,7 @@
                         </td>
 
                         <td>
-                            @(TenNguoiDung[a].TenNguoiDung)
+                            @(Ten[a].Ten)
                         </td>
                         <td>
                             @Html.FormatValue(Model[a].NgayMua, "{0:dd/MM/yyyy}")
@@ -77,7 +77,7 @@
                         </td>
                         <td>
                             <button class="btn btn-primary">
-                                @Html.ActionLink("Chi tiết", "CTHD", new { MaHD = Model[a].MaHoaDon, i = (ViewBag.tinhtrang == null ? 0:ViewBag.tinhtrang)}, new { @style = "color:white;" })
+                                @Html.ActionLink("Chi tiết", "CTHD", new { MaHD = Model[a].HoaDonId, i = (ViewBag.tinhtrang == null ? 0:ViewBag.tinhtrang)}, new { @style = "color:white;" })
                             </button>
                             
                         </td>

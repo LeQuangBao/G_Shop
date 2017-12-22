@@ -7,17 +7,17 @@ using System.Web.Mvc;
 
 namespace VT_Shop.Controllers
 {
-    public class CayController : Controller
+    public class TreeController : Controller
     {
         VTShopEntities db = new VTShopEntities();
 
         [HttpGet]
-        public JsonResult getCay() {
-            var list = (from n in db.Cays
-                        select new CayDTO {
-                            MaCay = n.MaCay,
-                            MaLoai = n.MaLoai,
-                            TenCay = n.TenCay,
+        public JsonResult getTree() {
+            var list = (from n in db.Trees
+                        select new TreeDTO {
+                            TreeId = n.TreeId,
+                            LoaiId = n.LoaiId,
+                            TenTree = n.TenTree,
                             MoTa = n.MoTa,
                             GiaMua = n.GiaMua,
                             GiaBan = n.GiaBan,
@@ -32,10 +32,10 @@ namespace VT_Shop.Controllers
         public JsonResult getLoai() {
             var list = (from n in db.Loais
                         select new LoaiDTO {
-                            MaLoai = n.MaLoai,
+                            LoaiId = n.LoaiId,
                             TenLoai = n.TenLoai,
                             MoTa = n.MoTa,
-                            MaGiong = n.MaGiong
+                            GiongId = n.GiongId
                         }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
@@ -44,7 +44,7 @@ namespace VT_Shop.Controllers
         public JsonResult getGiong() {
             var list = (from n in db.Giongs
                         select new GiongDTO {
-                            MaGiong = n.MaGiong,
+                            GiongId = n.GiongId,
                             TenGiong = n.TenGiong,
                         }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);

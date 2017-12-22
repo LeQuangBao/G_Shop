@@ -20,7 +20,7 @@ namespace VT_Shop.Models
             this.Loais = new HashSet<Loai>();
         }
     
-        public int MaGiong { get; set; }
+        public int GiongId { get; set; }
         public string TenGiong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

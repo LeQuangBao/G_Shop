@@ -12,9 +12,9 @@
 <hr />
 @using(Html.BeginForm()) {
     <label>Khách hàng:</label>
-    @Model.NguoiDung.TenDangNhap
+    @Model.User.UserName
     // Ngày mua và tổng tiền hiển thị dưới dạng text, không phải input nên phải có đoạn hidden để truyền đi
-    @Html.HiddenFor(m => m.MaNguoiDung, new { @class = "form-control" })
+    @Html.HiddenFor(m => m.UserId, new { @class = "form-control" })
     @Html.HiddenFor(m => m.NgayMua, new { @class = "form-control" })
     @Html.HiddenFor(m => m.TongTien, new { @class = "form-control" })
     <br />
@@ -33,7 +33,7 @@
             int i = 0;
             <tr>
                 <td>@(++i)</td>
-                <td>@p.TenCay</td>
+                <td>@p.TenTree</td>
                 <td><img src="~/assets/client/images/@(p.HinhAnh.Substring(0, p.HinhAnh.IndexOf("|")))" style="width:100px;height:50px;" alt=""></td>
                 <td>@Html.FormatValue(p.GiaBan, "{0:c}")</td>
             </tr>

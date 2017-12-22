@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VT_Shop.Models.Cay>
+﻿@model IEnumerable<VT_Shop.Models.Tree>
 
 @{
     ViewBag.Title = "Các con Hamster";
@@ -10,7 +10,7 @@
     <h2>Danh sách các cây thuộc loài @ViewBag.TenLoai
 
     <span style="float:right">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#ThemCay"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#ThemTree"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
     </span>
     </h2>
     @if(ViewBag.Message != "") {
@@ -24,16 +24,16 @@
                 Tổng số cá thể:
             </dt>
 
-            <dd id="tongCay">
+            <dd id="tongTree">
             </dd>
         </dl>
     </div>
     <br />
     <div class="col-md-12">
         <label>Lọc tình trạng cá thể: </label>
-        @using (Html.BeginForm("Cay", "AdminHome", FormMethod.Get, new { @id = "form" }))
+        @using (Html.BeginForm("Tree", "AdminHome", FormMethod.Get, new { @id = "form" }))
         {
-            <input type="hidden" name="MaLoai" value="@ViewBag.MaLoai" />
+            <input type="hidden" name="LoaiId" value="@ViewBag.LoaiId" />
             <label class="radio-inline"><input type="radio" name="i" value="0" />Tất cả</label>
             <label class="radio-inline"><input type="radio" name="i" value="1" />Sẵn bán</label>
             <label class="radio-inline"><input type="radio" name="i" value="2" />Đã bán</label>
@@ -69,13 +69,13 @@
                 <tr>
                     <td>
                         @(i = i + 1)
-                        <input type="hidden" id="getMaLoai" value="@item.MaLoai">
+                        <input type="hidden" id="getLoaiId" value="@item.LoaiId">
                     </td>
                     <td>
                         <img src="~/assets/client/images/@(item.HinhAnh.Substring(0, item.HinhAnh.IndexOf("|")))" style="width:50px;height:50px;" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TenCay)
+                        @Html.DisplayFor(modelItem => item.TenTree)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.MoTa)
@@ -87,7 +87,7 @@
                         @Html.DisplayFor(modelItem => item.TinhTrang)
                     </td>
                     <td>
-                        <a href="http://localhost:60181/Admin/AdminHome/SuaCay?MaLoai=@item.MaLoai&MaCay=@item.MaCay">
+                        <a href="http://localhost:60181/Admin/AdminHome/SuaTree?LoaiId=@item.LoaiId&TreeId=@item.TreeId">
                         <button class="btn btn-primary">
                             Sửa
                         </button>
@@ -99,11 +99,11 @@
     </table>
     <input type="hidden" value="@i" id="tong" />
 </div>
-@Html.Partial("ThemCay", new VT_Shop.Models.Cay())
+@Html.Partial("ThemTree", new VT_Shop.Models.Tree())
 <input type="hidden" name="tinhtrang" value="@ViewBag.tinhtrang" />
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#tongCay").text($("#tong").val());
+        $("#tongTree").text($("#tong").val());
         var i = $("input[name='tinhtrang']").val();
         if (i != null)
         {

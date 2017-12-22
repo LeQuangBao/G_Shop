@@ -35,9 +35,9 @@ namespace VT_Shop.Areas.Admin.Controllers
                 return Json("error", JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult edit(int maloai)
+        public ActionResult edit(int LoaiId)
         {
-            var list = db.Loais.Find(maloai);
+            var list = db.Loais.Find(LoaiId);
             return View(list);
         }
         [HttpPost]
@@ -45,7 +45,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         {
             //try
             //{
-                var model = db.Loais.Find(loai.MaLoai);
+                var model = db.Loais.Find(loai.LoaiId);
                 model.TenLoai = loai.TenLoai;
                 model.MoTa = loai.MoTa;
                 db.SaveChanges();
@@ -61,7 +61,7 @@ namespace VT_Shop.Areas.Admin.Controllers
             var model = (from n in db.Loais
                          select new LoaiDTO
                          {
-                             MaLoai=n.MaLoai,
+                             LoaiId=n.LoaiId,
                              TenLoai=n.TenLoai,
                              MoTa=n.MoTa
                          }).ToList();

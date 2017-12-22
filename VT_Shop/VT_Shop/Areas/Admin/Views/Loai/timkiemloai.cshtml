@@ -37,18 +37,18 @@
             });
         });
         $("#sua").on('click', function () {
-            var maloai = $("#maloai").val();
-            console.log(maloai);
+            var LoaiId = $("#LoaiId").val();
+            console.log(LoaiId);
             $.ajax({
                 type: "GET",
                 url: '/Loai/edit',
                 data: {
-                  maloai:maloai
+                  LoaiId:LoaiId
                 },
                 cache: false,
                 dataType: "json",
                 success: function (result) {
-                    $("#maloai1").val(maloai);
+                    $("#LoaiId1").val(LoaiId);
                     $("#tenloai1").val(result.TenLoai);
                     $("#mota1").val(result.MoTa);
 
@@ -59,14 +59,14 @@
             });
         })
         $("#capnhat").on('click', function () {
-            var maloai = $("#maloai1").val();
+            var LoaiId = $("#LoaiId1").val();
             var tenloai = $("#tenloai1").val();
             var mota = $("#mota1").val();
             $.ajax({
                 type: "POST",
                 url: '/Loai/capnhat',
                 data: {
-                    maloai:maloai,
+                    LoaiId:LoaiId,
                     tenloai: tenloai,
                     mota: mota,
                 },
@@ -126,12 +126,12 @@
                 @for (var i = 0; i < Model.Count; i++)
                 {
                     <tr>
-                        <td>@Model[i].MaLoai</td>
+                        <td>@Model[i].LoaiId</td>
                         <td>@Model[i].TenLoai</td>
                         <td>@Model[i].MoTa</td>
 
                         <td>
-                            <input type="hidden" id="maloai" value="@Model[i].MaLoai" />
+                            <input type="hidden" id="LoaiId" value="@Model[i].LoaiId" />
                             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_sua">
                                 <i class="glyphicon glyphicon-pencil" id="sua">
                                     Sửa
@@ -199,7 +199,7 @@
                 <div class="modal-body">
                     <form id="add" name="add" class="form-horizontal" role="form" method="post">
                         <div class="form-group">
-                            <input type="hidden" id="maloai1" />
+                            <input type="hidden" id="LoaiId1" />
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                 Tên loài <span class="required">*</span>
                             </label>

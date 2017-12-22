@@ -1,4 +1,4 @@
-﻿@model VT_Shop.Models.NguoiDung
+﻿@model VT_Shop.Models.User
 @{
     ViewBag.Title = "Đăng kí";
     Layout = "~/Views/Shared/_LayoutNotcate.cshtml";
@@ -32,25 +32,25 @@
                                     <div class="form-group has-feedback">
                                         <label class="control-label col-sm-4" for="username">Tên đăng nhập:</label>
                                         <div class="col-sm-8">
-                                            @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "form-control" })
+                                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
                                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                            @Html.ValidationMessageFor(model => model.TenDangNhap)
+                                            @Html.ValidationMessageFor(model => model.UserName)
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label class="control-label col-sm-4" for="username">Họ và tên:</label>
                                         <div class="col-sm-8">
-                                            @Html.TextBoxFor(model => model.TenNguoiDung, new { @class = "form-control" })
+                                            @Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })
                                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                            @Html.ValidationMessageFor(model => model.TenNguoiDung)
+                                            @Html.ValidationMessageFor(model => model.Ten)
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label class="control-label col-sm-4" for="pwd">Mật khẩu:</label>
                                         <div class="col-sm-8">
-                                            @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @id = "pass" })
+                                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "pass" })
                                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                            @Html.ValidationMessageFor(model => model.MatKhau)
+                                            @Html.ValidationMessageFor(model => model.Password)
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">

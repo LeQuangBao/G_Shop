@@ -26,7 +26,7 @@ using VT_Shop.Models;
     /// <summary>
     /// Danh sách mặt hàng đã chọn
     /// </summary>
-    public List<Cay> Items = new List<Cay>();
+    public List<Tree> Items = new List<Tree>();
 
     /// <summary>
     /// Lấy số lượng hàng hóa trong giỏ
@@ -66,13 +66,13 @@ using VT_Shop.Models;
     {
         try
         {
-            var p = Items.Single(i => i.MaCay == Id);
+            var p = Items.Single(i => i.TreeId == Id);
         }
         catch // Chưa có trong giỏ -> Lấy từ DB
         {
             using (var db = new VTShopEntities())
             {
-                var p = db.Cays.Find(Id);
+                var p = db.Trees.Find(Id);
                 Items.Add(p);
             }
         }
@@ -84,7 +84,7 @@ using VT_Shop.Models;
     /// <param name="Id">Mã mặt hàng bị xóa</param>
     public void Remove(int Id)
     {
-        var p = Items.Single(i => i.MaCay == Id);
+        var p = Items.Single(i => i.TreeId == Id);
         Items.Remove(p);
     }
 

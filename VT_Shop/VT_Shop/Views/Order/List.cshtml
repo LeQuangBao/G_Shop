@@ -20,12 +20,12 @@
     {
         <tr>
             <td>@(++i)</td>
-            <td>@o.MaHoaDon</td>
+            <td>@o.HoaDonId</td>
             <td>@Html.FormatValue(o.NgayMua, "{0:dd/MM/yyyy}")</td>
             <td>@Html.FormatValue(o.TongTien, "{0:c}")</td>
             
             <td>
-                <a href="/Order/Detail/@o.MaHoaDon">Chi tiết</a>
+                <a href="/Order/Detail/@o.HoaDonId">Chi tiết</a>
             </td>
         </tr>
     }

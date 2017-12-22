@@ -18,7 +18,6 @@ E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\bin\PagedList.dll
 E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\bin\PagedList.Mvc.dll
 E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\bin\PagedList.xml
 E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\bin\PagedList.Mvc.xml
-E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.csprojResolveAssemblyReference.cache
 E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.Properties.Resources.resources
 E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.csproj.GenerateResource.Cache
 E:\Source_Code\VT_Shop\VT_Shop\VT_Shop\obj\Debug\VT_Shop.csproj.CoreCompileInputs.cache

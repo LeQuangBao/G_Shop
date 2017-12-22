@@ -1,4 +1,4 @@
-﻿@model VT_Shop.Models.NguoiDung
+﻿@model VT_Shop.Models.User
 
 @{
     ViewBag.Title = "editprofile";
@@ -22,13 +22,13 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaNguoiDung)
+        @Html.HiddenFor(model => model.UserId)
 
         <div class="form-group">
             <label class="control-label col-md-2">Họ và Tên</label>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.TenNguoiDung, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TenNguoiDung, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
                 </div>
             </div>
 

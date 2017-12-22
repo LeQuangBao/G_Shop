@@ -18,8 +18,8 @@ namespace VT_Shop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            var user = Session["user"] as NguoiDung;
-            ViewBag.tennguoidung = user.TenDangNhap;
+            var user = Session["user"] as User;
+            ViewBag.Ten = user.UserName;
             return View();
         }
         public JsonResult Add(int Id)

@@ -10,19 +10,19 @@ using PagedList.Mvc;
 namespace VT_Shop.Controllers {
     public class HomeController : Controller {
         VTShopEntities db = new VTShopEntities();
-        public IEnumerable<Cay> ListAllPageging4(int page, int pagesize) {
-            return db.Cays.Where(x => x.TinhTrang == "Sẵn bán").OrderByDescending(x => x.MaCay).ToPagedList(page, pagesize);
+        public IEnumerable<Tree> ListAllPageging4(int page, int pagesize) {
+            return db.Trees.Where(x => x.TinhTrang == "Sẵn bán").OrderByDescending(x => x.TreeId).ToPagedList(page, pagesize);
         }
 
         public ActionResult Index(int page = 1, int pagesize = 3) {
-            var user = Session["user"] as NguoiDung;
+            var user = Session["user"] as User;
             if(user != null)
-                ViewBag.tennguoidung = user.TenDangNhap;
+                ViewBag.Ten = user.UserName;
             var model = ListAllPageging4(page, pagesize);
             return View(model);
         }
-        public IEnumerable<Cay> ListAllPageging(int MaLoai, int page, int pagesize) {
-            return db.Cays.Where(n => n.MaLoai.Equals(MaLoai)).OrderByDescending(x => x.MaCay).ToPagedList(page, pagesize);
+        public IEnumerable<Tree> ListAllPageging(int LoaiId, int page, int pagesize) {
+            return db.Trees.Where(n => n.LoaiId.Equals(LoaiId)).OrderByDescending(x => x.TreeId).ToPagedList(page, pagesize);
         }
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
@@ -37,29 +37,29 @@ namespace VT_Shop.Controllers {
             var model = new UserDAO().GetAllTenLoai();
             return PartialView(model);
         }
-        public ActionResult Cay(int MaLoai, int page = 1, int pagesize = 6) {
-            var user = Session["user"] as NguoiDung;
+        public ActionResult Tree(int LoaiId, int page = 1, int pagesize = 6) {
+            var user = Session["user"] as User;
             if(user != null)
-                ViewBag.tennguoidung = user.TenDangNhap;
-            var model = ListAllPageging(MaLoai, page, pagesize);
-            ViewBag.TenLoai = new UserDAO().GetTenLoai_MaLoai(MaLoai);
-            ViewBag.MaLoai = MaLoai;
+                ViewBag.Ten = user.UserName;
+            var model = ListAllPageging(LoaiId, page, pagesize);
+            ViewBag.TenLoai = new UserDAO().GetTenLoai_LoaiId(LoaiId);
+            ViewBag.LoaiId = LoaiId;
             return View(model);
         }
         [HttpGet]
-        public ActionResult ChiTiet(int MaLoai, int MaCay) {
-            var user = Session["user"] as NguoiDung;
+        public ActionResult ChiTiet(int LoaiId, int TreeId) {
+            var user = Session["user"] as User;
             if(user != null)
-                ViewBag.tennguoidung = user.TenDangNhap;
-            var model = new UserDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
+                ViewBag.Ten = user.UserName;
+            var model = new UserDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }
 
         public ActionResult Tim(string ten) {
-            var user = Session["user"] as NguoiDung;
+            var user = Session["user"] as User;
             if(user != null)
-                ViewBag.tennguoidung = user.TenDangNhap;
-            var model = new UserDAO().TimCay(ten);
+                ViewBag.Ten = user.UserName;
+            var model = new UserDAO().TimTree(ten);
             return View(model);
         }
     }

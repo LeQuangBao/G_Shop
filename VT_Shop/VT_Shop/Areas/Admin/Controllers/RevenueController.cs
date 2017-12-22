@@ -16,7 +16,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult Cay()
+        public ActionResult Tree()
         {
             if (Session["Admin"] == null)
             {
@@ -44,7 +44,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cay(FormCollection form)
+        public ActionResult Tree(FormCollection form)
         {
             string ngaybd = form["ngaybd"];
             string ngaykt = form["ngaykt"];
@@ -53,15 +53,15 @@ namespace VT_Shop.Areas.Admin.Controllers
             DateTime ngaykt1 = Convert.ToDateTime(ngaykt);
             var model = db.ChiTietHoaDons.
                 Where(p => p.HoaDon.NgayMua >= ngaybd1 && p.HoaDon.NgayMua <= ngaykt1).
-                GroupBy(p => p.Cay)
+                GroupBy(p => p.Tree)
                 .Select(g => new ReportInfo
                 {
-                    Group = g.Key.TenCay,
-                    Count = g.Sum(p => p.MaCay),
-                    Total = g.Sum(p => p.Cay.GiaBan * 1),
-                    MinPrice = g.Min(p => p.Cay.GiaBan),
-                    MaxPrice = g.Max(p => p.Cay.GiaBan),
-                    AvgPrice = g.Average(p => p.Cay.GiaBan)
+                    Group = g.Key.TenTree,
+                    Count = g.Sum(p => p.TreeId),
+                    Total = g.Sum(p => p.Tree.GiaBan * 1),
+                    MinPrice = g.Min(p => p.Tree.GiaBan),
+                    MaxPrice = g.Max(p => p.Tree.GiaBan),
+                    AvgPrice = g.Average(p => p.Tree.GiaBan)
                 });
             ViewBag.ngaybd = ngaybd;
             ViewBag.ngaykt = ngaykt;
@@ -88,15 +88,15 @@ namespace VT_Shop.Areas.Admin.Controllers
             }
             var model = db.ChiTietHoaDons.
                 Where(h => h.HoaDon.NgayMua >= ngaybd1 && h.HoaDon.NgayMua <= ngaykt1).
-                GroupBy(p => p.Cay.Loai)
+                GroupBy(p => p.Tree.Loai)
                 .Select(g => new ReportInfo
                 {
                     Group = g.Key.TenLoai,
-                    Count = g.Sum(p => p.Cay.Loai.MaLoai),
-                    Total = g.Sum(p => p.Cay.GiaBan * 1),
-                    MinPrice = g.Min(p => p.Cay.GiaBan),
-                    MaxPrice = g.Max(p => p.Cay.GiaBan),
-                    AvgPrice = g.Average(p => p.Cay.GiaBan)
+                    Count = g.Sum(p => p.Tree.Loai.LoaiId),
+                    Total = g.Sum(p => p.Tree.GiaBan * 1),
+                    MinPrice = g.Min(p => p.Tree.GiaBan),
+                    MaxPrice = g.Max(p => p.Tree.GiaBan),
+                    AvgPrice = g.Average(p => p.Tree.GiaBan)
                 });
             ViewBag.ngaybd = ngaybatdau2;
             ViewBag.ngaykt = ngaykethuc2;
@@ -121,11 +121,11 @@ namespace VT_Shop.Areas.Admin.Controllers
             }
             var model = db.HoaDons.
                 Where(p => p.NgayMua >= ngaybd1 && p.NgayMua <= ngaykt1).
-                GroupBy(p => p.NguoiDung)
+                GroupBy(p => p.User)
                 .Select(g => new ReportInfo
                 {
-                    Group = g.Key.TenNguoiDung,
-                    Count = g.Sum(p => p.MaHoaDon),
+                    Group = g.Key.Ten,
+                    Count = g.Sum(p => p.HoaDonId),
                     Total = g.Sum(p => p.TongTien),
                     MinPrice = g.Min(p => p.TongTien),
                     MaxPrice = g.Max(p => p.TongTien),
@@ -146,7 +146,7 @@ namespace VT_Shop.Areas.Admin.Controllers
         //        .Select(g => new ReportInfo
         //        {
         //            Group = g.Key.ToString(),
-        //            Count = g.Sum(p => p.MaHoaDon),
+        //            Count = g.Sum(p => p.HoaDonId),
         //            Total = g.Sum(p => p.TongTien),
         //            MinPrice = g.Min(p => p.TongTien),
         //            MaxPrice = g.Max(p => p.TongTien),
@@ -172,8 +172,8 @@ namespace VT_Shop.Areas.Admin.Controllers
         //    var model = db.HoaDons
         //                 .Where(p => p.NgayMua >= ngaybd && p.NgayMua <= ngaykt)
         //                 .Select(g => new HoaDonDTO1 {
-        //                     MaHoaDon = g.MaHoaDon,
-        //                     TenNguoiMua = g.NguoiDung.TenNguoiDung,
+        //                     HoaDonId = g.HoaDonId,
+        //                     TenNguoiMua = g.User.Ten,
         //                     NgayMua = g.NgayMua,
         //                     TongTien = g.TongTien,
         //                     TinhTrang=g.TinhTrang

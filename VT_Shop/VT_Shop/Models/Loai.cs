@@ -17,16 +17,16 @@ namespace VT_Shop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Loai()
         {
-            this.Cays = new HashSet<Cay>();
+            this.Trees = new HashSet<Tree>();
         }
     
-        public int MaLoai { get; set; }
-        public int MaGiong { get; set; }
+        public int LoaiId { get; set; }
+        public int GiongId { get; set; }
         public string TenLoai { get; set; }
         public string MoTa { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cay> Cays { get; set; }
         public virtual Giong Giong { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tree> Trees { get; set; }
     }
 }

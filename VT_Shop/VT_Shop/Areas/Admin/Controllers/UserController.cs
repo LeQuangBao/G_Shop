@@ -18,22 +18,22 @@ namespace VT_Shop.Areas.Admin.Controllers {
 
 
         public ActionResult Index(string message = "") {
-            var list = db.NguoiDungs.ToList();
+            var list = db.Users.ToList();
             ViewBag.tongso = list.Count;
             ViewBag.Message = message;
             return View();
 
         }
         [HttpGet]
-        public JsonResult Get_nguoidung() {
-            var list = (from n in db.NguoiDungs
-                        select new NguoiDungDTO {
-                            MaNguoiDung = n.MaNguoiDung,
-                            TenNguoiDung = n.TenNguoiDung,
+        public JsonResult Get_User() {
+            var list = (from n in db.Users
+                        select new UserDTO {
+                            UserId = n.UserId,
+                            Ten = n.Ten,
                             DiaChi = n.DiaChi,
-                            TenDangNhap = n.TenDangNhap,
+                            UserName = n.UserName,
                             SoDienThoai = n.SoDienThoai,
-                            MatKhau = n.MatKhau,
+                            Password = n.Password,
                             Email = n.Email,
                             VaiTro = n.VaiTro,
                             GioiTinh = n.GioiTinh,
@@ -44,18 +44,18 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         //[HttpPost]
-        public JsonResult Loc_nguoidung(string i) {
-            List<NguoiDungDTO> list = new List<NguoiDungDTO>();
+        public JsonResult Loc_User(string i) {
+            List<UserDTO> list = new List<UserDTO>();
             string vai_tro = null;
             if(i == null || i == "0") {
-                list = (from n in db.NguoiDungs
-                        select new NguoiDungDTO {
-                            MaNguoiDung = n.MaNguoiDung,
-                            TenNguoiDung = n.TenNguoiDung,
+                list = (from n in db.Users
+                        select new UserDTO {
+                            UserId = n.UserId,
+                            Ten = n.Ten,
                             DiaChi = n.DiaChi,
-                            TenDangNhap = n.TenDangNhap,
+                            UserName = n.UserName,
                             SoDienThoai = n.SoDienThoai,
-                            MatKhau = n.MatKhau,
+                            Password = n.Password,
                             Email = n.Email,
                             VaiTro = n.VaiTro,
                             GioiTinh = n.GioiTinh,
@@ -67,15 +67,15 @@ namespace VT_Shop.Areas.Admin.Controllers {
                     vai_tro = "Quản trị viên";
                 if(i == "2")
                     vai_tro = "Khách hàng";
-                list = (from n in db.NguoiDungs
+                list = (from n in db.Users
                         where n.VaiTro == vai_tro
-                        select new NguoiDungDTO {
-                            MaNguoiDung = n.MaNguoiDung,
-                            TenNguoiDung = n.TenNguoiDung,
+                        select new UserDTO {
+                            UserId = n.UserId,
+                            Ten = n.Ten,
                             DiaChi = n.DiaChi,
-                            TenDangNhap = n.TenDangNhap,
+                            UserName = n.UserName,
                             SoDienThoai = n.SoDienThoai,
-                            MatKhau = n.MatKhau,
+                            Password = n.Password,
                             Email = n.Email,
                             VaiTro = n.VaiTro,
                             GioiTinh = n.GioiTinh,
@@ -87,13 +87,13 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         [HttpPost]
-        public JsonResult capnhat(NguoiDungDTO model) {
+        public JsonResult capnhat(UserDTO model) {
 
 
-            NguoiDung nd = db.NguoiDungs.Find(model.MaNguoiDung);
-            //nd.TenDangNhap = model.TenDangNhap;
-            nd.MatKhau = model.MatKhau;
-            nd.TenNguoiDung = model.TenNguoiDung;
+            User nd = db.Users.Find(model.UserId);
+            //nd.UserName = model.UserName;
+            nd.Password = model.Password;
+            nd.Ten = model.Ten;
             nd.DiaChi = model.DiaChi;
             nd.Email = model.Email;
             nd.SoDienThoai = model.SoDienThoai;
@@ -105,20 +105,20 @@ namespace VT_Shop.Areas.Admin.Controllers {
 
         }
         [HttpPost]
-        public JsonResult themnguoidung(string tendangnhap, string diachi, string tennguoidung, string sodienthoai, string matkhau, string gioitinh, string ngaysinh, string email, string vaitro) {
+        public JsonResult themUser(string UserName, string diachi, string Ten, string sodienthoai, string Password, string gioitinh, string ngaysinh, string email, string vaitro) {
             // try
             // {
-            NguoiDung nd = new NguoiDung();
+            User nd = new User();
             nd.Email = email;
             nd.DiaChi = diachi;
-            nd.TenNguoiDung = tennguoidung;
-            nd.MatKhau = matkhau;
-            nd.TenDangNhap = tendangnhap;
+            nd.Ten = Ten;
+            nd.Password = Password;
+            nd.UserName = UserName;
             nd.SoDienThoai = sodienthoai;
             nd.VaiTro = vaitro;
             nd.NgaySinh = Convert.ToDateTime(ngaysinh);
             nd.GioiTinh = gioitinh;
-            db.NguoiDungs.Add(nd);
+            db.Users.Add(nd);
             db.SaveChanges();
             return Json("ok");
             // }

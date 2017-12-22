@@ -17,17 +17,17 @@ namespace VT_Shop.Controllers {
                 return RedirectToAction("Login", "Account");
             } else {
                 int? tongtien = 0;
-                var user = Session["user"] as NguoiDung;
+                var user = Session["user"] as User;
                 foreach(var p in ShoppingCart.Cart.Items) {
                     tongtien = tongtien + p.GiaBan;
                 }
                 var model = new HoaDon();
                 model.TongTien = tongtien;
                 model.NgayMua = DateTime.Now;
-                model.MaNguoiDung = user.MaNguoiDung;
-                model.NguoiDung = user;
+                model.UserId = user.UserId;
+                model.User = user;
                 model.DiaChi = user.DiaChi;
-                ViewBag.tennguoidung = user.TenDangNhap;
+                ViewBag.Ten = user.UserName;
                 return View(model);
             }
 
@@ -46,15 +46,15 @@ namespace VT_Shop.Controllers {
             foreach(var p in ShoppingCart.Cart.Items) {
                 var detail = new ChiTietHoaDon {
                     HoaDon = order,
-                    MaCay = p.MaCay,
+                    TreeId = p.TreeId,
                 };
-                userDAO.BanCay(p.MaCay);
+                userDAO.BanTree(p.TreeId);
                 db.ChiTietHoaDons.Add(detail); // insert orderdetail
             }
             db.SaveChanges();
 
             ShoppingCart.Cart.Clear();
-            return RedirectToAction("Detail", "Order", new { id = order.MaHoaDon });
+            return RedirectToAction("Detail", "Order", new { id = order.HoaDonId });
             //return RedirectToAction("List", "Order");
         }
 
@@ -62,19 +62,19 @@ namespace VT_Shop.Controllers {
             if(Session["user"] == null) {
                 return RedirectToAction("Login", "Account");
             } else {
-                var user = Session["user"] as NguoiDung;
+                var user = Session["user"] as User;
                 var model = (from n in db.HoaDons
-                             where n.MaNguoiDung.Equals(user.MaNguoiDung)
+                             where n.UserId.Equals(user.UserId)
                              select new HoaDonDTO {
-                                 MaHoaDon = n.MaHoaDon,
-                                 MaNguoiDung = n.MaNguoiDung,
+                                 HoaDonId = n.HoaDonId,
+                                 UserId = n.UserId,
                                  NgayMua = n.NgayMua,
                                  TongTien = n.TongTien,
-                                 NguoiDung = n.NguoiDung
+                                 User = n.User
 
                              }).ToList();
 
-                ViewBag.tennguoidung = user.TenDangNhap;
+                ViewBag.Ten = user.UserName;
                 return View(model);
             }
 
@@ -84,8 +84,8 @@ namespace VT_Shop.Controllers {
             if(Session["user"] == null) {
                 return RedirectToAction("Login", "Account");
             } else {
-                var user = Session["user"] as NguoiDung;
-                ViewBag.tennguoidung = user.TenDangNhap;
+                var user = Session["user"] as User;
+                ViewBag.Ten = user.UserName;
                 var model = db.HoaDons.Find(Id);
                 return View(model);
             }
@@ -94,10 +94,10 @@ namespace VT_Shop.Controllers {
 
         //public ActionResult Items()
         //{
-        //    var user = Session["user"] as NguoiDung;
+        //    var user = Session["user"] as User;
         //    var model = db.ChiTietHoaDons
-        //        .Where(d => d.HoaDon.MaNguoiDung == user.MaNguoiDung)
-        //        .Select(d => d.Cay)
+        //        .Where(d => d.HoaDon.UserId == user.UserId)
+        //        .Select(d => d.Tree)
         //        .Distinct().ToList();
         //    return View("../Product/List", model);
         //}

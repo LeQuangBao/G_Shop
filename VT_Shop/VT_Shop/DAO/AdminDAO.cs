@@ -19,48 +19,48 @@ namespace VT_Shop.DAO
         }
 
         
-        public List<Cay> GetCay_MaLoai(int MaLoai, int? i)
+        public List<Tree> GetTree_LoaiId(int LoaiId, int? i)
         {
-            List<Cay> model = new List<Cay>();
+            List<Tree> model = new List<Tree>();
             if (i == null || i==0)
-                model = db.Cays.Where(x => x.MaLoai == MaLoai).ToList();
+                model = db.Trees.Where(x => x.LoaiId == LoaiId).ToList();
             else  //Biến i kiểm tra điều kiện lọc hóa đơn theo tình trạng
             {
                 if (i == 1)
-                    model = db.Cays.Where(x => x.TinhTrang == "Sẵn bán").ToList();
+                    model = db.Trees.Where(x => x.TinhTrang == "Sẵn bán").ToList();
                 if (i == 2)
-                    model = db.Cays.Where(x => x.TinhTrang == "Đã bán").ToList();
+                    model = db.Trees.Where(x => x.TinhTrang == "Đã bán").ToList();
                 if (i == 3)
-                    model = db.Cays.Where(x => x.TinhTrang == "Đã mất").ToList();
+                    model = db.Trees.Where(x => x.TinhTrang == "Đã mất").ToList();
             }
             return model;
         }
-        public string GetTenLoai_MaLoai(int MaLoai)
+        public string GetTenLoai_LoaiId(int LoaiId)
         {
-            var model = db.Loais.Find(MaLoai);
+            var model = db.Loais.Find(LoaiId);
             return model.TenLoai;
         }
 
-        public void ThemCay(Cay model)
+        public void ThemTree(Tree model)
         {
-            db.Cays.Add(model);
+            db.Trees.Add(model);
             db.SaveChanges();
         }
 
-        public Cay GetCay_MaLoai_MaCay(int MaLoai, int MaCay)
+        public Tree GetTree_LoaiId_TreeId(int LoaiId, int TreeId)
         {
-            return db.Cays.Where(x => x.MaLoai == MaLoai && x.MaCay == MaCay).FirstOrDefault();
+            return db.Trees.Where(x => x.LoaiId == LoaiId && x.TreeId == TreeId).FirstOrDefault();
         }
 
-        public void SuaCay(Cay Cay)
+        public void SuaTree(Tree Tree)
         {
-            Cay model = db.Cays.Find(Cay.MaCay);
-            model.TenCay = Cay.TenCay;
-            model.MoTa = Cay.MoTa;
-            model.GiaBan = Cay.GiaBan;
-            model.GiaMua = Cay.GiaMua;
-            model.KhuyenMai = Cay.KhuyenMai;
-            model.TinhTrang = Cay.TinhTrang;
+            Tree model = db.Trees.Find(Tree.TreeId);
+            model.TenTree = Tree.TenTree;
+            model.MoTa = Tree.MoTa;
+            model.GiaBan = Tree.GiaBan;
+            model.GiaMua = Tree.GiaMua;
+            model.KhuyenMai = Tree.KhuyenMai;
+            model.TinhTrang = Tree.TinhTrang;
             db.SaveChanges();
         }
 
@@ -86,24 +86,24 @@ namespace VT_Shop.DAO
         public List<CTHD> GetCTHD_MaHD(int MaHD)
         {
             var model = (from cthd in db.ChiTietHoaDons
-                         join ct in db.Cays
-                         on cthd.MaCay equals ct.MaCay
-                         join hd in db.HoaDons on cthd.MaHoaDon equals hd.MaHoaDon
-                         where cthd.MaHoaDon == MaHD
+                         join ct in db.Trees
+                         on cthd.TreeId equals ct.TreeId
+                         join hd in db.HoaDons on cthd.HoaDonId equals hd.HoaDonId
+                         where cthd.HoaDonId == MaHD
                          select new
                          {
                              macthd = cthd.MaChiTietHoaDon,
-                             mahd = cthd.MaHoaDon,
-                             maCay=ct.MaCay,
-                             tenct = ct.TenCay,
+                             mahd = cthd.HoaDonId,
+                             TreeId=ct.TreeId,
+                             tenct = ct.TenTree,
                              hinh = ct.HinhAnh.Substring(0, ct.HinhAnh.IndexOf("|")),
                              gia = ct.GiaBan
                          }).AsEnumerable().Select(x => new CTHD()
                          {
                              MaCTHD = x.macthd,
                              MaHD = x.mahd,
-                             MaCay=x.maCay,
-                             TenCay = x.tenct,
+                             TreeId=x.TreeId,
+                             TenTree = x.tenct,
                              Hinh = x.hinh,
                              Gia = x.gia
                          }).ToList();
@@ -126,54 +126,54 @@ namespace VT_Shop.DAO
             return model;
         }
 
-        public HoaDon GetHoaDon_MaHD(int MaHoaDon)
+        public HoaDon GetHoaDon_MaHD(int HoaDonId)
         {
-            return db.HoaDons.Where(x => x.MaHoaDon == MaHoaDon).First();
+            return db.HoaDons.Where(x => x.HoaDonId == HoaDonId).First();
         }
 
-        public NguoiDung GetNguoiDung_MaHoaDon(int MaHoaDon)
+        public User GetUser_HoaDonId(int HoaDonId)
         {
-            var model = (from ngdung in db.NguoiDungs
+            var model = (from ngdung in db.Users
                          join hd in db.HoaDons
-                         on ngdung.MaNguoiDung equals hd.MaNguoiDung
-                         where hd.MaHoaDon == MaHoaDon
+                         on ngdung.UserId equals hd.UserId
+                         where hd.HoaDonId == HoaDonId
                          select new
                          {
-                             tennguoidung = ngdung.TenNguoiDung,
+                             Ten = ngdung.Ten,
                              sdt = ngdung.SoDienThoai
-                         }).AsEnumerable().Select(x => new NguoiDung()
+                         }).AsEnumerable().Select(x => new User()
                          {
-                             TenNguoiDung = x.tennguoidung,
+                             Ten = x.Ten,
                              SoDienThoai = x.sdt
                          }).First();
             return model;
         }           
         
-        public void SuaTinhTrang(int MaHoaDon,string TinhTrang)
+        public void SuaTinhTrang(int HoaDonId,string TinhTrang)
         {
-            var model = db.HoaDons.Find(MaHoaDon);
+            var model = db.HoaDons.Find(HoaDonId);
             model.TinhTrang = TinhTrang;
             db.SaveChanges();
         }              
 
-        public int? CapNhatCTHD(int maCay, int mahoadon)
+        public int? CapNhatCTHD(int TreeId, int HoaDonId)
         {
             int? tongtien;
-            var cthd = db.ChiTietHoaDons.Where(x=>x.MaCay==maCay && x.MaHoaDon==mahoadon).First();
+            var cthd = db.ChiTietHoaDons.Where(x=>x.TreeId==TreeId && x.HoaDonId==HoaDonId).First();
             db.ChiTietHoaDons.Remove(cthd);
-            var hoadon = db.HoaDons.Find(mahoadon);
-            int? gia = db.Cays.Find(maCay).GiaBan;
+            var hoadon = db.HoaDons.Find(HoaDonId);
+            int? gia = db.Trees.Find(TreeId).GiaBan;
             tongtien = hoadon.TongTien - gia;
             hoadon.TongTien=tongtien;
-            var Cay = db.Cays.Find(maCay);
-            Cay.TinhTrang = "Sẵn bán";
+            var Tree = db.Trees.Find(TreeId);
+            Tree.TinhTrang = "Sẵn bán";
             db.SaveChanges();
             return tongtien;
         }
 
-        public List<Cay> GetAllCayExcept(int MaCay)
+        public List<Tree> GetAllTreeExcept(int TreeId)
         {
-            return db.Cays.Where(x=>x.MaCay!=MaCay).ToList();
+            return db.Trees.Where(x=>x.TreeId!=TreeId).ToList();
         }
     }
 }

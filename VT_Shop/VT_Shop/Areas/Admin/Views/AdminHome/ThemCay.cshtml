@@ -1,5 +1,5 @@
-﻿@model VT_Shop.Models.Cay
-<div id="ThemCay" class="modal fade" role="dialog">
+﻿@model VT_Shop.Models.Tree
+<div id="ThemTree" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="ten">Tên:</label>
                         <div class="col-sm-10">
-                            @Html.TextBoxFor(model => model.TenCay, new { @class = "form-control" })
+                            @Html.TextBoxFor(model => model.TenTree, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -28,7 +28,7 @@
                         <label class="control-label col-sm-2" for="gia">Giá bán:</label>
                         <div class="col-sm-10">
                             @Html.TextBoxFor(model => model.GiaBan, new { @class = "form-control" })
-                            @Html.HiddenFor(model => model.MaLoai)
+                            @Html.HiddenFor(model => model.LoaiId)
                         </div>
                     </div>
                     <div class="form-group">

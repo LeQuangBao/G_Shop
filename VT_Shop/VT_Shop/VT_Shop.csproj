@@ -200,9 +200,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Models\Cay.cs">
-      <DependentUpon>VT_ShopModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
       <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
@@ -216,7 +213,10 @@
       <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelLogin.cs" />
-    <Compile Include="Models\NguoiDung.cs">
+    <Compile Include="Models\Tree.cs">
+      <DependentUpon>VT_ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
       <DependentUpon>VT_ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VT_ShopModel.Context.cs">
@@ -310,13 +310,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="SCSS\src\sb-admin-rtl.css" />
-    <Content Include="SCSS\src\sb-admin.css" />
-    <Content Include="SCSS\src\shop-homepage.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\VT_ShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>VT_ShopModel.edmx</DependentUpon>
@@ -327,6 +320,12 @@
       <DependentUpon>VT_ShopModel.edmx</DependentUpon>
       <LastGenOutput>VT_ShopModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SCSS\src\sb-admin.css" />
+    <Content Include="SCSS\src\shop-homepage.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\app.js" />

@@ -23,7 +23,7 @@ namespace VT_Shop.Areas.Admin.Controllers {
 
         [HttpGet]
         public ActionResult Login() {
-            var admin = Session["Admin"] as NguoiDung;
+            var admin = Session["Admin"] as User;
             if(admin != null)
                 return RedirectToAction("Index", "User");
             return View();
@@ -60,19 +60,19 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         public ActionResult TopMenu() {
-            var model = Session["Admin"] as NguoiDung;
+            var model = Session["Admin"] as User;
             return PartialView(model);
 
         }
 
         [HttpGet]
-        public ActionResult Cay(int MaLoai, int? i, string message = "") {
+        public ActionResult Tree(int LoaiId, int? i, string message = "") {
             if(Session["Admin"] == null)
                 return View("Login");
             else {
-                var model = new AdminDAO().GetCay_MaLoai(MaLoai, i);
-                ViewBag.TenLoai = new AdminDAO().GetTenLoai_MaLoai(MaLoai);
-                ViewBag.MaLoai = MaLoai;
+                var model = new AdminDAO().GetTree_LoaiId(LoaiId, i);
+                ViewBag.TenLoai = new AdminDAO().GetTenLoai_LoaiId(LoaiId);
+                ViewBag.LoaiId = LoaiId;
                 ViewBag.tinhtrang = i;
                 ViewBag.message = message;
                 return View(model);
@@ -182,12 +182,12 @@ namespace VT_Shop.Areas.Admin.Controllers {
             }
         }
         [HttpGet]
-        public PartialViewResult ThemCay() {
+        public PartialViewResult ThemTree() {
             return PartialView();
         }
 
         [HttpPost]
-        public ActionResult Them(Cay model, HttpPostedFileBase fileVideo) {
+        public ActionResult Them(Tree model, HttpPostedFileBase fileVideo) {
             if(Session["fileUpload"] != null) {
                 string _fileName;
                 string listImages = "";
@@ -202,45 +202,45 @@ namespace VT_Shop.Areas.Admin.Controllers {
                 model.HinhAnh = listImages;
                 model.TinhTrang = "Sẵn bán";
                 var dao = new AdminDAO();
-                dao.ThemCay(model);
+                dao.ThemTree(model);
                 Session["fileUpload"] = null;
             }
-            return RedirectToAction("Cay", new { MaLoai = model.MaLoai, message="Thêm cá thể thành công" });
+            return RedirectToAction("Tree", new { LoaiId = model.LoaiId, message="Thêm cá thể thành công" });
         }
 
         [HttpGet]
-        public ActionResult SuaCay(int MaLoai, int MaCay) {
-            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
+        public ActionResult SuaTree(int LoaiId, int TreeId) {
+            var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult SuaCay(Cay Cay, HttpPostedFileBase fileVideo) {
+        public ActionResult SuaTree(Tree Tree, HttpPostedFileBase fileVideo) {
             
             string tinhtrang = Request.Form["tinhtrang"];
-            Cay.TinhTrang = tinhtrang;
-            new AdminDAO().SuaCay(Cay);
-            return RedirectToAction("Cay", new { MaLoai = Cay.MaLoai, message="Sửa cá thể thành công" });
+            Tree.TinhTrang = tinhtrang;
+            new AdminDAO().SuaTree(Tree);
+            return RedirectToAction("Tree", new { LoaiId = Tree.LoaiId, message="Sửa cá thể thành công" });
         }
 
-        public ActionResult SuaHinhAnhCay(int MaLoai, int MaCay) {
-            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
+        public ActionResult SuaHinhAnhTree(int LoaiId, int TreeId) {
+            var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }
-        public ActionResult SuaVideoCay(int MaLoai, int MaCay) {
-            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
+        public ActionResult SuaVideoTree(int LoaiId, int TreeId) {
+            var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }
 
         public ActionResult HoaDon(int? i) {
             var model = new AdminDAO().GetAllHoaDon(i);
-            List<NguoiDung> TenNguoiDung = new List<NguoiDung>();
+            List<User> Ten = new List<User>();
             if (model.Count > 0)
             {
                 foreach(var m in model)
-                    TenNguoiDung.Add(new AdminDAO().GetNguoiDung_MaHoaDon(m.MaHoaDon));
+                    Ten.Add(new AdminDAO().GetUser_HoaDonId(m.HoaDonId));
             }
-            ViewBag.TenNguoiDung = TenNguoiDung;
+            ViewBag.Ten = Ten;
             ViewBag.tinhtrang = i;
             return View(model);
         }
@@ -249,9 +249,9 @@ namespace VT_Shop.Areas.Admin.Controllers {
             var model = new AdminDAO().GetCTHD_MaHD(MaHD);
             ViewBag.MaHD = MaHD;
             var hoadon = new AdminDAO().GetHoaDon_MaHD(MaHD);
-            var nguoidung = new AdminDAO().GetNguoiDung_MaHoaDon(MaHD);
-            ViewBag.TenNguoiDung = nguoidung.TenNguoiDung;
-            ViewBag.SDT = nguoidung.SoDienThoai;
+            var User = new AdminDAO().GetUser_HoaDonId(MaHD);
+            ViewBag.Ten = User.Ten;
+            ViewBag.SDT = User.SoDienThoai;
             ViewBag.NgayLap = hoadon.NgayMua;
             ViewBag.TongTien = hoadon.TongTien;
             ViewBag.TinhTrang = hoadon.TinhTrang;
@@ -266,7 +266,7 @@ namespace VT_Shop.Areas.Admin.Controllers {
 
         public ActionResult HoaDon_Ngay() {
             List<HoaDon> model = new List<HoaDon>();
-            List<NguoiDung> TenNguoiDung = new List<NguoiDung>();
+            List<User> Ten = new List<User>();
             string ngay_bd = Request.Form["ngay_bd"];
             string ngay_kt = Request.Form["ngay_kt"];
             string i = Request.Form["tinhtrang"];
@@ -279,22 +279,22 @@ namespace VT_Shop.Areas.Admin.Controllers {
             if (model.Count > 0)
             {
                 foreach (var m in model)
-                    TenNguoiDung.Add(new AdminDAO().GetNguoiDung_MaHoaDon(m.MaHoaDon));
+                    Ten.Add(new AdminDAO().GetUser_HoaDonId(m.HoaDonId));
             }
-            ViewBag.TenNguoiDung = TenNguoiDung;
+            ViewBag.Ten = Ten;
             ViewBag.Ngaybd = ngay_bd;
             ViewBag.Ngaykt = ngay_kt;
             return View(model);
         }
 
 
-        public ActionResult SuaTinhTrang(int mahoadon, string tinhtrang, int i) {
-            new AdminDAO().SuaTinhTrang(mahoadon, tinhtrang);
-            return RedirectToAction("CTHD", "AdminHome", new { MaHD = mahoadon, i=i });
+        public ActionResult SuaTinhTrang(int HoaDonId, string tinhtrang, int i) {
+            new AdminDAO().SuaTinhTrang(HoaDonId, tinhtrang);
+            return RedirectToAction("CTHD", "AdminHome", new { MaHD = HoaDonId, i=i });
         }
 
-        public ActionResult CapNhatCTHD(int maCay, int mahoadon) {
-            int? tongtien = new AdminDAO().CapNhatCTHD(maCay, mahoadon);
+        public ActionResult CapNhatCTHD(int TreeId, int HoaDonId) {
+            int? tongtien = new AdminDAO().CapNhatCTHD(TreeId, HoaDonId);
             string tong = tongtien.Value.ToString("C", CultureInfo.CurrentCulture);
             return Json(new { tong = tong }, JsonRequestBehavior.AllowGet);
         }
@@ -305,18 +305,18 @@ namespace VT_Shop.Areas.Admin.Controllers {
         }
 
         [HttpGet]
-        public ActionResult SuaHinh(int MaLoai, int MaCay)
+        public ActionResult SuaHinh(int LoaiId, int TreeId)
         {
-            var model = new AdminDAO().GetCay_MaLoai_MaCay(MaLoai, MaCay);
+            var model = new AdminDAO().GetTree_LoaiId_TreeId(LoaiId, TreeId);
             return View(model);
         }
 
         [HttpPost]
         public ActionResult ThemHinh()
         {
-            int maloai = int.Parse(Request.Form["maloai"]);
-            int maCay = int.Parse(Request.Form["maCay"]);
-            Cay model = new VT_Shop.Models.Cay();
+            int LoaiId = int.Parse(Request.Form["LoaiId"]);
+            int TreeId = int.Parse(Request.Form["TreeId"]);
+            Tree model = new VT_Shop.Models.Tree();
             if (Session["fileUpload2"] != null)
             {
                 string _fileName;
@@ -330,18 +330,18 @@ namespace VT_Shop.Areas.Admin.Controllers {
                     item.SaveAs(path);
                     listImages += _fileName + "|";
                 }
-                model= db.Cays.Where(x => x.MaLoai == maloai && x.MaCay == maCay).First();
+                model= db.Trees.Where(x => x.LoaiId == LoaiId && x.TreeId == TreeId).First();
                 model.HinhAnh = model.HinhAnh+listImages;
                 db.SaveChanges();
                 Session["fileUpload"] = null;
             }
-            return RedirectToAction("SuaHinh", "AdminHome", new { MaLoai = maloai, MaCay = maCay });
+            return RedirectToAction("SuaHinh", "AdminHome", new { LoaiId = LoaiId, TreeId = TreeId });
         }
 
         [HttpPost]
-        public JsonResult XoaHinh(int MaLoai, int MaCay, string ten)
+        public JsonResult XoaHinh(int LoaiId, int TreeId, string ten)
         {
-            var model = db.Cays.Where(x => x.MaLoai == MaLoai && x.MaCay == MaCay).First();
+            var model = db.Trees.Where(x => x.LoaiId == LoaiId && x.TreeId == TreeId).First();
             string ten2 = ten + '|';
             model.HinhAnh=model.HinhAnh.Replace(ten2, "");
             db.SaveChanges();
@@ -353,9 +353,9 @@ namespace VT_Shop.Areas.Admin.Controllers {
             return Json("");
         }
 
-        public ActionResult CapNhatDiaChi(int mahoadon, string diachi)
+        public ActionResult CapNhatDiaChi(int HoaDonId, string diachi)
         {
-            var model = db.HoaDons.Find(mahoadon);
+            var model = db.HoaDons.Find(HoaDonId);
             model.DiaChi = diachi;
             db.SaveChanges();
             return Json("", JsonRequestBehavior.AllowGet);

@@ -8,56 +8,56 @@
 
   $scope.filter = "";
 
-  // get maCay
+  // get TreeId
   // var temp = window.location.href.split("=");
-  // $scope.maCay = temp[temp.length - 1];
+  // $scope.TreeId = temp[temp.length - 1];
   var link = window.location.href;
   var objectLink = new URL(link);
-  $scope.maCay = objectLink.searchParams.get("MaCay");
+  $scope.TreeId = objectLink.searchParams.get("TreeId");
   //------------
   $http({
     method: "GET",
-    url: url + "Cay/getCay"
+    url: url + "Tree/getTree"
   }).then(function (response) {
     data = response.data;
     //------------
     $http({
       method: "GET",
-      url: url + "Cay/getLoai"
+      url: url + "Tree/getLoai"
     }).then(function (response) {
       // scope
       $scope.loais = response.data;
 
-      // Add Loai to Cay
+      // Add Loai to Tree
       loais = response.data;
-      data.forEach(function (Cay) {
+      data.forEach(function (Tree) {
         loais.forEach(function (loai) {
-          if (loai.MaLoai === Cay.MaLoai) {
-            Cay.MaLoai = loai;
+          if (loai.LoaiId === Tree.LoaiId) {
+            Tree.LoaiId = loai;
           }
         })
       });
       //------------
       $http({
         method: "GET",
-        url: url + "Cay/getGiong"
+        url: url + "Tree/getGiong"
       }).then(function (response) {
         giongs = response.data;
         $scope.giongs = response.data;
         $scope.giongs.forEach(function (g, i) {
           $scope.giongs[i].loais = [];
           $scope.loais.forEach(function (l) {
-            if (l.MaGiong === g.MaGiong) {
+            if (l.GiongId === g.GiongId) {
               $scope.giongs[i].loais.push(l);
             }
           });
         });
 
-        // Add Giong to Cay
-        data.forEach(function (Cay) {
+        // Add Giong to Tree
+        data.forEach(function (Tree) {
           giongs.forEach(function (giong) {
-            if (giong.MaGiong === Cay.MaLoai.MaGiong) {
-              Cay.MaLoai.MaGiong = giong;
+            if (giong.GiongId === Tree.LoaiId.GiongId) {
+              Tree.LoaiId.GiongId = giong;
             }
           })
         });
@@ -65,20 +65,20 @@
         // get GoiY
         $http({
           method: "GET",
-          url: url + "Cay/getGoiY"
+          url: url + "Tree/getGoiY"
         }).then(function (response) {
           var goiY = response.data;
           var l = [];
          
           goiY.forEach(function (g) {
-            if (g.C1 === $scope.maCay * 1) {
+            if (g.C1 === $scope.TreeId * 1) {
               l.push(g.C2);
             }
           });
-          data.forEach(function (Cay, i) {
+          data.forEach(function (Tree, i) {
             l.forEach(function(o) {
-              if (o === Cay.MaCay) {
-                $scope.goiY.push(Cay);
+              if (o === Tree.TreeId) {
+                $scope.goiY.push(Tree);
               }
             })
           });
@@ -112,8 +112,8 @@
     $(event.currentTarget).addClass("btn btn-success active");
   }
 
-  function buildUrlChiTiet(maLoai, maCay) {
-    var urlChiTiet = "/Home/ChiTiet?MaLoai=" + maLoai.MaLoai + "&MaCay=" + maCay;
+  function buildUrlChiTiet(LoaiId, TreeId) {
+    var urlChiTiet = "/Home/ChiTiet?LoaiId=" + LoaiId.LoaiId + "&TreeId=" + TreeId;
     return urlChiTiet;
   }
 });
