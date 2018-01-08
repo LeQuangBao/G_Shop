@@ -72,12 +72,13 @@
          
           goiY.forEach(function (g) {
             if (g.C1 === $scope.maCaThe * 1) {
-              l.push(g.C2);
+                l.push(g.C2);
             }
           });
           data.forEach(function (caThe, i) {
             l.forEach(function(o) {
-              if (o === caThe.MaCaThe) {
+                if (o === caThe.MaCaThe) {
+                caThe.url = buildUrlChiTiet(caThe.MaLoai, caThe.MaCaThe);
                 $scope.goiY.push(caThe);
               }
             })
