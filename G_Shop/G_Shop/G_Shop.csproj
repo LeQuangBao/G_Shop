@@ -399,7 +399,6 @@
     <Content Include="Areas\Admin\Views\GoiY\CaTheLienQuan.cshtml" />
     <Content Include="Areas\Admin\Views\GoiY\themGoiY.cshtml" />
     <Content Include="Areas\Admin\Views\GoiY\xoaGoiY.cshtml" />
-<<<<<<< Updated upstream
     <EntityDeploy Include="Models\Model2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model2.Designer.cs</LastGenOutput>
@@ -407,11 +406,9 @@
     <Content Include="Models\Model2.edmx.diagram">
       <DependentUpon>Model2.edmx</DependentUpon>
     </Content>
-=======
     <Content Include="Areas\Admin\Views\Giong\edit.cshtml" />
     <Content Include="Areas\Admin\Views\Giong\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Giong\timkiemgiong.cshtml" />
->>>>>>> Stashed changes
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />

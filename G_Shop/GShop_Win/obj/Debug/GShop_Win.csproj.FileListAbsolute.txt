@@ -14,7 +14,6 @@ D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.pdb
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csprojResolveAssemblyReference.cache
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\bin\Debug\GShop_Win.exe
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\bin\Debug\GShop_Win.exe.config
-E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csprojResolveAssemblyReference.cache
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\MainWindow.g.cs
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\App.g.cs
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win_MarkupCompile.cache
@@ -26,3 +25,4 @@ E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csproj.GenerateResou
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csproj.CoreCompileInputs.cache
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.exe
 E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.pdb
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\bin\Debug\GShop_Win.pdb

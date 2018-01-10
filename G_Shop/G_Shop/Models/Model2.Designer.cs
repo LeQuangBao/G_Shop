@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream:G_Shop/G_Shop/Models/Model2.Designer.cs
-﻿// T4 code generation is enabled for model 'D:\DVWVUD\GSHop\G_Shop\G_Shop\Models\Model2.edmx'. 
-=======
-﻿// T4 code generation is enabled for model 'E:\Source_Code\VT_Shop\G_Shop\G_Shop\Models\Model1.edmx'. 
->>>>>>> Stashed changes:G_Shop/G_Shop/Models/Model1.Designer.cs
+﻿// T4 code generation is enabled for model 'E:\Source_Code\VT_Shop\G_Shop\G_Shop\Models\Model2.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
