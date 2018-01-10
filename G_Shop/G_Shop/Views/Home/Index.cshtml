@@ -38,6 +38,7 @@
         <div class="row">
             <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="c in data | filter: filter">
                 <div class="thumbnail">
+                    <img src="~/assets/client/images/{{c.image}}" style="width:320px;height:150px;" alt="" style="z-index:999">
                     <div class="caption">
                         <h5 class="pull-right" ng-bind="c.GiaBan"></h5>
                         <h4>{{c.TenCaThe}}</h4>

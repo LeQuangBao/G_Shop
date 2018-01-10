@@ -9,7 +9,7 @@ namespace G_Shop.Controllers
 {
     public class GoiYController : Controller
     {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities1 db = new GShopEntities1();
 
         [HttpGet]
         public JsonResult getGoiY() {

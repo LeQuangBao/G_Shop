@@ -13,10 +13,15 @@ namespace G_Shop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GShopEntities2 : DbContext
+    public partial class GShopEntities1 : DbContext
     {
+<<<<<<< Updated upstream:G_Shop/G_Shop/Models/Model2.Context.cs
         public GShopEntities2()
             : base("name=GShopEntities2")
+=======
+        public GShopEntities1()
+            : base("name=GShopEntities1")
+>>>>>>> Stashed changes:G_Shop/G_Shop/Models/Model1.Context.cs
         {
         }
     

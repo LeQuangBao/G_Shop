@@ -7,9 +7,9 @@ using System.Web;
 
 namespace G_Shop.DAO {
     public class UserDAO {
-        GShopEntities2 db = null;
+        GShopEntities1 db = null;
         public UserDAO() {
-            db = new GShopEntities2();
+            db = new GShopEntities1();
         }
         public int Login(string username, string password) {
             var result = db.NguoiDungs.SingleOrDefault(x => x.TenDangNhap == username && x.MatKhau == password);

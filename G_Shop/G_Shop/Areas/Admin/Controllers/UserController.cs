@@ -9,7 +9,7 @@ using PagedList;
 
 namespace G_Shop.Areas.Admin.Controllers {
     public class UserController : Controller {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities1 db = new GShopEntities1();
         // GET: Admin/User
         protected override void Dispose(bool disposing) {
             db.Dispose();

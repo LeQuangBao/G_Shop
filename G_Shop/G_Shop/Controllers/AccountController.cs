@@ -8,7 +8,7 @@ using G_Shop.DAO;
 
 namespace G_Shop.Controllers {
     public class AccountController : Controller {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities1 db = new GShopEntities1();
         // GET: Account
         public ActionResult Login() {
             var cki = Request.Cookies["user"];

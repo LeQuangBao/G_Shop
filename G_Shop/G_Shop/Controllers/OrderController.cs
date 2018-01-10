@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace G_Shop.Controllers {
     public class OrderController : Controller {
-        GShopEntities2 db = new GShopEntities2();
+        GShopEntities1 db = new GShopEntities1();
         // GET: Order
 
         public ActionResult Checkout() {

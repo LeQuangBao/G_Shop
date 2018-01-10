@@ -12,3 +12,17 @@ D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csproj.GenerateResource.Cac
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.exe
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.pdb
 D:\DVWVUD\GSHop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csprojResolveAssemblyReference.cache
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\bin\Debug\GShop_Win.exe
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\bin\Debug\GShop_Win.exe.config
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csprojResolveAssemblyReference.cache
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\MainWindow.g.cs
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\App.g.cs
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win_MarkupCompile.cache
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win_MarkupCompile.lref
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\MainWindow.baml
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.g.resources
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.Properties.Resources.resources
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csproj.GenerateResource.Cache
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.csproj.CoreCompileInputs.cache
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.exe
+E:\Source_Code\VT_Shop\G_Shop\GShop_Win\obj\Debug\GShop_Win.pdb
